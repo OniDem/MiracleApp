@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiracleApp", "MiracleApp\MiracleApp.csproj", "{2C49CBFE-2F01-4FC0-865F-4AB9F57DE21B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiracleApi", "MiracleApi\MiracleApi.csproj", "{0DCDCC4C-9E70-4BE4-ACEC-AD044583A349}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +19,10 @@ Global
 		{2C49CBFE-2F01-4FC0-865F-4AB9F57DE21B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C49CBFE-2F01-4FC0-865F-4AB9F57DE21B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2C49CBFE-2F01-4FC0-865F-4AB9F57DE21B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0DCDCC4C-9E70-4BE4-ACEC-AD044583A349}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DCDCC4C-9E70-4BE4-ACEC-AD044583A349}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DCDCC4C-9E70-4BE4-ACEC-AD044583A349}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DCDCC4C-9E70-4BE4-ACEC-AD044583A349}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
