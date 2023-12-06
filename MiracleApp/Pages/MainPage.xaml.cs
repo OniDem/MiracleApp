@@ -15,6 +15,14 @@ namespace MiracleApp.Pages
         {
             await Navigation.PushAsync(new SchedulePage());
         }
+        private async void CertificateButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new CertificatePage());
+        }
+        private async void PayButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new PayPage());
+        }
     }
 
 }
