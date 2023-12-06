@@ -3,11 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MiracleApp.Pages.MainPage">
 
-    <Grid BackgroundColor="#8031A7">
-        <Image Aspect="AspectFill" x:Name="BackgroundImage"/>
-        <VerticalStackLayout Margin="10">
-            <Button Text="Расписание" CornerRadius="25" x:Name="SheduleButton" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="50" BackgroundColor="#9F5CC0" WidthRequest="200" Clicked="SheduleButton_Clicked"/>
+    <VerticalStackLayout HorizontalOptions="FillAndExpand" BackgroundColor="#8031A7" Padding="22,34" Spacing="0">
+
+        <VerticalStackLayout>
+            <Label WidthRequest="289" HeightRequest="78" HorizontalOptions="Start">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Miracle" TextColor="#FAE073" FontSize="78" FontFamily="QANELASBLACK"/>
+                        <Span Text=":" TextColor="#FAE073" FontSize="74" FontFamily="NEUEMACHINA-BLACK" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <Frame BackgroundColor="#1E1E1E" BorderColor="#1E1E1E" CornerRadius="16" Padding="12,0" WidthRequest="293" HeightRequest="54" HorizontalOptions="Start" Margin="0,4">
+                <Label Text="Новоколледж" TextColor="#FAE073" FontSize="42" FontFamily="QANELASBLACK"/>
+            </Frame>
         </VerticalStackLayout>
-    </Grid>
+
+        <VerticalStackLayout Margin="1,18,0,0">
+            <HorizontalStackLayout>
+                <Button Text="Главная" BackgroundColor="Transparent" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR.TTF" CornerRadius="50" BorderWidth="2" FontSize="24" Padding="17,9" Clicked="SheduleButton_Clicked" Margin="0,0,12,0"/>
+                <Button Text="Оплата" BackgroundColor="Transparent" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR.TTF" CornerRadius="50" BorderWidth="2" FontSize="24" Padding="17,9" Clicked="SheduleButton_Clicked"/>
+            </HorizontalStackLayout>
+            <HorizontalStackLayout Margin="1,8,0,0">
+                <Button Text="Расписание" BackgroundColor="Transparent" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR.TTF" CornerRadius="50" BorderWidth="2" FontSize="24" Padding="17,9" Clicked="SheduleButton_Clicked" Margin="0,0,12,0"/>
+                <Button Text="Справки" BackgroundColor="Transparent" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR.TTF" CornerRadius="50" BorderWidth="2" FontSize="24" Padding="17,9" Clicked="SheduleButton_Clicked"/>
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <Label Text="Новости" TextColor="#FAE073" FontSize="24" FontFamily="QANELASBLACK" Margin="7,24,0,0"/>
+    </VerticalStackLayout>
 
 </ContentPage>
