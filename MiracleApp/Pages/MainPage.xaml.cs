@@ -7,7 +7,6 @@ namespace MiracleApp.Pages
         public MainPage()
         {
             InitializeComponent();
-            BackgroundImage.Source = "background.png";
         }
 
         private async void SheduleButton_Clicked(object sender, EventArgs e)
