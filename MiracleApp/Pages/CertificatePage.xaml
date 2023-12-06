@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MiracleApp.Pages.CertificatePage">
+             x:Class="MiracleApp.Pages.CertificatePage"
+             Shell.TabBarIsVisible="False">
+    
     <Grid BackgroundColor="#8031A7">
         <Image Aspect="Fill" x:Name="BackgroundImage"/>
 
         <ScrollView >
             <VerticalStackLayout HorizontalOptions="Start" VerticalOptions="Start">
                 <StackLayout  HorizontalOptions="Start" VerticalOptions="Start">
-                    <Label Margin="22, 34, 0, -10">
+                    <Label WidthRequest="289" HeightRequest="78" HorizontalOptions="Start">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Miracle" TextColor="#FAE073" FontSize="78" FontFamily="QANELASBLACK"/>
@@ -16,8 +18,9 @@
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <Frame CornerRadius="16" Margin="22, 4, 0, 0" Padding="12, 8, 12, 12" BackgroundColor="#000000" BorderColor="#000000">
-                        <Label Text="Новоколледж" TextColor="#FAE073" FontSize="42" FontFamily="NEUEMACHINA-BLACK" />
+
+                    <Frame BackgroundColor="#1E1E1E" BorderColor="#1E1E1E" CornerRadius="16" Padding="12,0" WidthRequest="293" HeightRequest="54" HorizontalOptions="Start" Margin="0,4">
+                        <Label Text="Новоколледж" TextColor="#FAE073" FontSize="42" FontFamily="QANELASBLACK"/>
                     </Frame>
                 </StackLayout>
                 <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Margin="0, 24, 0 , 0">
@@ -28,10 +31,34 @@
                         <Button Text="Справки" x:Name="СertificateButton" Clicked="СertificateButton_Clicked" CornerRadius="50" BorderWidth="2" Padding="9, 0, 9, 0" Margin="0, 0, 12, 0" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR" FontSize="24" BackgroundColor="#9F5CC0" HeightRequest="47" WidthRequest="130"/>
                     </HorizontalStackLayout>
                 </ScrollView>
+                <Label HorizontalTextAlignment="Center" Text="Заказать справку об обучении в Новоколледже" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073" Margin="42, 24, 41, 0"/>
+                <VerticalStackLayout>
+                    <Frame BackgroundColor="#9F5CC0" BorderColor="Black" CornerRadius="16" Margin="24, 18, 21, 0" Padding="18, 11, 18, 12">
+                        <Entry BackgroundColor="#9F5CC0" Placeholder="Ф.И.О" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                    </Frame>
+                    <Frame BackgroundColor="#9F5CC0" BorderColor="Black" CornerRadius="16" Margin="24, 18, 21, 0" Padding="18, 11, 18, 12">
+                        <Entry BackgroundColor="#9F5CC0" Placeholder="Курс" Keyboard="Numeric" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                    </Frame>
+                    <Frame BackgroundColor="#9F5CC0" BorderColor="Black" CornerRadius="16" Margin="24, 18, 21, 0" Padding="18, 11, 18, 12">
+                        <Entry BackgroundColor="#9F5CC0" Placeholder="Специальность" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                    </Frame>
+                    <Frame BackgroundColor="#9F5CC0" BorderColor="Black" CornerRadius="16" Margin="24, 18, 21, 0" Padding="18, 11, 18, 12">
+                        <Entry BackgroundColor="#9F5CC0" Placeholder="Куда требуется справка?" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                    </Frame>
+                    <Frame BackgroundColor="#9F5CC0" BorderColor="Black" CornerRadius="16" Margin="24, 18, 21, 0" Padding="18, 11, 18, 12">
+                        <Entry BackgroundColor="#9F5CC0" Placeholder="Отделение" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                    </Frame>
+                    <Frame BackgroundColor="#9F5CC0" BorderColor="Black" CornerRadius="16" Margin="24, 18, 21, 0" Padding="18, 11, 18, 12">
+                        <Entry BackgroundColor="#9F5CC0" Placeholder="Дата рождения" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                    </Frame>
+                    <Frame BackgroundColor="#9F5CC0" BorderColor="Black" CornerRadius="16" Margin="24, 18, 21, 0" Padding="18, 11, 18, 12">
+                        <Entry BackgroundColor="#9F5CC0" Placeholder="Номер телефона" Keyboard="Telephone" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                    </Frame>
+                </VerticalStackLayout>
+                <Button HorizontalOptions="Center" BackgroundColor="#1E1E1E" Margin="0, 24, 0, 0 " CornerRadius="16" Text="Заказать" Padding="64, 20, 64, 20" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073"/>
 
                 <StackLayout HorizontalOptions="Fill" Orientation="Horizontal" >
                     <ImageButton x:Name="BackButton" Clicked="BackButton_Clicked" HorizontalOptions="Start" HeightRequest="52" WidthRequest="52" Margin="24, 24, 0, 58"/>
-                    <ImageButton x:Name="NextButton" Clicked="NextButton_Clicked" HorizontalOptions="End" Rotation="180" HeightRequest="52" WidthRequest="52" Margin="242, 24, 22, 58"/>
                 </StackLayout>
             </VerticalStackLayout>
         </ScrollView>

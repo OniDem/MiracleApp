@@ -26,7 +26,7 @@
             <VerticalStackLayout Margin="1,18,0,0">
                 <HorizontalStackLayout>
                     <Button Text="Главная" BackgroundColor="Transparent" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR.TTF" CornerRadius="50" BorderWidth="2" FontSize="24" Padding="17,9"
-                            Clicked="SheduleButton_Clicked" Margin="0,0,12,0"/>
+                            Clicked="MainButton_Clicked" Margin="0,0,12,0"/>
                     <Button Text="Оплата" BackgroundColor="Transparent" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR.TTF" CornerRadius="50" BorderWidth="2" FontSize="24" Padding="17,9"
                             Clicked="PayButton_Clicked"/>
                 </HorizontalStackLayout>

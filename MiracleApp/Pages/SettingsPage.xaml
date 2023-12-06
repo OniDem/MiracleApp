@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiracleApp.Pages.SettingsPage">
+    <Grid BackgroundColor="#8031A7">
+    <Image Aspect="Fill" x:Name="BackgroundImage"/>
+
+    <ScrollView >
+        <VerticalStackLayout HorizontalOptions="Start" VerticalOptions="Start">
+            <StackLayout  HorizontalOptions="Start" VerticalOptions="Start">
+                <Label WidthRequest="289" HeightRequest="78" HorizontalOptions="Start">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="Miracle" TextColor="#FAE073" FontSize="78" FontFamily="QANELASBLACK"/>
+                            <Span Text=":" TextColor="#FAE073" FontSize="74" FontFamily="NEUEMACHINA-BLACK" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <Frame BackgroundColor="#1E1E1E" BorderColor="#1E1E1E" CornerRadius="16" Padding="12,0" WidthRequest="293" HeightRequest="54" HorizontalOptions="Start" Margin="0,4">
+                    <Label Text="Новоколледж" TextColor="#FAE073" FontSize="42" FontFamily="QANELASBLACK"/>
+                </Frame>
+            </StackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+    </Grid>
+</ContentPage>

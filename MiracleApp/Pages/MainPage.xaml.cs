@@ -23,6 +23,11 @@ namespace MiracleApp.Pages
         {
             await Navigation.PushAsync(new PayPage());
         }
+
+        private async void MainButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
     }
 
 }

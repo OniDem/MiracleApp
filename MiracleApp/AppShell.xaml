@@ -9,15 +9,18 @@
     TabBarBackgroundColor="#9F5CC0"
     Shell.PresentationMode="ModalAnimated">
 
-    <TabBar >
-        <Tab Icon="settings.png">
-            <ShellContent  ContentTemplate="{DataTemplate local:MainPage}"/>
+    <TabBar>
+        <Tab>
+            <ShellContent IsVisible="True" ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
-        <Tab Icon="profile.png">
-            <ShellContent  ContentTemplate="{DataTemplate local:MainPage}"/>
+        <Tab Icon="settings.svg">
+            <ShellContent  ContentTemplate="{DataTemplate local:SettingsPage}"/>
         </Tab>
-        <Tab Icon="notification.png">
-            <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
+        <Tab Icon="profile.svg">
+            <ShellContent  ContentTemplate="{DataTemplate local:ProfilePage}"/>
+        </Tab>
+        <Tab Icon="notification.svg">
+            <ShellContent ContentTemplate="{DataTemplate local:NotificationsPage}"/>
         </Tab>
     </TabBar>
 </Shell>

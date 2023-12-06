@@ -2,12 +2,11 @@ namespace MiracleApp.Pages;
 
 public partial class CertificatePage : ContentPage
 {
-	public CertificatePage()
-	{
-		InitializeComponent();
+    public CertificatePage()
+    {
+        InitializeComponent();
         BackgroundImage.Source = "background.png";
         BackButton.Source = "backbutton.png";
-        NextButton.Source = "backbutton.png";
     }
 
     private async void MainButton_Clicked(object sender, EventArgs e)
@@ -48,11 +47,6 @@ public partial class CertificatePage : ContentPage
 
     private async void BackButton_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PopModalAsync();
-    }
-
-    private async void NextButton_Clicked(object sender, EventArgs e)
-    {
-        await Navigation.PushModalAsync(new PayPage());
+        await Navigation.PushAsync(new PayPage());
     }
 }

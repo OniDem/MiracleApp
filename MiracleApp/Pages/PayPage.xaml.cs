@@ -48,11 +48,11 @@ public partial class PayPage : ContentPage
 
     private async void BackButton_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PopModalAsync();
+        await Navigation.PushAsync(new SchedulePage());
     }
 
     private async void NextButton_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PushModalAsync(new PayPage());
+        await Navigation.PushAsync(new CertificatePage());
     }
 }
