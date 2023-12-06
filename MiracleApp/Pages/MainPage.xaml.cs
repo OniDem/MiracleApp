@@ -1,4 +1,6 @@
 ﻿
+using Microsoft.Maui;
+
 namespace MiracleApp.Pages
 {
     public partial class MainPage : ContentPage
@@ -12,7 +14,7 @@ namespace MiracleApp.Pages
 
         private async void SheduleButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushModalAsync(new SchedulePage());
+            await Navigation.PushAsync(new SchedulePage());
         }
     }
 

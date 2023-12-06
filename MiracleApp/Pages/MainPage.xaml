@@ -6,7 +6,7 @@
     <Grid BackgroundColor="#8031A7">
         <Image Aspect="AspectFill" x:Name="BackgroundImage"/>
         <VerticalStackLayout Margin="10">
-            <Button Text="Расписание" CornerRadius="25" x:Name="SheduleButton" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="50" WidthRequest="200" Clicked="SheduleButton_Clicked"/>
+            <Button Text="Расписание" CornerRadius="25" x:Name="SheduleButton" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="50" BackgroundColor="#9F5CC0" WidthRequest="200" Clicked="SheduleButton_Clicked"/>
         </VerticalStackLayout>
     </Grid>
 

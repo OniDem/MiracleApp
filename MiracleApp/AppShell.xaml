@@ -6,19 +6,17 @@
     xmlns:local="clr-namespace:MiracleApp.Pages"
     Shell.FlyoutBehavior="Disabled"
     NavBarIsVisible="False"
-    TabBarBackgroundColor="#9F5CC0">
+    TabBarBackgroundColor="#9F5CC0"
+    Shell.PresentationMode="ModalAnimated">
 
     <TabBar >
-        <Tab Title="Настройки"
-             Icon="cat.png">
+        <Tab Icon="settings.png">
             <ShellContent  ContentTemplate="{DataTemplate local:MainPage}"/>
         </Tab>
-        <Tab Title="Главная"
-             Icon="cat.png">
+        <Tab Icon="profile.png">
             <ShellContent  ContentTemplate="{DataTemplate local:MainPage}"/>
         </Tab>
-        <Tab Title="Уведомления"
-             Icon="cat.png">
+        <Tab Icon="notification.png">
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}"/>
         </Tab>
     </TabBar>

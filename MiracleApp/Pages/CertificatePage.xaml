@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiracleApp.Pages.CertificatePage">
+    <Grid BackgroundColor="#8031A7">
+        <Image Aspect="Fill" x:Name="BackgroundImage"/>
+
+        <ScrollView >
+            <VerticalStackLayout HorizontalOptions="Start" VerticalOptions="Start">
+                <StackLayout  HorizontalOptions="Start" VerticalOptions="Start">
+                    <Label Margin="22, 34, 0, -10">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Miracle" TextColor="#FAE073" FontSize="78" FontFamily="QANELASBLACK"/>
+                                <Span Text=":" TextColor="#FAE073" FontSize="74" FontFamily="NEUEMACHINA-BLACK" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Frame CornerRadius="16" Margin="22, 4, 0, 0" Padding="12, 8, 12, 12" BackgroundColor="#000000" BorderColor="#000000">
+                        <Label Text="Новоколледж" TextColor="#FAE073" FontSize="42" FontFamily="NEUEMACHINA-BLACK" />
+                    </Frame>
+                </StackLayout>
+                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Margin="0, 24, 0 , 0">
+                    <HorizontalStackLayout>
+                        <Button Text="Главная" x:Name="MainButton" Clicked="MainButton_Clicked" CornerRadius="50" BorderWidth="2" Padding="9, 0, 9, 0" Margin="1, 0, 12, 0" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR" FontSize="24" BackgroundColor="Transparent" HeightRequest="47" WidthRequest="117"/>
+                        <Button Text="Расписание" x:Name="ScheduleButton" Clicked="ScheduleButton_Clicked" CornerRadius="50" BorderWidth="2" Padding="9, 0, 9, 0" Margin="0, 0, 12, 0" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR" FontSize="24" BackgroundColor="Transparent" HeightRequest="47" WidthRequest="164"/>
+                        <Button Text="Оплата" x:Name="PayButton" Clicked="PayButton_Clicked" CornerRadius="50" BorderWidth="2" Padding="9, 0, 9, 0" Margin="0, 0, 12, 0" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR" FontSize="24" BackgroundColor="Transparent" HeightRequest="47" WidthRequest="113"/>
+                        <Button Text="Справки" x:Name="СertificateButton" Clicked="СertificateButton_Clicked" CornerRadius="50" BorderWidth="2" Padding="9, 0, 9, 0" Margin="0, 0, 12, 0" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR" FontSize="24" BackgroundColor="#9F5CC0" HeightRequest="47" WidthRequest="130"/>
+                    </HorizontalStackLayout>
+                </ScrollView>
+
+                <StackLayout HorizontalOptions="Fill" Orientation="Horizontal" >
+                    <ImageButton x:Name="BackButton" Clicked="BackButton_Clicked" HorizontalOptions="Start" HeightRequest="52" WidthRequest="52" Margin="24, 24, 0, 58"/>
+                    <ImageButton x:Name="NextButton" Clicked="NextButton_Clicked" HorizontalOptions="End" Rotation="180" HeightRequest="52" WidthRequest="52" Margin="242, 24, 22, 58"/>
+                </StackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
