@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiracleApp.Pages.MainPage">
+
+    <Grid BackgroundColor="#8031A7">
+        <Image Aspect="AspectFill" x:Name="BackgroundImage"/>
+        <VerticalStackLayout Margin="10">
+            <Button Text="Расписание" CornerRadius="25" x:Name="SheduleButton" VerticalOptions="Center" HorizontalOptions="Center" HeightRequest="50" WidthRequest="200" Clicked="SheduleButton_Clicked"/>
+        </VerticalStackLayout>
+    </Grid>
+
+</ContentPage>

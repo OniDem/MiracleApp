@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MiracleApp.Pages.SchedulePage">
+    
+
+    <Grid BackgroundColor="#8031A7">
+        <Image Aspect="AspectFill" x:Name="BackgroundImage"/>
+
+        <ScrollView>
+            <VerticalStackLayout>
+                <StackLayout Margin="22, 34, 0, 0" HorizontalOptions="Start" VerticalOptions="Start">
+                    <Label WidthRequest="289" HeightRequest="70" >
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="Miracle" TextColor="#FAE073" FontSize="78" FontFamily="QANELASBLACK"/>
+                                <Span Text=":" TextColor="#FAE073" FontSize="74" FontFamily="NEUEMACHINA-BLACK" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <Frame CornerRadius="16" Margin="22, 4, 0, 0" WidthRequest="293" HeightRequest="54" Padding="12, 8, 12, 12" BackgroundColor="#000000" BorderColor="#000000">
+                        <Label Text="Новоколледж" TextColor="#FAE073" FontSize="42" FontFamily="NEUEMACHINA-BLACK" HeightRequest="49" WidthRequest="260"/>
+                    </Frame>
+                </StackLayout>
+                <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" HeightRequest="58" Margin="0, 24, 0 , 0">
+                    <HorizontalStackLayout>
+                        <Button Text="Главная" CornerRadius="50" BorderWidth="2" Padding="9, 0, 9, 0" Margin="1, 0, 12, 0" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR" FontSize="24" BackgroundColor="Transparent" HeightRequest="47" WidthRequest="117"/>
+                        <Button Text="Расписание" CornerRadius="50" BorderWidth="2" Padding="9, 0, 9, 0" Margin="0, 0, 12, 0" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR" FontSize="24" BackgroundColor="#9F5CC0" HeightRequest="47" WidthRequest="164"/>
+                        <Button Text="Оплата" CornerRadius="50" BorderWidth="2" Padding="9, 0, 9, 0" Margin="0, 0, 12, 0" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR" FontSize="24" BackgroundColor="Transparent" HeightRequest="47" WidthRequest="113"/>
+                        <Button Text="Справки" CornerRadius="50" BorderWidth="2" Padding="9, 0, 9, 0" Margin="0, 0, 12, 0" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR" FontSize="24" BackgroundColor="Transparent" HeightRequest="47" WidthRequest="130"/>
+                        <Button Text="Профиль" CornerRadius="50" BorderWidth="2" Padding="9, 0, 9, 0" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR" FontSize="24" BackgroundColor="Transparent"/>
+                    </HorizontalStackLayout>
+                </ScrollView>
+                <StackLayout HorizontalOptions="Start" Margin="22, 18, 0, 0">
+                    <Label Text="Курс" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073"/>
+                    <Frame Margin="0, 12, 0, 0"  CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="24, 16, 24, 16">
+                        <HorizontalStackLayout >
+                            <Label Text="1" FontFamily="QANELASBOLD" Margin="0, 0, 46, 0" FontSize="24" TextColor="#FAE073" />
+                            <Label Text="2" FontFamily="QANELASBOLD" Margin="0, 0, 46, 0" FontSize="24" TextColor="#FAE073"/>
+                            <Label Text="3" FontFamily="QANELASBOLD" Margin="0, 0, 46, 0" FontSize="24" TextColor="#FAE073"/>
+                            <Label Text="4" FontFamily="QANELASBOLD" FontSize="24"  TextColor="#FAE073"/>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Start" Margin="22, 18, 0, 0">
+                    <Label Text="Отделение" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073"/>
+                    <Frame Margin="0, 12, 0, 0"  CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="24, 16, 24, 16">
+                        <HorizontalStackLayout>
+                            <Label Text="ЦК" FontFamily="QANELASBOLD" Margin="0, 0, 24, 0" FontSize="24" TextColor="#FAE073"/>
+                            <Label Text="ЛО" FontFamily="QANELASBOLD" Margin="0, 0, 24, 0" FontSize="24" TextColor="#FAE073"/>
+                            <Label Text="КИТ" FontFamily="QANELASBOLD" Margin="0, 0, 24, 0" FontSize="24" TextColor="#FAE073"/>
+                            <Label Text="БО" FontFamily="QANELASBOLD" Margin="0, 0, 24, 0" FontSize="24" TextColor="#FAE073"/>
+                            <Label Text="ТО" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Start" Margin="22, 18, 29, 0">
+                    <Label Text="Специальность" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073"/>
+                    <Frame Margin="0, 12, 0, 0"  CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="24, 24, 24, 24">
+                        <VerticalStackLayout>
+                            <Label HorizontalOptions="Start" Text="Реклама и маркетинг" FontFamily="QANELASBOLD" Margin="0, 0, 0, 24" FontSize="24" WidthRequest="231" TextColor="#FAE073"/>
+                            <Label HorizontalOptions="Start" Text="Информационные технологии" FontFamily="QANELASBOLD" Margin="0, 0, 00, 24" FontSize="24" WidthRequest="330" TextColor="#FAE073"/>
+                            <Label HorizontalOptions="Start" Text="Социо-культурная деятельность" FontFamily="QANELASBOLD" Margin="0, 0, 0, 24" FontSize="24" TextColor="#FAE073"/>
+                            <Label HorizontalOptions="Start" Text="Право и судебная администрирование" FontFamily="QANELASBOLD" Margin="0, 0, 0, 24" FontSize="24" TextColor="#FAE073"/>
+                            <Label HorizontalOptions="Start" Text="Предпринимательство" FontFamily="QANELASBOLD" FontSize="24" Margin="0, 0, 0, 24" TextColor="#FAE073"/>
+                            <Label HorizontalOptions="Start" Text="Дизайн" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </StackLayout>
+                <ImageButton x:Name="BackButton" HorizontalOptions="Start" Margin="24, 24, 0, 58"/>
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>
