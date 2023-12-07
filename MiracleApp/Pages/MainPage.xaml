@@ -25,16 +25,12 @@
 
             <VerticalStackLayout Margin="1,18,0,0">
                 <HorizontalStackLayout>
-                    <Button Text="Главная" BackgroundColor="Transparent" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR.TTF" CornerRadius="50" BorderWidth="2" FontSize="24" Padding="17,9"
-                            Clicked="MainButton_Clicked" Margin="0,0,12,0"/>
-                    <Button Text="Оплата" BackgroundColor="Transparent" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR.TTF" CornerRadius="50" BorderWidth="2" FontSize="24" Padding="17,9"
-                            Clicked="PayButton_Clicked"/>
+                    <Button Text="Главная" Style="{StaticResource ThinButton}" Clicked="MainButton_Clicked" Margin="0,0,12,0"/>
+                    <Button Text="Оплата" Style="{StaticResource ThinButton}" Clicked="PayButton_Clicked"/>
                 </HorizontalStackLayout>
                 <HorizontalStackLayout Margin="1,8,0,0">
-                    <Button Text="Расписание" BackgroundColor="Transparent" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR.TTF" CornerRadius="50" BorderWidth="2" FontSize="24" Padding="17,9"
-                            Clicked="SheduleButton_Clicked" Margin="0,0,12,0"/>
-                    <Button Text="Справки" BackgroundColor="Transparent" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR.TTF" CornerRadius="50" BorderWidth="2" FontSize="24" Padding="17,9"
-                            Clicked="CertificateButton_Clicked"/>
+                    <Button Text="Расписание" Style="{StaticResource ThinButton}" Clicked="SheduleButton_Clicked" Margin="0,0,12,0"/>
+                    <Button Text="Справки" Style="{StaticResource ThinButton}" Clicked="CertificateButton_Clicked"/>
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             <Label Text="Новости" TextColor="#FAE073" FontSize="24" FontFamily="QANELASBLACK" Margin="7,24,0,0"/>

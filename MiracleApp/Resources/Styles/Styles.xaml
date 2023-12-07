@@ -4,6 +4,18 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
 
+    <!--BackgroundColor="Transparent" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR.TTF" CornerRadius="50" BorderWidth="2" FontSize="24" Padding="17,9"-->
+    <Style TargetType="Button" x:Key="ThinButton">
+        <Setter Property="BackgroundColor" Value="Transparent"/>
+        <Setter Property="TextColor" Value="#FAE073"/>
+        <Setter Property="BorderColor" Value="#FAE073"/>
+        <Setter Property="FontFamily" Value="QANELASREGULAR.TTF"/>
+        <Setter Property="CornerRadius" Value="50"/>
+        <Setter Property="BorderWidth" Value="2"/>
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="Padding" Value="17,9"/>
+    </Style>
+    
     <Style TargetType="ActivityIndicator">
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
     </Style>
