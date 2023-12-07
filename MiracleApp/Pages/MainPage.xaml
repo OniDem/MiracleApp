@@ -34,6 +34,16 @@
                 </HorizontalStackLayout>
             </VerticalStackLayout>
             <Label Text="Новости" TextColor="#FAE073" FontSize="24" FontFamily="QANELASBLACK" Margin="7,24,0,0"/>
+
+
         </VerticalStackLayout>
+
+        <HorizontalStackLayout HorizontalOptions="Start" VerticalOptions="End" ZIndex="1">
+            <ImageButton x:Name="SettingsButton" Clicked="SettingsButton_Clicked" HeightRequest="52" WidthRequest="52" Margin="35, 0, 0, 20"/>
+            <ImageButton x:Name="HomeButton" Clicked="HomeButton_Clicked" HeightRequest="52" WidthRequest="52" Margin="35, 0, 0, 20"/>
+            <ImageButton x:Name="ProfileButton" Clicked="ProfileButton_Clicked" HeightRequest="52" WidthRequest="52" Margin="35, 0, 0, 20"/>
+            <ImageButton HorizontalOptions="Start" Clicked="NotificationButton_Clicked" x:Name="NotificationButton" HeightRequest="52" WidthRequest="52" Margin="35, 0, 35, 20"/>
+        </HorizontalStackLayout>
+        <Frame VerticalOptions="EndAndExpand" BorderColor="#9F5CC0" BackgroundColor="#9F5CC0" HorizontalOptions="FillAndExpand" Margin="0, 16, 0, 2" HeightRequest="50"/>
     </Grid>
 </ContentPage>

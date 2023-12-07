@@ -9,6 +9,10 @@ namespace MiracleApp.Pages
         public MainPage()
         {
             InitializeComponent();
+            SettingsButton.Source = "settings.png";
+            HomeButton.Source = "home.png";
+            ProfileButton.Source = "profile.png";
+            NotificationButton.Source = "notification.png";
         }
 
         private async void SheduleButton_Clicked(object sender, EventArgs e)
@@ -27,6 +31,25 @@ namespace MiracleApp.Pages
         private async void MainButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new MainPage());
+        }
+
+        private async void SettingsButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SettingsPage());
+        }
+
+        private async void HomeButton_Clicked(object sender, EventArgs e)
+        {
+        }
+
+        private async void ProfileButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ProfilePage());
+        }
+
+        private async void NotificationButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new NotificationsPage());
         }
     }
 
