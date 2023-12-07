@@ -9,7 +9,7 @@
         <VerticalStackLayout HorizontalOptions="FillAndExpand"  Padding="22,34" Spacing="0" AnchorX="0" AnchorY="0">
 
             <VerticalStackLayout>
-                <Label WidthRequest="289" HeightRequest="78" HorizontalOptions="Start">
+                <Label WidthRequest="289" HeightRequest="79" HorizontalOptions="Start">
                     <Label.FormattedText>
                         <FormattedString>
                             <Span Text="Miracle" TextColor="#FAE073" FontSize="78" FontFamily="QANELASBLACK"/>
