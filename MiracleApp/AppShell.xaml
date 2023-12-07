@@ -7,19 +7,20 @@
     Shell.FlyoutBehavior="Disabled"
     NavBarIsVisible="False"
     TabBarBackgroundColor="#9F5CC0"
-    Shell.PresentationMode="ModalAnimated">
+    Shell.PresentationMode="ModalAnimated"
+    Shell.TabBarIsVisible="False">
 
     <TabBar>
         <Tab>
             <ShellContent IsVisible="True" ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
-        <Tab Icon="settings.svg">
+        <Tab>
             <ShellContent  ContentTemplate="{DataTemplate local:SettingsPage}"/>
         </Tab>
-        <Tab Icon="profile.svg">
+        <Tab>
             <ShellContent  ContentTemplate="{DataTemplate local:ProfilePage}"/>
         </Tab>
-        <Tab Icon="notification.svg">
+        <Tab>
             <ShellContent ContentTemplate="{DataTemplate local:NotificationsPage}"/>
         </Tab>
     </TabBar>
