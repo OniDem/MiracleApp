@@ -18,9 +18,6 @@
             <ShellContent  ContentTemplate="{DataTemplate local:SettingsPage}"/>
         </Tab>
         <Tab>
-            <ShellContent  ContentTemplate="{DataTemplate local:ProfilePage}"/>
-        </Tab>
-        <Tab>
             <ShellContent ContentTemplate="{DataTemplate local:NotificationsPage}"/>
         </Tab>
     </TabBar>

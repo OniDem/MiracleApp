@@ -5,7 +5,6 @@ public partial class CertificatePage : ContentPage
     public CertificatePage()
     {
         InitializeComponent();
-        BackgroundImage.Source = "background.png";
         BackButton.Source = "backbutton.png";
     }
 

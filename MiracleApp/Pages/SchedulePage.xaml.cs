@@ -6,7 +6,6 @@ public partial class SchedulePage : ContentPage
 	{
 		
 		InitializeComponent();
-        BackgroundImage.Source = "background.png";
 		BackButton.Source = "backbutton.png";
         NextButton.Source = "backbutton.png";
     }
