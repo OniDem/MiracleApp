@@ -13,10 +13,10 @@
                 <StackLayout VerticalOptions="Start">
                     <toolkit:AvatarView  ZIndex="1" Margin="147, 40, 147, 0" BackgroundColor="Transparent" BorderColor="Transparent" BorderWidth="0"  HeightRequest="136" WidthRequest="136" CornerRadius="120" ImageSource="test_avatar.png"/>
                     <Frame ZIndex="0" BackgroundColor="#1E1E1E" BorderColor="#1E1E1E" CornerRadius="16" Margin="22, -68, 23, 0" HeightRequest="178" Padding="0, 78, 0, 28">
-                        <VerticalStackLayout HorizontalOptions="FillAndExpand" ZIndex="1">
-                            <Label Text="Илон Маск"  TextColor="#FAE073" HorizontalTextAlignment="Center" FontSize="20" FontFamily="QANELASBOLD"/>
-                            <Label Text="3 курс" TextColor="#FAE073" HorizontalTextAlignment="Center" FontSize="20" FontFamily="QANELASBOLD"/>
-                            <Label Text="Право" TextColor="#FAE073" HorizontalTextAlignment="Center" FontSize="20" FontFamily="QANELASBOLD"/>
+                        <VerticalStackLayout HorizontalOptions="FillAndExpand" ZIndex="1" BindingContext="user">
+                            <Label Text="{Binding UserName}" x:Name="UserName"   TextColor="#FAE073" HorizontalTextAlignment="Center" FontSize="20" FontFamily="QANELASBOLD"/>
+                            <Label Text="{Binding Role}" x:Name="Role" TextColor="#FAE073" HorizontalTextAlignment="Center" FontSize="20" FontFamily="QANELASBOLD"/>
+                            <Label Text="{Binding Course}" x:Name="Cource" TextColor="#FAE073" HorizontalTextAlignment="Center" FontSize="20" FontFamily="QANELASBOLD"/>
                         </VerticalStackLayout>
                     </Frame>
                 </StackLayout>

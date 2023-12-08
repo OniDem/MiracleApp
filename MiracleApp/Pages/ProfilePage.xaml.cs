@@ -1,3 +1,4 @@
+using MiracleApp.Entity;
 using System.Collections.ObjectModel;
 
 namespace MiracleApp.Pages;
@@ -35,6 +36,9 @@ public partial class ProfilePage : ContentPage
 
     };
 
+    UserEntity user = new();
+    
+
     public ProfilePage()
 	{
         InitializeComponent();
@@ -46,6 +50,10 @@ public partial class ProfilePage : ContentPage
         {
             await Task.Run(() => ListViewTest.ItemsSource = tabs);
         });
+        user.UserName = "Илон Макс";
+        user.Role = new() { "Преподователь", "Студент" };
+        user.Course = "3 курс";
+
     }
 
     private async void SettingsButton_Clicked(object sender, EventArgs e)
