@@ -4,11 +4,11 @@
              x:Class="MiracleApp.Pages.MainPage">
 
     <Grid BackgroundColor="#8031A7">
-        <Image Source="background.png" Aspect="Fill"/>
+        <Image Source="background.png" Aspect="Fill" />
 
-        <VerticalStackLayout HorizontalOptions="FillAndExpand"  Padding="22,34" Spacing="0" AnchorX="0" AnchorY="0">
+        <VerticalStackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand"  Margin="22,0" Spacing="0" AnchorX="0" AnchorY="0" Padding="0">
 
-            <VerticalStackLayout>
+            <VerticalStackLayout Padding="0">
                 <Label WidthRequest="289" HeightRequest="79" HorizontalOptions="Start">
                     <Label.FormattedText>
                         <FormattedString>
