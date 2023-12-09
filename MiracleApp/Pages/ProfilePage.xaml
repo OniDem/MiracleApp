@@ -25,38 +25,40 @@
                 </StackLayout>
 
 
-                <material:TabView BackgroundColor="#1E1E1E" ZIndex="0" Margin="0, 24, 0, 0" CachingStrategy="CacheOnLayout" HorizontalOptions="StartAndExpand">
-                    
-                    <material:TabView.TabHeaderItemTemplate>
+                <ScrollView>
+                    <material:TabView  ZIndex="0" Margin="0, 24, 0, 0"  CachingStrategy="CacheOnLayout" HorizontalOptions="StartAndExpand">
+
+                        <material:TabView.TabHeaderItemTemplate>
                             <DataTemplate>
-                            <Label HorizontalOptions="Center" Margin="76, 0, 35, 0" Text="{Binding Title}" TextColor="#FAE073" FontSize="20"/>
+                                <Label HorizontalOptions="Center" Margin="76, 0, 35, 0" Text="{Binding Title}" TextColor="#FAE073" FontSize="20"/>
                             </DataTemplate>
-                    </material:TabView.TabHeaderItemTemplate>
+                        </material:TabView.TabHeaderItemTemplate>
 
-                    <material:TabItem Title="Запись на курсы" >
-                        <ListView x:Name="ListViewTest" SeparatorColor="#FAE073" SelectionMode="None" >
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
+                        <material:TabItem Title="Запись на курсы" >
+                            <ListView x:Name="ListViewTest" SeparatorColor="#FAE073" SelectionMode="None" BackgroundColor="#1E1E1E">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
 
-                                        <Grid ColumnDefinitions="*, 50, 50, 40" VerticalOptions="Center">
+                                            <Grid ColumnDefinitions="*, 50, 50, 40" VerticalOptions="Center">
 
-                                            <Label  Grid.Column="0" Text="{Binding Lesson_name}" FontSize="20" TextColor="#FAE073" Margin="22, 0, 0, 0" VerticalTextAlignment="Center"/>
-                                            <Label Grid.Column="1" Text="{Binding Lesson_date}" FontSize="20" TextColor="#FAE073" Margin="5, 0, 0, 0" VerticalTextAlignment="Center"/>
-                                            <Label Grid.Column="2"  Text="{Binding Lesson_time}" HorizontalOptions="Start" FontSize="20" TextColor="#FAE073" VerticalTextAlignment="Center"/>
-                                            <material:CheckBox Grid.Column="3" CornerRadius="50"  BorderColor="#FAE073" HeightRequest="28" WidthRequest="28" Color="#FAE073" Margin="0, 0, 22, 0"  VerticalOptions="Center"  StyleClass="CheckRadioButton" IsChecked="{Binding Lesson_choised}"/>
+                                                <Label  Grid.Column="0" Text="{Binding Lesson_name}" FontSize="20" TextColor="#FAE073" Margin="22, 0, 0, 0" VerticalTextAlignment="Center"/>
+                                                <Label Grid.Column="1" Text="{Binding Lesson_date}" FontSize="20" TextColor="#FAE073" Margin="5, 0, 0, 0" VerticalTextAlignment="Center"/>
+                                                <Label Grid.Column="2"  Text="{Binding Lesson_time}" HorizontalOptions="Start" FontSize="20" TextColor="#FAE073" VerticalTextAlignment="Center"/>
+                                                <material:CheckBox Grid.Column="3" CornerRadius="50"  BorderColor="#FAE073" HeightRequest="28" WidthRequest="28" Color="#FAE073" Margin="0, 0, 22, 0"  VerticalOptions="Center"  StyleClass="CheckRadioButton" IsChecked="{Binding Lesson_choised}"/>
 
-                                        </Grid>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </material:TabItem>
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </material:TabItem>
 
-                    <material:TabItem Title="Зачётка">
-                        <Label Text="In Dev" TextColor="Red"/>
-                    </material:TabItem>
-                </material:TabView>
+                        <material:TabItem Title="Зачётка">
+                            <Label Text="In Dev" TextColor="Red"/>
+                        </material:TabItem>
+                    </material:TabView>
+                </ScrollView>
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout HorizontalOptions="Start" VerticalOptions="End" ZIndex="1">
