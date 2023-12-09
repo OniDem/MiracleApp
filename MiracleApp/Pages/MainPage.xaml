@@ -36,8 +36,14 @@
             <Label Text="Новости" TextColor="#FAE073" FontSize="24" FontFamily="QANELASBLACK" Margin="7,24,0,0"/>
 
 
+            <VerticalStackLayout x:Name="NewsLayout"/>
+
+
         </VerticalStackLayout>
 
+
+        
+        
         <HorizontalStackLayout HorizontalOptions="Start" VerticalOptions="End" ZIndex="1">
             <ImageButton x:Name="SettingsButton" Clicked="SettingsButton_Clicked" HeightRequest="52" WidthRequest="52" Margin="35, 0, 0, 20"/>
             <ImageButton x:Name="HomeButton" Clicked="HomeButton_Clicked" HeightRequest="52" WidthRequest="52" Margin="35, 0, 0, 20"/>
