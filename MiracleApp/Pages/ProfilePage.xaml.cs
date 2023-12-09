@@ -47,8 +47,40 @@ public partial class ProfilePage : ContentPage
         Lesson_teacher_id = 4
     };
 
+    StudentMarkEntity mark1 = new()
+    {
+        Mark = 1,
+        Student_id = 1,
+        Teacher_id = 4,
+        Course = "Стрельба"
+    };
+    StudentMarkEntity mark2 = new()
+    {
+        Mark = 3,
+        Student_id = 1,
+        Teacher_id = 4,
+        Course = "Право и судебное администрирование"
+    };
+    StudentMarkEntity mark3 = new()
+    {
+        Mark = 9,
+        Student_id = 1,
+        Teacher_id = 4,
+        Course = "Криминалогия"
+    };
+    StudentMarkEntity mark4 = new()
+    {
+        Mark = 10,
+        Student_id = 1,
+        Teacher_id = 4,
+        Course = "Судебное администрирование"
+    };
+
+
 
     List<StudentLessonEntity> lessons = new();
+    List<StudentMarkEntity> marks = new();
+
     UserEntity user = new()
     {
         Id = 1,
@@ -77,9 +109,15 @@ public partial class ProfilePage : ContentPage
         lessons.Add(lesson2);
         lessons.Add(lesson3);
         lessons.Add(lesson4);
+        marks.Add(mark1);
+        marks.Add(mark2);
+        marks.Add(mark3);
+        marks.Add(mark4);
+
         Dispatcher.Dispatch(async () =>
         {
             await Task.Run(() => ListViewTest.ItemsSource = lessons);
+            await Task.Run(() => ListViewMarks.ItemsSource = marks);
             BindingContext = userView;
         });
     }
