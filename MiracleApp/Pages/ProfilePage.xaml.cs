@@ -1,14 +1,51 @@
+using System.Collections.ObjectModel;
+
 namespace MiracleApp.Pages;
 
 public partial class ProfilePage : ContentPage
 {
-	public ProfilePage()
+    class Tab
+    {
+        public string LessonName { get; set; }
+
+        public string LessonDate { get; set; }
+
+        public string LessonTime { get; set; }
+
+        public bool IsChecked { get; set; }
+
+        public Tab(string name, string date, string time, bool @checked)
+        {
+            LessonName = name;
+            LessonDate = date;
+            LessonTime = time;
+            IsChecked = @checked;
+        }
+    }
+
+    List<Tab> tabs = new()
+    {
+        new("Криминалогия.", "ПН.", "9:00", true),
+        new("Криминалогия.", "ПН.", "10:00", false),
+        new("Криминалогия.", "ПН.", "11:00", true),
+        new("Криминалогия.", "ПН.", "12:00", false),
+        new("Криминалогия.", "ПН.", "13:00", false),
+        new("Криминалогия.", "ПН.", "18:00", true),
+        
+
+    };
+
+    public ProfilePage()
 	{
-		InitializeComponent();
+        InitializeComponent();
         SettingsButton.Source = "settings.png";
         HomeButton.Source = "home.png";
         ProfileButton.Source = "profile.png";
         NotificationButton.Source = "notification.png";
+        Dispatcher.Dispatch(async () =>
+        {
+            await Task.Run(() => ListViewTest.ItemsSource = tabs);
+        });
     }
 
     private async void SettingsButton_Clicked(object sender, EventArgs e)
@@ -29,4 +66,6 @@ public partial class ProfilePage : ContentPage
     {
         await Navigation.PushAsync(new NotificationsPage());
     }
+
+    
 }

@@ -5,7 +5,7 @@
              Shell.TabBarIsVisible="False">
     
     <Grid BackgroundColor="#8031A7">
-        <Image Aspect="Fill" x:Name="BackgroundImage"/>
+        <Image Aspect="Fill" Source="background.png"/>
 
         <ScrollView >
             <VerticalStackLayout HorizontalOptions="Start" VerticalOptions="Start">

@@ -5,7 +5,6 @@ public partial class PayPage : ContentPage
 	public PayPage()
 	{
 		InitializeComponent();
-        BackgroundImage.Source = "background.png";
         BackButton.Source = "backbutton.png";
         NextButton.Source = "backbutton.png";
     }
