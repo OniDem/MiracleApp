@@ -100,7 +100,6 @@ namespace MiracleApp.Pages
                     {
                         string data = await response.Content.ReadAsStringAsync();
                         //условная строка обозначающая что новости с таким индексом нету
-                        DebugLabel.Text = (data == "_end_").ToString();
                         if (data == "_end_")
                         {
                             newsLoad = -1;

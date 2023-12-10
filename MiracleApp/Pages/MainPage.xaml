@@ -37,7 +37,6 @@
             </VerticalStackLayout>
             <Label Text="Новости" TextColor="#FAE073" FontSize="24" FontFamily="QANELASBLACK" Margin="7,24,0,0"/>
 
-            <Label Text="?" x:Name="DebugLabel"/>
             <VerticalStackLayout x:Name="NewsLayout"/>
             
 
