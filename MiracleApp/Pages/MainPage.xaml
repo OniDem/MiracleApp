@@ -37,11 +37,24 @@
             </VerticalStackLayout>
             <Label Text="Новости" TextColor="#FAE073" FontSize="24" FontFamily="QANELASBLACK" Margin="7,24,0,0"/>
 
-            <VerticalStackLayout x:Name="NewsLayout"/>
-            
+            <!--<ListView x:Name="NewsLayout"/>-->
+            <ListView x:Name="NewsLayout">   
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame>
+                            <VerticalStackLayout>
+                                    <Label FontSize="20" FontFamily="QANELASREGULAR.TTF"/>
+                                    <Image MaximumWidthRequest="150"/>
+                                    <Label FontSize="15" FontFamily="QANELASREGULAR.TTF"/>
+                            </VerticalStackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
 
-        </VerticalStackLayout>
+
+            </VerticalStackLayout>
 
 
 

@@ -108,13 +108,14 @@ namespace MiracleApp.Pages
                         content = data.Split(';');
                         string[] colorValues = content[2].Split(',');
                         Color color = new Color(Convert.ToInt16(colorValues[0]), Convert.ToInt16(colorValues[1]), Convert.ToInt16(colorValues[2]));
-                        NewsLayout.Children.Add(CreateNews(content[0], content[1], serverURI + "image/" + newsLoad.ToString(), color));
+                        NewsLayout.ItemsSource = new Frame[] { CreateNews(content[0], content[1], serverURI + "image/" + newsLoad.ToString(), color) };
                     }
                 }
             }
             catch (Exception exeption)
             {
-                NewsLayout.Children.Add(CreateNews("Ошибка", exeption.Message, "dotnet_bot.svg", new Color(255, 0, 0)));
+                NewsLayout.ItemsSource = new Frame[] { CreateNews("Ошибка", exeption.Message, "dotnet_bot.svg", new Color(255, 0, 0)) };
+                //NewsLayout.Children.Add(CreateNews("Ошибка", exeption.Message, "dotnet_bot.svg", new Color(255, 0, 0)));
             }
         }
           
