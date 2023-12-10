@@ -10,6 +10,42 @@ namespace MiracleApp.Pages
     public partial class MainPage : ContentPage
     {
 
+
+        private int newsLoad = 0;
+        public MainPage()
+        {
+            InitializeComponent();
+            SettingsButton.Source = "settings.png";
+            HomeButton.Source = "home.png";
+            ProfileButton.Source = "profile.png";
+            NotificationButton.Source = "notification.png";
+
+            for(int i = 0; i < 3; i++) 
+            {
+                GetNews();
+                NewsScrollLayout.ForceLayout();
+            }
+            
+        }
+
+
+        private async void OnScrollViewScrolled(object sender, ScrolledEventArgs e)
+        {
+            ScrollView scrollView = (ScrollView)sender;
+
+            double contentHeight = scrollView.ContentSize.Height;
+            double scrollViewHeight = scrollView.Height;
+            double scrollPosition = e.ScrollY;
+            double offset = 75;
+            //DebugLabel.Text = contentHeight.ToString() + " " + scrollViewHeight.ToString() + " " + scrollPosition.ToString();
+            if (scrollPosition + scrollViewHeight >= contentHeight-offset)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    await GetNews();
+                }
+            }
+        }
         private Frame CreateNews(string name, string content, string imageURL, Color color)
         {
             return new Frame
@@ -17,7 +53,7 @@ namespace MiracleApp.Pages
                 BorderColor = color,
                 CornerRadius = 5,
                 Padding = 10,
-                BackgroundColor =  color,
+                BackgroundColor = color,
                 Content = new StackLayout
                     {
                         new Label
@@ -28,7 +64,8 @@ namespace MiracleApp.Pages
                         },
                         new Image
                         {
-                            Source =  imageURL
+                            Source =  imageURL,
+                            MaximumWidthRequest = 150
                         },
                         new Label
                         {
@@ -41,42 +78,48 @@ namespace MiracleApp.Pages
 
         }
 
-        private async void GetNews()
-        {
 
-            string[] content = { "Ошибка", "Нет подключения к серверу", "dotnet_bot.svg", "60,180,60" };
+        private async Task GetNews()
+        {
+            //Условный код означающий что все новости которые впринципе есть загружены
+            if (newsLoad == -1)
+            {   
+
+                return;
+            }
+            newsLoad++;
             try
             {
-                string serverURI = "http://192.168.100.3:8080/";
-                HttpClient client = new HttpClient();
-                HttpResponseMessage response = await client.GetAsync(serverURI);
 
-                
-                if (response.IsSuccessStatusCode)
+                using (HttpClient client = new HttpClient())
                 {
-                    content = (await response.Content.ReadAsStringAsync()).Split('^');
+                    string[] content = new string[3];
+                    string serverURI = "http://192.168.100.3:8080/news/";
+                    HttpResponseMessage response = await client.GetAsync(serverURI + newsLoad.ToString());
+                    if (response.IsSuccessStatusCode)
+                    {
+                        string data = await response.Content.ReadAsStringAsync();
+                        //условная строка обозначающая что новости с таким индексом нету
+                        DebugLabel.Text = (data == "_end_").ToString();
+                        if (data == "_end_")
+                        {
+                            newsLoad = -1;
+                            return;
+                        }
+                        content = data.Split(';');
+                        string[] colorValues = content[2].Split(',');
+                        Color color = new Color(Convert.ToInt16(colorValues[0]), Convert.ToInt16(colorValues[1]), Convert.ToInt16(colorValues[2]));
+                        NewsLayout.Children.Add(CreateNews(content[0], content[1], serverURI + "image/" + newsLoad.ToString(), color));
+                    }
                 }
-                string[] colorValues = content[3].Split(',');
-                Color color = new Color(Convert.ToInt16(colorValues[0]), Convert.ToInt16(colorValues[1]), Convert.ToInt16(colorValues[2]));
-                NewsLayout.Children.Add(CreateNews(content[0], content[1], content[2], color));
             }
-            catch(Exception exeption)
+            catch (Exception exeption)
             {
-                NewsLayout.Children.Add(CreateNews("Ошибка", exeption.Message, content[2], new Color(255,0,0)));
-            }   
+                NewsLayout.Children.Add(CreateNews("Ошибка", exeption.Message, "dotnet_bot.svg", new Color(255, 0, 0)));
+            }
         }
+          
 
-        public MainPage()
-        {
-            InitializeComponent();
-            SettingsButton.Source = "settings.png";
-            HomeButton.Source = "home.png";
-            ProfileButton.Source = "profile.png";
-            NotificationButton.Source = "notification.png";
-
-            //string content = "Л";
-            GetNews();
-        }
         private async void SheduleButton_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new SchedulePage());
