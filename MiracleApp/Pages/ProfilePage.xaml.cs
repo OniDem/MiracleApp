@@ -1,7 +1,6 @@
-using Android.Graphics.Drawables;
-using AndroidX.Interpolator.View.Animation;
 using MiracleApp.Entity;
 using MiracleApp.ViewModel;
+using MiracleApp.Convertor;
 
 namespace MiracleApp.Pages;
 
@@ -54,7 +53,7 @@ public partial class ProfilePage : ContentPage
     {
         Id = 1,
         UserName = "Илон Маск",
-        Role = "Преподователь, " + "Студент",
+        Role = Converter.UserRoleConvertor(Const.UserRoleEnum.Combo),
         Course = "Право"
     };
     UserViewModel userView = new();
