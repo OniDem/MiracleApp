@@ -43,9 +43,9 @@
                     <DataTemplate>
                         <Frame>
                             <VerticalStackLayout>
-                                    <Label FontSize="20" FontFamily="QANELASREGULAR.TTF" Text="{Binding NewsName}"/>
-                                    <Image MaximumWidthRequest="150" Text="{Binding NewsImage}"/>
-                                    <Label FontSize="15" FontFamily="QANELASREGULAR.TTF" Text="{Binding NewsContent}"/>
+                                <Label FontSize="20" FontFamily="QANELASREGULAR.TTF" Text="{Binding newsName}"/>
+                                <Image MaximumWidthRequest="150" Text="{Binding newsImage}"/>
+                                <Label FontSize="15" FontFamily="QANELASREGULAR.TTF" Text="{Binding newsContent}"/>
                             </VerticalStackLayout>
                         </Frame>
                     </DataTemplate>
