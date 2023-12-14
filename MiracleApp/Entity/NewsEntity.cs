@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace MiracleApp.Entity
 {
-    class TitleNewsFrameEntity
+    class NewsEntity
     {
-        string newsName;
-        string newsImage;
-        string newsContent;
+        public string newsName;
+        public string newsImage;
+        public string newsContent;
     }
 }
