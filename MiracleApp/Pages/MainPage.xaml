@@ -38,17 +38,19 @@
             <Label Text="Новости" TextColor="#FAE073" FontSize="24" FontFamily="QANELASBLACK" Margin="7,24,0,0"/>
 
             <!--<ListView x:Name="NewsLayout"/>-->
-                <ListView x:Name="newsListView" BackgroundColor="Transparent" VerticalScrollBarVisibility="Never" SeparatorVisibility="None" SelectionMode="None" VerticalOptions="Fill" >   
+                <ListView x:Name="newsListView" BackgroundColor="Transparent" VerticalScrollBarVisibility="Never" SeparatorVisibility="None" SelectionMode="None" VerticalOptions="Fill" HasUnevenRows="True" >   
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Frame BackgroundColor="#8031A7" CornerRadius="5" Padding="10" BorderColor="Black" Margin="0,5" HeightRequest="250">
-                                    <VerticalStackLayout>
-                                        <Label FontSize="20" FontFamily="QANELASREGULAR.TTF" Text="{Binding newsName}" TextColor="#FAE073"/>
-                                        <Image MaximumWidthRequest="150" Source="{Binding newsImage}"/>
-                                        <Label FontSize="15" FontFamily="QANELASREGULAR.TTF" Text="{Binding newsContent}" TextColor="#FAE073"/>
-                                    </VerticalStackLayout>
-                                </Frame>
+                                <VerticalStackLayout Padding="0,5,0,0">
+                                    <Frame BackgroundColor="{Binding backgroundColor}" CornerRadius="5" Padding="10" BorderColor="#242323">
+                                        <VerticalStackLayout>
+                                            <Label FontSize="20" FontFamily="QANELASREGULAR.TTF" Text="{Binding newsName}" TextColor="#FAE073"/>
+                                            <Image MaximumWidthRequest="150" Source="{Binding newsImage}"/>
+                                            <Label FontSize="15" FontFamily="QANELASREGULAR.TTF" Text="{Binding newsContent}" TextColor="#FAE073"/>
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </VerticalStackLayout>
                             </ViewCell>
                             </DataTemplate>
                     </ListView.ItemTemplate>
