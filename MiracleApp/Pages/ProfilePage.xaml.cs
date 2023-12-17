@@ -1,4 +1,4 @@
-using MiracleApp.Entity;
+using Core.Entity;
 using MiracleApp.ViewModel;
 using MiracleApp.Convertor;
 
@@ -84,8 +84,8 @@ public partial class ProfilePage : ContentPage
     UserEntity user = new()
     {
         Id = 1,
-        UserName = "Илон Маск",
-        Role = Converter.UserRoleConvertor(Const.UserRoleEnum.Combo),
+        Phone = "Илон Маск",
+        Role = Core.Const.UserRoleEnum.Combo,
         Course = "Право"
     };
     UserViewModel userView = new();
@@ -99,8 +99,7 @@ public partial class ProfilePage : ContentPage
         ProfileButton.Source = "profile.png";
         NotificationButton.Source = "notification.png";
 
-        if (user.Id > 0)
-            userView = new(user);
+        
         lessons.Add(lesson1);
         lessons.Add(lesson2);
         lessons.Add(lesson3);
@@ -116,8 +115,8 @@ public partial class ProfilePage : ContentPage
 
         Dispatcher.Dispatch(async () =>
         {
-            await Task.Run(() => ListViewTest.ItemsSource = lessons);
-            await Task.Run(() => ListViewMarks.ItemsSource = marks);
+            //await Task.Run(() => ListViewTest.ItemsSource = lessons);
+            //await Task.Run(() => ListViewMarks.ItemsSource = marks);
             BindingContext = userView;
         });
     }

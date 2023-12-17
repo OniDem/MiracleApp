@@ -1,4 +1,4 @@
-﻿using MiracleApp.Const;
+﻿using Core.Const;
 
 namespace MiracleApp.Convertor
 {

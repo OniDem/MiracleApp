@@ -1,4 +1,4 @@
-﻿namespace MiracleApp.Const
+﻿namespace Core.Const
 {
     public enum DepartmentEnum
     {

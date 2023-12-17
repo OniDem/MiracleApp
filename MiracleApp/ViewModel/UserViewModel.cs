@@ -1,4 +1,4 @@
-﻿using MiracleApp.Entity;
+﻿using Core.Entity;
 using System.ComponentModel;
 
 namespace MiracleApp.ViewModel
@@ -47,15 +47,6 @@ namespace MiracleApp.ViewModel
                 course = value;
                 OnPropertyChanged(nameof(course));
             }
-        }
-
-
-        public UserViewModel(UserEntity user)
-        {
-            id = user.Id;
-            username = user.UserName;
-            role = user.Role;
-            course = user.Course;
         }
 
         public UserViewModel()
