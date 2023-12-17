@@ -21,7 +21,6 @@ namespace Infrastructure.Repositories
         public UserEntity? ShowByPhone(string phone)
         {
             return _applicationContext.Users.Where(p => p.Phone == phone).First();
-            
         }
     }
 }

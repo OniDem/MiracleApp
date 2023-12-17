@@ -6,7 +6,5 @@
         Teacher = 2,
         Combo = 3,
         Administrator = 4
-
-
     }
 }

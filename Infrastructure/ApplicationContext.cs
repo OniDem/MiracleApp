@@ -6,6 +6,7 @@ namespace Infrastructure
     public class ApplicationContext : DbContext
     {
         public DbSet<UserEntity> Users { get; set; }
+        public DbSet<LessonEntity> Lessons { get; set; }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> option) : base(option) { }
 
