@@ -18,12 +18,12 @@ namespace Infrastructure.Repositories
             return lesson;
         }
 
-        public LessonEntity Update(int lesson_id, LessonEntity entity)
+        public LessonEntity Update(LessonEntity entity)
         {
-            var lesson = _applicationContext.Lessons.Where(p => p.Id == lesson_id).First();
-            _applicationContext.Lessons.Update(lesson);
+            
+            _applicationContext.Lessons.Update(entity);
             _applicationContext.SaveChanges();
-            return lesson;
+            return entity;
         }
 
 

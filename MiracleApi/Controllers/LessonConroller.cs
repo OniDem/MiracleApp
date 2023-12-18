@@ -31,7 +31,7 @@ namespace MiracleApi.Controllers
             return null;
         }
 
-        [HttpPut, Authorize]
+        [HttpPut]
         public async Task<LessonEntity?> Update(int lesson_id, UpdateLessonRequest request)
         {
             if (ModelState.IsValid)

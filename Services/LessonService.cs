@@ -29,8 +29,9 @@ namespace Services
 
         public async Task<LessonEntity?> Update(int lesson_id, UpdateLessonRequest request)
         {
-            return _lessonRepository.Update(lesson_id, new LessonEntity
+            return _lessonRepository.Update(new LessonEntity
             {
+                Id = lesson_id,
                 Lesson_name = request.Lesson_name,
                 Lesson_date = request.Lesson_date,
                 LessonDoW = request.LessonDoW,
