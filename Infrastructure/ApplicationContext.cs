@@ -8,6 +8,8 @@ namespace Infrastructure
         public DbSet<UserEntity> Users { get; set; }
         public DbSet<LessonEntity> Lessons { get; set; }
 
+        public DbSet<NewsEntity> News { get; set; }
+
         public ApplicationContext(DbContextOptions<ApplicationContext> option) : base(option) { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

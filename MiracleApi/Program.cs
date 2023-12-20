@@ -47,8 +47,10 @@ builder.Services.AddSwaggerGen(opt =>
 builder.Services.AddDbContext<ApplicationContext>(options => { options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")); });
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ILessonService, LessonService>();
+builder.Services.AddScoped<INewsService, NewsService>();
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<LessonRepository>();
+builder.Services.AddScoped<NewsRepository>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
