@@ -1,50 +1,90 @@
 <?xml version="1.0" encoding="utf-8" ?>
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MiracleApp.Pages.ProfilePage"
-             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material">
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             xmlns:ViewModel="clr-namespace:MiracleApp.ViewModel"
+             xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui">
     
+    <ContentPage.BindingContext>
+        <ViewModel:UserViewModel/>
+    </ContentPage.BindingContext>
     <Grid BackgroundColor="#8031A7">
         <Image Aspect="Fill" Source="background.png"/>
 
         <ScrollView>
-            <VerticalStackLayout >
-                <Frame  BackgroundColor="#1E1E1E" BorderColor="#1E1E1E" CornerRadius="16" Margin="22, 106, 23, 0" HeightRequest="178"></Frame>
+            <VerticalStackLayout>
+                <StackLayout VerticalOptions="Start">
+                    <toolkit:AvatarView  ZIndex="1" Margin="147, 40, 147, 0" BackgroundColor="Transparent" BorderColor="Transparent" BorderWidth="0"  HeightRequest="136" WidthRequest="136" CornerRadius="120" ImageSource="test_avatar.png"/>
+                    <Frame ZIndex="0" BackgroundColor="#1E1E1E" BorderColor="#1E1E1E" CornerRadius="16" Margin="22, -68, 23, 0" HeightRequest="178" Padding="0, 78, 0, 28">
+                        <VerticalStackLayout HorizontalOptions="FillAndExpand" ZIndex="1">
+                            <Label Text="{Binding UserName}"   TextColor="#FAE073" HorizontalTextAlignment="Center" FontSize="20" FontFamily="QANELASBOLD"/>
+                            <Label Text="{Binding Role}" x:Name="Role" TextColor="#FAE073" HorizontalTextAlignment="Center" FontSize="20" FontFamily="QANELASBOLD"/>
+                            <Label Text="{Binding Course}"  x:Name="Cource" TextColor="#FAE073" HorizontalTextAlignment="Center" FontSize="20" FontFamily="QANELASBOLD"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </StackLayout>
 
-                <material:TabView BackgroundColor="#1E1E1E" ZIndex="0" Margin="0, 24, 0, 0" CachingStrategy="CacheOnLayout">
-                    
-                    <material:TabView.TabHeaderItemTemplate>
+
+                <ScrollView>
+                    <!--во время работы с api и запуском не на android комментировать весь TabView-->
+                    <!--<material:TabView ZIndex="0" Margin="0, 24, 0, 0"  CachingStrategy="CacheOnLayout" HorizontalOptions="StartAndExpand">
+
+                        <material:TabView.TabHeaderItemTemplate>
                             <DataTemplate>
-                            <Label HorizontalOptions="Center" Margin="76, 0, 35, 0" Text="{Binding Title}" TextColor="#FAE073" FontSize="20"/>
+                                <Label HorizontalOptions="Center" Margin="35, 0, 35, 0" Text="{Binding Title}" FontSize="20" FontFamily="QANELASBOLD" TextColor="#FAE073"/>
                             </DataTemplate>
-                    </material:TabView.TabHeaderItemTemplate>
+                        </material:TabView.TabHeaderItemTemplate>
 
-                    <material:TabItem Title="Запись на курсы" >
-                        <ListView x:Name="ListViewTest" SeparatorColor="#1E1E1E" SelectionMode="None">
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <FlexLayout Direction="Row" VerticalOptions="Center">
-                                            <Label FlexLayout.Grow="0.5" Text="{Binding LessonName}" FontSize="20" TextColor="#FAE073" Margin="22, 0, 0, 0" VerticalTextAlignment="Center"/>
-                                            <Label FlexLayout.Grow="0.2" Text="{Binding LessonDate}"  FontSize="20" TextColor="#FAE073" Margin="5, 0, 5, 0" VerticalTextAlignment="Center"/>
-                                            <Label FlexLayout.Grow="0.2" Text="{Binding LessonTime}"  FontSize="20" TextColor="#FAE073" VerticalTextAlignment="Center"/>
-                                            <material:CheckBox CornerRadius="50" BorderColor="#FAE073" Color="#FAE073" Margin="0, 0, 26, 0"  VerticalOptions="Center"  StyleClass="CheckRadioButton" IsChecked="{Binding IsChecked}"/>
-                                            </FlexLayout>
-                                        
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </material:TabItem>
+                        <material:TabItem Title="Запись на курсы" >
+                            <StackLayout>
+                                <Line BackgroundColor="#FAE073" ZIndex="2" HeightRequest="2" Margin="0, 9, 0, 0"/>
+                                <ListView Margin="0, 24, 0, 0" x:Name="ListViewTest" SeparatorColor="#FAE073" SelectionMode="None" BackgroundColor="#1E1E1E">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
 
-                    <material:TabItem Title="Зачётка">
-                        <material:TabItem.Content>
-                            <!--Контент-->
-                            <Label Text="Tab Content 1"  Margin="60" ZIndex="1"/>
-                            
-                        </material:TabItem.Content>
-                    </material:TabItem>
-                </material:TabView>
+                                                <Grid ColumnDefinitions="*, 50, 50, 40" VerticalOptions="Center">
+
+                                                    <Label  Grid.Column="0" Text="{Binding Lesson_name}"  FontSize="20" FontFamily="QANELASBOLD" TextColor="#FAE073" Margin="22, 0, 0, 0" VerticalTextAlignment="Center"/>
+                                                    <Label Grid.Column="1" Text="{Binding Lesson_date}" FontSize="20" FontFamily="QANELASBOLD" TextColor="#FAE073" Margin="5, 0, 0, 0" VerticalTextAlignment="Center"/>
+                                                    <Label Grid.Column="2"  Text="{Binding Lesson_time}" HorizontalOptions="Start" FontSize="20" FontFamily="QANELASBOLD" TextColor="#FAE073" VerticalTextAlignment="Center"/>
+                                                    <material:CheckBox Grid.Column="3" CornerRadius="50"  BorderColor="#FAE073" HeightRequest="28" WidthRequest="28" Color="#FAE073" Margin="0, 0, 22, 0"  VerticalOptions="Center"  StyleClass="CheckRadioButton" IsChecked="{Binding Lesson_choised}"/>
+
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </material:TabItem>
+
+                        <material:TabItem Title="Зачётка">
+                            <StackLayout>
+                                <Line BackgroundColor="#FAE073" ZIndex="2" HeightRequest="1" Margin="0, 9, 0, 0"/>
+                                <Grid ColumnDefinitions="*, 80" VerticalOptions="Center">
+                                    <Label Grid.Column="0" Text="Название курса" FontSize="20" Margin="22, 24, 0, 0" FontFamily="QANELASBOLD" TextColor="#FAE073" HorizontalOptions="Start"/>
+                                    <Label Grid.Column="1" Text="Оценка" FontSize="20" Margin="0, 24, 22, 0" FontFamily="QANELASBOLD" TextColor="#FAE073" HorizontalOptions="End"/>
+                                </Grid>
+                                <ListView x:Name="ListViewMarks" SeparatorColor="#FAE073" SelectionMode="None" >
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+
+                                                <Grid ColumnDefinitions="*, 50" VerticalOptions="Center">
+
+                                                    <Label  Grid.Column="0" Text="{Binding Course}" FontSize="20" TextColor="#FAE073" Margin="22, 0, 0, 0" VerticalTextAlignment="Center"/>
+                                                    <Label Grid.Column="1" Text="{Binding Mark}" FontSize="20" TextColor="#FAE073" Margin="5, 0, 0, 0" VerticalTextAlignment="Center"/>
+                                                </Grid>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                            </StackLayout>
+                        </material:TabItem>
+                    </material:TabView>-->
+                </ScrollView>
             </VerticalStackLayout>
         </ScrollView>
         <HorizontalStackLayout HorizontalOptions="Start" VerticalOptions="End" ZIndex="1">
