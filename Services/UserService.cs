@@ -18,8 +18,11 @@ namespace Services
             return _userRepository.Create(new UserEntity
             {
                 Phone = request.Phone,
+                FIO = request.FIO,
                 Role = request.Role,
-                Course = request.Course,
+                Department = request.Department,
+                StudentBranch = request.StudentBranch,
+                CourseNumber = request.CourseNumber,
                 Password = request.Password,
             });
         }
@@ -30,6 +33,21 @@ namespace Services
             if (user.Password == request.Password)
                 return user;
             return null;
+        }
+
+        public async Task<UserEntity?> Update(int user_id, UpdateUserRequest request)
+        {
+            return _userRepository.Update(new UserEntity
+            {
+                Id = user_id,
+                Phone = request.Phone,
+                FIO = request.FIO,
+                Role = request.Role,
+                Department = request.Department,
+                StudentBranch = request.StudentBranch,
+                CourseNumber = request.CourseNumber,
+                Password = request.Password,
+            });
         }
     }
 }

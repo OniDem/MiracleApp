@@ -25,17 +25,20 @@ namespace Infrastructure.Repositories
             _applicationContext.SaveChanges();
             return entity;
         }
-
-
-        public LessonEntity Delete(int lesson_id)
+        public LessonEntity ShowById(int lesson_id)
         {
             return _applicationContext.Lessons.Where(p => p.Id == lesson_id).First();
-
         }
 
-        public LessonEntity ShowById(int id)
+        public List<LessonEntity> ShowAll() 
         {
-            return _applicationContext.Lessons.Where(p => p.Id == id).First();
+            return _applicationContext.Lessons.ToList();
+        }
+
+        public void Delete(int lesson_id)
+        {
+            _applicationContext.Remove(ShowById(lesson_id));
+            _applicationContext.SaveChanges();
         }
     }
 }

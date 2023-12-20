@@ -18,6 +18,14 @@ namespace Infrastructure.Repositories
             return user;
         }
 
+        public UserEntity Update(UserEntity user)
+        
+        {
+            _applicationContext.Users.Update(user);
+            _applicationContext.SaveChanges();
+            return user;
+        }
+
         public UserEntity? ShowByPhone(string phone)
         {
             return _applicationContext.Users.Where(p => p.Phone == phone).First();

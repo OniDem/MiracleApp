@@ -81,14 +81,7 @@ public partial class ProfilePage : ContentPage
     //List<StudentLessonEntity> lessons = new();
     List<StudentMarkEntity> marks = new();
 
-    UserEntity user = new()
-    {
-        Id = 1,
-        Phone = "Илон Маск",
-        Role = Core.Const.UserRoleEnum.Combo,
-        Course = "Право"
-    };
-    UserViewModel userView = new();
+    
 
 
     public ProfilePage()
@@ -117,7 +110,6 @@ public partial class ProfilePage : ContentPage
         {
             //await Task.Run(() => ListViewTest.ItemsSource = lessons);
             //await Task.Run(() => ListViewMarks.ItemsSource = marks);
-            BindingContext = userView;
         });
     }
 

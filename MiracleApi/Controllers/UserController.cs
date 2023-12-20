@@ -52,6 +52,16 @@ namespace MiracleApi.Controllers
             return null;            
         }
 
+        [HttpPut]
+        public async Task<UserEntity?> Update(int user_id, UpdateUserRequest request)
+        {
+            if(ModelState.IsValid)
+            {
+                await _userService.Update(user_id, request);
+            }
+            return null;    
+        }
+
         [HttpDelete, Authorize]
         public async Task LogOut([FromBody] int user_id)
         {

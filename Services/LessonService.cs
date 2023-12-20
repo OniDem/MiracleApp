@@ -41,6 +41,16 @@ namespace Services
             });
         }
 
+        public async Task<List<LessonEntity>?> ShowAll()
+        {
+            return _lessonRepository.ShowAll();
+        }
+
+        public async Task<LessonEntity?> ShowById(int lesson_id)
+        {
+            return _lessonRepository.ShowById(lesson_id);
+        }
+
         public async Task Delete(int lesson_id)
         {
             _lessonRepository.Delete(lesson_id);

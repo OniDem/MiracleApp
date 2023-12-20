@@ -9,13 +9,18 @@ namespace Core.Entity
     {
         [Key]
         public int Id { get; set; }
-
         
         public string Phone { get; set; }
 
-        public UserRoleEnum Role { get; set; }
+        public string FIO { get; set; }
 
-        public string Course { get; set; }
+        public UserRoleEnum Role { get; set; }
+        
+        public DepartmentEnum Department { get; set; }
+
+        public StudentBranchEnum StudentBranch { get; set; }
+
+        public string CourseNumber { get; set; }
 
         public string Password { get; set; }
 

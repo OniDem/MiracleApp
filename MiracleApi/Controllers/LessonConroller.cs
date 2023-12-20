@@ -3,8 +3,6 @@ using Core.Entity;
 using DTO.Lesson;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
 
 namespace MiracleApi.Controllers
 {
@@ -31,34 +29,44 @@ namespace MiracleApi.Controllers
             return null;
         }
 
-        [HttpPut]
+        [HttpPut, Authorize]
         public async Task<LessonEntity?> Update(int lesson_id, UpdateLessonRequest request)
         {
             if (ModelState.IsValid)
             {
-                await _lessonService.Update(lesson_id, request);
+                var lesson = await _lessonService.Update(lesson_id, request);
+                return lesson;
             }
             return null;
         }
 
         [HttpPost, Authorize]
-        public async Task Delete([FromBody] int lesson_id)
+        public async Task<List<LessonEntity>?> ShowAll()
+        {
+            if(ModelState.IsValid)
+            {
+                return await _lessonService.ShowAll();
+            }
+            return null;
+        }
+
+        [HttpPost, Authorize]
+        public async Task<LessonEntity?> ShowById(int lesson_id)
+        {
+            if (ModelState.IsValid)
+            {
+                return await _lessonService.ShowById(lesson_id);
+            }
+            return null;
+        }
+
+        [HttpDelete, Authorize]
+        public async Task Delete(int lesson_id)
         {
             if (ModelState.IsValid)
             {
                 await _lessonService.Delete(lesson_id);
             }
-        }
-
-        
-
-        public class AuthOptions
-        {
-            public const string ISSUER = "MiracleApi"; // издатель токена
-            public const string AUDIENCE = "SessionUser"; // потребитель токена
-            const string KEY = "mira31MiracleApi";   // ключ для шифрации(16 символов)
-            public static SymmetricSecurityKey GetSymmetricSecurityKey() =>
-                new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
         }
     }
 }

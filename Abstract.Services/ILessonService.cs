@@ -9,6 +9,10 @@ namespace Abstract.Services
 
         public Task<LessonEntity?> Update(int lesson_id, UpdateLessonRequest request);
 
+        public Task<List<LessonEntity>?> ShowAll();
+
+        public Task<LessonEntity?> ShowById(int lesson_id);
+
         public Task Delete(int lesson_id);
     }
 }

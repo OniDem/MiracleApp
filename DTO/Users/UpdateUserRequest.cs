@@ -2,7 +2,7 @@
 
 namespace DTO.Users
 {
-    public class CreateUserRequest
+    public class UpdateUserRequest
     {
         public string Phone { get; set; }
 
