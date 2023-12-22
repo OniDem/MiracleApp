@@ -6,13 +6,13 @@
     xmlns:local="clr-namespace:MiracleApp.Pages"
     Shell.FlyoutBehavior="Disabled"
     NavBarIsVisible="False"
-    TabBarBackgroundColor="#9F5CC0"
     Shell.PresentationMode="ModalAnimated"
-    Shell.TabBarIsVisible="False">
+    Shell.TabBarIsVisible="False"
+    Shell.TabBarBackgroundColor="#242323">
 
     <TabBar>
         <Tab>
-            <ShellContent IsVisible="True" ContentTemplate="{DataTemplate local:MainPage}" />
+            <ShellContent IsVisible="True" ContentTemplate="{DataTemplate local:HelloPage}" />
         </Tab>
         <Tab>
             <ShellContent  ContentTemplate="{DataTemplate local:SettingsPage}"/>

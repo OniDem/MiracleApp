@@ -5,7 +5,8 @@
              x:Class="MiracleApp.Pages.ProfilePage"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              xmlns:ViewModel="clr-namespace:MiracleApp.ViewModel"
-             xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui">
+             xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+             Shell.TabBarBackgroundColor="#9F5CC0">
     
     <ContentPage.BindingContext>
         <ViewModel:UserViewModel/>

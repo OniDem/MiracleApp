@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             x:Class="MiracleApp.Pages.RegPage"
+             Title="RegPage">
+    <Grid BackgroundColor="#242323" VerticalOptions="FillAndExpand">
+        <ImageButton Grid.Column="0" x:Name="BackButton" Clicked="BackButton_Clicked" VerticalOptions="Start" HorizontalOptions="Start" Margin="22, 22, 0, 0" HeightRequest="46" WidthRequest="46" BackgroundColor="Wheat"/>
+        <Label Grid.Column="1" Text="Регистрация" TextColor="#FAE073" VerticalOptions="Start" Margin="0, 35, 0, 0" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24"/>
+        <!--Выбор роли-->
+        <VerticalStackLayout Margin="22, 116, 0, 0" x:Name="VLChoiceRole">
+            <Label Text="Кто вы?" FontAttributes="Bold" TextColor="#FAE073" FontFamily="QANELASBLACK" FontSize="24"/>
+            <Grid Margin="0, 32, 0, 16">
+                <Label Text="Преподаватель" HorizontalOptions="Start"  TextColor="#FAE073" FontFamily="QANELASREGULAR" FontSize="24"/>
+                <material:CheckBox x:Name="CBSTeacher" CheckChanged="CBSTeacher_CheckChanged" HorizontalOptions="End" CornerRadius="50"  BorderColor="#FAE073" HeightRequest="28" WidthRequest="28" Color="#FAE073" Margin="0, 0, 22, 0"  VerticalOptions="Center"  StyleClass="CheckRadioButton"/>
+            </Grid>
+            <Grid Margin="0, 16, 0, 0">
+                <Label Text="Студент" HorizontalOptions="Start"  TextColor="#FAE073" FontFamily="QANELASREGULAR" FontSize="24"/>
+                <material:CheckBox x:Name="CBStudent" IsChecked="True" CheckChanged="CBStudent_CheckChanged" HorizontalOptions="End" CornerRadius="50"  BorderColor="#FAE073" HeightRequest="28" WidthRequest="28" Color="#FAE073" Margin="0, 0, 22, 0"  VerticalOptions="Center"  StyleClass="CheckRadioButton"/>
+            </Grid>
+            <Button Text="Далее" BackgroundColor="#FAE073" TextColor="#242323" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24" Margin="0, 48, 0, 0" Padding="42, 20" x:Name="NextInfoButton" Clicked="NextInfoButton_Clicked"/>
+        </VerticalStackLayout>
+        
+        <!--Поля для студента-->
+        <VerticalStackLayout Margin="22, 116, 0, 0" x:Name="VLStudentInfo" IsVisible="false">
+            <Label Text="Студент" FontAttributes="Bold" TextColor="#FAE073" FontFamily="QANELASBLACK" FontSize="24"/>
+            <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
+                <Entry BackgroundColor="#FAE073" Placeholder="Ф.И.О" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+            </Frame>
+            <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
+                <Entry BackgroundColor="#FAE073" Placeholder="Курс" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+            </Frame>
+            <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
+                <Entry BackgroundColor="#FAE073" Placeholder="Специальность" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+            </Frame>
+            <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
+                <Picker x:Name="DepartmentPicker" SelectedItem="0" BackgroundColor="#FAE073" FontSize="24" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+            </Frame>
+            <Button Text="Далее" BackgroundColor="#FAE073" TextColor="#242323" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24" Margin="0, 48, 0, 0" Padding="42, 20" Clicked="NextAuthButton_Clicked"/>
+        </VerticalStackLayout>
+
+        <!--Поля для препода(имхо поменять имя пикеру)-->
+        <VerticalStackLayout Margin="22, 116, 0, 0" x:Name="VLTeacherInfo" IsVisible="false">
+            <Label Text="Преподаватель" FontAttributes="Bold" TextColor="#FAE073" FontFamily="QANELASBLACK" FontSize="24"/>
+            <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
+                <Entry BackgroundColor="#FAE073" Placeholder="Специальность" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+            </Frame>
+            <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
+                <Picker x:Name="BranchPicker" SelectedItem="0" BackgroundColor="#FAE073" FontSize="24" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+            </Frame>
+            <Button Text="Далее" BackgroundColor="#FAE073" TextColor="#242323" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24" Margin="0, 48, 0, 0" Padding="42, 20" Clicked="NextAuthButton_Clicked"/>
+        </VerticalStackLayout>
+
+        <!--Поля дл телефона и пароля-->
+        <VerticalStackLayout Margin="22, 116, 0, 0" IsVisible="false" x:Name="VLRegInfo">
+            <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
+                <Entry BackgroundColor="#FAE073" Placeholder="Номер телефона" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+            </Frame>
+            <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
+                <Entry BackgroundColor="#FAE073" IsPassword="true" Placeholder="Пароль" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+            </Frame>
+            <Button Text="Регистрация" BackgroundColor="#FAE073" TextColor="#242323" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24" Margin="0, 48, 0, 0" Padding="42, 20" x:Name="RegisterButton" Clicked="RegisterButton_Clicked"/>
+        </VerticalStackLayout>
+    </Grid>
+</ContentPage>

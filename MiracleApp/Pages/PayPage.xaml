@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MiracleApp.Pages.PayPage"
-             Shell.TabBarIsVisible="False">
+             Shell.TabBarIsVisible="False"
+             Shell.TabBarBackgroundColor="#9F5CC0">
     
     <Grid BackgroundColor="#8031A7">
         <Image Aspect="Fill" Source="background.png"/>
