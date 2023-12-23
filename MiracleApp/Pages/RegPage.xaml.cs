@@ -2,6 +2,7 @@ using CommunityToolkit.Maui.Alerts;
 using Core.Const;
 using Core.Entity;
 using DTO.Users;
+using MiracleApp.Services.User;
 using System.Net.Http.Json;
 
 namespace MiracleApp.Pages;
@@ -202,7 +203,7 @@ public partial class RegPage : ContentPage
                 reg_user.Phone = PhoneEntry.Text;
                 reg_user.Password = PasswordEntry.Text;
 
-                if (await RegUSer(reg_user) > 0)
+                if (await UserService.RegUSer(reg_user) > 0)
                 {
                     await Navigation.PushAsync(new MainPage());
                     await DisplayAlert("Def Info", "Номер:" + reg_user.Phone + ", " + "ФИО:" + reg_user.FIO + ", " + "Роль:" + reg_user.Role + ", " + "Отделение:" + reg_user.Department + ", " + "Направление/Специальность:" + reg_user.StudentBranch + ", " + "Курс:" + reg_user.CourseNumber + ", " + "Пароль:" + reg_user.Password + "; " + "Отправьте разработчику для отладки!", "OK");
@@ -211,34 +212,19 @@ public partial class RegPage : ContentPage
                 {
                     await DisplayAlert("Def Info", "Номер:" + reg_user.Phone + ", " + "ФИО:" + reg_user.FIO + ", " + "Роль:" + reg_user.Role + ", " + "Отделение:" + reg_user.Department + ", " + "Направление/Специальность:" + reg_user.StudentBranch + ", " + "Курс:" + reg_user.CourseNumber + ", " + "Пароль:" + reg_user.Password + "; " + "Отправьте разработчику для отладки!", "OK");
                     var toast = Toast.Make("При регистрации произошла ошибка! Попробуйте позже", CommunityToolkit.Maui.Core.ToastDuration.Long);
-                    toast.Show();
+                    await toast.Show();
                 }
             }
             else
             {
                 var toast = Toast.Make("Введите пароль", CommunityToolkit.Maui.Core.ToastDuration.Long);
-                toast.Show();
+                await toast.Show();
             }
         }
         else
         {
             var toast = Toast.Make("Введите номер телефона", CommunityToolkit.Maui.Core.ToastDuration.Long);
-            toast.Show();
+            await toast.Show();
         }
-    }
-
-    private async Task<int> RegUSer(CreateUserRequest entity)
-    {
-        if(entity.Role == UserRoleEnum.Teacher)
-        {
-            reg_user.CourseNumber = "";
-            reg_user.Department = "";
-        }
-        JsonContent content = JsonContent.Create(entity);
-        HttpClient httpClient = new HttpClient();
-        var response = await httpClient.PostAsync("http://45.153.69.204:5000/User/Create", content);
-        var registered_user = await response.Content.ReadFromJsonAsync<UserEntity>();
-        await DisplayAlert("Def Info","Ответ сервера:"+ response.StatusCode + ", " + "ИД:" + registered_user.Id + ", " + "Номер:" + registered_user.Phone + ", " + "ФИО:" + registered_user.FIO + ", " + "Роль:" + registered_user.Role + ", " + "Отделение:" + registered_user.Department + ", " + "Направление/Специальность:" + registered_user.StudentBranch + ", " + "Курс:" + registered_user.CourseNumber + ", " + "Пароль:" + registered_user.Password + "; " + "Отправьте разработчику для отладки!", "OK");
-        return registered_user.Id;
     }
 }
