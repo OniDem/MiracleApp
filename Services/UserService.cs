@@ -43,8 +43,8 @@ namespace Services
                 Phone = request.Phone,
                 FIO = request.FIO,
                 Role = request.Role,
-                Department = request.Department,
-                StudentBranch = request.StudentBranch,
+                //Department = request.Department,
+                //StudentBranch = request.StudentBranch,
                 CourseNumber = request.CourseNumber,
                 Password = request.Password,
             });

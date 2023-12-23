@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
+             xmlns:control="clr-namespace:Bertuzzi.MAUI.MaskedEntry;assembly=Bertuzzi.MAUI.MaskedEntry"
              x:Class="MiracleApp.Pages.RegPage"
              Title="RegPage">
     <Grid BackgroundColor="#242323" VerticalOptions="FillAndExpand">
@@ -25,13 +26,13 @@
         <VerticalStackLayout Margin="22, 116, 0, 0" x:Name="VLStudentInfo" IsVisible="false">
             <Label Text="Студент" FontAttributes="Bold" TextColor="#FAE073" FontFamily="QANELASBLACK" FontSize="24"/>
             <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
-                <Entry BackgroundColor="#FAE073" Placeholder="Ф.И.О" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+                <Entry x:Name="StudentFIOEntry" Text="" BackgroundColor="#FAE073" Placeholder="Ф.И.О" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
             </Frame>
             <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
-                <Entry BackgroundColor="#FAE073" Placeholder="Курс" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+                <Entry x:Name="CourseEntry" Text="" Keyboard="Numeric" BackgroundColor="#FAE073" Placeholder="Курс" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
             </Frame>
             <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
-                <Entry BackgroundColor="#FAE073" Placeholder="Специальность" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+                <Picker x:Name="StudentBranchPicker" BackgroundColor="#FAE073" FontSize="24" TextColor="#242323" FontFamily="QANELASREGULAR"/>
             </Frame>
             <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
                 <Picker x:Name="DepartmentPicker" SelectedItem="0" BackgroundColor="#FAE073" FontSize="24" TextColor="#242323" FontFamily="QANELASREGULAR"/>
@@ -39,14 +40,14 @@
             <Button Text="Далее" BackgroundColor="#FAE073" TextColor="#242323" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24" Margin="0, 48, 0, 0" Padding="42, 20" Clicked="NextAuthButton_Clicked"/>
         </VerticalStackLayout>
 
-        <!--Поля для препода(имхо поменять имя пикеру)-->
+        <!--Поля для препода-->
         <VerticalStackLayout Margin="22, 116, 0, 0" x:Name="VLTeacherInfo" IsVisible="false">
             <Label Text="Преподаватель" FontAttributes="Bold" TextColor="#FAE073" FontFamily="QANELASBLACK" FontSize="24"/>
             <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
-                <Entry BackgroundColor="#FAE073" Placeholder="Специальность" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+                <Entry x:Name="TeacherFIOEntry" Text="" BackgroundColor="#FAE073" Placeholder="ФИО" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
             </Frame>
             <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
-                <Picker x:Name="BranchPicker" SelectedItem="0" BackgroundColor="#FAE073" FontSize="24" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+                <Picker x:Name="TeacherBranchPicker" SelectedItem="0" BackgroundColor="#FAE073" FontSize="24" TextColor="#242323" FontFamily="QANELASREGULAR"/>
             </Frame>
             <Button Text="Далее" BackgroundColor="#FAE073" TextColor="#242323" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24" Margin="0, 48, 0, 0" Padding="42, 20" Clicked="NextAuthButton_Clicked"/>
         </VerticalStackLayout>
@@ -54,10 +55,10 @@
         <!--Поля дл телефона и пароля-->
         <VerticalStackLayout Margin="22, 116, 0, 0" IsVisible="false" x:Name="VLRegInfo">
             <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
-                <Entry BackgroundColor="#FAE073" Placeholder="Номер телефона" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+                <control:MaskedEntry x:Name="PhoneEntry" Mask="+7 (XXX) XXX-XX-XX" Text="" Placeholder="Номер телефона" Keyboard="Numeric" BackgroundColor="#FAE073" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
             </Frame>
             <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
-                <Entry BackgroundColor="#FAE073" IsPassword="true" Placeholder="Пароль" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+                <Entry x:Name="PasswordEntry" BackgroundColor="#FAE073" Text="" IsPassword="true" Placeholder="Пароль" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
             </Frame>
             <Button Text="Регистрация" BackgroundColor="#FAE073" TextColor="#242323" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24" Margin="0, 48, 0, 0" Padding="42, 20" x:Name="RegisterButton" Clicked="RegisterButton_Clicked"/>
         </VerticalStackLayout>

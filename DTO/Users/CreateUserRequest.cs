@@ -10,9 +10,11 @@ namespace DTO.Users
 
         public UserRoleEnum Role { get; set; }
 
-        public DepartmentEnum Department { get; set; }
+        public string Department { get; set; }
 
-        public StudentBranchEnum StudentBranch { get; set; }
+        public string StudentBranch { get; set; }
+
+        //Добавить ветки для преподов(enum)
 
         public string CourseNumber { get; set; }
 
