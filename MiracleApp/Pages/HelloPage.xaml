@@ -16,7 +16,7 @@
             <Label Text="Новоколледж" HorizontalOptions="Center" TextColor="#FAE073" FontSize="42" HeightRequest="40" Margin="0, -20, 0, 0" FontFamily="QANELASBLACK"/>
         </VerticalStackLayout>
         
-        <HorizontalStackLayout VerticalOptions="End" HorizontalOptions="StartAndExpand" Margin="22, 0, 22, 78">
+        <HorizontalStackLayout VerticalOptions="End" HorizontalOptions="Center" Margin="0, 0, 0, 78">
             <Button x:Name="Register" TextColor="#242323" FontSize="24" BackgroundColor="#FAE073" CornerRadius="16" Margin="0, 0, 22, 0" FontFamily="QANELASBLACK" Padding="42, 20" Text="Регистрация" Clicked="Register_Clicked"/>
             <Button x:Name="Auth" TextColor="#242323" BackgroundColor="#FAE073" FontSize="24" CornerRadius="16" FontFamily="QANELASBLACK" Padding="42, 20" Text="Вход" Clicked="Auth_Clicked"/>
         </HorizontalStackLayout>

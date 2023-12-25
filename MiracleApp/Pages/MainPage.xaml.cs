@@ -1,31 +1,16 @@
-﻿using Core.Entity;
-using Newtonsoft.Json;
+﻿using MiracleApp.Services.News;
+using MiracleApp.Validation;
 
 namespace MiracleApp.Pages
 {
     public partial class MainPage : ContentPage
     {
-
-        async Task<List<NewsEntity>> ShowAll()
-        {
-            string serverURI = "http://45.153.69.204:5000/News/ShowAll";
-            HttpClient client = new HttpClient();
-            Dictionary<string, string> Params = new()
-            {
-
-            };
-            FormUrlEncodedContent content = new(Params);
-            HttpResponseMessage response = await client.PostAsync(serverURI, content);
-            if (response.IsSuccessStatusCode)
-            {
-                var result = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<NewsEntity>>(result);
-            }
-            return null;
-        }
-
         public MainPage()
         {
+            if (!UserValid.UserAuth())
+            {
+                Navigation.PushAsync(new HelloPage());
+            }
             InitializeComponent();
             SettingsButton.Source = "settings.png";
             HomeButton.Source = "home.png";
@@ -34,7 +19,7 @@ namespace MiracleApp.Pages
             Dispatcher.Dispatch(async() =>
             {
                 //newsListView.BeginRefresh();
-                newsListView.ItemsSource = await ShowAll();
+                newsListView.ItemsSource = await NewsServices.ShowAll();
                // newsListView.EndRefresh();
             });
         }

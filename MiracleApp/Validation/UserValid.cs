@@ -2,9 +2,17 @@
 {
     static public class UserValid
     {
-        static public bool UserAuth(bool test)
+        static public bool UserAuth()
         {
-            return test;
+            var id = Task.Run(async () => await SecureStorage.Default.GetAsync("id")).Result;
+            if (!string.IsNullOrEmpty(id))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

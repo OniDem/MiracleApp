@@ -1,10 +1,16 @@
+using MiracleApp.Validation;
+
 namespace MiracleApp.Pages;
 
 public partial class NotificationsPage : ContentPage
 {
 	public NotificationsPage()
 	{
-		InitializeComponent();
+        if (!UserValid.UserAuth())
+        {
+            Navigation.PushAsync(new HelloPage());
+        }
+        InitializeComponent();
         SettingsButton.Source = "settings.png";
         HomeButton.Source = "home.png";
         ProfileButton.Source = "profile.png";

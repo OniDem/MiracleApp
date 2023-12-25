@@ -1,11 +1,16 @@
+using MiracleApp.Validation;
+
 namespace MiracleApp.Pages;
 
 public partial class SchedulePage : ContentPage
 {
 	public SchedulePage()
 	{
-		
-		InitializeComponent();
+        if (!UserValid.UserAuth())
+        {
+            Navigation.PushAsync(new HelloPage());
+        }
+        InitializeComponent();
 		BackButton.Source = "backbutton.png";
         NextButton.Source = "backbutton.png";
     }

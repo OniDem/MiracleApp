@@ -4,13 +4,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MiracleApp.Pages.ProfilePage"
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
-             xmlns:ViewModel="clr-namespace:MiracleApp.ViewModel"
              xmlns:toolkit="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
              Shell.TabBarBackgroundColor="#9F5CC0">
-    
-    <ContentPage.BindingContext>
-        <ViewModel:UserViewModel/>
-    </ContentPage.BindingContext>
     <Grid BackgroundColor="#8031A7">
         <Image Aspect="Fill" Source="background.png"/>
 
@@ -18,11 +13,12 @@
             <VerticalStackLayout>
                 <StackLayout VerticalOptions="Start">
                     <toolkit:AvatarView  ZIndex="1" Margin="147, 40, 147, 0" BackgroundColor="Transparent" BorderColor="Transparent" BorderWidth="0"  HeightRequest="136" WidthRequest="136" CornerRadius="120" ImageSource="test_avatar.png"/>
-                    <Frame ZIndex="0" BackgroundColor="#1E1E1E" BorderColor="#1E1E1E" CornerRadius="16" Margin="22, -68, 23, 0" HeightRequest="178" Padding="0, 78, 0, 28">
+                    <Frame ZIndex="0" BackgroundColor="#242323" BorderColor="#1E1E1E" CornerRadius="16" Margin="22, -68, 23, 0" Padding="0, 78, 0, 28">
                         <VerticalStackLayout HorizontalOptions="FillAndExpand" ZIndex="1">
-                            <Label Text="{Binding UserName}"   TextColor="#FAE073" HorizontalTextAlignment="Center" FontSize="20" FontFamily="QANELASBOLD"/>
+                            <Label Text="{Binding FIO}"   TextColor="#FAE073" HorizontalTextAlignment="Center" FontSize="20" FontFamily="QANELASBOLD"/>
                             <Label Text="{Binding Role}" x:Name="Role" TextColor="#FAE073" HorizontalTextAlignment="Center" FontSize="20" FontFamily="QANELASBOLD"/>
-                            <Label Text="{Binding Course}"  x:Name="Cource" TextColor="#FAE073" HorizontalTextAlignment="Center" FontSize="20" FontFamily="QANELASBOLD"/>
+                            <Label Text="{Binding Branch}"  x:Name="Cource" TextColor="#FAE073" HorizontalTextAlignment="Center" FontSize="20" FontFamily="QANELASBOLD"/>
+                            <Button Text="Выйти" BackgroundColor="#242323" BorderWidth="2" BorderColor="#FAE073" TextColor="#FAE073" HorizontalOptions="Center" CornerRadius="50" FontFamily="QANELASBLACK" Margin="0, 11, 0, 0" FontSize="24" x:Name="LogOut" Clicked="LogOut_Clicked"/>
                         </VerticalStackLayout>
                     </Frame>
                 </StackLayout>

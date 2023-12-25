@@ -6,7 +6,7 @@
              x:Class="MiracleApp.Pages.RegPage"
              Title="RegPage">
     <Grid BackgroundColor="#242323" VerticalOptions="FillAndExpand">
-        <ImageButton Grid.Column="0" x:Name="BackButton" Clicked="BackButton_Clicked" VerticalOptions="Start" HorizontalOptions="Start" Margin="22, 22, 0, 0" HeightRequest="46" WidthRequest="46" BackgroundColor="Wheat"/>
+        <ImageButton Grid.Column="0" x:Name="BackButton" Clicked="BackButton_Clicked" VerticalOptions="Start" HorizontalOptions="Start" Margin="22, 22, 0, 0" HeightRequest="46" WidthRequest="46"/>
         <Label Grid.Column="1" Text="Регистрация" TextColor="#FAE073" VerticalOptions="Start" Margin="0, 35, 0, 0" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24"/>
         <!--Выбор роли-->
         <VerticalStackLayout Margin="22, 116, 0, 0" x:Name="VLChoiceRole">
@@ -32,7 +32,7 @@
                 <Entry x:Name="CourseEntry" Text="" Keyboard="Numeric" BackgroundColor="#FAE073" Placeholder="Курс" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
             </Frame>
             <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
-                <Picker x:Name="StudentBranchPicker" BackgroundColor="#FAE073" FontSize="24" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+                <Picker x:Name="StudentBranchPicker" Background="#FAE073" BackgroundColor="#FAE073" FontSize="24" TextColor="#242323" FontFamily="QANELASREGULAR"/>
             </Frame>
             <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
                 <Picker x:Name="DepartmentPicker" SelectedItem="0" BackgroundColor="#FAE073" FontSize="24" TextColor="#242323" FontFamily="QANELASREGULAR"/>

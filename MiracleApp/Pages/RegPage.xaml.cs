@@ -1,9 +1,8 @@
 using CommunityToolkit.Maui.Alerts;
 using Core.Const;
-using Core.Entity;
 using DTO.Users;
 using MiracleApp.Services.User;
-using System.Net.Http.Json;
+using MiracleApp.Validation;
 
 namespace MiracleApp.Pages;
 
@@ -12,9 +11,14 @@ public partial class RegPage : ContentPage
     UserRoleEnum reg_role;
     CreateUserRequest reg_user = new();
 
-	public RegPage()
-	{
-		InitializeComponent();
+    public RegPage()
+    {
+        if (UserValid.UserAuth())
+        {
+            Navigation.PushAsync(new MainPage());
+        }
+        InitializeComponent();
+        BackButton.Source = "backbutton.png";
         List<string> dep = new()
         {
             "Выберите отделение",
@@ -58,11 +62,11 @@ public partial class RegPage : ContentPage
         DepartmentPicker.SelectedIndex = 0;
         TeacherBranchPicker.SelectedIndex = 0;
         StudentBranchPicker.SelectedIndex = 0;
-	}
+    }
 
     private void CBSTeacher_CheckChanged(object sender, EventArgs e)
     {
-        if(CBSTeacher.IsChecked)
+        if (CBSTeacher.IsChecked)
         {
             CBStudent.IsChecked = false;
             reg_role = UserRoleEnum.Teacher;
@@ -71,7 +75,7 @@ public partial class RegPage : ContentPage
 
     private void CBStudent_CheckChanged(object sender, EventArgs e)
     {
-        if(CBStudent.IsChecked)
+        if (CBStudent.IsChecked)
         {
             CBSTeacher.IsChecked = false;
             reg_role = UserRoleEnum.Student;
@@ -80,7 +84,7 @@ public partial class RegPage : ContentPage
 
     private void BackButton_Clicked(object sender, EventArgs e)
     {
-        if(VLChoiceRole.IsVisible == true)
+        if (VLChoiceRole.IsVisible == true)
         {
             Navigation.PopAsync();
             //Дописать очистку полей
@@ -91,7 +95,7 @@ public partial class RegPage : ContentPage
             //Дописать очистку полей
             VLChoiceRole.IsVisible = true;
         }
-        if(VLRegInfo.IsVisible == true)
+        if (VLRegInfo.IsVisible == true)
         {
             VLRegInfo.IsVisible = false;
             //Дописать очистку полей
@@ -101,7 +105,7 @@ public partial class RegPage : ContentPage
 
     private void NextInfoButton_Clicked(object sender, EventArgs e)
     {
-        if(CBStudent.IsChecked || CBSTeacher.IsChecked)
+        if (CBStudent.IsChecked || CBSTeacher.IsChecked)
         {
             switch (reg_role)
             {
@@ -170,7 +174,7 @@ public partial class RegPage : ContentPage
                 }
                 break;
             case UserRoleEnum.Teacher:
-                if(TeacherFIOEntry.Text.Length > 0)
+                if (TeacherFIOEntry.Text.Length > 0)
                 {
                     if (TeacherBranchPicker.SelectedIndex != 0)
                     {
@@ -196,14 +200,14 @@ public partial class RegPage : ContentPage
 
     private async void RegisterButton_Clicked(object sender, EventArgs e)
     {
-        if(PhoneEntry.Text.Length > 0)
+        if (PhoneEntry.Text.Length > 0)
         {
-            if(PasswordEntry.Text.Length > 0)
+            if (PasswordEntry.Text.Length > 0)
             {
                 reg_user.Phone = PhoneEntry.Text;
                 reg_user.Password = PasswordEntry.Text;
 
-                if (await UserService.RegUSer(reg_user) > 0)
+                if (await UserService.RegUser(reg_user) > 0)
                 {
                     await Navigation.PushAsync(new MainPage());
                     await DisplayAlert("Def Info", "Номер:" + reg_user.Phone + ", " + "ФИО:" + reg_user.FIO + ", " + "Роль:" + reg_user.Role + ", " + "Отделение:" + reg_user.Department + ", " + "Направление/Специальность:" + reg_user.StudentBranch + ", " + "Курс:" + reg_user.CourseNumber + ", " + "Пароль:" + reg_user.Password + "; " + "Отправьте разработчику для отладки!", "OK");
