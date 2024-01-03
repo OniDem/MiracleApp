@@ -18,12 +18,15 @@ namespace Services
         {
             return _lessonRepository.Create(new LessonEntity
             {
-                Lesson_name = request.Lesson_name,
-                Lesson_date = request.Lesson_date,
-                LessonDoW = request.LessonDoW,
-                Lesson_time = request.Lesson_time,
-                Lesson_teacher_id = request.Lesson_teacher_id,
-                Lesson_course = request.Lesson_course
+                Name = request.Name,
+                Date = request.Date,
+                DayOfWeek = request.DayOfWeek,
+                //Time = request.Time,                    Edit!
+                TeacherId = request.TeacherId,
+                CourseNumber = request.Course,
+                Department = request.Department,
+                StudentCount = request.StudentCount,
+                Online = request.Online,
             });
         }
 
@@ -32,12 +35,15 @@ namespace Services
             return _lessonRepository.Update(new LessonEntity
             {
                 Id = lesson_id,
-                Lesson_name = request.Lesson_name,
-                Lesson_date = request.Lesson_date,
-                LessonDoW = request.LessonDoW,
-                Lesson_time = request.Lesson_time,
-                Lesson_teacher_id = request.Lesson_teacher_id,
-                Lesson_course = request.Lesson_course
+                Name = request.Name,
+                Date = request.Date,
+                DayOfWeek = request.DayOfWeek,
+                //Time = request.Time,                    Edit!
+                TeacherId = request.TeacherId,
+                CourseNumber = request.Course,
+                Department = request.Department,
+                StudentCount = request.StudentCount,
+                Online = request.Online,
             });
         }
 

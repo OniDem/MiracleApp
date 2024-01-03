@@ -8,7 +8,7 @@ namespace Services
     public class NewsService : INewsService
     {
         private NewsRepository _newsRepository;
-        
+
         public NewsService(NewsRepository newsRepository)
         {
             _newsRepository = newsRepository;
@@ -45,7 +45,7 @@ namespace Services
             return _newsRepository.ShowById(news_id);
         }
 
-        public async Task Delete(int news_id) 
+        public async Task Delete(int news_id)
         {
             _newsRepository.Delete(news_id);
         }

@@ -1,13 +1,13 @@
-using MiracleApp.Validation;
-using MiracleApp.Services.User;
 using CommunityToolkit.Maui.Alerts;
+using MiracleApp.Services.User;
+using MiracleApp.Validation;
 
 namespace MiracleApp.Pages;
 
 public partial class AuthPage : ContentPage
 {
-	public AuthPage()
-	{
+    public AuthPage()
+    {
         if (UserValid.UserAuth())
         {
             Navigation.PushAsync(new MainPage());
@@ -34,9 +34,9 @@ public partial class AuthPage : ContentPage
 
     private async void AuthButton_Clicked(object sender, EventArgs e)
     {
-        if(PhoneEntry.Text.Length > 0)
+        if (PhoneEntry.Text.Length > 0)
         {
-            if(PasswordEntry.Text.Length > 0)
+            if (PasswordEntry.Text.Length > 0)
             {
                 if (await UserService.AuthUser(new() { Phone = PhoneEntry.Text, Password = PasswordEntry.Text }))
                 {

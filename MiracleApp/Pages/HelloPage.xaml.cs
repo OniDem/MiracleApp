@@ -4,8 +4,8 @@ namespace MiracleApp.Pages;
 
 public partial class HelloPage : ContentPage
 {
-	public HelloPage()
-	{
+    public HelloPage()
+    {
         var stack = Shell.Current.Navigation.NavigationStack.ToArray();
         for (int i = stack.Length - 1; i > 0; i--)
         {
@@ -16,7 +16,7 @@ public partial class HelloPage : ContentPage
             Navigation.PushAsync(new MainPage());
         }
         InitializeComponent();
-        
+
     }
 
     private void Auth_Clicked(object sender, EventArgs e)

@@ -20,7 +20,7 @@ namespace Infrastructure.Repositories
 
         public LessonEntity Update(LessonEntity entity)
         {
-            
+
             _applicationContext.Lessons.Update(entity);
             _applicationContext.SaveChanges();
             return entity;
@@ -30,7 +30,7 @@ namespace Infrastructure.Repositories
             return _applicationContext.Lessons.Where(p => p.Id == lesson_id).First();
         }
 
-        public List<LessonEntity> ShowAll() 
+        public List<LessonEntity> ShowAll()
         {
             return _applicationContext.Lessons.ToList();
         }

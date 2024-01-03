@@ -16,11 +16,11 @@ namespace MiracleApp.Pages
             HomeButton.Source = "home.png";
             ProfileButton.Source = "profile.png";
             NotificationButton.Source = "notification.png";
-            Dispatcher.Dispatch(async() =>
+            Dispatcher.Dispatch(async () =>
             {
                 //newsListView.BeginRefresh();
                 newsListView.ItemsSource = await NewsServices.ShowAll();
-               // newsListView.EndRefresh();
+                // newsListView.EndRefresh();
             });
         }
         private async void SheduleButton_Clicked(object sender, EventArgs e)

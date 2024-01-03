@@ -19,7 +19,7 @@ namespace Infrastructure.Repositories
         }
 
         public UserEntity Update(UserEntity user)
-        
+
         {
             _applicationContext.Users.Update(user);
             _applicationContext.SaveChanges();

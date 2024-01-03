@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace DTO.News
+﻿namespace DTO.News
 {
     public class CreateNewsRequest
     {

@@ -4,8 +4,8 @@ namespace MiracleApp.Pages;
 
 public partial class SettingsPage : ContentPage
 {
-	public SettingsPage()
-	{
+    public SettingsPage()
+    {
         if (!UserValid.UserAuth())
         {
             Navigation.PushAsync(new HelloPage());

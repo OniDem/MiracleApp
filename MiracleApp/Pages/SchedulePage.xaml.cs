@@ -1,23 +1,79 @@
+using Core.Const;
+using Core.Entity;
+using MiracleApp.Services.Lesson;
 using MiracleApp.Validation;
 
 namespace MiracleApp.Pages;
 
 public partial class SchedulePage : ContentPage
 {
-	public SchedulePage()
-	{
+    LessonEntity lesson = new LessonEntity
+    {
+        Name = "Программирование",
+        Date = "",
+        TimeStart = DateTime.Now.ToShortTimeString(),
+        TimeEnd = DateTime.Now.AddMinutes(90).ToShortTimeString(),
+        DayOfWeek = LessonDoWEnum.Su,
+        TeacherFIO = "Иванов Иван Иванович",
+        CourseNumber = "3",
+        Department = DepartmentEnum.ЛО,
+    };
+
+    LessonEntity lesson1 = new LessonEntity
+    {
+        Name = "Дизайн",
+        Date = "",
+        TimeStart = DateTime.Now.ToShortTimeString(),
+        TimeEnd = DateTime.Now.AddMinutes(90).ToShortTimeString(),
+        DayOfWeek = LessonDoWEnum.Su,
+        TeacherFIO = "Иванов Иван Иванович",
+        CourseNumber = "1",
+        Department = DepartmentEnum.ЛО,
+    };
+
+    LessonEntity lesson2 = new LessonEntity
+    {
+        Name = "Изо",
+        Date = "",
+        TimeStart = DateTime.Now.ToShortTimeString(),
+        TimeEnd = DateTime.Now.AddMinutes(90).ToShortTimeString(),
+        DayOfWeek = LessonDoWEnum.Su,
+        TeacherFIO = "Иванов Иван Иванович",
+        CourseNumber = "1",
+        Department = DepartmentEnum.ЛО,
+    };
+
+    LessonEntity lesson3 = new LessonEntity
+    {
+        Name = "Прототипирование",
+        Date = "",
+        TimeStart = DateTime.Now.ToShortTimeString(),
+        TimeEnd = DateTime.Now.AddMinutes(90).ToShortTimeString(),
+        DayOfWeek = LessonDoWEnum.Su,
+        TeacherFIO = "Иванов Иван Иванович",
+        CourseNumber = "1",
+        Department = DepartmentEnum.ЛО,
+    };
+
+    public SchedulePage()
+    {
         if (!UserValid.UserAuth())
         {
             Navigation.PushAsync(new HelloPage());
         }
         InitializeComponent();
-		BackButton.Source = "backbutton.png";
+        BackButton.Source = "backbutton.png";
         NextButton.Source = "backbutton.png";
+
+        //testLayout.Add(LessonService.ShowLesson(lesson));
+        //testLayout.Add(LessonService.ShowLesson(lesson1));
+        //testLayout.Add(LessonService.ShowLesson(lesson2));
+        //testLayout.Add(LessonService.ShowLesson(lesson3));
     }
 
     private async void MainButton_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PopToRootAsync();
+        await Navigation.PushAsync(new MainPage());
         MainButton.BackgroundColor = Color.FromArgb("#9F5CC0");
         ScheduleButton.BackgroundColor = Colors.Transparent;
         PayButton.BackgroundColor = Colors.Transparent;
@@ -197,4 +253,25 @@ public partial class SchedulePage : ContentPage
     {
         await Navigation.PushAsync(new PayPage());
     }
+
+    private void ShowLessonButton_Clicked(object sender, EventArgs e)
+    {
+
+    }
+
+    //private void test_Clicked(object sender, EventArgs e)
+    //{
+    //    switch (Lesson.IsVisible)
+    //    {
+    //        case true:
+    //            Lesson.IsVisible = false;
+    //            break;
+
+    //        case false:
+    //            Lesson.IsVisible = true;
+    //            break;
+    //    }
+    //}
+
+
 }

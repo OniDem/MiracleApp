@@ -4,8 +4,8 @@ namespace MiracleApp.Pages;
 
 public partial class PayPage : ContentPage
 {
-	public PayPage()
-	{
+    public PayPage()
+    {
         if (!UserValid.UserAuth())
         {
             Navigation.PushAsync(new HelloPage());
@@ -17,7 +17,7 @@ public partial class PayPage : ContentPage
 
     private async void MainButton_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PopToRootAsync();
+        await Navigation.PushAsync(new MainPage());
         MainButton.BackgroundColor = Color.FromArgb("#9F5CC0");
         ScheduleButton.BackgroundColor = Colors.Transparent;
         PayButton.BackgroundColor = Colors.Transparent;

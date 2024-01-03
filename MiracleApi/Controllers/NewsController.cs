@@ -18,9 +18,9 @@ namespace MiracleApi.Controllers
         }
 
         [HttpPost, Authorize]
-        public async Task<NewsEntity?> Create([FromBody] CreateNewsRequest  request)
+        public async Task<NewsEntity?> Create([FromBody] CreateNewsRequest request)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var news = await _newsService.Create(request);
                 return news;
@@ -31,7 +31,7 @@ namespace MiracleApi.Controllers
         [HttpPut, Authorize]
         public async Task<NewsEntity?> Update(int news_id, UpdateNewsRequest request)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var news = await _newsService.Update(news_id, request);
                 return news;
@@ -52,7 +52,7 @@ namespace MiracleApi.Controllers
         [HttpPost, Authorize]
         public async Task<NewsEntity?> ShowById(int news_id)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 return await _newsService.ShowById(news_id);
             }
@@ -62,7 +62,7 @@ namespace MiracleApi.Controllers
         [HttpDelete, Authorize]
         public async Task Delete(int news_id)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 await _newsService.Delete(news_id);
             }

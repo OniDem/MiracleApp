@@ -4,8 +4,8 @@ namespace MiracleApp.Pages;
 
 public partial class NotificationsPage : ContentPage
 {
-	public NotificationsPage()
-	{
+    public NotificationsPage()
+    {
         if (!UserValid.UserAuth())
         {
             Navigation.PushAsync(new HelloPage());

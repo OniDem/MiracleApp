@@ -16,7 +16,7 @@ public partial class CertificatePage : ContentPage
 
     private async void MainButton_Clicked(object sender, EventArgs e)
     {
-        await Navigation.PopToRootAsync();
+        await Navigation.PushAsync(new MainPage());
         MainButton.BackgroundColor = Color.FromArgb("#9F5CC0");
         ScheduleButton.BackgroundColor = Colors.Transparent;
         PayButton.BackgroundColor = Colors.Transparent;

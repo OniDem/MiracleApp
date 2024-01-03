@@ -25,7 +25,7 @@ namespace MiracleApi.Controllers
         [HttpPost]
         public async Task<UserEntity?> Create([FromBody] CreateUserRequest userCreate)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = await _userService.Create(userCreate);
                 return user;
@@ -49,17 +49,17 @@ namespace MiracleApi.Controllers
                 Response.Cookies.Append(user.Id.ToString(), new JwtSecurityTokenHandler().WriteToken(jwt));
                 return new() { { user.Id.ToString(), new JwtSecurityTokenHandler().WriteToken(jwt) } };
             }
-            return null;            
+            return null;
         }
 
         [HttpPut]
         public async Task<UserEntity?> Update(int user_id, UpdateUserRequest request)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 await _userService.Update(user_id, request);
             }
-            return null;    
+            return null;
         }
 
         [HttpDelete, Authorize]

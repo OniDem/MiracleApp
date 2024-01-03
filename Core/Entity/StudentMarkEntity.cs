@@ -8,7 +8,7 @@ namespace Core.Entity
     {
         [Key]
         public int Id { get; set; }
-        public int Mark {  get; set; }
+        public int Mark { get; set; }
 
         public int Student_id { get; set; }
 
