@@ -48,5 +48,14 @@ namespace MiracleApp.Services.User
             var result = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<UserEntity>(result);
         }
+
+        public static async Task<bool> UpdateUser(int id, UpdateUserRequest request)
+        {
+            JsonContent content = JsonContent.Create(request);
+            HttpClient httpClient = new HttpClient();
+            var response = await httpClient.PutAsync($"http://45.153.69.204:5000/User/Update?user_id={id}", content);
+           
+            return response.IsSuccessStatusCode;
+        }
     }
 }
