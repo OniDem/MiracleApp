@@ -49,5 +49,10 @@ namespace Services
                 Password = request.Password,
             });
         }
+
+        public async Task<UserEntity?> ShowById(ShowByIdRequest request)
+        {
+            return _userRepository.ShowById(request.id);
+        }
     }
 }

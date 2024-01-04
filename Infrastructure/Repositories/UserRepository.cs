@@ -30,5 +30,10 @@ namespace Infrastructure.Repositories
         {
             return _applicationContext.Users.Where(p => p.Phone == phone).First();
         }
+
+        public UserEntity? ShowById(int id)
+        {
+            return _applicationContext.Users.Where(p =>p.Id == id).First();
+        }
     }
 }

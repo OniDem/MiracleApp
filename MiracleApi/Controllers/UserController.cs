@@ -62,6 +62,16 @@ namespace MiracleApi.Controllers
             return null;
         }
 
+        [HttpPost]
+        public async Task<UserEntity?> ShowById(ShowByIdRequest request)
+        {
+            if (ModelState.IsValid)
+            {
+                return await _userService.ShowById(request);
+            }
+            return null;
+        }
+
         [HttpDelete, Authorize]
         public async Task LogOut([FromBody] int user_id)
         {

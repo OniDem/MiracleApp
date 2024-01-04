@@ -10,7 +10,7 @@ namespace MiracleApp.Services.User
     {
         public static async Task<int> RegUser(CreateUserRequest request)
         {
-            if (request.Role == UserRoleEnum.Teacher)
+            if (request.Role == UserRoleEnum.Преподователь)
             {
                 request.CourseNumber = "";
                 request.Department = "";
@@ -33,10 +33,20 @@ namespace MiracleApp.Services.User
             {
                 var user_token = token.First();
                 await SecureStorage.SetAsync("id", user_token.Key);
+                await SecureStorage.SetAsync("phone", request.Phone);
                 await SecureStorage.SetAsync("token", user_token.Value);
                 return true;
             }
             return false;
+        }
+
+        public static async Task<UserEntity> GetUserById(ShowByIdRequest request)
+        {
+            JsonContent content = JsonContent.Create(request);
+            HttpClient httpClient = new HttpClient();
+            var response = await httpClient.PostAsync("http://45.153.69.204:5000/User/ShowById", content);
+            var result = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<UserEntity>(result);
         }
     }
 }
