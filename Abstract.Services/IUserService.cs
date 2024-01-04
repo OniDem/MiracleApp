@@ -10,5 +10,7 @@ namespace Abstract.Services.Interfaces
         public Task<UserEntity?> Auth(AuthUserRequest request);
 
         public Task<UserEntity?> Update(int user_id, UpdateUserRequest request);
+
+        public Task<UserEntity?> ShowById(ShowByIdRequest request);
     }
 }
