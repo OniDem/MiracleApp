@@ -40,7 +40,7 @@ namespace MiracleApi.Controllers
             return null;
         }
 
-        [HttpPost, Authorize]
+        [HttpPost]
         public async Task<List<LessonEntity>?> ShowAll()
         {
             if (ModelState.IsValid)
