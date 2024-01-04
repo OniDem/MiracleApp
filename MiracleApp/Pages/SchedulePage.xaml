@@ -3,16 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MiracleApp.Pages.SchedulePage"
              Shell.TabBarIsVisible="False"
-             Shell.TabBarBackgroundColor="#9F5CC0">
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui">
 
-
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior  StatusBarColor="#8031A7" StatusBarStyle="LightContent"/>
+    </ContentPage.Behaviors>
     <Grid BackgroundColor="#8031A7">
         <Image Aspect="Fill" Source="background.png"/>
 
         <ScrollView >
             <VerticalStackLayout HorizontalOptions="Start" VerticalOptions="Start">
-                <StackLayout  HorizontalOptions="Start" VerticalOptions="Start">
-                    <Label WidthRequest="289" HeightRequest="78" HorizontalOptions="Start" Margin="22, 34, 0, 0">
+                <VerticalStackLayout  Margin="22,0" >
+                    <Label WidthRequest="289" HeightRequest="79" HorizontalOptions="Start">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Miracle" TextColor="#FAE073" FontSize="78" FontFamily="QANELASBLACK"/>
@@ -21,10 +23,10 @@
                         </Label.FormattedText>
                     </Label>
 
-                    <Frame BackgroundColor="#1E1E1E" BorderColor="#1E1E1E" CornerRadius="16" Padding="12,0" WidthRequest="293" HeightRequest="54" HorizontalOptions="Start" Margin="22,4">
+                    <Frame BackgroundColor="#1E1E1E" BorderColor="#1E1E1E" CornerRadius="16" Padding="12,0" WidthRequest="293" HeightRequest="54" HorizontalOptions="Start" Margin="0,4">
                         <Label Text="Новоколледж" TextColor="#FAE073" FontSize="42" FontFamily="QANELASBLACK"/>
                     </Frame>
-                </StackLayout>
+                </VerticalStackLayout>
                 <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Margin="0, 24, 0, 0">
                     <HorizontalStackLayout>
                         <Button Text="Главная" x:Name="MainButton" Clicked="MainButton_Clicked" CornerRadius="50" BorderWidth="2" Padding="9, 0, 9, 0" Margin="1, 0, 12, 0" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR" FontSize="24" BackgroundColor="Transparent" HeightRequest="47" WidthRequest="117"/>
@@ -33,70 +35,200 @@
                         <Button Text="Справки" x:Name="СertificateButton" Clicked="СertificateButton_Clicked" CornerRadius="50" BorderWidth="2" Padding="9, 0, 9, 0" Margin="0, 0, 12, 0" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR" FontSize="24" BackgroundColor="Transparent" HeightRequest="47" WidthRequest="130"/>
                     </HorizontalStackLayout>
                 </ScrollView>
-                
-                <!--Это для отображения персонального расписания
-                <StackLayout x:Name="testLayout" Padding="16">
-                    <Label Margin="10, 10, 0, 0" Text="Понедельник" HorizontalOptions="Center" TextColor="#FAE073" FontSize="42" FontFamily="QANELASBLACK"/>
-                    <StackLayout>
-                        <Button Margin="22, 10, 22, 4" ZIndex="1" BackgroundColor="#1E1E1E" TextColor="#FAE073" FontSize="20" FontFamily="QANELASBLACK" Text="Криминалогия 12:30 к.310 ЛО " x:Name="test" Clicked="test_Clicked"/>
-                        <Frame Margin="22, 4, 22, 0" Padding="0" ZIndex="0" BackgroundColor="#1E1E1E" BorderColor="#1E1E1E" x:Name="Lesson" IsVisible="False">
-                            <StackLayout>
 
+                <StackLayout HorizontalOptions="Start" Margin="22, 18, 0, 0" x:Name="CourseChoiceSL">
+                    <Label Text="Курс" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073"/>
+                    <Frame Margin="0, 12, 0, 0"  CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="8, 4, 8, 4">
+                    <HorizontalStackLayout >
+                        <Button x:Name="CourceOneButton" Clicked="CourceOneButton_Clicked" HeightRequest="43" WidthRequest="46" CornerRadius="16" BackgroundColor="#9F5CC0" Text="1" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073" />
+                           <Button x:Name="CourceTwoButton" Clicked="CourceTwoButton_Clicked" HeightRequest="43" WidthRequest="46" CornerRadius="16" BackgroundColor="#9F5CC0" Text="2" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073"/>
+                           <Button x:Name="CourceThreeButton" Clicked="CourceThreeButton_Clicked" HeightRequest="43" WidthRequest="46" CornerRadius="16" BackgroundColor="#9F5CC0" Text="3" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073"/>
+                           <Button x:Name="CourceFourButton" Clicked="CourceFourButton_Clicked" HeightRequest="43" WidthRequest="46" CornerRadius="16" BackgroundColor="#9F5CC0" Text="4" FontFamily="QANELASBOLD" FontSize="24"  TextColor="#FAE073"/>
+                       </HorizontalStackLayout>
+                   </Frame>
+               </StackLayout>
 
-                                <Label Margin="16, 10, 0, 0" Text="Начало: 12:30" TextColor="#FAE073" FontSize="20" FontFamily="QANELASBLACK"/>
-                                <Label Margin="16, 10, 0, 0" Text="Конец: 14:00" TextColor="#FAE073" FontSize="20" FontFamily="QANELASBLACK"/>
-                                <Label Margin="16, 10, 0, 0" Text="Где: ЛО, к.310" TextColor="#FAE073" FontSize="20" FontFamily="QANELASBLACK"/>
-                                <Label Margin="16, 10, 0, 16" Text="Преподователь: Иванов Иван Иванович" TextColor="#FAE073" FontSize="20" FontFamily="QANELASBLACK"/>
-                            </StackLayout>
-                        </Frame>
-                    </StackLayout>
+                <StackLayout HorizontalOptions="Start" Margin="22, 18, 0, 0" x:Name="DepartmentChoiceSL">
+                    <Label Text="Отделение" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073"/>
+                    <Frame Margin="0, 12, 0, 0"  CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="8, 4, 8, 4">
+                        <HorizontalStackLayout>
+                            <Button x:Name="Department1" Clicked="Department1_Clicked" Text="ЦК" CornerRadius="16" BackgroundColor="#9F5CC0" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                            <Button x:Name="Department2" Clicked="Department2_Clicked" Text="ЛО" CornerRadius="16" BackgroundColor="#9F5CC0" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073"/>
+                            <Button x:Name="Department3" Clicked="Department3_Clicked" Text="КИТ" CornerRadius="16" BackgroundColor="#9F5CC0" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                            <Button x:Name="Department4" Clicked="Department4_Clicked" Text="БО" CornerRadius="16" BackgroundColor="#9F5CC0" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073"/>
+                            <Button x:Name="Department5" Clicked="Department5_Clicked" Text="ТО" CornerRadius="16" BackgroundColor="#9F5CC0" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                        </HorizontalStackLayout>
+                    </Frame>
                 </StackLayout>
-                -->
-                
-                
-                
-                <StackLayout HorizontalOptions="Start" Margin="22, 18, 0, 0">
-    <Label Text="Курс" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073"/>
-    <Frame Margin="0, 12, 0, 0"  CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="8, 4, 8, 4">
-        <HorizontalStackLayout >
-            <Button x:Name="CourceOneButton" Clicked="CourceOneButton_Clicked" HeightRequest="43" WidthRequest="46" CornerRadius="16" BackgroundColor="#9F5CC0" Text="1" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073" />
-            <Button x:Name="CourceTwoButton" Clicked="CourceTwoButton_Clicked" HeightRequest="43" WidthRequest="46" CornerRadius="16" BackgroundColor="#9F5CC0" Text="2" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073"/>
-            <Button x:Name="CourceThreeButton" Clicked="CourceThreeButton_Clicked" HeightRequest="43" WidthRequest="46" CornerRadius="16" BackgroundColor="#9F5CC0" Text="3" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073"/>
-            <Button x:Name="CourceFourButton" Clicked="CourceFourButton_Clicked" HeightRequest="43" WidthRequest="46" CornerRadius="16" BackgroundColor="#9F5CC0" Text="4" FontFamily="QANELASBOLD" FontSize="24"  TextColor="#FAE073"/>
-        </HorizontalStackLayout>
-    </Frame>
-</StackLayout>
 
-<StackLayout HorizontalOptions="Start" Margin="22, 18, 0, 0">
-    <Label Text="Отделение" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073"/>
-    <Frame Margin="0, 12, 0, 0"  CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="8, 4, 8, 4">
-        <HorizontalStackLayout>
-            <Button x:Name="Department1" Clicked="Department1_Clicked" Text="ЦК" CornerRadius="16" BackgroundColor="#9F5CC0" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
-            <Button x:Name="Department2" Clicked="Department2_Clicked" Text="ЛО" CornerRadius="16" BackgroundColor="#9F5CC0" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073"/>
-            <Button x:Name="Department3" Clicked="Department3_Clicked" Text="КИТ" CornerRadius="16" BackgroundColor="#9F5CC0" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
-            <Button x:Name="Department4" Clicked="Department4_Clicked" Text="БО" CornerRadius="16" BackgroundColor="#9F5CC0" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073"/>
-            <Button x:Name="Department5" Clicked="Department5_Clicked" Text="ТО" CornerRadius="16" BackgroundColor="#9F5CC0" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
-        </HorizontalStackLayout>
-    </Frame>
-</StackLayout>
+                <StackLayout HorizontalOptions="Start" Margin="22, 18, 29, 0" x:Name="BranchChoiceSL">
+                    <Label Text="Специальность" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073"/>
+                    <Frame Margin="0, 12, 0, 0" CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="8, 10, 8, 10">
+                        <VerticalStackLayout HorizontalOptions="Start">
+                            <Button x:Name="Branch1" Clicked="Branch1_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" Text="Реклама и маркетинг" FontFamily="QANELASBOLD" Margin="0, 0, 0, 8" FontSize="24" TextColor="#FAE073"/>
+                            <Button x:Name="Branch2" Clicked="Branch2_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" Text="Информационные технологии" FontFamily="QANELASBOLD" Margin="0, 0, 0, 8" FontSize="24" TextColor="#FAE073"/>
+                            <Button x:Name="Branch3" Clicked="Branch3_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" Text="Социо-культурная деятельность" FontFamily="QANELASBOLD" Margin="0, 0, 0, 8" FontSize="24" TextColor="#FAE073"/>
+                            <Button x:Name="Branch4" Clicked="Branch4_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" WidthRequest="220" Text="Право и судебное администрирование" Padding="16, 12, 16, 12" FontFamily="QANELASBOLD" Margin="0, 0, 0, 8" FontSize="24" TextColor="#FAE073"/>
+                            <Button x:Name="Branch5" Clicked="Branch5_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" Text="Предпринимательство" FontFamily="QANELASBOLD" FontSize="24" Margin="0, 0, 0, 8" TextColor="#FAE073"/>
+                            <Button x:Name="Branch6" Clicked="Branch6_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" Text="Дизайн" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </StackLayout>
+                <Button Grid.Column="1" HorizontalOptions="Center" Text="Далее" Padding="32, 10" Margin="24" x:Name="ShowLessonsButton" Clicked="ShowLessonsButton_Clicked" CornerRadius="16" HeightRequest="64" TextColor="#1E1E1E" BackgroundColor="#FAE073" FontFamily="QANELASBLACK" FontSize="24"/>
 
-<StackLayout HorizontalOptions="Start" Margin="22, 18, 29, 0">
-    <Label Text="Специальность" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073"/>
-    <Frame Margin="0, 12, 0, 0" CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="8, 10, 8, 10">
-        <VerticalStackLayout HorizontalOptions="Start">
-            <Button x:Name="Branch1" Clicked="Branch1_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" Text="Реклама и маркетинг" FontFamily="QANELASBOLD" Margin="0, 0, 0, 8" FontSize="24" TextColor="#FAE073"/>
-            <Button x:Name="Branch2" Clicked="Branch2_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" Text="Информационные технологии" FontFamily="QANELASBOLD" Margin="0, 0, 0, 8" FontSize="24" TextColor="#FAE073"/>
-            <Button x:Name="Branch3" Clicked="Branch3_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" Text="Социо-культурная деятельность" FontFamily="QANELASBOLD" Margin="0, 0, 0, 8" FontSize="24" TextColor="#FAE073"/>
-            <Button x:Name="Branch4" Clicked="Branch4_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" WidthRequest="220" Text="Право и судебное администрирование" Padding="16, 12, 16, 12" FontFamily="QANELASBOLD" Margin="0, 0, 0, 8" FontSize="24" TextColor="#FAE073"/>
-            <Button x:Name="Branch5" Clicked="Branch5_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" Text="Предпринимательство" FontFamily="QANELASBOLD" FontSize="24" Margin="0, 0, 0, 8" TextColor="#FAE073"/>
-            <Button x:Name="Branch6" Clicked="Branch6_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" Text="Дизайн" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
-        </VerticalStackLayout>
-    </Frame>
-</StackLayout>
-                
-                <StackLayout HorizontalOptions="Fill" Orientation="Horizontal" >
-                    <ImageButton x:Name="BackButton" Clicked="BackButton_Clicked" HorizontalOptions="Start" HeightRequest="52" WidthRequest="52" Margin="24, 24, 0, 58"/>
-                    <ImageButton x:Name="NextButton" Clicked="NextButton_Clicked" HorizontalOptions="End" Rotation="180" HeightRequest="52" WidthRequest="52" Margin="242, 24, 22, 58"/>
+
+                <StackLayout HorizontalOptions="Start" Margin="0, 18, 0, 0" x:Name="MondaySL">
+                    <Label Text="Понедельник" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
+                    <ListView x:Name="MondayLessonsShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid ColumnDefinitions="90, *">
+                                        <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
+                                            <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
+                                            <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
+                                            <Label Text="{Binding Description}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Start" Margin="0, 18, 0, 0" x:Name="TuesdaySL">
+                    <Label Text="Вторник" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
+                    <ListView x:Name="TuesdayLessonsShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid ColumnDefinitions="90, *">
+                                        <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
+                                            <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
+                                            <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
+                                            <Label Text="{Binding Description}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Start" Margin="0, 18, 0, 0" x:Name="WednesdaySL">
+                    <Label Text="Среда" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
+                    <ListView x:Name="WednesdayLessonsShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid ColumnDefinitions="90, *">
+                                        <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
+                                            <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
+                                            <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
+                                            <Label Text="{Binding Description}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Start" Margin="0, 18, 0, 0" x:Name="ThursdaySL">
+                    <Label Text="Четверг" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
+                    <ListView x:Name="ThursdayLessonsShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid ColumnDefinitions="90, *">
+                                        <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
+                                            <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
+                                            <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
+                                            <Label Text="{Binding Description}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Start" Margin="0, 18, 0, 0" x:Name="FridaySL">
+                    <Label Text="Пятница" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
+                    <ListView x:Name="FridayLessonsShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid ColumnDefinitions="90, *">
+                                        <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
+                                            <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
+                                            <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
+                                            <Label Text="{Binding Description}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Start" Margin="0, 18, 0, 0" x:Name="SaturdaySL">
+                    <Label Text="Суббота" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
+                    <ListView x:Name="SaturdayLessonsShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid ColumnDefinitions="90, *">
+                                        <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
+                                            <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
+                                            <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
+                                            <Label Text="{Binding Description}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+
+                <StackLayout HorizontalOptions="Start" Margin="0, 18, 0, 0" x:Name="SundaySL">
+                    <Label Text="Воскресенье" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
+                    <ListView x:Name="SundayLessonsShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid ColumnDefinitions="90, *">
+                                        <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
+                                            <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                        </VerticalStackLayout>
+                                        <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
+                                            <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
+                                            <Label Text="{Binding Description}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </StackLayout>
             </VerticalStackLayout>
         </ScrollView>
