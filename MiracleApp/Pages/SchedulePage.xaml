@@ -86,7 +86,7 @@
                                     <Grid ColumnDefinitions="90, *">
                                         <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
                                             <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
-                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" Opacity="50" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
                                         </VerticalStackLayout>
                                         <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
                                             <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
@@ -108,7 +108,7 @@
                                     <Grid ColumnDefinitions="90, *">
                                         <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
                                             <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
-                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" Opacity="50" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
                                         </VerticalStackLayout>
                                         <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
                                             <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
@@ -130,7 +130,7 @@
                                     <Grid ColumnDefinitions="90, *">
                                         <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
                                             <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
-                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" Opacity="50" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
                                         </VerticalStackLayout>
                                         <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
                                             <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
@@ -152,7 +152,7 @@
                                     <Grid ColumnDefinitions="90, *">
                                         <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
                                             <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
-                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" Opacity="50" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
                                         </VerticalStackLayout>
                                         <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
                                             <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
@@ -174,7 +174,7 @@
                                     <Grid ColumnDefinitions="90, *">
                                         <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
                                             <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
-                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" Opacity="50" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
                                         </VerticalStackLayout>
                                         <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
                                             <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
