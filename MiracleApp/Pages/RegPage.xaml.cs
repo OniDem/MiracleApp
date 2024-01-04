@@ -18,7 +18,7 @@ public partial class RegPage : ContentPage
             Navigation.PushAsync(new MainPage());
         }
         InitializeComponent();
-        BackButton.Source = "backbutton.png";
+        BackButton.Source = "arrow.png";
         List<string> dep = new()
         {
             "Выберите отделение",
