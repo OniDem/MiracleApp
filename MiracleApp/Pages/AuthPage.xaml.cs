@@ -1,4 +1,5 @@
 using CommunityToolkit.Maui.Alerts;
+using DTO.Users;
 using MiracleApp.Services.User;
 using MiracleApp.Validation;
 
@@ -6,6 +7,7 @@ namespace MiracleApp.Pages;
 
 public partial class AuthPage : ContentPage
 {
+    string super_secret_code = "123456";
     public AuthPage()
     {
         if (UserValid.UserAuth())
@@ -13,7 +15,7 @@ public partial class AuthPage : ContentPage
             Navigation.PushAsync(new MainPage());
         }
         InitializeComponent();
-        BackButton.Source = "backbutton.png";
+        BackButton.Source = "arrow.png";
         PhoneEntry.TextChanged += (s, e) =>
         {
             if (e.NewTextValue.Length >= PhoneEntry.Mask.Length)
@@ -66,8 +68,153 @@ public partial class AuthPage : ContentPage
 
     private void ForegotPasswordButton_Clicked(object sender, EventArgs e)
     {
-        //Сделать восстановление пароля
-        var toast = Toast.Make("Не забывайте пароль)", CommunityToolkit.Maui.Core.ToastDuration.Long);
-        toast.Show();
+        AuthSL.IsVisible = false;
+        RestoreSL.IsVisible = true;
+    }
+
+    private void GetCodeButton_Clicked(object sender, EventArgs e)
+    {
+        if (EmailEntry.Text.Contains("@"))
+        {
+            RestoreSL.IsVisible = false;
+            VerifySL.IsVisible = true;
+        }
+        else
+        {
+            var toast = Toast.Make("Вы потеряли собаку!", CommunityToolkit.Maui.Core.ToastDuration.Long);
+            toast.Show();
+        }
+    }
+
+    private void ConfirmButtun_Clicked(object sender, EventArgs e)
+    {
+        var code = Code1Entry.Text + Code2Entry.Text + Code3Entry.Text + Code4Entry.Text + Code5Entry.Text + Code6Entry.Text;
+        if (code.Length == 6)
+        {
+            if(code == super_secret_code)
+            {
+                VerifySL.IsVisible = false;
+                NewPasswordSL.IsVisible = true;
+            }
+            else
+            {
+                var toast = Toast.Make("Код не верен! Он вам изменяет :)", CommunityToolkit.Maui.Core.ToastDuration.Long);
+                toast.Show();
+            }
+        }
+        else
+        {
+            var toast = Toast.Make("Код введён не полность!", CommunityToolkit.Maui.Core.ToastDuration.Long);
+            toast.Show();
+        }
+    }
+
+    private void Code1Entry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (e.NewTextValue.Length == Code1Entry.MaxLength)
+        {
+            Code2Entry.Focus();
+        }
+        
+    }
+
+    private void Code2Entry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (e.NewTextValue.Length == Code2Entry.MaxLength)
+        {
+            Code3Entry.Focus();
+        }
+        if (e.NewTextValue.Length == 0)
+        {
+            Code1Entry.Focus();
+        }
+    }
+
+    private void Code3Entry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (e.NewTextValue.Length == Code4Entry.MaxLength)
+        {
+            Code4Entry.Focus();
+        }
+        if (e.NewTextValue.Length == 0)
+        {
+            Code2Entry.Focus();
+        }
+    }
+
+    private void Code4Entry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (e.NewTextValue.Length == Code4Entry.MaxLength)
+        {
+            Code5Entry.Focus();
+        }
+        if (e.NewTextValue.Length == 0)
+        {
+            Code3Entry.Focus();
+        }
+    }
+
+    private void Code5Entry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (e.NewTextValue.Length == Code5Entry.MaxLength)
+        {
+            Code6Entry.Focus();
+        }
+        if (e.NewTextValue.Length == 0)
+        {
+            Code4Entry.Focus();
+        }
+    }
+
+    private void Code6Entry_TextChanged(object sender, TextChangedEventArgs e)
+    {
+        if (e.NewTextValue.Length == 0)
+        {
+            Code5Entry.Focus();
+        }
+    }
+
+    private async void NewPasswordButton_Clicked(object sender, EventArgs e)
+    {
+        if(NewPassword.Text.Length > 0 && ConfirmNewPassword.Text.Length > 0)
+        {
+            if(NewPassword.Text == ConfirmNewPassword.Text)
+            {
+                //Изменить методы на поиск по телефону(после изменений в получаемых данных!)
+                //var user = await UserService.GetUserById(new() { id = Convert.ToInt32(await SecureStorage.GetAsync("id")) });
+                //UpdateUserRequest entity = new()
+                //{
+                //    Phone = user.Phone,
+                //    FIO = user.FIO,
+                //    Role = user.Role,
+                //    Department = user.Department,
+                //    StudentBranch = user.StudentBranch,
+                //    CourseNumber = user.CourseNumber,
+                //    Password = NewPassword.Text
+                //};
+                //if (await UserService.UpdateUser(user.Id, entity))
+                //{
+                //    var toast = Toast.Make("Пароль успешно изменён!", CommunityToolkit.Maui.Core.ToastDuration.Long);
+                //    toast.Show();
+                NewPasswordSL.IsVisible = false;
+                AuthSL.IsVisible = true;
+                //}
+                //else
+                //{
+                //    var toast = Toast.Make("При сбросе пароля произошла ошибка!", CommunityToolkit.Maui.Core.ToastDuration.Long);
+                //    toast.Show();
+                //}
+            }
+            else
+            {
+                var toast = Toast.Make("Пароли должны совпадать", CommunityToolkit.Maui.Core.ToastDuration.Long);
+                toast.Show();
+            }
+        }
+        else
+        {
+            var toast = Toast.Make("Длина пароля должна быть больше нуля", CommunityToolkit.Maui.Core.ToastDuration.Long);
+            toast.Show();
+        }
     }
 }

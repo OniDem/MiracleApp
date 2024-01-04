@@ -4,22 +4,82 @@
              x:Class="MiracleApp.Pages.AuthPage"
              xmlns:control="clr-namespace:Bertuzzi.MAUI.MaskedEntry;assembly=Bertuzzi.MAUI.MaskedEntry"
              Title="AuthPage"
-                      xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui">
+                      xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
     <ContentPage.Behaviors>
         <mct:StatusBarBehavior StatusBarColor="#242323" />
     </ContentPage.Behaviors>
     <Grid BackgroundColor="#242323" VerticalOptions="FillAndExpand">
         <ImageButton Grid.Column="0" x:Name="BackButton" Clicked="BackButton_Clicked" VerticalOptions="Start" HorizontalOptions="Start" Margin="22, 22, 0, 0" HeightRequest="46" WidthRequest="46"/>
-        <Label Grid.Column="1" Text="Вход" TextColor="#FAE073" VerticalOptions="Start" Margin="0, 35, 0, 0" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24"/>
-        <VerticalStackLayout Margin="22, 116, 0, 0">
-            <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
-                <control:MaskedEntry x:Name="PhoneEntry" Mask="+7 (XXX) XXX-XX-XX" Text="" Placeholder="Номер телефона" Keyboard="Numeric" BackgroundColor="#FAE073" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
-            </Frame>
-            <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
-                <Entry x:Name="PasswordEntry" BackgroundColor="#FAE073" Text="" IsPassword="true" Placeholder="Пароль" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
-            </Frame>
-            <Button Text="Войти" BackgroundColor="#FAE073" TextColor="#242323" HorizontalOptions="Center" CornerRadius="16" FontFamily="QANELASBLACK" FontSize="24" Margin="0, 48, 0, 0" Padding="42, 20" x:Name="AuthButton" Clicked="AuthButton_Clicked"/>
-            <Button Text="Забыли пароль?" BackgroundColor="Transparent" BorderWidth="2" BorderColor="#FAE073" TextColor="#FAE073" CornerRadius="50" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24" Margin="0, 48, 0, 0" Padding="42, 20" x:Name="ForegotPasswordButton" Clicked="ForegotPasswordButton_Clicked"/>
-        </VerticalStackLayout>
+        <StackLayout x:Name="AuthSL">
+            <Label Grid.Column="1" Text="Вход" TextColor="#FAE073" VerticalOptions="Start" Margin="0, 35, 0, 0" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24"/>
+            <VerticalStackLayout Margin="22, 116, 0, 0">
+                <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
+                    <control:MaskedEntry x:Name="PhoneEntry" Mask="+7 (XXX) XXX-XX-XX" Text="" Placeholder="Номер телефона" Keyboard="Numeric" BackgroundColor="#FAE073" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+                </Frame>
+                <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
+                    <Entry x:Name="PasswordEntry" BackgroundColor="#FAE073" Text="" IsPassword="true" Placeholder="Пароль" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+                </Frame>
+                <Button Text="Войти" BackgroundColor="#FAE073" TextColor="#242323" HorizontalOptions="Center" CornerRadius="16" FontFamily="QANELASBLACK" FontSize="24" Margin="0, 48, 0, 0" Padding="42, 20" x:Name="AuthButton" Clicked="AuthButton_Clicked"/>
+                <Button Text="Забыли пароль?" BackgroundColor="Transparent" BorderWidth="2" BorderColor="#FAE073" TextColor="#FAE073" CornerRadius="50" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24" Margin="0, 48, 0, 0" Padding="42, 20" x:Name="ForegotPasswordButton" Clicked="ForegotPasswordButton_Clicked"/>
+            </VerticalStackLayout>
+        </StackLayout>
+
+        <StackLayout x:Name="RestoreSL" IsVisible="false">
+            <Label Grid.Column="1" Text="Сброс пароля" TextColor="#FAE073" VerticalOptions="Start" Margin="0, 35, 0, 0" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24"/>
+            <VerticalStackLayout Margin="22, 116, 0, 0">
+                <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
+                    <Entry Text="" Placeholder="Эл. почта" x:Name="EmailEntry" BackgroundColor="#FAE073" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+                    
+                </Frame>
+                <Label Text="Мы отправим вам код для сброса." FontSize="16" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                <Button Text="Получить код" x:Name="GetCodeButton" Clicked="GetCodeButton_Clicked" BackgroundColor="#FAE073" TextColor="#242323" HorizontalOptions="Center" CornerRadius="16" FontFamily="QANELASBLACK" FontSize="24" Margin="0, 48, 0, 0" Padding="42, 20"/>
+            </VerticalStackLayout>
+        </StackLayout>
+        
+        <StackLayout x:Name="VerifySL" IsVisible="false">
+            <Label Grid.Column="1" Text="Введите полученный код" TextColor="#FAE073" VerticalOptions="Start" Margin="0, 35, 0, 0" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24"/>
+            <VerticalStackLayout Margin="22">
+                <Label Text="Введите полученный код" TextColor="#FAE073" VerticalOptions="Start" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24"/>
+                <Grid HorizontalOptions="Fill" Margin="0, 26, 0, 0">
+                    <Grid ColumnDefinitions="50, 50, 50" ColumnSpacing="6" VerticalOptions="Start" HorizontalOptions="Start">
+                        <Frame Grid.Column="0" BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Padding="10, 9" >
+                            <Entry Text="" x:Name="Code1Entry" TextChanged="Code1Entry_TextChanged" MaxLength="1" Keyboard="Numeric" BackgroundColor="#FAE073" FontSize="24" PlaceholderColor="#242323" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#242323" FontFamily="QANELASBLACK"/>
+                        </Frame>
+                        <Frame Grid.Column="1" BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Padding="10, 9">
+                            <Entry Text="" x:Name="Code2Entry" TextChanged="Code2Entry_TextChanged" MaxLength="1" Keyboard="Numeric" BackgroundColor="#FAE073" FontSize="24" PlaceholderColor="#242323" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#242323" FontFamily="QANELASBLACK"/>
+                        </Frame>
+                        <Frame Grid.Column="2" BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Padding="10, 9">
+                            <Entry Text="" x:Name="Code3Entry" TextChanged="Code3Entry_TextChanged" MaxLength="1" Keyboard="Numeric" BackgroundColor="#FAE073" FontSize="24" PlaceholderColor="#242323" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#242323" FontFamily="QANELASBLACK"/>
+                        </Frame>
+                    </Grid>
+                    <Grid ColumnDefinitions="50, 50, 50" ColumnSpacing="6"  VerticalOptions="Start" HorizontalOptions="End">
+                        <Frame Grid.Column="0" BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Padding="10, 9" >
+                            <Entry Text="" x:Name="Code4Entry" TextChanged="Code4Entry_TextChanged"  MaxLength="1" Keyboard="Numeric" BackgroundColor="#FAE073" FontSize="24" PlaceholderColor="#242323" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#242323" FontFamily="QANELASBLACK"/>
+                        </Frame>
+                        <Frame Grid.Column="1" BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Padding="10, 9">
+                            <Entry Text="" x:Name="Code5Entry" TextChanged="Code5Entry_TextChanged" MaxLength="1" Keyboard="Numeric" BackgroundColor="#FAE073" FontSize="24" PlaceholderColor="#242323" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#242323" FontFamily="QANELASBLACK"/>
+                        </Frame>
+                        <Frame Grid.Column="2" BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Padding="10, 9">
+                            <Entry Text="" x:Name="Code6Entry" TextChanged="Code6Entry_TextChanged" MaxLength="1" Keyboard="Numeric" BackgroundColor="#FAE073" FontSize="24" PlaceholderColor="#242323" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="#242323" FontFamily="QANELASBLACK"/>
+                        </Frame>
+                    </Grid>
+                </Grid>
+                <Button Text="Подтвердить" x:Name="ConfirmButtun" Clicked="ConfirmButtun_Clicked" BackgroundColor="#FAE073" TextColor="#242323" HorizontalOptions="Center" CornerRadius="16" FontFamily="QANELASBLACK" FontSize="24" Margin="0, 48, 0, 0" Padding="42, 20"/>
+            </VerticalStackLayout>
+        </StackLayout>
+
+        <StackLayout x:Name="NewPasswordSL" IsVisible="false">
+            <Label Grid.Column="1" Text="Придумайте новый пароль" TextColor="#FAE073" VerticalOptions="Start" Margin="0, 35, 0, 0" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24"/>
+            <VerticalStackLayout Margin="22, 116, 0, 0">
+                <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
+                    <Entry Text="" x:Name="NewPassword" Placeholder="Пароль" IsPassword="True" BackgroundColor="#FAE073" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+                </Frame>
+                <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
+                    <Entry Text="" x:Name="ConfirmNewPassword" IsPassword="True" Placeholder="Повторите пароль"  BackgroundColor="#FAE073" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+                </Frame>
+                <Button Text="Сохранить" x:Name="NewPasswordButton" Clicked="NewPasswordButton_Clicked" BackgroundColor="#FAE073" TextColor="#242323" HorizontalOptions="Center" CornerRadius="16" FontFamily="QANELASBLACK" FontSize="24" Margin="0, 48, 0, 0" Padding="42, 20"/>
+            </VerticalStackLayout>
+        </StackLayout>
     </Grid>
 </ContentPage>
