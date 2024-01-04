@@ -11,10 +11,10 @@ public partial class SettingsPage : ContentPage
             Navigation.PushAsync(new HelloPage());
         }
         InitializeComponent();
-        SettingsButton.Source = "settings.png";
-        HomeButton.Source = "home.png";
-        ProfileButton.Source = "profile.png";
-        NotificationButton.Source = "notification.png";
+        SettingsButton.Source = "settings.svg";
+        HomeButton.Source = "home.svg";
+        ProfileButton.Source = "profile.svg";
+        NotificationButton.Source = "notification.svg";
     }
 
     private async void SettingsButton_Clicked(object sender, EventArgs e)

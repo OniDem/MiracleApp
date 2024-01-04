@@ -12,10 +12,10 @@ namespace MiracleApp.Pages
                 Navigation.PushAsync(new HelloPage());
             }
             InitializeComponent();
-            SettingsButton.Source = "settings.png";
-            HomeButton.Source = "home.png";
-            ProfileButton.Source = "profile.png";
-            NotificationButton.Source = "notification.png";
+            SettingsButton.Source = "settings.svg";
+            HomeButton.Source = "home_selected.svg";
+            ProfileButton.Source = "profile.svg";
+            NotificationButton.Source = "notification.svg";
             Dispatcher.Dispatch(async () =>
             {
                 //newsListView.BeginRefresh();

@@ -2,14 +2,18 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MiracleApp.Pages.MainPage"
-             Shell.TabBarBackgroundColor="#9F5CC0">
+                      xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui">
+
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior  StatusBarColor="#8031A7" StatusBarStyle="LightContent"/>
+    </ContentPage.Behaviors>
 
     <Grid BackgroundColor="#8031A7">
         <Image Source="background.png" Aspect="AspectFill" />
 
-        <VerticalStackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand"  Margin="22,0" Spacing="0" AnchorX="0" AnchorY="0" Padding="0">
+        <VerticalStackLayout VerticalOptions="Start" HorizontalOptions="FillAndExpand"  Margin="22,0" >
 
-            <VerticalStackLayout Padding="0">
+            <VerticalStackLayout>
                 <Label WidthRequest="289" HeightRequest="79" HorizontalOptions="Start">
                     <Label.FormattedText>
                         <FormattedString>
@@ -59,12 +63,12 @@
 
         </VerticalStackLayout>
         
-        <Grid ColumnDefinitions="*, *, *, *" ColumnSpacing="40" HorizontalOptions="Center" VerticalOptions="End" Margin="0, 14, 0, 7" ZIndex="1">
-            <ImageButton Grid.Column="0" x:Name="SettingsButton" Clicked="SettingsButton_Clicked"/>
-            <ImageButton Grid.Column="1" x:Name="HomeButton" Clicked="HomeButton_Clicked"/>
-            <ImageButton Grid.Column="2" x:Name="ProfileButton" Clicked="ProfileButton_Clicked"/>
-            <ImageButton Grid.Column="3" Clicked="NotificationButton_Clicked" x:Name="NotificationButton"/>
+        <Grid ColumnDefinitions="*, *, *, *" ColumnSpacing="40" HorizontalOptions="Center" VerticalOptions="End" Margin="0, 14, 0, 12" ZIndex="1">
+            <ImageButton Grid.Column="0" x:Name="SettingsButton" Clicked="SettingsButton_Clicked" HeightRequest="38" WidthRequest="38"/>
+            <ImageButton Grid.Column="1" x:Name="HomeButton" Clicked="HomeButton_Clicked" HeightRequest="38" WidthRequest="38"/>
+            <ImageButton Grid.Column="2" x:Name="ProfileButton" Clicked="ProfileButton_Clicked" HeightRequest="38" WidthRequest="38"/>
+            <ImageButton Grid.Column="3" Clicked="NotificationButton_Clicked" x:Name="NotificationButton" HeightRequest="38" WidthRequest="38"/>
         </Grid>
-        <Frame VerticalOptions="EndAndExpand" BorderColor="#9F5CC0" BackgroundColor="#9F5CC0" HorizontalOptions="FillAndExpand"/>
+        <Frame VerticalOptions="EndAndExpand" BorderColor="#9F5CC0" Opacity="0.2" HeightRequest="62" BackgroundColor="#9F5CC0" ZIndex="0" HorizontalOptions="FillAndExpand"/>
     </Grid>
 </ContentPage>
