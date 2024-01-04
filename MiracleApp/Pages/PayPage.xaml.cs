@@ -11,8 +11,6 @@ public partial class PayPage : ContentPage
             Navigation.PushAsync(new HelloPage());
         }
         InitializeComponent();
-        BackButton.Source = "backbutton.png";
-        NextButton.Source = "backbutton.png";
     }
 
     private async void MainButton_Clicked(object sender, EventArgs e)

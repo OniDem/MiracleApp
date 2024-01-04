@@ -11,7 +11,6 @@ public partial class CertificatePage : ContentPage
             Navigation.PushAsync(new HelloPage());
         }
         InitializeComponent();
-        BackButton.Source = "backbutton.png";
     }
 
     private async void MainButton_Clicked(object sender, EventArgs e)

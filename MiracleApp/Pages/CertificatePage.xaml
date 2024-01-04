@@ -3,15 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MiracleApp.Pages.CertificatePage"
              Shell.TabBarIsVisible="False"
-             Shell.TabBarBackgroundColor="#9F5CC0">
-    
+                      xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui">
+
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior  StatusBarColor="#8031A7" StatusBarStyle="LightContent"/>
+    </ContentPage.Behaviors>
     <Grid BackgroundColor="#8031A7">
         <Image Aspect="Fill" Source="background.png"/>
 
         <ScrollView >
             <VerticalStackLayout HorizontalOptions="Start" VerticalOptions="Start">
-                <StackLayout  HorizontalOptions="Start" VerticalOptions="Start">
-                    <Label WidthRequest="289" HeightRequest="78" HorizontalOptions="Start" Margin="22, 34, 0, 0">
+                <VerticalStackLayout  Margin="22,0" >
+                    <Label WidthRequest="289" HeightRequest="79" HorizontalOptions="Start">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Miracle" TextColor="#FAE073" FontSize="78" FontFamily="QANELASBLACK"/>
@@ -20,10 +23,10 @@
                         </Label.FormattedText>
                     </Label>
 
-                    <Frame BackgroundColor="#1E1E1E" BorderColor="#1E1E1E" CornerRadius="16" Padding="12,0" WidthRequest="293" HeightRequest="54" HorizontalOptions="Start" Margin="22,4">
+                    <Frame BackgroundColor="#1E1E1E" BorderColor="#1E1E1E" CornerRadius="16" Padding="12,0" WidthRequest="293" HeightRequest="54" HorizontalOptions="Start" Margin="0,4">
                         <Label Text="Новоколледж" TextColor="#FAE073" FontSize="42" FontFamily="QANELASBLACK"/>
                     </Frame>
-                </StackLayout>
+                </VerticalStackLayout>
                 <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Margin="0, 24, 0 , 0">
                     <HorizontalStackLayout>
                         <Button Text="Главная" x:Name="MainButton" Clicked="MainButton_Clicked" CornerRadius="50" BorderWidth="2" Padding="9, 0, 9, 0" Margin="1, 0, 12, 0" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR" FontSize="24" BackgroundColor="Transparent" HeightRequest="47" WidthRequest="117"/>
@@ -32,35 +35,39 @@
                         <Button Text="Справки" x:Name="СertificateButton" Clicked="СertificateButton_Clicked" CornerRadius="50" BorderWidth="2" Padding="9, 0, 9, 0" Margin="0, 0, 12, 0" TextColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASREGULAR" FontSize="24" BackgroundColor="#9F5CC0" HeightRequest="47" WidthRequest="130"/>
                     </HorizontalStackLayout>
                 </ScrollView>
+                <Label HorizontalOptions="Center" VerticalOptions="Center" Margin="25" LineBreakMode="WordWrap" FontSize="24" TextColor="#FAE073">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="В текущий момент данная страница находиться в разработке! (Поля и кнопка не рабочие)" TextColor="#FAE073" FontSize="24" FontFamily="QANELASBLACK"/>
+                            <Span Text="По вопросам обращать к @RichPeach (приписывайтесь на инст)" TextColor="#232323" FontSize="24" FontFamily="QANELASBLACK" />
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
                 <Label HorizontalTextAlignment="Center" Text="Заказать справку об обучении в Новоколледже" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073" Margin="42, 24, 41, 0"/>
-                <VerticalStackLayout>
+                <VerticalStackLayout >
                     <Frame BackgroundColor="#9F5CC0" BorderColor="Black" CornerRadius="16" Margin="24, 18, 21, 0" Padding="18, 11, 18, 12">
-                        <Entry BackgroundColor="#9F5CC0" Placeholder="Ф.И.О" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                        <Entry BackgroundColor="#9F5CC0" Placeholder="Ф.И.О" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR" IsEnabled="False"/>
                     </Frame>
                     <Frame BackgroundColor="#9F5CC0" BorderColor="Black" CornerRadius="16" Margin="24, 18, 21, 0" Padding="18, 11, 18, 12">
-                        <Entry BackgroundColor="#9F5CC0" Placeholder="Курс" Keyboard="Numeric" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                        <Entry BackgroundColor="#9F5CC0" Placeholder="Курс" Keyboard="Numeric" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR" IsEnabled="False"/>
                     </Frame>
                     <Frame BackgroundColor="#9F5CC0" BorderColor="Black" CornerRadius="16" Margin="24, 18, 21, 0" Padding="18, 11, 18, 12">
-                        <Entry BackgroundColor="#9F5CC0" Placeholder="Специальность" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                        <Entry BackgroundColor="#9F5CC0" Placeholder="Специальность" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR" IsEnabled="False"/>
                     </Frame>
                     <Frame BackgroundColor="#9F5CC0" BorderColor="Black" CornerRadius="16" Margin="24, 18, 21, 0" Padding="18, 11, 18, 12">
-                        <Entry BackgroundColor="#9F5CC0" Placeholder="Куда требуется справка?" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                        <Entry BackgroundColor="#9F5CC0" Placeholder="Куда требуется справка?" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR" IsEnabled="False"/>
                     </Frame>
                     <Frame BackgroundColor="#9F5CC0" BorderColor="Black" CornerRadius="16" Margin="24, 18, 21, 0" Padding="18, 11, 18, 12">
-                        <Entry BackgroundColor="#9F5CC0" Placeholder="Отделение" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                        <Entry BackgroundColor="#9F5CC0" Placeholder="Отделение" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR" IsEnabled="False"/>
                     </Frame>
                     <Frame BackgroundColor="#9F5CC0" BorderColor="Black" CornerRadius="16" Margin="24, 18, 21, 0" Padding="18, 11, 18, 12">
-                        <Entry BackgroundColor="#9F5CC0" Placeholder="Дата рождения" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                        <Entry BackgroundColor="#9F5CC0" Placeholder="Дата рождения" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR" IsEnabled="False"/>
                     </Frame>
                     <Frame BackgroundColor="#9F5CC0" BorderColor="Black" CornerRadius="16" Margin="24, 18, 21, 0" Padding="18, 11, 18, 12">
-                        <Entry BackgroundColor="#9F5CC0" Placeholder="Номер телефона" Keyboard="Telephone" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                        <Entry BackgroundColor="#9F5CC0" Placeholder="Номер телефона" Keyboard="Telephone" FontSize="24" TextColor="#FAE073" FontFamily="QANELASREGULAR" IsEnabled="False"/>
                     </Frame>
                 </VerticalStackLayout>
-                <Button HorizontalOptions="Center" BackgroundColor="#1E1E1E" Margin="0, 24, 0, 0 " CornerRadius="16" Text="Заказать" Padding="64, 20, 64, 20" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073"/>
-
-                <StackLayout HorizontalOptions="Fill" Orientation="Horizontal" >
-                    <ImageButton x:Name="BackButton" Clicked="BackButton_Clicked" HorizontalOptions="Start" HeightRequest="52" WidthRequest="52" Margin="24, 24, 0, 58"/>
-                </StackLayout>
+                <Button HorizontalOptions="Center" BackgroundColor="#1E1E1E" Margin="0, 24, 0, 0 " CornerRadius="16" Text="Заказать" Padding="64, 20, 64, 20" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073" IsEnabled="False"/>
             </VerticalStackLayout>
         </ScrollView>
     </Grid>
