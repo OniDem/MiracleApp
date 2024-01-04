@@ -22,15 +22,21 @@ namespace Core.Entity
 
         public int TeacherId { get; set; }
 
-        public string TeacherFIO { get; set; }
+        public string Teacher { get; set; }
 
         public string CourseNumber { get; set; }
 
-        public DepartmentEnum Department { get; set; }
+        public string Department { get; set; }
+
+        public string Where { get; set; }
+
+        public string Branch { get; set; }
 
         public int StudentCount { get; set; }
 
         public bool Online { get; set; }
+
+        public string Extra { get; set; }
 
     }
 }

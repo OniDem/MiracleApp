@@ -1,60 +1,26 @@
 ﻿using Core.Entity;
+using Newtonsoft.Json;
 
 namespace MiracleApp.Services.Lesson
 {
     static class LessonService
     {
-        public static StackLayout ShowLesson(LessonEntity lesson)
+        public static async Task<List<LessonEntity>> ShowAll()
         {
-            return new StackLayout
+            string serverURI = "http://45.153.69.204:5000/Lesson/ShowAll";
+            HttpClient client = new HttpClient();
+            Dictionary<string, string> Params = new()
             {
-                new Frame
-                {
-                    Margin = 5,
-                    ZIndex = 0,
-                    BackgroundColor = Color.FromArgb("#1E1E1E"),
-                    BorderColor = Color.FromArgb("#1E1E1E"),
-                    Content = new StackLayout
-                    {
-                    new Label
-                    {
-                        Text=$"{lesson.Name} {lesson.TimeStart} к.310 {lesson.Department} ",
-                        TextColor = Color.FromArgb("#FAE073"),
-                        FontSize = 20,
-                        FontFamily="QANELASBLACK"
-                    },
 
-                    new Label
-                    {
-                        Text=$"Начало: {lesson.TimeStart}",
-                        TextColor = Color.FromArgb("#FAE073"),
-                        FontSize = 20,
-                        FontFamily="QANELASBLACK"
-                    },
-                    new Label
-                    {
-                        Text=$"Конец: {lesson.TimeEnd}",
-                        TextColor = Color.FromArgb("#FAE073"),
-                        FontSize = 20,
-                        FontFamily="QANELASBLACK"
-                    },
-                    new Label
-                    {
-                        Text=$"Где: {lesson.Department}",
-                        TextColor = Color.FromArgb("#FAE073"),
-                        FontSize = 20,
-                        FontFamily="QANELASBLACK"
-                    },
-                    new Label
-                    {
-                        Text=$"Преподователь: {lesson.TeacherFIO}",
-                        TextColor = Color.FromArgb("#FAE073"),
-                        FontSize = 20,
-                        FontFamily="QANELASBLACK"
-                    }
-                    }
-                }
             };
+            FormUrlEncodedContent content = new(Params);
+            HttpResponseMessage response = await client.PostAsync(serverURI, content);
+            if (response.IsSuccessStatusCode)
+            {
+                var result = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<List<LessonEntity>>(result);
+            }
+            return null;
         }
     }
 }

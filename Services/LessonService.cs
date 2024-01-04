@@ -21,12 +21,17 @@ namespace Services
                 Name = request.Name,
                 Date = request.Date,
                 DayOfWeek = request.DayOfWeek,
-                //Time = request.Time,                    Edit!
+                TimeStart = request.TimeStart,
+                TimeEnd = request.TimeEnd,
                 TeacherId = request.TeacherId,
-                CourseNumber = request.Course,
+                Teacher = request.Teacher,
+                CourseNumber = request.CourseNumber,
                 Department = request.Department,
+                Where = request.Where,
+                Branch = request.Branch,
                 StudentCount = request.StudentCount,
                 Online = request.Online,
+                Extra = request.Extra
             });
         }
 
@@ -38,12 +43,17 @@ namespace Services
                 Name = request.Name,
                 Date = request.Date,
                 DayOfWeek = request.DayOfWeek,
-                //Time = request.Time,                    Edit!
+                TimeStart = request.TimeStart,
+                TimeEnd = request.TimeEnd,
                 TeacherId = request.TeacherId,
-                CourseNumber = request.Course,
+                Teacher = request.Teacher,
+                CourseNumber = request.CourseNumber,
                 Department = request.Department,
+                Where = request.Where,
+                Branch = request.Branch,
                 StudentCount = request.StudentCount,
                 Online = request.Online,
+                Extra = request.Extra
             });
         }
 
