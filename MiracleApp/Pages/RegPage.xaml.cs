@@ -69,7 +69,7 @@ public partial class RegPage : ContentPage
         if (CBSTeacher.IsChecked)
         {
             CBStudent.IsChecked = false;
-            reg_role = UserRoleEnum.Teacher;
+            reg_role = UserRoleEnum.Преподователь;
         }
     }
 
@@ -78,7 +78,7 @@ public partial class RegPage : ContentPage
         if (CBStudent.IsChecked)
         {
             CBSTeacher.IsChecked = false;
-            reg_role = UserRoleEnum.Student;
+            reg_role = UserRoleEnum.Студент;
         }
     }
 
@@ -109,15 +109,15 @@ public partial class RegPage : ContentPage
         {
             switch (reg_role)
             {
-                case UserRoleEnum.Student:
+                case UserRoleEnum.Студент:
                     VLChoiceRole.IsVisible = false;
                     VLStudentInfo.IsVisible = true;
-                    reg_user.Role = UserRoleEnum.Student;
+                    reg_user.Role = UserRoleEnum.Студент;
                     break;
-                case UserRoleEnum.Teacher:
+                case UserRoleEnum.Преподователь:
                     VLChoiceRole.IsVisible = false;
                     VLTeacherInfo.IsVisible = true;
-                    reg_user.Role = UserRoleEnum.Teacher;
+                    reg_user.Role = UserRoleEnum.Преподователь;
                     break;
             }
         }
@@ -132,7 +132,7 @@ public partial class RegPage : ContentPage
     {
         switch (reg_role)
         {
-            case UserRoleEnum.Student:
+            case UserRoleEnum.Студент:
 
                 if (StudentFIOEntry.Text.Length > 0)
                 {
@@ -173,7 +173,7 @@ public partial class RegPage : ContentPage
                     toast.Show();
                 }
                 break;
-            case UserRoleEnum.Teacher:
+            case UserRoleEnum.Преподователь:
                 if (TeacherFIOEntry.Text.Length > 0)
                 {
                     if (TeacherBranchPicker.SelectedIndex != 0)
