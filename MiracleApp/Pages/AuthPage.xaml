@@ -4,7 +4,10 @@
              x:Class="MiracleApp.Pages.AuthPage"
              xmlns:control="clr-namespace:Bertuzzi.MAUI.MaskedEntry;assembly=Bertuzzi.MAUI.MaskedEntry"
              Title="AuthPage"
-             Shell.TabBarBackgroundColor="#242323">
+                      xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui">
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="#242323" />
+    </ContentPage.Behaviors>
     <Grid BackgroundColor="#242323" VerticalOptions="FillAndExpand">
         <ImageButton Grid.Column="0" x:Name="BackButton" Clicked="BackButton_Clicked" VerticalOptions="Start" HorizontalOptions="Start" Margin="22, 22, 0, 0" HeightRequest="46" WidthRequest="46"/>
         <Label Grid.Column="1" Text="Вход" TextColor="#FAE073" VerticalOptions="Start" Margin="0, 35, 0, 0" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24"/>

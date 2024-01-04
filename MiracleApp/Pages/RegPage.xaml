@@ -4,7 +4,10 @@
              xmlns:material="http://schemas.enisn-projects.io/dotnet/maui/uraniumui/material"
              xmlns:control="clr-namespace:Bertuzzi.MAUI.MaskedEntry;assembly=Bertuzzi.MAUI.MaskedEntry"
              x:Class="MiracleApp.Pages.RegPage"
-             Title="RegPage">
+             Title="RegPage"         xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui">
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="#242323" />
+    </ContentPage.Behaviors>
     <Grid BackgroundColor="#242323" VerticalOptions="FillAndExpand">
         <ImageButton Grid.Column="0" x:Name="BackButton" Clicked="BackButton_Clicked" VerticalOptions="Start" HorizontalOptions="Start" Margin="22, 22, 0, 0" HeightRequest="46" WidthRequest="46"/>
         <Label Grid.Column="1" Text="Регистрация" TextColor="#FAE073" VerticalOptions="Start" Margin="0, 35, 0, 0" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24"/>

@@ -2,7 +2,11 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MiracleApp.Pages.HelloPage"
-             Title="HelloPage">
+             Title="HelloPage"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui">
+    <ContentPage.Behaviors>
+        <mct:StatusBarBehavior StatusBarColor="#242323" />
+    </ContentPage.Behaviors>
     <Grid BackgroundColor="#242323" VerticalOptions="FillAndExpand">
         <VerticalStackLayout Padding="0" VerticalOptions="Start">
             <Label HeightRequest="79" Margin="0, 173, 0, 0" HorizontalOptions="Center">
