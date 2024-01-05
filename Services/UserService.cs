@@ -54,5 +54,9 @@ namespace Services
         {
             return _userRepository.ShowById(request.id);
         }
+        public async Task<UserEntity?> ShowByPhone(string phone)
+        {
+            return _userRepository.ShowByPhone(phone);
+        }
     }
 }

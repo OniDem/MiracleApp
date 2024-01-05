@@ -71,6 +71,15 @@ namespace MiracleApi.Controllers
             }
             return null;
         }
+        [HttpPost]
+        public async Task<UserEntity?> ShowByPhone(string phone)
+        {
+            if (ModelState.IsValid)
+            {
+                return await _userService.ShowByPhone(phone);
+            }
+            return null;
+        }
 
         [HttpDelete, Authorize]
         public async Task LogOut([FromBody] int user_id)
