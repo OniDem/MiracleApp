@@ -33,6 +33,7 @@ public partial class ProfilePage : ContentPage
         BackArrowButton.Source = "arrow.svg";
 
         statusBar.StatusBarColor = Color.FromArgb("#8031A7");
+
     }
 
     private async void SettingsButton_Clicked(object sender, EventArgs e)
@@ -68,7 +69,9 @@ public partial class ProfilePage : ContentPage
             CourceNumberEntry.Text = user.CourseNumber;
             StudentBrachEntry.Text = user.StudentBranch;
         });
-        
+
+        FIOLine.WidthRequest = FIOEntry.Width;
+        //CourseNumberLine.WidthRequest = CourceNumberEntry.WidthRequest;
     }
 
     private void LogOutSure_Clicked(object sender, EventArgs e)
@@ -107,6 +110,7 @@ public partial class ProfilePage : ContentPage
             UpdateUserRequest entity = new()
             {
                 Phone = user.Phone,
+                Email = user.Email,
                 FIO = FIOEntry.Text,
                 Role = user.Role,
                 Department = user.Department,
@@ -114,6 +118,7 @@ public partial class ProfilePage : ContentPage
                 CourseNumber = CourceNumberEntry.Text,
                 Password = user.Password
             };
+            
             if (await UserService.UpdateUser(user.Id, entity))
             {
                 var toast = Toast.Make("Данные успешно изменены!", CommunityToolkit.Maui.Core.ToastDuration.Long);

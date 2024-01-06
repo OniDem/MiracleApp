@@ -108,18 +108,22 @@
 
                 <VerticalStackLayout Margin="22, 46" VerticalOptions="FillAndExpand">
                     <Grid ColumnDefinitions="*, *">
-                        <Label Text="ФИО" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center"/>
-                        <Entry Placeholder="Ваше ФИО" x:Name="FIOEntry" Grid.Column="1" FontSize="20" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073" VerticalOptions="Center"/>
+                        <Label Text="ФИО" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center" ZIndex="0"/>
+
+                        <VerticalStackLayout  Grid.Column="1" HorizontalOptions="End">
+                            <Entry Placeholder="Ваше ФИО" x:Name="FIOEntry" FontSize="20" HorizontalTextAlignment="End" ZIndex="0" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073" VerticalOptions="Center"/>
+                            <Line BackgroundColor="#FAE073" x:Name="FIOLine" ZIndex="1"  HeightRequest="1" Margin="0, -10, 0, 0" WidthRequest="{Binding  Source=FIOEntry, Path=Width}"/>
+                        </VerticalStackLayout>
                     </Grid>
                     <Line  HeightRequest="1" BackgroundColor="#FAE073" Margin="0, 10, 0, 22"/>
                     <Grid ColumnDefinitions="*, *">
                         <Label Text="Курс" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center"/>
-                        <Entry Placeholder="Ваш курс" x:Name="CourceNumberEntry" Grid.Column="1" FontSize="20" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073" VerticalOptions="End"/>
+                        <Entry Placeholder="Ваш курс" HorizontalOptions="End" HorizontalTextAlignment="End" x:Name="CourceNumberEntry" Grid.Column="1" FontSize="20" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073" VerticalOptions="End"/>
                     </Grid>
                     <Line  HeightRequest="1" BackgroundColor="#FAE073" Margin="0, 10, 0, 22"/>
                     <Grid ColumnDefinitions="*, *">
                         <Label Text="Специальность" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center"/>
-                        <Entry Placeholder="Ваша специальность" x:Name="StudentBrachEntry" Grid.Column="1" FontSize="20" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073" VerticalOptions="Center"/>
+                        <Entry Placeholder="Ваша специальность" HorizontalOptions="End" HorizontalTextAlignment="End" x:Name="StudentBrachEntry" Grid.Column="1" FontSize="20" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073" VerticalOptions="Center"/>
                     </Grid>
                     <Line  HeightRequest="1" BackgroundColor="#FAE073" Margin="0, 10, 0, 22"/>
                     <Grid ColumnDefinitions="*, *">

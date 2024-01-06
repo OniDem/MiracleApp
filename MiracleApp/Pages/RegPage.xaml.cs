@@ -205,6 +205,8 @@ public partial class RegPage : ContentPage
             if (PasswordEntry.Text.Length > 0)
             {
                 reg_user.Phone = PhoneEntry.Text;
+                //Добавить поле для ввода почты!
+                reg_user.Email = "Email!";
                 reg_user.Password = PasswordEntry.Text;
 
                 if (await UserService.RegUser(reg_user) > 0)

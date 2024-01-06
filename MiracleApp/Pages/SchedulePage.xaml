@@ -61,20 +61,20 @@
                     </Frame>
                 </StackLayout>
 
-                <StackLayout HorizontalOptions="Start" Margin="22, 18, 29, 0" x:Name="BranchChoiceSL">
-                    <Label Text="Специальность" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073"/>
-                    <Frame Margin="0, 12, 0, 0" CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="8, 10, 8, 10">
-                        <VerticalStackLayout HorizontalOptions="Start">
-                            <Button x:Name="Branch1" Clicked="Branch1_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" Text="Реклама и маркетинг" FontFamily="QANELASBOLD" Margin="0, 0, 0, 8" FontSize="24" TextColor="#FAE073"/>
-                            <Button x:Name="Branch2" Clicked="Branch2_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" Text="Информационные технологии" FontFamily="QANELASBOLD" Margin="0, 0, 0, 8" FontSize="24" TextColor="#FAE073"/>
-                            <Button x:Name="Branch3" Clicked="Branch3_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" Text="Социо-культурная деятельность" FontFamily="QANELASBOLD" Margin="0, 0, 0, 8" FontSize="24" TextColor="#FAE073"/>
-                            <Button x:Name="Branch4" Clicked="Branch4_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" WidthRequest="220" Text="Право и судебное администрирование" Padding="16, 12, 16, 12" FontFamily="QANELASBOLD" Margin="0, 0, 0, 8" FontSize="24" TextColor="#FAE073"/>
-                            <Button x:Name="Branch5" Clicked="Branch5_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" Text="Предпринимательство" FontFamily="QANELASBOLD" FontSize="24" Margin="0, 0, 0, 8" TextColor="#FAE073"/>
-                            <Button x:Name="Branch6" Clicked="Branch6_Clicked" HorizontalOptions="Start" LineBreakMode="WordWrap" CornerRadius="16" BackgroundColor="#9F5CC0" Text="Дизайн" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
-                        </VerticalStackLayout>
+                <StackLayout HorizontalOptions="Start" Margin="22, 18" x:Name="BranchChoiceSL">
+                    <Label Text="Специальность" Margin="0, 0, 0, 12" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073"/>
+                    <Frame  CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="8, 10">
+                        <Grid RowDefinitions="*, *, *, *, *, *" HorizontalOptions="Fill">
+                            <Button Grid.Row="0" x:Name="Branch1" Clicked="Branch1_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="Реклама и маркетинг" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                            <Button Grid.Row="1" x:Name="Branch2" Clicked="Branch2_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="Информационные технологии" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                            <Button Grid.Row="2" x:Name="Branch3" Clicked="Branch3_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="Социо-культурная деятельность" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                            <Button Grid.Row="3" x:Name="Branch4" Clicked="Branch4_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="Право и судебное администрирование" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                            <Button Grid.Row="4" x:Name="Branch5" Clicked="Branch5_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="Предпринимательство" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                            <Button Grid.Row="5" x:Name="Branch6" Clicked="Branch6_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="Дизайн" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                        </Grid>
                     </Frame>
                 </StackLayout>
-                <Button Grid.Column="1" HorizontalOptions="Center" Text="Далее" Padding="32, 10" Margin="24" x:Name="ShowLessonsButton" Clicked="ShowLessonsButton_Clicked" CornerRadius="16" HeightRequest="64" TextColor="#1E1E1E" BackgroundColor="#FAE073" FontFamily="QANELASBLACK" FontSize="24"/>
+                <Button HorizontalOptions="Center" Text="Далее" Padding="32, 10" Margin="24" x:Name="ShowLessonsButton" Clicked="ShowLessonsButton_Clicked" CornerRadius="16" HeightRequest="64" TextColor="#1E1E1E" BackgroundColor="#FAE073" FontFamily="QANELASBLACK" FontSize="24"/>
 
 
                 <StackLayout HorizontalOptions="Start" Margin="0, 18, 0, 0" x:Name="MondaySL">
