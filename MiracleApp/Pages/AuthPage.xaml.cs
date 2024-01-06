@@ -27,6 +27,17 @@ public partial class AuthPage : ContentPage
                 PhoneEntry.CursorPosition = e.NewTextValue.Length;
             }
         };
+        RestorePhoneEntry.TextChanged += (s, e) =>
+        {
+            if (e.NewTextValue.Length >= RestorePhoneEntry.Mask.Length)
+            {
+                RestorePhoneEntry.CursorPosition = RestorePhoneEntry.Mask.Length;
+            }
+            else
+            {
+                RestorePhoneEntry.CursorPosition = e.NewTextValue.Length;
+            }
+        };
     }
 
     private void BackButton_Clicked(object sender, EventArgs e)
@@ -74,14 +85,14 @@ public partial class AuthPage : ContentPage
 
     private void GetCodeButton_Clicked(object sender, EventArgs e)
     {
-        if (EmailEntry.Text.Contains("@"))
+        if (RestorePhoneEntry.Text.Length == 18)
         {
             RestoreSL.IsVisible = false;
             VerifySL.IsVisible = true;
         }
         else
         {
-            var toast = Toast.Make("Вы потеряли собаку!", CommunityToolkit.Maui.Core.ToastDuration.Long);
+            var toast = Toast.Make("Номер телефона введён не полностью", CommunityToolkit.Maui.Core.ToastDuration.Long);
             toast.Show();
         }
     }
@@ -181,29 +192,30 @@ public partial class AuthPage : ContentPage
             if(NewPassword.Text == ConfirmNewPassword.Text)
             {
                 //Изменить методы на поиск по телефону(после изменений в получаемых данных!)
-                //var user = await UserService.GetUserById(new() { id = Convert.ToInt32(await SecureStorage.GetAsync("id")) });
-                //UpdateUserRequest entity = new()
-                //{
-                //    Phone = user.Phone,
-                //    FIO = user.FIO,
-                //    Role = user.Role,
-                //    Department = user.Department,
-                //    StudentBranch = user.StudentBranch,
-                //    CourseNumber = user.CourseNumber,
-                //    Password = NewPassword.Text
-                //};
-                //if (await UserService.UpdateUser(user.Id, entity))
-                //{
-                //    var toast = Toast.Make("Пароль успешно изменён!", CommunityToolkit.Maui.Core.ToastDuration.Long);
-                //    toast.Show();
+                var user = await UserService.GetUserByPhone(new() { Phone = RestorePhoneEntry.Text});
+                UpdateUserRequest entity = new()
+                {
+                    Phone = user.Phone,
+                    FIO = user.FIO,
+                    Role = user.Role,
+                    Email = user.Email,
+                    Department = user.Department,
+                    StudentBranch = user.StudentBranch,
+                    CourseNumber = user.CourseNumber,
+                    Password = NewPassword.Text
+                };
+                if (await UserService.UpdateUser(user.Id, entity))
+                {
+                    var toast = Toast.Make("Пароль успешно изменён!", CommunityToolkit.Maui.Core.ToastDuration.Long);
+                    toast.Show();
                 NewPasswordSL.IsVisible = false;
                 AuthSL.IsVisible = true;
-                //}
-                //else
-                //{
-                //    var toast = Toast.Make("При сбросе пароля произошла ошибка!", CommunityToolkit.Maui.Core.ToastDuration.Long);
-                //    toast.Show();
-                //}
+                }
+                else
+                {
+                    var toast = Toast.Make("При сбросе пароля произошла ошибка!", CommunityToolkit.Maui.Core.ToastDuration.Long);
+                    toast.Show();
+                }
             }
             else
             {

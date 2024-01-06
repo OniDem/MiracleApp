@@ -4,8 +4,7 @@
              x:Class="MiracleApp.Pages.AuthPage"
              xmlns:control="clr-namespace:Bertuzzi.MAUI.MaskedEntry;assembly=Bertuzzi.MAUI.MaskedEntry"
              Title="AuthPage"
-                      xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui">
     <ContentPage.Behaviors>
         <mct:StatusBarBehavior StatusBarColor="#242323" />
     </ContentPage.Behaviors>
@@ -29,8 +28,7 @@
             <Label Grid.Column="1" Text="Сброс пароля" TextColor="#FAE073" VerticalOptions="Start" Margin="0, 35, 0, 0" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24"/>
             <VerticalStackLayout Margin="22, 116, 0, 0">
                 <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
-                    <Entry Text="" Placeholder="Эл. почта" x:Name="EmailEntry" BackgroundColor="#FAE073" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
-                    
+                    <control:MaskedEntry x:Name="RestorePhoneEntry" Mask="+7 (XXX) XXX-XX-XX" Text="" Placeholder="Номер телефона" Keyboard="Numeric" BackgroundColor="#FAE073" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
                 </Frame>
                 <Label Text="Мы отправим вам код для сброса." FontSize="16" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
                 <Button Text="Получить код" x:Name="GetCodeButton" Clicked="GetCodeButton_Clicked" BackgroundColor="#FAE073" TextColor="#242323" HorizontalOptions="Center" CornerRadius="16" FontFamily="QANELASBLACK" FontSize="24" Margin="0, 48, 0, 0" Padding="42, 20"/>

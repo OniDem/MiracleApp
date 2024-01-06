@@ -57,5 +57,14 @@ namespace MiracleApp.Services.User
            
             return response.IsSuccessStatusCode;
         }
+
+        public static async Task<UserEntity> GetUserByPhone(ShowByPhoneRequest request)
+        {
+            JsonContent content = JsonContent.Create(request);
+            HttpClient httpClient = new HttpClient();
+            var response = await httpClient.PostAsync("http://45.153.69.204:5000/User/ShowByPhone", content);
+            var result = await response.Content.ReadAsStringAsync();
+            return JsonConvert.DeserializeObject<UserEntity>(result);
+        }
     }
 }
