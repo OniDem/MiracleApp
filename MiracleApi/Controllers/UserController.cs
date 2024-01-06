@@ -72,11 +72,11 @@ namespace MiracleApi.Controllers
             return null;
         }
         [HttpPost]
-        public async Task<UserEntity?> ShowByPhone(string phone)
+        public async Task<UserEntity?> ShowByPhone(ShowByPhoneRequest request)
         {
             if (ModelState.IsValid)
             {
-                return await _userService.ShowByPhone(phone);
+                return await _userService.ShowByPhone(request);
             }
             return null;
         }

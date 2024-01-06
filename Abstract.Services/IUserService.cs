@@ -13,6 +13,6 @@ namespace Abstract.Services.Interfaces
 
         public Task<UserEntity?> ShowById(ShowByIdRequest request);
 
-        public Task<UserEntity?> ShowByPhone(string phone);
+        public Task<UserEntity?> ShowByPhone(ShowByPhoneRequest request);
     }
 }

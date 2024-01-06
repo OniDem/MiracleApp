@@ -18,6 +18,7 @@ namespace Services
             return _userRepository.Create(new UserEntity
             {
                 Phone = request.Phone,
+                Email = request.Email,
                 FIO = request.FIO,
                 Role = request.Role,
                 Department = request.Department,
@@ -41,6 +42,7 @@ namespace Services
             {
                 Id = user_id,
                 Phone = request.Phone,
+                Email = request.Email,
                 FIO = request.FIO,
                 Role = request.Role,
                 Department = request.Department,
@@ -54,9 +56,9 @@ namespace Services
         {
             return _userRepository.ShowById(request.id);
         }
-        public async Task<UserEntity?> ShowByPhone(string phone)
+        public async Task<UserEntity?> ShowByPhone(ShowByPhoneRequest request)
         {
-            return _userRepository.ShowByPhone(phone);
+            return _userRepository.ShowByPhone(request.Phone);
         }
     }
 }

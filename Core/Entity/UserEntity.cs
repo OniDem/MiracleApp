@@ -12,6 +12,8 @@ namespace Core.Entity
 
         public string Phone { get; set; }
 
+        public string Email { get; set; }
+
         public string FIO { get; set; }
 
         public UserRoleEnum Role { get; set; }
