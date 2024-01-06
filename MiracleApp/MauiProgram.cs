@@ -7,6 +7,12 @@ namespace MiracleApp
     {
         public static MauiApp CreateMauiApp()
         {
+            Microsoft.Maui.Handlers.EntryHandler.Mapper.AppendToMapping(nameof(Entry), (handler, view) =>
+            {
+#if ANDROID
+                handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Argb(1, 250, 224, 115));
+#endif
+            });
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>().UseMauiCommunityToolkit()
