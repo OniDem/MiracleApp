@@ -89,6 +89,7 @@ public partial class AuthPage : ContentPage
         {
             RestoreSL.IsVisible = false;
             VerifySL.IsVisible = true;
+            Code1Entry.Focus();
         }
         else
         {
