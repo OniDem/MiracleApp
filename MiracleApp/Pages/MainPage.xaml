@@ -42,7 +42,7 @@
 
 
 
-            <ListView x:Name="newsListView" BackgroundColor="Transparent" VerticalScrollBarVisibility="Never" SeparatorVisibility="None" SelectionMode="None" VerticalOptions="Fill" HasUnevenRows="True" >
+            <ListView x:Name="newsListView" IsVisible="false" BackgroundColor="Transparent" VerticalScrollBarVisibility="Never" SeparatorVisibility="None" SelectionMode="None" VerticalOptions="Fill" HasUnevenRows="True" >
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
