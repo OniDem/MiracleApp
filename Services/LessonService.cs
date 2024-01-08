@@ -67,6 +67,11 @@ namespace Services
             return _lessonRepository.ShowById(lesson_id);
         }
 
+        public async Task<List<LessonEntity>?> ShowByWeek(ShowByWeekRequest request)
+        {
+            return _lessonRepository.ShowByWeek(request.Week);
+        }
+
         public async Task Delete(int lesson_id)
         {
             _lessonRepository.Delete(lesson_id);

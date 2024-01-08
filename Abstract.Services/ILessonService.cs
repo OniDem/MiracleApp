@@ -11,6 +11,8 @@ namespace Abstract.Services
 
         public Task<List<LessonEntity>?> ShowAll();
 
+        public Task<List<LessonEntity>?> ShowByWeek(ShowByWeekRequest request);
+
         public Task<LessonEntity?> ShowById(int lesson_id);
 
         public Task Delete(int lesson_id);

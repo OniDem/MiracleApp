@@ -35,6 +35,11 @@ namespace Infrastructure.Repositories
             return _applicationContext.Lessons.ToList();
         }
 
+        public List<LessonEntity> ShowByWeek(int week)
+        {
+            return _applicationContext.Lessons.Where(p => p.Week == week).ToList();
+        }
+
         public void Delete(int lesson_id)
         {
             _applicationContext.Remove(ShowById(lesson_id));

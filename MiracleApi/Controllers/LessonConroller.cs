@@ -40,12 +40,22 @@ namespace MiracleApi.Controllers
             return null;
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task<List<LessonEntity>?> ShowAll()
         {
             if (ModelState.IsValid)
             {
                 return await _lessonService.ShowAll();
+            }
+            return null;
+        }
+
+        [HttpPost, Authorize]
+        public async Task<List<LessonEntity>?> ShowByWeek(ShowByWeekRequest request)
+        {
+            if (ModelState.IsValid)
+            {
+                return await _lessonService.ShowByWeek(request);
             }
             return null;
         }
