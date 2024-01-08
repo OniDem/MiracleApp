@@ -3,6 +3,7 @@ using Core.Const;
 using Core.Entity;
 using MiracleApp.Services.Lesson;
 using MiracleApp.Validation;
+using System.Globalization;
 
 namespace MiracleApp.Pages;
 
@@ -29,6 +30,7 @@ class Lesson
 public partial class SchedulePage : ContentPage
 {
     LessonShowProperties prop = new();
+    Calendar calendar = CultureInfo.CurrentCulture.Calendar;
 
     public SchedulePage()
     {
@@ -44,6 +46,7 @@ public partial class SchedulePage : ContentPage
         FridaySL.IsVisible = false;
         SaturdaySL.IsVisible = false;
         SundaySL.IsVisible = false;
+
     }
 
     private async void MainButton_Clicked(object sender, EventArgs e)
@@ -88,6 +91,11 @@ public partial class SchedulePage : ContentPage
         CourceTwoButton.BackgroundColor = Color.FromArgb("#9F5CC0");
         CourceThreeButton.BackgroundColor = Color.FromArgb("#9F5CC0");
         CourceFourButton.BackgroundColor = Color.FromArgb("#9F5CC0");
+
+        Cource1Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
+        Cource2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Cource3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Cource4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         prop.cource = "1";
     }
 
@@ -97,6 +105,11 @@ public partial class SchedulePage : ContentPage
         CourceTwoButton.BackgroundColor = Color.FromArgb("#1E1E1E");
         CourceThreeButton.BackgroundColor = Color.FromArgb("#9F5CC0");
         CourceFourButton.BackgroundColor = Color.FromArgb("#9F5CC0");
+
+        Cource1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Cource2Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
+        Cource3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Cource4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         prop.cource = "2";
     }
 
@@ -106,6 +119,11 @@ public partial class SchedulePage : ContentPage
         CourceTwoButton.BackgroundColor = Color.FromArgb("#9F5CC0");
         CourceThreeButton.BackgroundColor = Color.FromArgb("#1E1E1E");
         CourceFourButton.BackgroundColor = Color.FromArgb("#9F5CC0");
+
+        Cource1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Cource2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Cource3Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
+        Cource4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         prop.cource = "3";
     }
 
@@ -115,6 +133,11 @@ public partial class SchedulePage : ContentPage
         CourceTwoButton.BackgroundColor = Color.FromArgb("#9F5CC0");
         CourceThreeButton.BackgroundColor = Color.FromArgb("#9F5CC0");
         CourceFourButton.BackgroundColor = Color.FromArgb("#1E1E1E");
+
+        Cource1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Cource2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Cource3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Cource4Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
         prop.cource = "4";
     }
 
@@ -125,6 +148,12 @@ public partial class SchedulePage : ContentPage
         Department3.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department4.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department5.BackgroundColor = Color.FromArgb("#9F5CC0");
+
+        Department1Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
+        Department2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Department3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Department4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Department5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         prop.department = "1";
     }
 
@@ -135,6 +164,12 @@ public partial class SchedulePage : ContentPage
         Department3.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department4.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department5.BackgroundColor = Color.FromArgb("#9F5CC0");
+
+        Department1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Department2Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
+        Department3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Department4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Department5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         prop.department = "2";
     }
 
@@ -145,6 +180,12 @@ public partial class SchedulePage : ContentPage
         Department3.BackgroundColor = Color.FromArgb("#1E1E1E");
         Department4.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department5.BackgroundColor = Color.FromArgb("#9F5CC0");
+
+        Department1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Department2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Department3Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
+        Department4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Department5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         prop.department = "3";
     }
 
@@ -155,6 +196,12 @@ public partial class SchedulePage : ContentPage
         Department3.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department4.BackgroundColor = Color.FromArgb("#1E1E1E");
         Department5.BackgroundColor = Color.FromArgb("#9F5CC0");
+
+        Department1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Department2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Department3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Department4Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
+        Department5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         prop.department = "4";
     }
 
@@ -165,6 +212,12 @@ public partial class SchedulePage : ContentPage
         Department3.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department4.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department5.BackgroundColor = Color.FromArgb("#1E1E1E");
+
+        Department1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Department2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Department3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Department4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Department5Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
         prop.department = "5";
     }
 
@@ -176,6 +229,13 @@ public partial class SchedulePage : ContentPage
         Branch4.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch5.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch6.BackgroundColor = Color.FromArgb("#9F5CC0");
+
+        Branch1Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
+        Branch2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch6Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         prop.branch = "1";
     }
 
@@ -187,6 +247,13 @@ public partial class SchedulePage : ContentPage
         Branch4.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch5.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch6.BackgroundColor = Color.FromArgb("#9F5CC0");
+
+        Branch1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch2Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
+        Branch3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch6Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         prop.branch = "2";
     }
 
@@ -198,6 +265,13 @@ public partial class SchedulePage : ContentPage
         Branch4.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch5.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch6.BackgroundColor = Color.FromArgb("#9F5CC0");
+
+        Branch1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch3Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
+        Branch4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch6Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         prop.branch = "3";
     }
 
@@ -209,6 +283,13 @@ public partial class SchedulePage : ContentPage
         Branch4.BackgroundColor = Color.FromArgb("#1E1E1E");
         Branch5.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch6.BackgroundColor = Color.FromArgb("#9F5CC0");
+
+        Branch1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch4Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
+        Branch5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch6Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         prop.branch = "4";
     }
 
@@ -220,6 +301,13 @@ public partial class SchedulePage : ContentPage
         Branch4.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch5.BackgroundColor = Color.FromArgb("#1E1E1E");
         Branch6.BackgroundColor = Color.FromArgb("#9F5CC0");
+
+        Branch1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch5Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
+        Branch6Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         prop.branch = "5";
     }
 
@@ -231,6 +319,13 @@ public partial class SchedulePage : ContentPage
         Branch4.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch5.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch6.BackgroundColor = Color.FromArgb("#1E1E1E");
+
+        Branch1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        Branch6Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
         prop.branch = "6";
     }
 
@@ -253,7 +348,7 @@ public partial class SchedulePage : ContentPage
                     Dispatcher.Dispatch(async () =>
                     {
                         //newsListView.BeginRefresh();
-                        lessons = await LessonService.ShowAll();
+                        lessons = await LessonService.ShowByWeek(new() { Week = calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday) });
                         foreach (var lesson in lessons)
                         {
                             if ((lesson.CourseNumber == prop.cource) && (lesson.Department == prop.department) && (lesson.Branch == prop.branch))

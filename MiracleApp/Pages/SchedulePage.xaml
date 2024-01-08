@@ -38,19 +38,50 @@
 
                 <StackLayout HorizontalOptions="Start" Margin="22, 18, 0, 0" x:Name="CourseChoiceSL">
                     <Label Text="Курс" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073"/>
-                    <Frame Margin="0, 12, 0, 0"  CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="8, 4, 8, 4">
+                    <Frame Margin="0, 12, 0, 0"  CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="8, 4" IsVisible="false">
                     <HorizontalStackLayout >
-                        <Button x:Name="CourceOneButton" Clicked="CourceOneButton_Clicked" HeightRequest="43" WidthRequest="46" CornerRadius="16" BackgroundColor="#9F5CC0" Text="1" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073" />
-                           <Button x:Name="CourceTwoButton" Clicked="CourceTwoButton_Clicked" HeightRequest="43" WidthRequest="46" CornerRadius="16" BackgroundColor="#9F5CC0" Text="2" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073"/>
-                           <Button x:Name="CourceThreeButton" Clicked="CourceThreeButton_Clicked" HeightRequest="43" WidthRequest="46" CornerRadius="16" BackgroundColor="#9F5CC0" Text="3" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073"/>
-                           <Button x:Name="CourceFourButton" Clicked="CourceFourButton_Clicked" HeightRequest="43" WidthRequest="46" CornerRadius="16" BackgroundColor="#9F5CC0" Text="4" FontFamily="QANELASBOLD" FontSize="24"  TextColor="#FAE073"/>
+                        <Button x:Name="CourceOneButton" Clicked="CourceOneButton_Clicked"  CornerRadius="16" BackgroundColor="#9F5CC0" Text="1" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073" />
+                           <Button x:Name="CourceTwoButton" Clicked="CourceTwoButton_Clicked"  CornerRadius="16" BackgroundColor="#9F5CC0" Text="2" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073"/>
+                           <Button x:Name="CourceThreeButton" Clicked="CourceThreeButton_Clicked"  CornerRadius="16" BackgroundColor="#9F5CC0" Text="3" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073"/>
+                           <Button x:Name="CourceFourButton" Clicked="CourceFourButton_Clicked" CornerRadius="16" BackgroundColor="#9F5CC0" Text="4" FontFamily="QANELASBOLD" FontSize="24"  TextColor="#FAE073"/>
                        </HorizontalStackLayout>
                    </Frame>
-               </StackLayout>
+
+
+                    <Frame CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Margin="0, 12, 0, 0" Padding="8, 4" VerticalOptions="Fill" HorizontalOptions="Fill">
+                        <Grid ColumnDefinitions="*, *, *, *" HorizontalOptions="Fill" >
+                            <Frame x:Name="Cource1Frame" Grid.Column="0" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="8, 4">
+                                <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                    <Label Grid.Row="0" Grid.Column="0" Text="1" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                    <ImageButton Clicked="CourceOneButton_Clicked" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </Frame>
+                            <Frame x:Name="Cource2Frame" Grid.Column="1" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="8, 4">
+                                <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                    <Label Grid.Row="0" Grid.Column="0" Text="2" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                    <ImageButton Clicked="CourceTwoButton_Clicked" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </Frame>
+                            <Frame x:Name="Cource3Frame" Grid.Column="2" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="8, 4">
+                                <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                    <Label Grid.Row="0" Grid.Column="0" Text="3" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                    <ImageButton Clicked="CourceThreeButton_Clicked" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </Frame>
+                            <Frame x:Name="Cource4Frame" Grid.Column="3" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="8, 4">
+                                <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                    <Label Grid.Row="0" Grid.Column="0" Text="4" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                    <ImageButton Clicked="CourceFourButton_Clicked" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </Frame>
+
+                        </Grid>
+                    </Frame>
+                </StackLayout>
 
                 <StackLayout HorizontalOptions="Start" Margin="22, 18, 0, 0" x:Name="DepartmentChoiceSL">
                     <Label Text="Отделение" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073"/>
-                    <Frame Margin="0, 12, 0, 0"  CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="8, 4, 8, 4">
+                    <Frame Margin="0, 12, 0, 0"  CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="8, 4, 8, 4" IsVisible="false">
                         <HorizontalStackLayout>
                             <Button x:Name="Department1" Clicked="Department1_Clicked" Text="ЦК" CornerRadius="16" BackgroundColor="#9F5CC0" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
                             <Button x:Name="Department2" Clicked="Department2_Clicked" Text="ЛО" CornerRadius="16" BackgroundColor="#9F5CC0" Margin="0, 0, 4, 0" FontFamily="QANELASBOLD"  FontSize="24" TextColor="#FAE073"/>
@@ -59,18 +90,96 @@
                             <Button x:Name="Department5" Clicked="Department5_Clicked" Text="ТО" CornerRadius="16" BackgroundColor="#9F5CC0" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
                         </HorizontalStackLayout>
                     </Frame>
-                </StackLayout>
 
-                <StackLayout HorizontalOptions="Start" Margin="22, 18" x:Name="BranchChoiceSL">
+                    <Frame CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Margin="0, 12, 0, 0" Padding="8, 4" VerticalOptions="Fill" HorizontalOptions="Fill">
+                        <Grid ColumnDefinitions="*, *, *, *, *" HorizontalOptions="Fill" >
+                            <Frame x:Name="Department1Frame" Grid.Column="0" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="8, 4">
+                                <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                    <Label Grid.Row="0" Grid.Column="0" Text="ЦК" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                    <ImageButton Clicked="Department1_Clicked" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </Frame>
+                            <Frame x:Name="Department2Frame" Grid.Column="1" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="8, 4">
+                                <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                    <Label Grid.Row="0" Grid.Column="0" Text="ЛО" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                    <ImageButton Clicked="Department2_Clicked" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </Frame>
+                            <Frame x:Name="Department3Frame" Grid.Column="2" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="8, 4">
+                                <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                    <Label Grid.Row="0" Grid.Column="0" Text="КИТ" LineBreakMode="NoWrap" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                    <ImageButton Clicked="Department3_Clicked" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </Frame>
+                            <Frame x:Name="Department4Frame" Grid.Column="3" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="8, 4">
+                                <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                    <Label Grid.Row="0" Grid.Column="0" Text="БО" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                    <ImageButton Clicked="Department4_Clicked" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </Frame>
+                            <Frame x:Name="Department5Frame" Grid.Column="4" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="8, 4">
+                                <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                    <Label Grid.Row="0" Grid.Column="0" Text="ТО" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                    <ImageButton Clicked="Department5_Clicked" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </Frame>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+                
+                
+
+                <StackLayout HorizontalOptions="StartAndExpand" Margin="22, 18" x:Name="BranchChoiceSL">
                     <Label Text="Специальность" Margin="0, 0, 0, 12" FontFamily="QANELASBLACK" FontSize="24" TextColor="#FAE073"/>
-                    <Frame  CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="8, 10">
+                    <Frame  CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="8, 10" IsVisible="False">
                         <Grid RowDefinitions="*, *, *, *, *, *" HorizontalOptions="Fill">
-                            <Button Grid.Row="0" x:Name="Branch1" Clicked="Branch1_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="Реклама и маркетинг" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
-                            <Button Grid.Row="1" x:Name="Branch2" Clicked="Branch2_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="Информационные технологии" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
-                            <Button Grid.Row="2" x:Name="Branch3" Clicked="Branch3_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="Социо-культурная деятельность" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
-                            <Button Grid.Row="3" x:Name="Branch4" Clicked="Branch4_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="Право и судебное администрирование" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
-                            <Button Grid.Row="4" x:Name="Branch5" Clicked="Branch5_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="Предпринимательство" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
-                            <Button Grid.Row="5" x:Name="Branch6" Clicked="Branch6_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="Дизайн" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                            <Button Grid.Row="0" x:Name="Branch1" Clicked="Branch1_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="· Реклама и маркетинг" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                            <Button Grid.Row="1" x:Name="Branch2" Clicked="Branch2_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="· Информационные технологии" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                            <Button Grid.Row="2" x:Name="Branch3" Clicked="Branch3_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="· Социо-культурная деятельность" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                            <Button Grid.Row="3" x:Name="Branch4" Clicked="Branch4_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="· Право и судебное администрирование" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                            <Button Grid.Row="4" x:Name="Branch5" Clicked="Branch5_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="· Предпринимательство" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                            <Button Grid.Row="5" x:Name="Branch6" Clicked="Branch6_Clicked" HorizontalOptions="StartAndExpand" LineBreakMode="TailTruncation" CornerRadius="16" BackgroundColor="Transparent" Text="· Дизайн" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                        </Grid>
+                    </Frame>
+                    <Frame CornerRadius="16" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Padding="8, 10" VerticalOptions="Fill" HorizontalOptions="Fill">
+                        <Grid RowDefinitions="*, *, *, *, *, *" HorizontalOptions="Fill" Padding="12">
+                            <Frame x:Name="Branch1Frame" Grid.Row="0" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="16, 10">
+                                <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                    <Label Grid.Row="0" Grid.Column="0" Text="· Реклама и маркетинг" VerticalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                    <ImageButton Clicked="Branch1_Clicked" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </Frame>
+                            <Frame x:Name="Branch2Frame" Grid.Row="1" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="16, 10">
+                                <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                    <Label Grid.Row="0" Grid.Column="0" Text="· Информационные технологии" VerticalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                    <ImageButton Clicked="Branch2_Clicked" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </Frame>
+                            <Frame x:Name="Branch3Frame" Grid.Row="2" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="16, 10">
+                                <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                    <Label Grid.Row="0" Grid.Column="0" Text="· Социо-культурная деятельность" VerticalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                    <ImageButton Clicked="Branch3_Clicked" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </Frame>
+                            <Frame x:Name="Branch4Frame" Grid.Row="3" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="16, 10">
+                                <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                    <Label Grid.Row="0" Grid.Column="0" Text="· Право и судебное администрирование" VerticalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                    <ImageButton Clicked="Branch4_Clicked" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </Frame>
+                            <Frame x:Name="Branch5Frame" Grid.Row="4" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="16, 10">
+                                <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                    <Label Grid.Row="0" Grid.Column="0" Text="· Предпринимательство" VerticalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                    <ImageButton Clicked="Branch5_Clicked" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </Frame>
+                            <Frame x:Name="Branch6Frame" Grid.Row="5" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="16, 10">
+                                <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                    <Label Grid.Row="0" Grid.Column="0" Text="· Дизайн" VerticalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                    <ImageButton Clicked="Branch6_Clicked" Grid.Row="0" Grid.Column="0" VerticalOptions="Fill" HorizontalOptions="Fill" BackgroundColor="Transparent"/>
+                                </Grid>
+                            </Frame>
+
                         </Grid>
                     </Frame>
                 </StackLayout>
