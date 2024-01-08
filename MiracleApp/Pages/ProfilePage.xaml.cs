@@ -1,6 +1,6 @@
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Behaviors;
-using Core.Entity;
+using DTO.Lesson;
 using DTO.Users;
 using MiracleApp.Services.User;
 using MiracleApp.Validation;
@@ -10,6 +10,766 @@ namespace MiracleApp.Pages;
 public partial class ProfilePage : ContentPage
 {
     StatusBarBehavior statusBar = new();
+
+    List<CreateLessonRequest> default_LessonList = new()
+    {
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "09:00",
+            TimeEnd = "10:30",
+            DayOfWeek = Core.Const.LessonDoWEnum.Mo,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "10:40",
+            TimeEnd = "12:10",
+            DayOfWeek = Core.Const.LessonDoWEnum.Mo,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "12:30",
+            TimeEnd = "14:00",
+            DayOfWeek = Core.Const.LessonDoWEnum.Mo,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "14:20",
+            TimeEnd = "15:50",
+            DayOfWeek = Core.Const.LessonDoWEnum.Mo,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "16:00",
+            TimeEnd = "17:30",
+            DayOfWeek = Core.Const.LessonDoWEnum.Mo,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "17:40",
+            TimeEnd = "19:10",
+            DayOfWeek = Core.Const.LessonDoWEnum.Mo,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "09:00",
+            TimeEnd = "10:30",
+            DayOfWeek = Core.Const.LessonDoWEnum.Tu,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "10:40",
+            TimeEnd = "12:10",
+            DayOfWeek = Core.Const.LessonDoWEnum.Tu,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "12:30",
+            TimeEnd = "14:00",
+            DayOfWeek = Core.Const.LessonDoWEnum.Tu,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "14:20",
+            TimeEnd = "15:50",
+            DayOfWeek = Core.Const.LessonDoWEnum.Tu,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "16:00",
+            TimeEnd = "17:30",
+            DayOfWeek = Core.Const.LessonDoWEnum.Tu,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "17:40",
+            TimeEnd = "19:10",
+            DayOfWeek = Core.Const.LessonDoWEnum.Tu,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "09:00",
+            TimeEnd = "10:30",
+            DayOfWeek = Core.Const.LessonDoWEnum.We,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "10:40",
+            TimeEnd = "12:10",
+            DayOfWeek = Core.Const.LessonDoWEnum.We,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "12:30",
+            TimeEnd = "14:00",
+            DayOfWeek = Core.Const.LessonDoWEnum.We,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "14:20",
+            TimeEnd = "15:50",
+            DayOfWeek = Core.Const.LessonDoWEnum.We,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "16:00",
+            TimeEnd = "17:30",
+            DayOfWeek = Core.Const.LessonDoWEnum.We,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "17:40",
+            TimeEnd = "19:10",
+            DayOfWeek = Core.Const.LessonDoWEnum.We,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "09:00",
+            TimeEnd = "10:30",
+            DayOfWeek = Core.Const.LessonDoWEnum.Th,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "10:40",
+            TimeEnd = "12:10",
+            DayOfWeek = Core.Const.LessonDoWEnum.Th,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "12:30",
+            TimeEnd = "14:00",
+            DayOfWeek = Core.Const.LessonDoWEnum.Th,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "14:20",
+            TimeEnd = "15:50",
+            DayOfWeek = Core.Const.LessonDoWEnum.Th,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "16:00",
+            TimeEnd = "17:30",
+            DayOfWeek = Core.Const.LessonDoWEnum.Th,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "17:40",
+            TimeEnd = "19:10",
+            DayOfWeek = Core.Const.LessonDoWEnum.Th,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "09:00",
+            TimeEnd = "10:30",
+            DayOfWeek = Core.Const.LessonDoWEnum.Fr,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "10:40",
+            TimeEnd = "12:10",
+            DayOfWeek = Core.Const.LessonDoWEnum.Fr,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "12:30",
+            TimeEnd = "14:00",
+            DayOfWeek = Core.Const.LessonDoWEnum.Fr,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "14:20",
+            TimeEnd = "15:50",
+            DayOfWeek = Core.Const.LessonDoWEnum.Fr,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "16:00",
+            TimeEnd = "17:30",
+            DayOfWeek = Core.Const.LessonDoWEnum.Fr,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "17:40",
+            TimeEnd = "19:10",
+            DayOfWeek = Core.Const.LessonDoWEnum.Fr,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "09:00",
+            TimeEnd = "10:30",
+            DayOfWeek = Core.Const.LessonDoWEnum.Sa,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "10:40",
+            TimeEnd = "12:10",
+            DayOfWeek = Core.Const.LessonDoWEnum.Sa,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "12:30",
+            TimeEnd = "14:00",
+            DayOfWeek = Core.Const.LessonDoWEnum.Sa,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "14:20",
+            TimeEnd = "15:50",
+            DayOfWeek = Core.Const.LessonDoWEnum.Sa,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "16:00",
+            TimeEnd = "17:30",
+            DayOfWeek = Core.Const.LessonDoWEnum.Sa,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "17:40",
+            TimeEnd = "19:10",
+            DayOfWeek = Core.Const.LessonDoWEnum.Sa,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "09:00",
+            TimeEnd = "10:30",
+            DayOfWeek = Core.Const.LessonDoWEnum.Su,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "10:40",
+            TimeEnd = "12:10",
+            DayOfWeek = Core.Const.LessonDoWEnum.Su,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "12:30",
+            TimeEnd = "14:00",
+            DayOfWeek = Core.Const.LessonDoWEnum.Su,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "14:20",
+            TimeEnd = "15:50",
+            DayOfWeek = Core.Const.LessonDoWEnum.Su,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "16:00",
+            TimeEnd = "17:30",
+            DayOfWeek = Core.Const.LessonDoWEnum.Su,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+        new()
+        {
+            Name = "",
+            Date = "",
+            Week = 0,
+            TimeStart = "17:40",
+            TimeEnd = "19:10",
+            DayOfWeek = Core.Const.LessonDoWEnum.Su,
+            TeacherId = 0,
+            Teacher = "",
+            CourseNumber = "",
+            Department = "",
+            Where = "",
+            Branch = "",
+            StudentCount = 0,
+            Online = false,
+            Extra = ""
+        },
+    };
 
     public ProfilePage()
     {
@@ -79,10 +839,10 @@ public partial class ProfilePage : ContentPage
         LogOutFrame.IsVisible = true;
     }
 
-    private void LogOut_Clicked(object sender, EventArgs e)
+    private async void LogOut_Clicked(object sender, EventArgs e)
     {
         SecureStorage.RemoveAll();
-        Navigation.PushAsync(new HelloPage());
+        await Navigation.PushAsync(new HelloPage());
     }
 
     private void CancelButton_Clicked(object sender, EventArgs e)
