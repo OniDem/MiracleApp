@@ -1,5 +1,6 @@
 ﻿using Core.Entity;
 using Newtonsoft.Json;
+using System.Net.Http.Headers;
 
 namespace MiracleApp.Services.News
 {
@@ -8,13 +9,14 @@ namespace MiracleApp.Services.News
         public static async Task<List<NewsEntity>> ShowAll()
         {
             string serverURI = "http://45.153.69.204:5000/News/ShowAll";
-            HttpClient client = new HttpClient();
+            HttpClient httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await SecureStorage.GetAsync("token"));
             Dictionary<string, string> Params = new()
             {
 
             };
             FormUrlEncodedContent content = new(Params);
-            HttpResponseMessage response = await client.PostAsync(serverURI, content);
+            HttpResponseMessage response = await httpClient.PostAsync(serverURI, content);
             if (response.IsSuccessStatusCode)
             {
                 var result = await response.Content.ReadAsStringAsync();

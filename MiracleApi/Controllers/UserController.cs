@@ -62,7 +62,7 @@ namespace MiracleApi.Controllers
             return null;
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task<UserEntity?> ShowById(ShowByIdRequest request)
         {
             if (ModelState.IsValid)

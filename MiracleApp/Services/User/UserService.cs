@@ -2,6 +2,8 @@
 using Core.Entity;
 using DTO.Users;
 using Newtonsoft.Json;
+using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
 namespace MiracleApp.Services.User
@@ -16,6 +18,7 @@ namespace MiracleApp.Services.User
                 request.Department = "";
             }
             JsonContent content = JsonContent.Create(request);
+            
             HttpClient httpClient = new HttpClient();
             var response = await httpClient.PostAsync("http://45.153.69.204:5000/User/Create", content);
             var result = await response.Content.ReadFromJsonAsync<UserEntity>();
@@ -27,8 +30,7 @@ namespace MiracleApp.Services.User
             JsonContent content = JsonContent.Create(request);
             HttpClient httpClient = new HttpClient();
             var response = await httpClient.PostAsync("http://45.153.69.204:5000/User/Auth", content);
-            var result = await response.Content.ReadAsStringAsync();
-            var token = JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
+            var token = JsonConvert.DeserializeObject<Dictionary<string, string>>(await response.Content.ReadAsStringAsync());
             if (token != null)
             {
                 var user_token = token.First();
@@ -44,6 +46,7 @@ namespace MiracleApp.Services.User
         {
             JsonContent content = JsonContent.Create(request);
             HttpClient httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await SecureStorage.GetAsync("token"));
             var response = await httpClient.PostAsync("http://45.153.69.204:5000/User/ShowById", content);
             var result = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<UserEntity>(result);
@@ -65,6 +68,6 @@ namespace MiracleApp.Services.User
             var response = await httpClient.PostAsync("http://45.153.69.204:5000/User/ShowByPhone", content);
             var result = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<UserEntity>(result);
-        }
+        }   
     }
 }

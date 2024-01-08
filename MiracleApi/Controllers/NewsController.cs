@@ -39,7 +39,7 @@ namespace MiracleApi.Controllers
             return null;
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task<List<NewsEntity>?> ShowAll()
         {
             if (ModelState.IsValid)
