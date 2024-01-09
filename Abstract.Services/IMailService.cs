@@ -1,12 +1,13 @@
 ﻿using Core.Entity;
+using DTO.Mail;
 
 namespace Abstract.Services
 {
     public interface IMailService
     {
-        public Task<MailEntity> SendCode(/*Сюда реквест за отпраку кода*/);
+        public Task<MailEntity> SendCode(AddMailRequest request);
 
-        public Task<bool> Delete(int id);
+        public Task<bool> Delete(string phone);
 
     }
 }

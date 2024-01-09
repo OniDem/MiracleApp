@@ -1,4 +1,7 @@
-﻿namespace Infrastructure.Repositories
+﻿using Core.Entity;
+using System.Net.Mail;
+
+namespace Infrastructure.Repositories
 {
     public class MailRepository
     {
@@ -8,7 +11,18 @@
         {
             _applicationContext = applicationContext;
         }
-
-
+        public MailEntity MailAdd(MailEntity mailEntity)
+        {
+            _applicationContext.Mails.Add(mailEntity);
+            _applicationContext.SaveChanges();
+            return mailEntity;
+        }
+        public bool MailDelete(string phone)
+        {
+            var mailEntity = _applicationContext.Mails.Where(p => p.Phone == phone).First();
+            _applicationContext.Mails.Remove(mailEntity);
+            _applicationContext.SaveChanges(true);
+            return true;
+        }
     }
 }
