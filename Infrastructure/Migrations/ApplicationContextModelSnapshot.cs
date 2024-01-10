@@ -111,7 +111,7 @@ namespace Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Mails");
+                    b.ToTable("mails");
                 });
 
             modelBuilder.Entity("Core.Entity.NewsEntity", b =>

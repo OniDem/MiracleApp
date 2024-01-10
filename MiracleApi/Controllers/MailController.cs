@@ -20,7 +20,7 @@ namespace MiracleApi.Controllers
         }
 
         [HttpPost]
-        public async Task<MailEntity?> CreateNewCode([FromBody] AddMailRequest request)
+        public async Task<MailEntity?> SendCode([FromBody] SendCodeRequest request)
         {
             if (ModelState.IsValid)
             {
@@ -31,11 +31,11 @@ namespace MiracleApi.Controllers
         }
 
         [HttpPost]
-        public async Task DeleteCode(string phone)
+        public async Task Delete(string phone)
         {
             if (ModelState.IsValid)
             {
-                var result = await _mailService.Delete(phone);
+                await _mailService.Delete(phone);
             }
         }
 

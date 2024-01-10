@@ -11,13 +11,13 @@ namespace Infrastructure.Repositories
         {
             _applicationContext = applicationContext;
         }
-        public MailEntity MailAdd(MailEntity mailEntity)
+        public MailEntity SendCode(MailEntity mailEntity)
         {
             _applicationContext.Mails.Add(mailEntity);
             _applicationContext.SaveChanges();
             return mailEntity;
         }
-        public bool MailDelete(string phone)
+        public bool Delete(string phone)
         {
             var mailEntity = _applicationContext.Mails.Where(p => p.Phone == phone).First();
             _applicationContext.Mails.Remove(mailEntity);

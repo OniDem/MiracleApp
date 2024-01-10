@@ -1,6 +1,6 @@
 ﻿namespace DTO.Mail
 {
-    public class AddMailRequest
+    public class SendCodeRequest
     {
         public string Phone { get; set; }
 

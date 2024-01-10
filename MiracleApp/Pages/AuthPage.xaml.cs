@@ -1,5 +1,6 @@
 using CommunityToolkit.Maui.Alerts;
 using DTO.Users;
+using MiracleApp.Services.Mail;
 using MiracleApp.Services.User;
 using MiracleApp.Validation;
 
@@ -83,13 +84,21 @@ public partial class AuthPage : ContentPage
         RestoreSL.IsVisible = true;
     }
 
-    private void GetCodeButton_Clicked(object sender, EventArgs e)
+    private async void GetCodeButton_Clicked(object sender, EventArgs e)
     {
         if (RestorePhoneEntry.Text.Length == 18)
         {
-            RestoreSL.IsVisible = false;
-            VerifySL.IsVisible = true;
-            Code1Entry.Focus();
+            if(await MailService.SendCode(RestorePhoneEntry.Text))
+            {
+                RestoreSL.IsVisible = false;
+                VerifySL.IsVisible = true;
+                Code1Entry.Focus();
+            }
+            else
+            {
+                var toast = Toast.Make("При отправке кода произошла ошибка!", CommunityToolkit.Maui.Core.ToastDuration.Long);
+                toast.Show();
+            }  
         }
         else
         {

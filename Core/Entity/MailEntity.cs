@@ -1,9 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Entity
 {
-    [Table(name: "Mails")]
+    [Table(name: "mails")]
     public class MailEntity
     {
         [Key]

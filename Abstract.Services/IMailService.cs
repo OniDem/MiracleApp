@@ -5,9 +5,9 @@ namespace Abstract.Services
 {
     public interface IMailService
     {
-        public Task<MailEntity> SendCode(AddMailRequest request);
+        public Task<MailEntity> SendCode(SendCodeRequest request);
 
-        public Task<bool> Delete(string phone);
+        public Task Delete(string phone);
 
     }
 }

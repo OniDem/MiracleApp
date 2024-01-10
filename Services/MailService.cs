@@ -12,21 +12,19 @@ namespace Services
         {
             _mailRepository = mailRepository;
         }
-        public async Task<MailEntity> SendCode(AddMailRequest request)
+        public async Task<MailEntity> SendCode(SendCodeRequest request)
         {
-            _mailRepository.MailAdd(new MailEntity
+            return _mailRepository.SendCode(new MailEntity
             {
                 Phone = request.Phone,
                 Email = request.Email,
                 Code = request.Code
             });
-            return null;
         }
 
-        public async Task<bool> Delete(string phone)
+        public async Task Delete(string phone)
         {
-            _mailRepository.MailDelete(phone);
-            return false;
+            _mailRepository.Delete(phone);
         }
     }
 }
