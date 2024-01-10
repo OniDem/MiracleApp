@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Services;
 using DTO.Mail;
+using System.Numerics;
 
 namespace MiracleApi.Controllers
 {
@@ -38,6 +39,15 @@ namespace MiracleApi.Controllers
                 await _mailService.Delete(phone);
             }
         }
-
+        [HttpPost]
+        public async Task<bool> VerifyCode([FromBody] VerifyCodeRequest request)
+        {
+            if (ModelState.IsValid)
+            {
+                var answer = await _mailService.VerifyCode(request);
+                return answer;
+            }
+            return false;
+        }
     }
 }

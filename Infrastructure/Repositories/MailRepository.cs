@@ -24,5 +24,14 @@ namespace Infrastructure.Repositories
             _applicationContext.SaveChanges(true);
             return true;
         }
+        public bool VerifyCode(VerifyCodeEntity VerifyCode)
+        {
+            var mailEntity = _applicationContext.Mails.Where(p => p.Email == VerifyCode.Email).FirstOrDefault();
+            if (mailEntity == null)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
