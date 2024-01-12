@@ -45,7 +45,7 @@ public partial class SchedulePage : ContentPage
         Dispatcher.Dispatch(async () =>
         {
             user = await UserService.GetUserById(new() { id = Convert.ToInt32(await SecureStorage.GetAsync("id")) });
-            sif (user.Role == 3)
+            if (user.Role == 3)
             {
 
             }
