@@ -2,6 +2,7 @@ using CommunityToolkit.Maui.Alerts;
 using Core.Const;
 using Core.Entity;
 using MiracleApp.Services.Lesson;
+using MiracleApp.Services.User;
 using MiracleApp.Validation;
 using System.Globalization;
 
@@ -31,6 +32,7 @@ public partial class SchedulePage : ContentPage
 {
     LessonShowProperties prop = new();
     Calendar calendar = CultureInfo.CurrentCulture.Calendar;
+    UserEntity user = new();
 
     public SchedulePage()
     {
@@ -39,13 +41,31 @@ public partial class SchedulePage : ContentPage
             Navigation.PushAsync(new HelloPage());
         }
         InitializeComponent();
-        MondaySL.IsVisible = false;
-        TuesdaySL.IsVisible = false;
-        WednesdaySL.IsVisible = false;
-        ThursdaySL.IsVisible = false;
-        FridaySL.IsVisible = false;
-        SaturdaySL.IsVisible = false;
-        SundaySL.IsVisible = false;
+         
+        Dispatcher.Dispatch(async () =>
+        {
+            user = await UserService.GetUserById(new() { id = Convert.ToInt32(await SecureStorage.GetAsync("id")) });
+            sif (user.Role == 3)
+            {
+
+            }
+            else
+            {
+                StudentScheduleSL.IsVisible = true;
+                MondaySL.IsVisible = false;
+                TuesdaySL.IsVisible = false;
+                WednesdaySL.IsVisible = false;
+                ThursdaySL.IsVisible = false;
+                FridaySL.IsVisible = false;
+                SaturdaySL.IsVisible = false;
+                SundaySL.IsVisible = false;
+                CourseChoiceSL.IsVisible = true;
+                BranchChoiceSL.IsVisible = true;
+                DepartmentChoiceSL.IsVisible = true;
+            }
+        });
+
+       
 
     }
 

@@ -12,7 +12,7 @@ namespace MiracleApp.Services.User
     {
         public static async Task<int> RegUser(CreateUserRequest request)
         {
-            if (request.Role == UserRoleEnum.Преподователь)
+            if (request.Role == 1)
             {
                 request.CourseNumber = "";
                 request.Department = "";
@@ -50,7 +50,7 @@ namespace MiracleApp.Services.User
             var response = await httpClient.PostAsync("http://45.153.69.204:5000/User/ShowById", content);
             var result = await response.Content.ReadAsStringAsync();
             return JsonConvert.DeserializeObject<UserEntity>(result);
-        }
+         }
 
         public static async Task<bool> UpdateUser(int id, UpdateUserRequest request)
         {

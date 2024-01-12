@@ -112,12 +112,12 @@ public partial class RegPage : ContentPage
                 case UserRoleEnum.Студент:
                     VLChoiceRole.IsVisible = false;
                     VLStudentInfo.IsVisible = true;
-                    reg_user.Role = UserRoleEnum.Студент;
+                    reg_user.Role = 0;
                     break;
                 case UserRoleEnum.Преподователь:
                     VLChoiceRole.IsVisible = false;
                     VLTeacherInfo.IsVisible = true;
-                    reg_user.Role = UserRoleEnum.Преподователь;
+                    reg_user.Role = 1;
                     break;
             }
         }

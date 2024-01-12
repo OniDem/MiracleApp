@@ -10,7 +10,7 @@ namespace DTO.Users
 
         public string FIO { get; set; }
 
-        public UserRoleEnum Role { get; set; }
+        public int Role { get; set; }
 
         public string Department { get; set; }
 

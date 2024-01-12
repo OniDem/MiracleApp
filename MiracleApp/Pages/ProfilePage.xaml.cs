@@ -830,7 +830,6 @@ public partial class ProfilePage : ContentPage
             StudentBrachEntry.Text = user.StudentBranch;
         });
 
-        FIOLine.WidthRequest = FIOEntry.Width;
         //CourseNumberLine.WidthRequest = CourceNumberEntry.WidthRequest;
     }
 

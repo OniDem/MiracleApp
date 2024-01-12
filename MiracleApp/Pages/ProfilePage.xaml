@@ -112,27 +112,94 @@
 
                         <VerticalStackLayout  Grid.Column="1" HorizontalOptions="End">
                             <Entry Placeholder="Ваше ФИО" x:Name="FIOEntry" FontSize="20" HorizontalTextAlignment="End" ZIndex="0" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073" VerticalOptions="Center"/>
-                            <Line BackgroundColor="#FAE073" x:Name="FIOLine" ZIndex="1"  HeightRequest="1" Margin="0, -10, 0, 0" WidthRequest="{Binding  Source=FIOEntry, Path=Width}"/>
+                            
                         </VerticalStackLayout>
                     </Grid>
-                    <Line  HeightRequest="1" BackgroundColor="#FAE073" Margin="0, 10, 0, 22"/>
+                    <Line   HeightRequest="1" Margin="0, 10, 0, 22" >
+                        <Line.Background>
+                            <LinearGradientBrush EndPoint="1,0">
+                                <GradientStop Color="Transparent"
+                Offset="0" />
+                                <GradientStop Color="#FAE073"
+                Offset="0.25" />
+                                <GradientStop Color="#FAE073"
+                Offset="0.75" />
+                                <GradientStop Color="Transparent"
+                Offset="1" />
+                            </LinearGradientBrush>
+                        </Line.Background>
+                    </Line>
                     <Grid ColumnDefinitions="*, *">
                         <Label Text="Курс" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center"/>
                         <Entry Placeholder="Ваш курс" HorizontalOptions="End" HorizontalTextAlignment="End" x:Name="CourceNumberEntry" Grid.Column="1" FontSize="20" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073" VerticalOptions="End"/>
+
                     </Grid>
-                    <Line  HeightRequest="1" BackgroundColor="#FAE073" Margin="0, 10, 0, 22"/>
+                    <Line   HeightRequest="1" Margin="0, 10, 0, 22" >
+                        <Line.Background>
+                            <LinearGradientBrush EndPoint="1,0">
+                                <GradientStop Color="Transparent"
+                                    Offset="0" />
+                                <GradientStop Color="#FAE073"
+                                    Offset="0.25" />
+                                <GradientStop Color="#FAE073"
+                                    Offset="0.75" />
+                                <GradientStop Color="Transparent"
+                                    Offset="1" />
+                            </LinearGradientBrush>
+                        </Line.Background>
+                    </Line>
                     <Grid ColumnDefinitions="*, *">
                         <Label Text="Специальность" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center"/>
                         <Entry Placeholder="Ваша специальность" HorizontalOptions="End" HorizontalTextAlignment="End" x:Name="StudentBrachEntry" Grid.Column="1" FontSize="20" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073" VerticalOptions="Center"/>
                     </Grid>
-                    <Line  HeightRequest="1" BackgroundColor="#FAE073" Margin="0, 10, 0, 22"/>
+                    <Line   HeightRequest="1" Margin="0, 10, 0, 22" >
+                        <Line.Background>
+                            <LinearGradientBrush EndPoint="1,0">
+                                <GradientStop Color="Transparent"
+                                    Offset="0" />
+                                <GradientStop Color="#FAE073"
+                                    Offset="0.25" />
+                                <GradientStop Color="#FAE073"
+                                    Offset="0.75" />
+                                <GradientStop Color="Transparent"
+                                    Offset="1" />
+                            </LinearGradientBrush>
+                        </Line.Background>
+                    </Line>
                     <Grid ColumnDefinitions="*, *">
                         <Label Text="Фото" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center"/>
                     </Grid>
-                    <Line  HeightRequest="1" BackgroundColor="#FAE073" Margin="0, 10, 0, 22"/>
+                    <Line   HeightRequest="1" Margin="0, 10, 0, 22" >
+                        <Line.Background>
+                            <LinearGradientBrush EndPoint="1,0">
+                                <GradientStop Color="Transparent"
+                                    Offset="0" />
+                                <GradientStop Color="#FAE073"
+                                    Offset="0.25" />
+                                <GradientStop Color="#FAE073"
+                                    Offset="0.75" />
+                                <GradientStop Color="Transparent"
+                                    Offset="1" />
+                            </LinearGradientBrush>
+                        </Line.Background>
+                    </Line>
                     <Grid ColumnDefinitions="*, *">
                         <Label Text="Ваши курсы" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center"/>
                     </Grid>
+                    <Line   HeightRequest="1" Margin="0, 10, 0, 22" >
+                        <Line.Background>
+                            <LinearGradientBrush EndPoint="1,0">
+                                <GradientStop Color="Transparent"
+                                    Offset="0" />
+                                <GradientStop Color="#FAE073"
+                                    Offset="0.25" />
+                                <GradientStop Color="#FAE073"
+                                    Offset="0.75" />
+                                <GradientStop Color="Transparent"
+                                    Offset="1" />
+                            </LinearGradientBrush>
+                        </Line.Background>
+                    </Line>
                     <Button Text="Сохранить изменения" x:Name="SaveButton" Clicked="SaveButton_Clicked" FontSize="24" Margin="0, 50, 0, 0" CornerRadius="16" BackgroundColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASBLACK" TextColor="#242323" />
                 </VerticalStackLayout>
             </StackLayout>
