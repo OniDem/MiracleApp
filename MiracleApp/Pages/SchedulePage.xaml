@@ -341,6 +341,207 @@
                         </ListView>
                     </StackLayout>
                 </StackLayout>
+
+                <StackLayout x:Name="AdminScheduleSL" IsVisible="true">
+                    <StackLayout HorizontalOptions="FillAndExpand" Margin="0, 18, 0, 0" x:Name="MondayAdminSL">
+                        <Label Text="Понедельник" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
+                        <ListView IsVisible="false" x:Name="MondayLessonsAddLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid ColumnDefinitions="90, *">
+                                            <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
+                                                <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                                <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" Opacity="50" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
+                                                <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
+                                                <Label Text="{Binding Description}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <Frame  Padding="22, 10"  BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="0">
+                            <Grid ColumnDefinitions="*, *" ColumnSpacing="12" HorizontalOptions="Start">
+                                <ImageButton Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" Source="add_lesson_button.svg" BackgroundColor="AliceBlue"/>
+                                <Label Grid.Column="1" VerticalOptions="Center" Text="Добавить" FontSize="16" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+
+
+                    <StackLayout HorizontalOptions="FillAndExpand" Margin="0, 18, 0, 0" x:Name="TuesdayAdminSL">
+                        <Label Text="Вторник" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
+                        <ListView IsVisible="false" x:Name="TuesdayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid ColumnDefinitions="90, *">
+                                            <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
+                                                <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                                <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" Opacity="50" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
+                                                <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
+                                                <Label Text="{Binding Description}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <Frame  Padding="22, 10"  BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="0">
+                            <Grid ColumnDefinitions="*, *" ColumnSpacing="12" HorizontalOptions="Start">
+                                <ImageButton Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" Source="add_lesson_button.svg" BackgroundColor="AliceBlue"/>
+                                <Label Grid.Column="1" VerticalOptions="Center" Text="Добавить" FontSize="16" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="FillAndExpand" Margin="0, 18, 0, 0" x:Name="WednesdayAdminSL">
+                        <Label Text="Среда" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
+                        <ListView IsVisible="false" x:Name="WednesdayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid ColumnDefinitions="90, *">
+                                            <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
+                                                <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                                <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" Opacity="50" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
+                                                <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
+                                                <Label Text="{Binding Description}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <Frame  Padding="22, 10"  BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="0">
+                            <Grid ColumnDefinitions="*, *" ColumnSpacing="12" HorizontalOptions="Start">
+                                <ImageButton Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" Source="add_lesson_button.svg" BackgroundColor="AliceBlue"/>
+                                <Label Grid.Column="1" VerticalOptions="Center" Text="Добавить" FontSize="16" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="FillAndExpand" Margin="0, 18, 0, 0" x:Name="ThursdayAdminSL">
+                        <Label Text="Четверг" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
+                        <ListView IsVisible="false" x:Name="ThursdayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid ColumnDefinitions="90, *">
+                                            <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
+                                                <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                                <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" Opacity="50" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
+                                                <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
+                                                <Label Text="{Binding Description}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <Frame  Padding="22, 10"  BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="0">
+                            <Grid ColumnDefinitions="*, *" ColumnSpacing="12" HorizontalOptions="Start">
+                                <ImageButton Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" Source="add_lesson_button.svg" BackgroundColor="AliceBlue"/>
+                                <Label Grid.Column="1" VerticalOptions="Center" Text="Добавить" FontSize="16" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="FillAndExpand" Margin="0, 18, 0, 0" x:Name="FridayAdminSL">
+                        <Label Text="Пятница" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
+                        <ListView IsVisible="false" x:Name="FridayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid ColumnDefinitions="90, *">
+                                            <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
+                                                <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                                <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" Opacity="50" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
+                                                <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
+                                                <Label Text="{Binding Description}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <Frame  Padding="22, 10"  BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="0">
+                            <Grid ColumnDefinitions="*, *" ColumnSpacing="12" HorizontalOptions="Start">
+                                <ImageButton Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" Source="add_lesson_button.svg" BackgroundColor="AliceBlue"/>
+                                <Label Grid.Column="1" VerticalOptions="Center" Text="Добавить" FontSize="16" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="FillAndExpand" Margin="0, 18, 0, 0" x:Name="SaturdayAdminSL">
+                        <Label Text="Суббота" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
+                        <ListView IsVisible="false" x:Name="SaturdayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid ColumnDefinitions="90, *">
+                                            <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
+                                                <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                                <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
+                                                <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
+                                                <Label Text="{Binding Description}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <Frame  Padding="22, 10"  BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="0">
+                            <Grid ColumnDefinitions="*, *" ColumnSpacing="12" HorizontalOptions="Start">
+                                <ImageButton Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" Source="add_lesson_button.svg" BackgroundColor="AliceBlue"/>
+                                <Label Grid.Column="1" VerticalOptions="Center" Text="Добавить" FontSize="16" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+
+                    <StackLayout HorizontalOptions="FillAndExpand" Margin="0, 18, 0, 0" x:Name="SundayAdminSL">
+                        <Label Text="Воскресенье" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
+                        <ListView IsVisible="false" x:Name="SundayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid ColumnDefinitions="90, *">
+                                            <VerticalStackLayout Padding="22, 17" Grid.Column="0" HorizontalOptions="Start" VerticalOptions="Center">
+                                                <Label  Text="{Binding TimeStart}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                                <Label  Text="{Binding TimeEnd}" FontSize="16" TextColor="#FAE073" FontFamily="QANELASBOLD"  HorizontalOptions="Center"/>
+                                            </VerticalStackLayout>
+                                            <VerticalStackLayout Grid.Column="1" HorizontalOptions="Start" VerticalOptions="Center" Margin="0, 0, 20, 0">
+                                                <Label Text="{Binding Where}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
+                                                <Label Text="{Binding Description}" FontSize="20" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                                            </VerticalStackLayout>
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <Frame  Padding="22, 10"  BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="0">
+                            <Grid ColumnDefinitions="*, *" ColumnSpacing="12" HorizontalOptions="Start">
+                                <ImageButton Grid.Column="0" VerticalOptions="Center" HorizontalOptions="Start" Source="add_lesson_button.svg" BackgroundColor="AliceBlue"/>
+                                <Label Grid.Column="1" VerticalOptions="Center" Text="Добавить" FontSize="16" TextColor="#FAE073" FontFamily="QANELASREGULAR"/>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+                
+                
             </VerticalStackLayout>
         </ScrollView>
     </Grid>

@@ -12,10 +12,10 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>MiracleApp</ApplicationTitle>
+		<ApplicationTitle>Miracle: Новоколледж</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.miracleapp</ApplicationId>
+		<ApplicationId>ru.Miracle.Miracle</ApplicationId>
 		<ApplicationIdGuid>77e63ea4-33d0-4d88-8ef4-a0f5f6b0c439</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -36,7 +36,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
-		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#8031A7" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
