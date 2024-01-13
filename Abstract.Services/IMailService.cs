@@ -9,5 +9,7 @@ namespace Abstract.Services
 
         public Task Delete(string phone);
 
+        public Task<bool> VerifyCode(VerifyCodeRequest request);
+
     }
 }

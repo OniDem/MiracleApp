@@ -26,5 +26,14 @@ namespace Services
         {
             _mailRepository.Delete(phone);
         }
+
+        public async Task<bool> VerifyCode(VerifyCodeRequest request)
+        {
+            return _mailRepository.VerifyCode(new VerifyCodeEntity
+            {
+                Code = request.Code,
+                Email = request.Email
+            });
+        }
     }
 }
