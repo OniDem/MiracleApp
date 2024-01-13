@@ -11,5 +11,7 @@ namespace Abstract.Services
 
         public Task<bool> VerifyCode(VerifyCodeRequest request);
 
+        public Task<bool> SendCodeOnMail(SendCodeOnMailRequest request);
+
     }
 }

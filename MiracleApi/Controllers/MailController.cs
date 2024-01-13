@@ -49,5 +49,15 @@ namespace MiracleApi.Controllers
             }
             return false;
         }
+        [HttpPost]
+        public async Task<bool> SendCodeOnMail([FromBody] SendCodeOnMailRequest request)
+        {
+            if (ModelState.IsValid)
+            {
+                var answer = await _mailService.SendCodeOnMail(request);
+                return answer;
+            }
+            return false;
+        }
     }
 }
