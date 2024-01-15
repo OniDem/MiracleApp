@@ -28,11 +28,21 @@ namespace Services
             });
         }
 
-        public async Task<UserEntity?> Auth(AuthUserRequest request)
+        public async Task<AuthUserEntity?> Auth(AuthUserRequest request)
         {
             var user = _userRepository.ShowByPhone(request.Phone);
             if (user.Password == request.Password)
-                return user;
+                return new()
+                {
+                    Id = user.Id,
+                    Phone = request.Phone,
+                    Email = user.Email,
+                    FIO = user.FIO,
+                    Role = user.Role,
+                    Department = user.Department,
+                    StudentBranch = user.StudentBranch,
+                    CourseNumber = user.CourseNumber
+                };
             return null;
         }
 

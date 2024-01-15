@@ -56,7 +56,7 @@ public partial class AuthPage : ContentPage
                 {
                     var id = await SecureStorage.Default.GetAsync("id");
                     var token = await SecureStorage.Default.GetAsync("token");
-                    //await DisplayAlert("Dev info", "id:" + id + ", " + "token:" + token, "OK");
+                    await DisplayAlert("Dev info", "id:" + id + ", " + "token:" + token, "OK");
                     await Navigation.PushAsync(new MainPage());
                 }
                 else

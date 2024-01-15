@@ -407,8 +407,8 @@ public partial class SchedulePage : ContentPage
         InitializeComponent();
         Dispatcher.Dispatch(async () =>
         {
-            user = await UserService.GetUserById(new() { id = Convert.ToInt32(await SecureStorage.GetAsync("id")) });
-            if (user.Role == 3)
+           
+            if (await SecureStorage.GetAsync("role") == "3")
             {
                 DoWChoiceCV.ItemsSource = dow;
                 //StartHourChoiceCV.ItemsSource = lesson_hours;

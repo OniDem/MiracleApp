@@ -34,7 +34,7 @@ namespace MiracleApi.Controllers
         }
 
         [HttpPost]
-        public async Task<Dictionary<string, string>?> Auth([FromBody] AuthUserRequest userAuth)
+        public async Task<AuthUserEntity?> Auth([FromBody] AuthUserRequest userAuth)
         {
             if (ModelState.IsValid)
             {
@@ -47,7 +47,8 @@ namespace MiracleApi.Controllers
                         claims: claims,
                         signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
                 Response.Cookies.Append(user.Id.ToString(), new JwtSecurityTokenHandler().WriteToken(jwt));
-                return new() { { user.Id.ToString(), new JwtSecurityTokenHandler().WriteToken(jwt) } };
+                user.Token = new JwtSecurityTokenHandler().WriteToken(jwt);
+                return user;
             }
             return null;
         }

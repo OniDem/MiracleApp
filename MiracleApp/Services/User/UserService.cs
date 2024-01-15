@@ -30,13 +30,14 @@ namespace MiracleApp.Services.User
             JsonContent content = JsonContent.Create(request);
             HttpClient httpClient = new HttpClient();
             var response = await httpClient.PostAsync("http://45.153.69.204:5000/User/Auth", content);
-            var token = JsonConvert.DeserializeObject<Dictionary<string, string>>(await response.Content.ReadAsStringAsync());
-            if (token != null)
+            var user = JsonConvert.DeserializeObject<AuthUserEntity>(await response.Content.ReadAsStringAsync());
+            if (user != null)
             {
-                var user_token = token.First();
-                await SecureStorage.SetAsync("id", user_token.Key);
-                await SecureStorage.SetAsync("phone", request.Phone);
-                await SecureStorage.SetAsync("token", user_token.Value);
+                await SecureStorage.SetAsync("id", user.Id.ToString());
+                await SecureStorage.SetAsync("phone", user.Phone);
+                await SecureStorage.SetAsync("role", user.Role.ToString());
+                await SecureStorage.SetAsync("token", user.Token);
+
                 return true;
             }
             return false;
