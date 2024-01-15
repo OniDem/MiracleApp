@@ -186,7 +186,7 @@
                     <Grid ColumnDefinitions="*, *">
                         <Label Text="Ваши курсы" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center"/>
                     </Grid>
-                    <Line   HeightRequest="1" Margin="0, 10, 0, 22" >
+                    <Line HeightRequest="1" Margin="0, 10, 0, 22" >
                         <Line.Background>
                             <LinearGradientBrush EndPoint="1,0">
                                 <GradientStop Color="Transparent"
