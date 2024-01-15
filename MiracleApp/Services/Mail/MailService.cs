@@ -13,20 +13,18 @@ namespace MiracleApp.Services.Mail
             return false;
         }
 
-        public static async Task<bool> SendCode(string phone)
+        public static async Task<bool> SendCodeOnMail(string phone)
         {
             Random random = new Random();
             var user = await UserService.GetUserByPhone(new() { Phone = phone });
-            SendCodeRequest request = new()
+            SendCodeOnMailRequest request = new()
             {
-                Phone = phone,
                 Email = user.Email,
                 Code = random.Next(100000, 999999).ToString()
         };
             JsonContent content = JsonContent.Create(request);
-
             HttpClient httpClient = new HttpClient();
-            var response = await httpClient.PostAsync("http://45.153.69.204:5000/Mail/SendCode", content);
+            var response = await httpClient.PostAsync("http://45.153.69.204:5000/Mail/SendCodeOnMail", content);
             return response.IsSuccessStatusCode;
         }
     }

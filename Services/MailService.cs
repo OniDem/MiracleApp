@@ -43,11 +43,11 @@ namespace Services
         {
 
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Test Project", "recovery.code.miracle@gmail.com"));
+            message.From.Add(new MailboxAddress("Ваш код для сброса пароля", "recovery.code.miracle@gmail.com"));
             message.To.Add(new MailboxAddress("OniDem", request.Email));
-            message.Subject = "Test";
+            message.Subject = "Ваша Мира";
             BodyBuilder bodyBuilder = new BodyBuilder();
-            bodyBuilder.HtmlBody = "<p>Привет, ваш код восстановления: " + request.Code + "</p>";
+            bodyBuilder.HtmlBody = $"<!DOCTYPE html>\r\n<html lang=\"en\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\r\n    <title>Email Template</title>\r\n</head>\r\n<body style=\"text-align: center; background-color: #f4f4f4; font-family: Arial, sans-serif; color: #242323; font-size: 16px; line-height: 1.6;\">\r\n\r\n    <h1 style=\"color: #242323; font-size: 96px;\">Miracle</h1>\r\n\r\n    <p style=\"color: #242323; font-size: 32px;\">Ваш код сброса пароля:</p>\r\n\r\n<p style=\"color: #242323; font-size: 24px; text-align: left; max-width: 669px; margin: 0 auto; word-wrap: break-word;\" align=\"center\">Здравствуйте, {request.Email}.<br><br>\r\n\r\n    <table width=\"372px\" cellpadding=\"0\" cellspacing=\"0\" align=\"center\">\r\n        <tr>\r\n            <td align=\"center\">\r\n                <div style=\"width: 50px; height: 60px; background-color: #242323; border-radius: 15px; margin: 10px; color: #fff; font-size: 24px; font-weight: bold; line-height: 60px;\">{request.Code[0]}<span style=\"color: #f4f4f4;\">&zwnj;</span></div>\r\n            </td>\r\n            <td align=\"center\">\r\n                <div style=\"width: 50px; height: 60px; background-color: #242323; border-radius: 15px; margin: 10px; color: #fff; font-size: 24px; font-weight: bold; line-height: 60px;\">{request.Code[1]}<span style=\"color: #f4f4f4;\">&zwnj;</span></div>\r\n            </td>\r\n            <td align=\"center\">\r\n                <div style=\"width: 50px; height: 60px; background-color: #242323; border-radius: 15px; margin: 10px; color: #fff; font-size: 24px; font-weight: bold; line-height: 60px;\">{request.Code[2]}<span style=\"color: #f4f4f4;\">&zwnj;</span></div>\r\n            </td>\r\n            <td align=\"center\">\r\n                <div style=\"width: 12px;\"></div>\r\n            </td>\r\n            <td align=\"center\">\r\n                <div style=\"width: 50px; height: 60px; background-color: #242323; border-radius: 15px; margin: 10px; color: #fff; font-size: 24px; font-weight: bold; line-height: 60px;\">{request.Code[3]}<span style=\"color: #f4f4f4;\">&zwnj;</span></div>\r\n            </td>\r\n            <td align=\"center\">\r\n                <div style=\"width: 50px; height: 60px; background-color: #242323; border-radius: 15px; margin: 10px; color: #fff; font-size: 24px; font-weight: bold; line-height: 60px;\">{request.Code[4]}<span style=\"color: #f4f4f4;\">&zwnj;</span></div>\r\n            </td>\r\n            <td align=\"center\">\r\n                <div style=\"width: 50px; height: 60px; background-color: #242323; border-radius: 15px; margin: 10px; color: #fff; font-size: 24px; font-weight: bold; line-height: 60px;\">{request.Code[5]}<span style=\"color: #f4f4f4;\">&zwnj;</span></div>\r\n            </td>\r\n        </tr>\r\n    </table>\r\n\r\n    <p>\r\n    Недавно вы попытались сбросить пароль с учетной записи.\r\n    Если это были не вы, то проигнорируйте это сообщение.\r\n    Используйте данный код, чтобы завершить операцию.<br><br>\r\n    С благодарностью,<br>\r\n    Команда Miracle</p>\r\n\r\n</body>\r\n</html>\r\n";
             message.Body = bodyBuilder.ToMessageBody();
             try
             {
@@ -57,7 +57,8 @@ namespace Services
                 client.Send(message);
                 client.Disconnect(true);
                 return true;
-            } catch(Exception ex)
+            } 
+            catch(Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return false;
