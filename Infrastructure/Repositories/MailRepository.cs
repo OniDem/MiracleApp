@@ -1,5 +1,4 @@
 ﻿using Core.Entity;
-using System.Net.Mail;
 
 namespace Infrastructure.Repositories
 {
