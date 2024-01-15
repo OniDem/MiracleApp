@@ -1,10 +1,8 @@
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Behaviors;
-using CommunityToolkit.Maui.Core.Platform;
 using Core.Const;
 using Core.Entity;
 using MiracleApp.Services.Lesson;
-using MiracleApp.Services.User;
 using MiracleApp.Validation;
 using System.Globalization;
 
