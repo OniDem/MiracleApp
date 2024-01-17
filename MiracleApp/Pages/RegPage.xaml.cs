@@ -208,6 +208,7 @@ public partial class RegPage : ContentPage
                 //Добавить поле для ввода почты!
                 reg_user.Email = "Email!";
                 reg_user.Password = PasswordEntry.Text;
+                reg_user.Photo = "";
 
                 if (await UserService.RegUser(reg_user) > 0)
                 {

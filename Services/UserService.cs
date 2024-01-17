@@ -25,6 +25,7 @@ namespace Services
                 StudentBranch = request.StudentBranch,
                 CourseNumber = request.CourseNumber,
                 Password = request.Password,
+                Photo = request.Photo
             });
         }
 

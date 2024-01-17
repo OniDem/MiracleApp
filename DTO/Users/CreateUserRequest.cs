@@ -21,5 +21,7 @@ namespace DTO.Users
         public string CourseNumber { get; set; }
 
         public string Password { get; set; }
+
+        public string Photo { get; set; }
     }
 }
