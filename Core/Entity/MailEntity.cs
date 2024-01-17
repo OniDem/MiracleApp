@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Core.Entity
@@ -9,8 +8,6 @@ namespace Core.Entity
     {
         [Key]
         public int Id { get; set; }
-
-        public string Phone { get; set; }
 
         public string Email { get; set; }
 

@@ -1,5 +1,4 @@
-﻿using Core.Entity;
-using DTO.Mail;
+﻿using DTO.Mail;
 using MiracleApp.Services.User;
 using System.Net.Http.Json;
 
@@ -13,18 +12,16 @@ namespace MiracleApp.Services.Mail
             return false;
         }
 
-        public static async Task<bool> SendCodeOnMail(string phone)
+        public static async Task<bool> SendCode(string phone)
         {
-            Random random = new Random();
             var user = await UserService.GetUserByPhone(new() { Phone = phone });
-            SendCodeOnMailRequest request = new()
+            SendCodeRequest request = new()
             {
-                Email = user.Email,
-                Code = random.Next(100000, 999999).ToString()
-        };
+                Email = user.Email
+            };
             JsonContent content = JsonContent.Create(request);
             HttpClient httpClient = new HttpClient();
-            var response = await httpClient.PostAsync("http://45.153.69.204:5000/Mail/SendCodeOnMail", content);
+            var response = await httpClient.PostAsync("http://45.153.69.204:5000/Mail/SendCode", content);
             return response.IsSuccessStatusCode;
         }
     }
