@@ -90,6 +90,8 @@ public partial class AuthPage : ContentPage
         {
             if(await MailService.SendCode(RestorePhoneEntry.Text))
             {
+                var toast = Toast.Make("Код отправлен!", CommunityToolkit.Maui.Core.ToastDuration.Long);
+                toast.Show();
                 RestoreSL.IsVisible = false;
                 VerifySL.IsVisible = true;
                 Code1Entry.Focus();
@@ -107,12 +109,12 @@ public partial class AuthPage : ContentPage
         }
     }
 
-    private void ConfirmButtun_Clicked(object sender, EventArgs e)
+    private async void ConfirmButtun_Clicked(object sender, EventArgs e)
     {
         var code = Code1Entry.Text + Code2Entry.Text + Code3Entry.Text + Code4Entry.Text + Code5Entry.Text + Code6Entry.Text;
         if (code.Length == 6)
         {
-            if(code == super_secret_code)
+            if(await MailService.VerifiCode(RestorePhoneEntry.Text, code))
             {
                 VerifySL.IsVisible = false;
                 NewPasswordSL.IsVisible = true;

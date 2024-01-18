@@ -16,14 +16,6 @@ namespace MiracleApi.Controllers
         }
 
         [HttpPost]
-        public async Task Delete(string phone)
-        {
-            if (ModelState.IsValid)
-            {
-                await _mailService.Delete(phone);
-            }
-        }
-        [HttpPost]
         public async Task<bool> VerifyCode([FromBody] VerifyCodeRequest request)
         {
             if (ModelState.IsValid)
@@ -33,6 +25,7 @@ namespace MiracleApi.Controllers
             }
             return false;
         }
+
         [HttpPost]
         public async Task<int> SendCodeOnMail([FromBody] SendCodeOnMailRequest request)
         {
@@ -42,6 +35,15 @@ namespace MiracleApi.Controllers
                 return answer;
             }
             return 0;
+        }
+
+        [HttpDelete]
+        public async Task Delete(DeleteMailRequest request)
+        {
+            if (ModelState.IsValid)
+            {
+                await _mailService.Delete(request.Email);
+            }
         }
     }
 }

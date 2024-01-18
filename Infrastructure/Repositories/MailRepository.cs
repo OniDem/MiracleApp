@@ -16,21 +16,20 @@ namespace Infrastructure.Repositories
             _applicationContext.SaveChanges();
             return mailEntity;
         }
-        public bool Delete(string email)
+        public void Delete(string email)
         {
             var mailEntity = _applicationContext.Mails.Where(p => p.Email == email).First();
             _applicationContext.Mails.Remove(mailEntity);
-            _applicationContext.SaveChanges(true);
-            return true;
+            _applicationContext.SaveChanges();
         }
         public bool VerifyCode(VerifyCodeEntity VerifyCode)
         {
-            var mailEntity = _applicationContext.Mails.Where(p => p.Code == VerifyCode.Code).FirstOrDefault();
-            if (mailEntity == null)
+            var mailEntity = _applicationContext.Mails.Where(p => p.Email == VerifyCode.Email).First();
+            if (mailEntity.Code == VerifyCode.Code)
             {
-                return false;
+                return true;
             }
-            return true;
+            return false;
         }
     }
 }

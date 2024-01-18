@@ -1,15 +1,24 @@
 ﻿using DTO.Mail;
 using MiracleApp.Services.User;
+using Newtonsoft.Json;
 using System.Net.Http.Json;
 
 namespace MiracleApp.Services.Mail
 {
     public static class MailService
     {
-        public static async Task<bool> VerifiCode(string code)
+        public static async Task<bool> VerifiCode(string phone, string code)
         {
-
-            return false;
+            var user = await UserService.GetUserByPhone(new() { Phone = phone });
+            VerifyCodeRequest request = new()
+            {
+                Email = user.Email,
+                Code = code
+            };
+            JsonContent content = JsonContent.Create(request);
+            HttpClient httpClient = new HttpClient();
+            var response = await httpClient.PostAsync("http://45.153.69.204:5000/Mail/VerifyCode", content);
+            return JsonConvert.DeserializeObject<bool>(await response.Content.ReadAsStringAsync());
         }
 
         public static async Task<bool> SendCode(string phone)
@@ -21,7 +30,7 @@ namespace MiracleApp.Services.Mail
             };
             JsonContent content = JsonContent.Create(request);
             HttpClient httpClient = new HttpClient();
-            var response = await httpClient.PostAsync("http://45.153.69.204:5000/Mail/SendCode", content);
+            var response = await httpClient.PostAsync("http://45.153.69.204:5000/Mail/SendCodeOnMail", content);
             return response.IsSuccessStatusCode;
         }
     }
