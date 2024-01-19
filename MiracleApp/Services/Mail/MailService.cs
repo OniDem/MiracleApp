@@ -33,5 +33,18 @@ namespace MiracleApp.Services.Mail
             var response = await httpClient.PostAsync("http://45.153.69.204:5000/Mail/SendCodeOnMail", content);
             return response.IsSuccessStatusCode;
         }
+
+        public static async Task<bool> Delete(string phone)
+        {
+            var user = await UserService.GetUserByPhone(new() { Phone = phone });
+            DeleteMailRequest request = new()
+            {
+                Email = user.Email
+            };
+            JsonContent content = JsonContent.Create(request);
+            HttpClient httpClient = new();
+            var response = await httpClient.PostAsync("http://45.153.69.204:5000/Mail/Delete", content);
+            return response.IsSuccessStatusCode;
+        }
     }
 }

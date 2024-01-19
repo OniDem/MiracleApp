@@ -2,6 +2,7 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Behaviors;
 using Core.Const;
 using Core.Entity;
+using DTO.Lesson;
 using MiracleApp.Services.Lesson;
 using MiracleApp.Validation;
 using System.Globalization;
@@ -19,7 +20,7 @@ class LessonShowProperties
 
 class Lesson
 {
-     public string Description { get; set; }
+    public string Description { get; set; }
 
     public string TimeStart { get; set; }
 
@@ -29,7 +30,7 @@ class Lesson
 
 }
 
-  class DayOfWeekN
+class DayOfWeekN
 {
     public string Name { get; set; }
 }
@@ -394,7 +395,8 @@ public partial class SchedulePage : ContentPage
         new() {Time = "55"}
     };
 
-    string cur_hour, cur_minute;
+    string cur_hour, cur_minute, cur_dow;
+    string add_lesson_cource;
 
     public SchedulePage()
     {
@@ -405,18 +407,20 @@ public partial class SchedulePage : ContentPage
         InitializeComponent();
         Dispatcher.Dispatch(async () =>
         {
-           
             if (await SecureStorage.GetAsync("role") == "3")
             {
                 DoWChoiceCV.ItemsSource = dow;
                 //StartHourChoiceCV.ItemsSource = lesson_hours;
                 //StartMinuteChoiceCV.ItemsSource = lesson_minutes;
                 StartChoiceCV.ItemsSource = lesson_times;
+                EndChoiceCV.ItemsSource = lesson_times;
                 cur_hour = lesson_hours.First().Time;
                 cur_minute = lesson_minutes.First().Time;
+                AdminSchuduleVL.IsVisible = true;
             }
             else
             {
+                ScheduleShowVL.IsVisible = true;
                 StudentScheduleSL.IsVisible = true;
                 MondaySL.IsVisible = false;
                 TuesdaySL.IsVisible = false;
@@ -733,8 +737,7 @@ public partial class SchedulePage : ContentPage
                     List<LessonEntity> lessons = new();
                     Dispatcher.Dispatch(async () =>
                     {
-                        //newsListView.BeginRefresh();
-                        lessons = await LessonService.ShowByWeek(new() { Week = calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday) });
+                        lessons = await LessonService.ShowByWeek(new() { Week = calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday) });
                         foreach (var lesson in lessons)
                         {
                             if ((lesson.CourseNumber == prop.cource) && (lesson.Department == prop.department) && (lesson.Branch == prop.branch))
@@ -809,7 +812,6 @@ public partial class SchedulePage : ContentPage
                                 }
                             }
                         }
-                        // newsListView.EndRefresh();
                         CourseChoiceSL.IsVisible = false;
                         DepartmentChoiceSL.IsVisible = false;
                         BranchChoiceSL.IsVisible = false;
@@ -830,11 +832,6 @@ public partial class SchedulePage : ContentPage
                         SaturdayLessonsShowLV.ItemsSource = showlistSa;
                         SundayLessonsShowLV.ItemsSource = showlistSu;
                     });
-                    
-
-
-                    
-
                 }
                 else
                 {
@@ -859,62 +856,103 @@ public partial class SchedulePage : ContentPage
     {
         lesson.DayOfWeek = LessonDoWEnum.Mo;
         ScheduleShowVL.IsVisible = false;
+        AdminSchuduleVL.IsVisible = false;
         AddLessonVL.IsVisible = true;
         statusBar.StatusBarColor = Color.FromArgb("#242323");
+        cur_dow = dow[0].Name;
+        DoWChoiceCV.CurrentItem = dow[0].Name;
+        LessonWeekEntry.Placeholder = $"Неделя (текущая №{calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday)})";
     }
 
     private void TuesdayAdminButton_Clicked(object sender, EventArgs e)
     {
         lesson.DayOfWeek = LessonDoWEnum.Tu;
         ScheduleShowVL.IsVisible = false;
+        AdminSchuduleVL.IsVisible = false;
         AddLessonVL.IsVisible = true;
         statusBar.StatusBarColor = Color.FromArgb("#242323");
+        cur_dow = dow[1].Name;
+        DoWChoiceCV.CurrentItem = dow[1].Name;
+        LessonWeekEntry.Placeholder = $"Неделя (текущая №{calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday)})";
     }
 
     private void WednesdayAdminButton_Clicked(object sender, EventArgs e)
     {
         lesson.DayOfWeek = LessonDoWEnum.We;
         ScheduleShowVL.IsVisible = false;
+        AdminSchuduleVL.IsVisible = false;
         AddLessonVL.IsVisible = true;
+        statusBar.StatusBarColor = Color.FromArgb("#242323");
+        cur_dow = dow[2].Name;
+        DoWChoiceCV.CurrentItem = dow[2].Name;
+        LessonWeekEntry.Placeholder = $"Неделя (текущая №{calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday)})";
     }
 
     private void ThursdayAdminButton_Clicked(object sender, EventArgs e)
     {
         lesson.DayOfWeek = LessonDoWEnum.Th;
         ScheduleShowVL.IsVisible = false;
+        AdminSchuduleVL.IsVisible = false;
         AddLessonVL.IsVisible = true;
         statusBar.StatusBarColor = Color.FromArgb("#242323");
+        cur_dow = dow[3].Name;
+        DoWChoiceCV.CurrentItem = dow[3].Name;
+        LessonWeekEntry.Placeholder = $"Неделя (текущая №{calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday)})";
     }
 
     private void FridayAdminButton_Clicked(object sender, EventArgs e)
     {
         lesson.DayOfWeek = LessonDoWEnum.Fr;
         ScheduleShowVL.IsVisible = false;
+        AdminSchuduleVL.IsVisible = false;
         AddLessonVL.IsVisible = true;
         statusBar.StatusBarColor = Color.FromArgb("#242323");
+        cur_dow = dow[4].Name;
+        DoWChoiceCV.CurrentItem = dow[4].Name;
+        LessonWeekEntry.Placeholder = $"Неделя (текущая №{calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday)})";
     }
 
     private void SaturdayAdminButton_Clicked(object sender, EventArgs e)
     {
         lesson.DayOfWeek = LessonDoWEnum.Sa;
         ScheduleShowVL.IsVisible = false;
+        AdminSchuduleVL.IsVisible = false;
         AddLessonVL.IsVisible = true;
         statusBar.StatusBarColor = Color.FromArgb("#242323");
+        cur_dow = dow[5].Name;
+        DoWChoiceCV.CurrentItem = dow[5].Name;
+        LessonWeekEntry.Placeholder = $"Неделя (текущая №{calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday)})";
     }
 
     private void SundayAdminButton_Clicked(object sender, EventArgs e)
     {
         lesson.DayOfWeek = LessonDoWEnum.Su;
         ScheduleShowVL.IsVisible = false;
+        AdminSchuduleVL.IsVisible = false;
         AddLessonVL.IsVisible = true;
         statusBar.StatusBarColor = Color.FromArgb("#242323");
+        cur_dow = dow[6].Name;
+        DoWChoiceCV.CurrentItem = dow[6].Name;
+        LessonWeekEntry.Placeholder = $"Неделя (текущая №{calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday)})";
     }
 
     private void BackArrowButton_Clicked(object sender, EventArgs e)
     {
         AddLessonVL.IsVisible = false;
         ScheduleShowVL.IsVisible = true;
+        AdminSchuduleVL.IsVisible = true;
 
+        LessonNameEntry.Text = "";
+        LessonWhereEntry.Text = "";
+        StartChoiceCV.CurrentItem = lesson_times[0].Time;
+        EndChoiceCV.CurrentItem = lesson_times[0].Time;
+        DoWChoiceCV.CurrentItem = dow[0].Name;
+        add_lesson_cource = "";
+        LessonTeacherEntry.Text = "";
+        LessonDepartmentEntry.Text = "";
+        LessonBranchEntry.Text = "";
+        LessonExtraEntry.Text = "";
+        LessonWeekEntry.Text = "";
         statusBar.StatusBarColor = Color.FromArgb("#8031A7");
     }
 
@@ -929,31 +967,347 @@ public partial class SchedulePage : ContentPage
         {
             ChoiceDoW.IsVisible = true;
             ChoiceStart.IsVisible = true;
+            ChoiceEnd.IsVisible = false;
         }
     }
 
     private void EndButton_Clicked(object sender, EventArgs e)
     {
-
+        if (ChoiceEnd.IsVisible)
+        {
+            ChoiceEnd.IsVisible = false;
+        }
+        else
+        {
+            ChoiceEnd.IsVisible = true;
+            ChoiceDoW.IsVisible = false;
+            ChoiceStart.IsVisible = false;
+        }
     }
 
     private void DoWChoiceCV_CurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
     {
         DayOfWeekN cur = e.CurrentItem as DayOfWeekN;
-        DoWLabel.Text = cur.Name + ",";
+        if (cur != null)
+            DoWLabel.Text = cur.Name + ",";
+        else
+            DoWLabel.Text = cur_dow + ",";
     }
 
     private void StartChoiceCV_CurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
     {
         LessonTime cur = e.CurrentItem as LessonTime;
         //cur_hour = cur.Time;
-        StartLabel.Text = cur.Time;
+        if (cur != null)
+            StartLabel.Text = cur.Time;
     }
 
-    private void StartMinuteChoiceCV_CurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
+    private void AddCource1Button_Clicked(object sender, EventArgs e)
+    {
+        AddCource1Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
+        AddCource2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        AddCource3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        AddCource4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        add_lesson_cource = "1";
+    }
+
+    private void AddCource2Button_Clicked(object sender, EventArgs e)
+    {
+        AddCource1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        AddCource2Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
+        AddCource3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        AddCource4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        add_lesson_cource = "2";
+    }
+
+    private void AddCource3Button_Clicked(object sender, EventArgs e)
+    {
+        AddCource1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        AddCource2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        AddCource3Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
+        AddCource4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        add_lesson_cource = "3";
+    }
+
+    private void AddCource4Button_Clicked(object sender, EventArgs e)
+    {
+        AddCource1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        AddCource2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        AddCource3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
+        AddCource4Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
+        add_lesson_cource = "4";
+    }
+
+    private async void SaveLessonButton_Clicked(object sender, EventArgs e)
+    {
+        if (LessonNameEntry.Text.Length > 0)
+        {
+            if (LessonWhereEntry.Text.Length > 0)
+            {
+                LessonTime start = StartChoiceCV.CurrentItem as LessonTime;
+                LessonTime end = EndChoiceCV.CurrentItem as LessonTime;
+
+                if (Convert.ToDateTime(start.Time) < Convert.ToDateTime(end.Time))
+                {
+                    if (Convert.ToInt32(add_lesson_cource) > 0)
+                    {
+                        if (LessonTeacherEntry.Text.Length > 0)
+                        {
+                            if (LessonDepartmentEntry.Text.Length > 0)
+                            {
+                                if (LessonBranchEntry.Text.Length > 0)
+                                {
+                                    if (LessonWeekEntry.Text.All(char.IsDigit) && LessonWeekEntry.Text.Length > 0)
+                                    {
+                                        try
+                                        {
+                                            DayOfWeekN dow_add = DoWChoiceCV.CurrentItem as DayOfWeekN;
+                                            LessonDoWEnum DoW = new();
+                                            switch (dow_add.Name)
+                                            {
+                                                case "Понедельник":
+                                                    DoW = LessonDoWEnum.Mo;
+                                                    break;
+                                                case "Вторник":
+                                                    DoW = LessonDoWEnum.Tu;
+                                                    break;
+                                                case "Среда":
+                                                    DoW = LessonDoWEnum.We;
+                                                    break;
+                                                case "Четверг":
+                                                    DoW = LessonDoWEnum.Th;
+                                                    break;
+                                                case "Пятница":
+                                                    DoW = LessonDoWEnum.Fr;
+                                                    break;
+                                                case "Суббота":
+                                                    DoW = LessonDoWEnum.Sa;
+                                                    break;
+                                                case "Воскресенье":
+                                                    DoW = LessonDoWEnum.Su;
+                                                    break;
+                                            }
+                                            if (await LessonService.CreateLesson(new() { Name = LessonNameEntry.Text, Where = LessonWhereEntry.Text, Date = "", TimeStart = start.Time, TimeEnd = end.Time, DayOfWeek = DoW, CourseNumber = add_lesson_cource, Teacher = LessonTeacherEntry.Text, Department = LessonDepartmentEntry.Text, Branch = LessonBranchEntry.Text, Extra = LessonExtraEntry.Text, Week = Convert.ToInt32(LessonWeekEntry.Text) }))
+                                            {
+                                                var toast = Toast.Make("Занятие успешно добавлено!", CommunityToolkit.Maui.Core.ToastDuration.Short);
+                                                await toast.Show();
+                                                AddLessonVL.IsVisible = false;
+                                                ScheduleShowVL.IsVisible = true;
+                                                AdminSchuduleVL.IsVisible = true;
+                                                List<Lesson> showlistMo = new();
+                                                List<Lesson> showlistTu = new();
+                                                List<Lesson> showlistWe = new();
+                                                List<Lesson> showlistTh = new();
+                                                List<Lesson> showlistFr = new();
+                                                List<Lesson> showlistSa = new();
+                                                List<Lesson> showlistSu = new();
+                                                List<LessonEntity> lessons = new();
+                                                Dispatcher.Dispatch(async () =>
+                                                {
+                                                    lessons = await LessonService.ShowByWeek(new() { Week = calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday) });
+                                                    foreach (var lesson in lessons)
+                                                    {
+
+                                                        switch (lesson.DayOfWeek)
+                                                        {
+                                                            case LessonDoWEnum.Mo:
+                                                                showlistMo.Add(new()
+                                                                {
+                                                                    Where = lesson.Where,
+                                                                    Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
+                                                                    TimeStart = lesson.TimeStart,
+                                                                    TimeEnd = lesson.TimeEnd,
+                                                                });
+                                                                break;
+                                                            case LessonDoWEnum.Tu:
+                                                                showlistTu.Add(new()
+                                                                {
+                                                                    Where = lesson.Where,
+                                                                    Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
+                                                                    TimeStart = lesson.TimeStart,
+                                                                    TimeEnd = lesson.TimeEnd,
+                                                                });
+                                                                break;
+                                                            case LessonDoWEnum.We:
+                                                                showlistWe.Add(new()
+                                                                {
+                                                                    Where = lesson.Where,
+                                                                    Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
+                                                                    TimeStart = lesson.TimeStart,
+                                                                    TimeEnd = lesson.TimeEnd,
+                                                                });
+                                                                break;
+                                                            case LessonDoWEnum.Th:
+                                                                showlistTh.Add(new()
+                                                                {
+                                                                    Where = lesson.Where,
+                                                                    Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
+                                                                    TimeStart = lesson.TimeStart,
+                                                                    TimeEnd = lesson.TimeEnd,
+                                                                });
+                                                                break;
+                                                            case LessonDoWEnum.Fr:
+                                                                showlistFr.Add(new()
+                                                                {
+                                                                    Where = lesson.Where,
+                                                                    Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
+                                                                    TimeStart = lesson.TimeStart,
+                                                                    TimeEnd = lesson.TimeEnd,
+                                                                });
+                                                                break;
+                                                            case LessonDoWEnum.Sa:
+                                                                showlistSa.Add(new()
+                                                                {
+                                                                    Where = lesson.Where,
+                                                                    Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
+                                                                    TimeStart = lesson.TimeStart,
+                                                                    TimeEnd = lesson.TimeEnd,
+                                                                });
+                                                                break;
+                                                            case LessonDoWEnum.Su:
+                                                                showlistSu.Add(new()
+                                                                {
+                                                                    Where = lesson.Where,
+                                                                    Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
+                                                                    TimeStart = lesson.TimeStart,
+                                                                    TimeEnd = lesson.TimeEnd,
+                                                                });
+                                                                break;
+                                                            default:
+                                                                break;
+                                                        }
+
+                                                    }
+                                                    CourseChoiceSL.IsVisible = false;
+                                                    DepartmentChoiceSL.IsVisible = false;
+                                                    BranchChoiceSL.IsVisible = false;
+                                                    ShowLessonsButton.IsVisible = false;
+
+                                                    MondayAdminSL.IsVisible = true;
+                                                    TuesdayAdminSL.IsVisible = true;
+                                                    WednesdayAdminSL.IsVisible = true;
+                                                    ThursdayAdminSL.IsVisible = true;
+                                                    FridayAdminSL.IsVisible = true;
+                                                    SaturdayAdminSL.IsVisible = true;
+                                                    SundayAdminSL.IsVisible = true;
+
+                                                    MondayLessonsAddShowLV.ItemsSource = showlistMo;
+                                                    TuesdayLessonsAddShowLV.ItemsSource = showlistTu;
+                                                    WednesdayLessonsAddShowLV.ItemsSource = showlistWe;
+                                                    ThursdayLessonsAddShowLV.ItemsSource = showlistTh;
+                                                    FridayLessonsAddShowLV.ItemsSource = showlistFr;
+                                                    SaturdayLessonsAddShowLV.ItemsSource = showlistSa;
+                                                    SundayLessonsAddShowLV.ItemsSource = showlistSu;
+
+                                                    MondayLessonsAddShowLV.IsVisible = true;
+                                                    TuesdayLessonsAddShowLV.IsVisible = true;
+                                                    WednesdayLessonsAddShowLV.IsVisible = true;
+                                                    ThursdayLessonsAddShowLV.IsVisible = true;
+                                                    FridayLessonsAddShowLV.IsVisible = true;
+                                                    SaturdayLessonsAddShowLV.IsVisible = true;
+                                                    SundayLessonsAddShowLV.IsVisible = true;
+
+                                                    LessonNameEntry.Text = "";
+                                                    LessonWhereEntry.Text = "";
+                                                    StartChoiceCV.CurrentItem = lesson_times[0].Time;
+                                                    EndChoiceCV.CurrentItem = lesson_times[0].Time;
+                                                    start.Time = lesson_times[0].Time;
+                                                    end.Time = lesson_times[0].Time;
+                                                    DoWChoiceCV.CurrentItem = dow[0].Name;
+                                                    add_lesson_cource = "";
+                                                    LessonTeacherEntry.Text = "";
+                                                    LessonDepartmentEntry.Text = "";
+                                                    LessonBranchEntry.Text = "";
+                                                    LessonExtraEntry.Text = "";
+                                                    LessonWeekEntry.Text = "";
+                                                });
+                                                statusBar.StatusBarColor = Color.FromArgb("#8031A7");
+                                            }
+                                            else
+                                            {
+                                                var toast = Toast.Make("При добавлении занятия произошла ошибка, попробуйте позже!", CommunityToolkit.Maui.Core.ToastDuration.Short);
+                                                await toast.Show();
+                                            }
+                                            CreateLessonRequest request = new()
+                                            {
+                                                Name = LessonNameEntry.Text,
+                                                Where = LessonWhereEntry.Text,
+                                                TimeStart = start.Time,
+                                                TimeEnd = end.Time,
+                                                DayOfWeek = DoW,
+                                                CourseNumber = add_lesson_cource,
+                                                Teacher = LessonTeacherEntry.Text,
+                                                Department = LessonDepartmentEntry.Text,
+                                                Branch = LessonBranchEntry.Text,
+                                                Extra = LessonExtraEntry.Text,
+                                                Week = Convert.ToInt32(LessonWeekEntry.Text)
+                                            };
+                                        }
+                                        catch (Exception ex)
+                                        {
+
+                                            var toast = Toast.Make(ex.Message, CommunityToolkit.Maui.Core.ToastDuration.Short);
+                                            await toast.Show();
+                                        }
+                                    }
+                                    else
+                                    {
+                                        var toast = Toast.Make("Неделя должна быть числом!", CommunityToolkit.Maui.Core.ToastDuration.Short);
+                                        await toast.Show();
+                                    }
+
+                                }
+                                else
+                                {
+                                    var toast = Toast.Make("Введите специальность занятия!", CommunityToolkit.Maui.Core.ToastDuration.Short);
+                                    await toast.Show();
+                                }
+                            }
+                            else
+                            {
+                                var toast = Toast.Make("Введите отделения занятия!", CommunityToolkit.Maui.Core.ToastDuration.Short);
+                                await toast.Show();
+                            }
+
+                        }
+                        else
+                        {
+                            var toast = Toast.Make("Введите сокрщённое ФИО преподавателя!", CommunityToolkit.Maui.Core.ToastDuration.Short);
+                            await toast.Show();
+                        }
+                    }
+                    else
+                    {
+                        var toast = Toast.Make("Выберите курс студентов!", CommunityToolkit.Maui.Core.ToastDuration.Short);
+                        await toast.Show();
+                    }
+                }
+                else
+                {
+                    var toast = Toast.Make("Конец занятия должен быть после его начала!", CommunityToolkit.Maui.Core.ToastDuration.Short);
+                    await toast.Show();
+                }
+
+            }
+            else
+            {
+                var toast = Toast.Make("Введите место занятия!", CommunityToolkit.Maui.Core.ToastDuration.Short);
+                await toast.Show();
+            }
+        }
+        else
+        {
+            var toast = Toast.Make("Введите название занятия!", CommunityToolkit.Maui.Core.ToastDuration.Short);
+            await toast.Show();
+        }
+
+    }
+
+    private void EndChoiceCV_CurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
     {
         LessonTime cur = e.CurrentItem as LessonTime;
-        cur_minute = cur.Time;
-        StartLabel.Text = cur_hour + ":" + cur_minute;
+        if (cur != null)
+            EndLabel.Text = cur.Time;
+
     }
 }

@@ -10,7 +10,7 @@ namespace MiracleApp.Services.Lesson
     {
         public static async Task<bool> CreateLesson(CreateLessonRequest request)
         {
-            string serverURI = "http://45.153.69.204:5000/Lesson/ShowAll";
+            string serverURI = "http://45.153.69.204:5000/Lesson/Create";
             HttpClient httpClient = new HttpClient();
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await SecureStorage.GetAsync("token"));
             JsonContent content = JsonContent.Create(request);

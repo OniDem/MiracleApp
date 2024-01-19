@@ -118,6 +118,7 @@ public partial class AuthPage : ContentPage
             {
                 VerifySL.IsVisible = false;
                 NewPasswordSL.IsVisible = true;
+                await MailService.Delete(RestorePhoneEntry.Text);
             }
             else
             {
@@ -220,8 +221,8 @@ public partial class AuthPage : ContentPage
                 {
                     var toast = Toast.Make("Пароль успешно изменён!", CommunityToolkit.Maui.Core.ToastDuration.Long);
                     toast.Show();
-                NewPasswordSL.IsVisible = false;
-                AuthSL.IsVisible = true;
+                    NewPasswordSL.IsVisible = false;
+                    AuthSL.IsVisible = true;
                 }
                 else
                 {

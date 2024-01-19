@@ -13,7 +13,7 @@
 
         <ScrollView >
             <VerticalStackLayout>
-                <VerticalStackLayout HorizontalOptions="Start" VerticalOptions="Start" x:Name="ScheduleShowVL">
+                <VerticalStackLayout HorizontalOptions="Start" VerticalOptions="Start" x:Name="ScheduleShowVL" IsVisible="false">
 
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never" Margin="0, 24, 0, 0">
                         <HorizontalStackLayout>
@@ -329,11 +329,13 @@
                             </ListView>
                         </StackLayout>
                     </StackLayout>
-
+                </VerticalStackLayout>
+                
+                <VerticalStackLayout x:Name="AdminSchuduleVL" IsVisible="false">
                     <StackLayout x:Name="AdminScheduleSL" IsVisible="true">
                         <StackLayout HorizontalOptions="FillAndExpand" Margin="0, 18, 0, 0" x:Name="MondayAdminSL">
                             <Label Text="Понедельник" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
-                            <ListView IsVisible="false" x:Name="MondayLessonsAddLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                            <ListView IsVisible="true" x:Name="MondayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
@@ -362,7 +364,7 @@
 
                         <StackLayout HorizontalOptions="FillAndExpand" Margin="0, 18, 0, 0" x:Name="TuesdayAdminSL">
                             <Label Text="Вторник" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
-                            <ListView IsVisible="false" x:Name="TuesdayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                            <ListView IsVisible="true" x:Name="TuesdayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
@@ -390,7 +392,7 @@
 
                         <StackLayout HorizontalOptions="FillAndExpand" Margin="0, 18, 0, 0" x:Name="WednesdayAdminSL">
                             <Label Text="Среда" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
-                            <ListView IsVisible="false" x:Name="WednesdayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                            <ListView IsVisible="true" x:Name="WednesdayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
@@ -418,7 +420,7 @@
 
                         <StackLayout HorizontalOptions="FillAndExpand" Margin="0, 18, 0, 0" x:Name="ThursdayAdminSL">
                             <Label Text="Четверг" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
-                            <ListView IsVisible="false" x:Name="ThursdayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                            <ListView IsVisible="true" x:Name="ThursdayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
@@ -446,7 +448,7 @@
 
                         <StackLayout HorizontalOptions="FillAndExpand" Margin="0, 18, 0, 0" x:Name="FridayAdminSL">
                             <Label Text="Пятница" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
-                            <ListView IsVisible="false" x:Name="FridayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                            <ListView IsVisible="true" x:Name="FridayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
@@ -474,7 +476,7 @@
 
                         <StackLayout HorizontalOptions="FillAndExpand" Margin="0, 18, 0, 0" x:Name="SaturdayAdminSL">
                             <Label Text="Суббота" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
-                            <ListView IsVisible="false" x:Name="SaturdayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                            <ListView IsVisible="true" x:Name="SaturdayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
@@ -502,7 +504,7 @@
 
                         <StackLayout HorizontalOptions="FillAndExpand" Margin="0, 18, 0, 0" x:Name="SundayAdminSL">
                             <Label Text="Воскресенье" FontFamily="QANELASBLACK" FontSize="20" Margin="20, 18, 0, 4" TextColor="#FAE073"/>
-                            <ListView IsVisible="false" x:Name="SundayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
+                            <ListView IsVisible="true" x:Name="SundayLessonsAddShowLV" BackgroundColor="#9F5CC0" VerticalScrollBarVisibility="Never" RowHeight="85" HorizontalScrollBarVisibility="Never"  SelectionMode="None" SeparatorColor="#FAE073">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
@@ -528,21 +530,19 @@
                             </Frame>
                         </StackLayout>
                     </StackLayout>
-
-                    
-
                 </VerticalStackLayout>
                 <VerticalStackLayout x:Name="AddLessonVL" IsVisible="false">
+                    
                     <Frame VerticalOptions="Start" CornerRadius="0" Padding="22, 21" BackgroundColor="#242323" BorderColor="#242323">
                         <Grid ColumnDefinitions="46, *" HorizontalOptions="Fill">
                             <ImageButton Grid.Column="0" Source="arrow.svg" x:Name="BackArrowButton" Clicked="BackArrowButton_Clicked" HorizontalOptions="Start" VerticalOptions="Center"/>
-                            <Label Grid.Column="1" Text="Редактировать профиль" HorizontalOptions="End" FontSize="20" FontFamily="QANELASBOLD" TextColor="#FAE073" VerticalOptions="Center"/>
+                            <Label Grid.Column="1" Text="Добавить занятие" HorizontalOptions="End" FontSize="20" FontFamily="QANELASBOLD" TextColor="#FAE073" VerticalOptions="Center"/>
                         </Grid>
                     </Frame>
 
                     <Frame BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="0" Margin="0, 24, 0, 0">
                         <Grid RowDefinitions="*, *, *" HorizontalOptions="Center" VerticalOptions="Center">
-                            <Entry Placeholder="Предмет" Grid.Row="0" FontSize="16" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073"/>
+                            <Entry x:Name="LessonNameEntry" Placeholder="Предмет" Text="" Grid.Row="0" FontSize="16" FontFamily="QANELASREGULAR" TextColor="#FAE073" PlaceholderColor="#FAE073"/>
                             <Line Grid.Row="1" HeightRequest="1">
                                 <Line.Background>
                                     <LinearGradientBrush EndPoint="1,0">
@@ -557,12 +557,12 @@
                                     </LinearGradientBrush>
                                 </Line.Background>
                             </Line>
-                            <Entry Placeholder="Место" Grid.Row="2" FontSize="16" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073"/>
+                            <Entry x:Name="LessonWhereEntry" Placeholder="Место" Text="" Grid.Row="2" FontSize="16" FontFamily="QANELASREGULAR" TextColor="#FAE073" PlaceholderColor="#FAE073"/>
                         </Grid>
                     </Frame>
 
                     <Frame BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="0" Margin="0, 24, 0, 0">
-                        <Grid RowDefinitions="*, *, *, *, *" RowSpacing="10" ColumnDefinitions="*, *" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
+                        <Grid RowDefinitions="*, *, *, *, *, *" RowSpacing="10" ColumnDefinitions="*, *" HorizontalOptions="StartAndExpand" VerticalOptions="StartAndExpand">
                             <Label Text="Начало" VerticalOptions="Center" Grid.Row="0" Grid.Column="0" FontSize="16" FontFamily="QANELASBLACK" TextColor="#FAE073" />
 
                             <HorizontalStackLayout Grid.Column="2" Grid.Row="0" HorizontalOptions="End">
@@ -684,15 +684,90 @@
                             <Label Text="Конец" VerticalOptions="Center" Grid.Column="0" Grid.Row="4" FontSize="16" FontFamily="QANELASBLACK" TextColor="#FAE073"/>
 
                             
-                            <Label Grid.Column="2" Grid.Row="4" HorizontalOptions="End" VerticalOptions="Center" Text="10:30" FontSize="16" FontFamily="QANELASBOLD" TextColor="#FAE073" Opacity="0.5"/>
+                            <Label x:Name="EndLabel" Grid.Column="2" Grid.Row="4" HorizontalOptions="End" VerticalOptions="Center" Text="10:30" FontSize="16" FontFamily="QANELASBOLD" TextColor="#FAE073" Opacity="0.5"/>
                             <ImageButton Grid.Column="2" Grid.Row="4" BackgroundColor="Transparent" x:Name="EndButton" Clicked="EndButton_Clicked"/>
+                            <Frame x:Name="ChoiceEnd" Grid.Column="1" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" Grid.Row="5" IsVisible="false">
+                                <Grid>
+                                    <Grid  ZIndex="1">
+                                        <Grid ColumnDefinitions="*" >
+                                            <CarouselView Grid.Column="0" x:Name="EndChoiceCV" CurrentItemChanged="EndChoiceCV_CurrentItemChanged" PeekAreaInsets="25" HeightRequest="75" BackgroundColor="Transparent">
+                                                <CarouselView.ItemsLayout>
+                                                    <LinearItemsLayout Orientation="Vertical"/>
+                                                </CarouselView.ItemsLayout>
+                                                <CarouselView.ItemTemplate>
+                                                    <DataTemplate>
+                                                        <StackLayout>
+                                                            <VisualStateManager.VisualStateGroups>
+                                                                <VisualStateGroup x:Name="CommonStates">
+                                                                    <VisualState x:Name="CurrentItem">
+                                                                        <VisualState.Setters>
+                                                                            <Setter Property="Scale" Value="1.1" />
+                                                                        </VisualState.Setters>
+                                                                    </VisualState>
+                                                                    <VisualState x:Name="PreviousItem">
+                                                                        <VisualState.Setters>
+                                                                            <Setter Property="Opacity" Value="0.5" />
+                                                                        </VisualState.Setters>
+                                                                    </VisualState>
+                                                                    <VisualState x:Name="NextItem">
+                                                                        <VisualState.Setters>
+                                                                            <Setter Property="Opacity" Value="0.5" />
+                                                                        </VisualState.Setters>
+                                                                    </VisualState>
+                                                                    <VisualState x:Name="DefaultItem">
+                                                                        <VisualState.Setters>
+                                                                            <Setter Property="Opacity" Value="0.25" />
+                                                                        </VisualState.Setters>
+                                                                    </VisualState>
+                                                                </VisualStateGroup>
+                                                            </VisualStateManager.VisualStateGroups>
+                                                            <Label Text="{Binding Time}" HorizontalOptions="Center" VerticalOptions="Center" FontSize="16" TextColor="#FAE073" FontFamily="QANELASBLACK"/>
+                                                        </StackLayout>
+                                                    </DataTemplate>
+                                                </CarouselView.ItemTemplate>
+                                            </CarouselView>
+                                        </Grid>
+                                    </Grid>
+                                    <Frame ZIndex="0" BackgroundColor="#242323" BorderColor="#242323" HeightRequest="35" VerticalOptions="Center" CornerRadius="16"/>
+                                </Grid>
+
+                            </Frame>
                         </Grid>
                     </Frame>
 
-                    <Frame BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="0" Margin="0, 24, 0, 0">
-                        <Grid RowDefinitions="*, *, *, *, *, *, *" HorizontalOptions="Center" VerticalOptions="Center">
-                            <Entry Placeholder="Курс" Grid.Row="0" FontSize="16" FontFamily="QANELASBLACK" TextColor="#FAE073" PlaceholderColor="#FAE073"/>
-                            <Line Grid.Row="1" HeightRequest="1">
+                    <Frame BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="0" Margin="0, 24, 0, 0" HorizontalOptions="Center">
+                        <Grid RowDefinitions="*, *, *, *, *, *, *, *" HorizontalOptions="Center" VerticalOptions="Center">
+                            <Label Text="Курс"  Grid.Row="0" FontSize="16" FontFamily="QANELASBLACK" TextColor="#FAE073" />
+                            <Frame CornerRadius="16" BackgroundColor="Transparent" BorderColor="Transparent" Margin="16" Padding="8, 4" VerticalOptions="Fill" HorizontalOptions="Fill">
+                                <Grid ColumnDefinitions="*, *, *, *" HorizontalOptions="Fill" >
+                                    <Frame x:Name="AddCource1Frame" Grid.Column="0" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="8, 4">
+                                        <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                            <Label Grid.Row="0" Grid.Column="0" Text="1" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                            <ImageButton Clicked="AddCource1Button_Clicked" x:Name="AddCource1Button" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                        </Grid>
+                                    </Frame>
+                                    <Frame x:Name="AddCource2Frame" Grid.Column="1" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="8, 4">
+                                        <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                            <Label Grid.Row="0" Grid.Column="0" Text="2" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                            <ImageButton Clicked="AddCource2Button_Clicked" x:Name="AddCource2Button" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                        </Grid>
+                                    </Frame>
+                                    <Frame x:Name="AddCource3Frame" Grid.Column="2" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="8, 4">
+                                        <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                            <Label Grid.Row="0" Grid.Column="0" Text="3" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                            <ImageButton Clicked="AddCource3Button_Clicked" x:Name="AddCource3Button" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                        </Grid>
+                                    </Frame>
+                                    <Frame x:Name="AddCource4Frame" Grid.Column="3" BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="16" HorizontalOptions="Start" Padding="8, 4">
+                                        <Grid ColumnDefinitions="*" RowDefinitions="*" >
+                                            <Label Grid.Row="0" Grid.Column="0" Text="4" VerticalOptions="Center" HorizontalOptions="Center" FontFamily="QANELASBOLD" FontSize="24" TextColor="#FAE073"/>
+                                            <ImageButton Clicked="AddCource4Button_Clicked" x:Name="AddCource4Button" Grid.Row="0" Grid.Column="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent"/>
+                                        </Grid>
+                                    </Frame>
+
+                                </Grid>
+                            </Frame>
+                            <Line Grid.Row="2" HeightRequest="1">
                                 <Line.Background>
                                     <LinearGradientBrush EndPoint="1,0">
                                         <GradientStop Color="Transparent" Offset="0" />
@@ -702,8 +777,8 @@
                                     </LinearGradientBrush>
                                 </Line.Background>
                             </Line>
-                            <Entry Placeholder="Преподователь" Grid.Row="2" FontSize="16" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073"/>
-                            <Line Grid.Row="3" HeightRequest="1">
+                            <Entry x:Name="LessonTeacherEntry" Text="" Placeholder="Преподователь" Grid.Row="3" FontSize="16" FontFamily="QANELASREGULAR" TextColor="#FAE073" PlaceholderColor="#FAE073"/>
+                            <Line Grid.Row="4" HeightRequest="1">
                                 <Line.Background>
                                     <LinearGradientBrush EndPoint="1,0">
                                         <GradientStop Color="Transparent" Offset="0" />
@@ -713,8 +788,8 @@
                                     </LinearGradientBrush>
                                 </Line.Background>
                             </Line>
-                            <Entry Placeholder="Отделение" Grid.Row="4" FontSize="16" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073"/>
-                            <Line Grid.Row="5" HeightRequest="1">
+                            <Entry x:Name="LessonDepartmentEntry" Text="" Placeholder="Отделение" Grid.Row="5" FontSize="16" FontFamily="QANELASREGULAR" TextColor="#FAE073" PlaceholderColor="#FAE073"/>
+                            <Line Grid.Row="6" HeightRequest="1">
                                 <Line.Background>
                                     <LinearGradientBrush EndPoint="1,0">
                                         <GradientStop Color="Transparent" Offset="0" />
@@ -724,13 +799,13 @@
                                     </LinearGradientBrush>
                                 </Line.Background>
                             </Line>
-                            <Entry Placeholder="Специальность" Grid.Row="6" FontSize="16" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073"/>
+                            <Entry x:Name="LessonBranchEntry" Text="" Placeholder="Специальность" Grid.Row="7" FontSize="16" FontFamily="QANELASREGULAR" TextColor="#FAE073" PlaceholderColor="#FAE073"/>
                         </Grid>
                     </Frame>
 
                     <Frame BackgroundColor="#9F5CC0" BorderColor="#9F5CC0" CornerRadius="0" Margin="0, 24, 0, 0">
                         <Grid RowDefinitions="*, *, *" HorizontalOptions="Center" VerticalOptions="Center">
-                            <Entry Placeholder="Группа" Grid.Row="0" FontSize="16" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073"/>
+                            <Entry x:Name="LessonExtraEntry" Text="" Placeholder="Группа (если есть)" Grid.Row="0" FontSize="16" FontFamily="QANELASREGULAR" TextColor="#FAE073" PlaceholderColor="#FAE073"/>
                             <Line Grid.Row="1" HeightRequest="1">
                                 <Line.Background>
                                     <LinearGradientBrush EndPoint="1,0">
@@ -745,9 +820,11 @@
                                     </LinearGradientBrush>
                                 </Line.Background>
                             </Line>
-                            <Entry Placeholder="Неделя" Grid.Row="2" FontSize="16" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073"/>
+                            <Entry x:Name="LessonWeekEntry" Text="" Placeholder="Неделя" Grid.Row="2" FontSize="16" FontFamily="QANELASREGULAR" TextColor="#FAE073" PlaceholderColor="#FAE073"/>
                         </Grid>
                     </Frame>
+
+                    <Button x:Name="SaveLessonButton" Clicked="SaveLessonButton_Clicked" Margin="32" HorizontalOptions="Center" Text="Сохранить" FontSize="24" FontFamily="QANELASBOLD" CornerRadius="16" TextColor="#242323" BackgroundColor="#FAE073" Padding="64, 20"/>
 
                 </VerticalStackLayout>
             </VerticalStackLayout>

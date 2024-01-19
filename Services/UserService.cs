@@ -49,18 +49,7 @@ namespace Services
 
         public async Task<UserEntity?> Update(int user_id, UpdateUserRequest request)
         {
-            return _userRepository.Update(new UserEntity
-            {
-                Id = user_id,
-                Phone = request.Phone,
-                Email = request.Email,
-                FIO = request.FIO,
-                Role = request.Role,
-                Department = request.Department,
-                StudentBranch = request.StudentBranch,
-                CourseNumber = request.CourseNumber,
-                Password = request.Password,
-            });
+            return _userRepository.Update(user_id, request);
         }
 
         public async Task<UserEntity?> ShowById(ShowByIdRequest request)

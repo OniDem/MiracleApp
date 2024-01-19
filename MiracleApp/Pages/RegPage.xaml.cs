@@ -181,7 +181,7 @@ public partial class RegPage : ContentPage
                         VLTeacherInfo.IsVisible = false;
                         VLRegInfo.IsVisible = true;
                         reg_user.FIO = TeacherFIOEntry.Text;
-                        reg_user.StudentBranch = TeacherBranchPicker.SelectedItem.ToString(); // Поменять на ветки препода(пока то для тестов)
+                        reg_user.StudentBranch = TeacherBranchPicker.SelectedItem.ToString(); // Поменять на ветки препода(пока что для тестов)
                     }
                     else
                     {
@@ -202,35 +202,41 @@ public partial class RegPage : ContentPage
     {
         if (PhoneEntry.Text.Length > 0)
         {
-            if (PasswordEntry.Text.Length > 0)
+            if (MailEntry.Text.Contains('@'))
             {
-                reg_user.Phone = PhoneEntry.Text;
-                //Добавить поле для ввода почты!
-                reg_user.Email = "Email!";
-                reg_user.Password = PasswordEntry.Text;
-                reg_user.Photo = "";
-
-                if (await UserService.RegUser(reg_user) > 0)
+                if (PasswordEntry.Text.Length > 0)
                 {
-                    await Navigation.PushAsync(new MainPage());
-                    await DisplayAlert("Def Info", "Номер:" + reg_user.Phone + ", " + "ФИО:" + reg_user.FIO + ", " + "Роль:" + reg_user.Role + ", " + "Отделение:" + reg_user.Department + ", " + "Направление/Специальность:" + reg_user.StudentBranch + ", " + "Курс:" + reg_user.CourseNumber + ", " + "Пароль:" + reg_user.Password + "; " + "Отправьте разработчику для отладки!", "OK");
+                    reg_user.Phone = PhoneEntry.Text;
+                    reg_user.Email = MailEntry.Text;
+                    reg_user.Password = PasswordEntry.Text;
+                    reg_user.Photo = "";
+
+                    if (await UserService.RegUser(reg_user) > 0)
+                    {
+                        await Navigation.PushAsync(new MainPage());
+                        await DisplayAlert("Def Info", "Номер:" + reg_user.Phone + ", " + "ФИО:" + reg_user.FIO + ", " + "Роль:" + reg_user.Role + ", " + "Отделение:" + reg_user.Department + ", " + "Направление/Специальность:" + reg_user.StudentBranch + ", " + "Курс:" + reg_user.CourseNumber + ", " + "Пароль:" + reg_user.Password + "; " + "Отправьте разработчику для отладки!", "OK");
+                    }
+                    else
+                    {
+                        var toast = Toast.Make("При регистрации произошла ошибка! Попробуйте позже", CommunityToolkit.Maui.Core.ToastDuration.Long);
+                        await toast.Show();
+                    }
                 }
                 else
                 {
-                    await DisplayAlert("Def Info", "Номер:" + reg_user.Phone + ", " + "ФИО:" + reg_user.FIO + ", " + "Роль:" + reg_user.Role + ", " + "Отделение:" + reg_user.Department + ", " + "Направление/Специальность:" + reg_user.StudentBranch + ", " + "Курс:" + reg_user.CourseNumber + ", " + "Пароль:" + reg_user.Password + "; " + "Отправьте разработчику для отладки!", "OK");
-                    var toast = Toast.Make("При регистрации произошла ошибка! Попробуйте позже", CommunityToolkit.Maui.Core.ToastDuration.Long);
+                    var toast = Toast.Make("Введите пароль!", CommunityToolkit.Maui.Core.ToastDuration.Long);
                     await toast.Show();
                 }
             }
             else
             {
-                var toast = Toast.Make("Введите пароль", CommunityToolkit.Maui.Core.ToastDuration.Long);
+                var toast = Toast.Make("Некорректная почта!", CommunityToolkit.Maui.Core.ToastDuration.Long);
                 await toast.Show();
             }
         }
         else
         {
-            var toast = Toast.Make("Введите номер телефона", CommunityToolkit.Maui.Core.ToastDuration.Long);
+            var toast = Toast.Make("Введите номер телефона!", CommunityToolkit.Maui.Core.ToastDuration.Long);
             await toast.Show();
         }
     }

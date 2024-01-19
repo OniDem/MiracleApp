@@ -58,7 +58,7 @@ namespace MiracleApi.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _userService.Update(user_id, request);
+                return await _userService.Update(user_id, request);
             }
             return null;
         }

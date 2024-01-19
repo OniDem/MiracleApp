@@ -1,5 +1,6 @@
 ﻿using Core.Entity;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 
 namespace Infrastructure
 {
@@ -14,5 +15,17 @@ namespace Infrastructure
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
             => optionsBuilder.UseNpgsql("Host=45.8.96.144;Database=MiracleAppDB;Username=mira31;Password=c(gY4EtjBXIOsL");
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<MailEntity>(entity => {
+                entity.HasIndex(e => e.Email).IsUnique();
+            });
+
+            builder.Entity<UserEntity>(entity =>
+            {
+                entity.HasIndex(e => e.Phone).IsUnique();
+            });
+        }
     }
 }

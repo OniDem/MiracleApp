@@ -61,6 +61,9 @@
                 <control:MaskedEntry x:Name="PhoneEntry" Mask="+7 (XXX) XXX-XX-XX" Text="" Placeholder="Номер телефона" Keyboard="Numeric" BackgroundColor="#FAE073" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
             </Frame>
             <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
+                <Entry x:Name="MailEntry" BackgroundColor="#FAE073" Text="" Placeholder="Почта" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
+            </Frame>
+            <Frame BackgroundColor="#FAE073" BorderColor="Black" CornerRadius="16" Margin="1, 18, 21, 0" Padding="18, 11, 18, 12">
                 <Entry x:Name="PasswordEntry" BackgroundColor="#FAE073" Text="" IsPassword="true" Placeholder="Пароль" FontSize="24" PlaceholderColor="#242323" TextColor="#242323" FontFamily="QANELASREGULAR"/>
             </Frame>
             <Button Text="Регистрация" BackgroundColor="#FAE073" TextColor="#242323" HorizontalOptions="Center" FontFamily="QANELASBLACK" FontSize="24" Margin="0, 48, 0, 0" Padding="42, 20" x:Name="RegisterButton" Clicked="RegisterButton_Clicked"/>

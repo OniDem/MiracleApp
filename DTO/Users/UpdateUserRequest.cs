@@ -12,12 +12,14 @@ namespace DTO.Users
 
         public int Role { get; set; }
 
-        public string Department { get; set; }
+        public string? Department { get; set; }
 
-        public string StudentBranch { get; set; }
+        public string? StudentBranch { get; set; }
 
-        public string CourseNumber { get; set; }
+        public string? CourseNumber { get; set; }
 
         public string Password { get; set; }
+
+        public string Photo { get; set; }
     }
 }

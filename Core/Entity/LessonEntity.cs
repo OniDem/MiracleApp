@@ -12,7 +12,7 @@ namespace Core.Entity
 
         public string Name { get; set; }
 
-        public string Date { get; set; }
+        public string? Date { get; set; }
 
         public int Week {  get; set; }
 
@@ -38,7 +38,7 @@ namespace Core.Entity
 
         public bool Online { get; set; }
 
-        public string Extra { get; set; }
+        public string? Extra { get; set; }
 
     }
 }

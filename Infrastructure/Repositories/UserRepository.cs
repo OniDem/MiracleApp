@@ -1,4 +1,6 @@
 ﻿using Core.Entity;
+using DTO.Users;
+
 
 namespace Infrastructure.Repositories
 {
@@ -18,9 +20,18 @@ namespace Infrastructure.Repositories
             return user;
         }
 
-        public UserEntity Update(UserEntity user)
-
+        public UserEntity Update(int id, UpdateUserRequest request)
         {
+            var user = _applicationContext.Users.Where(p => p.Id == id).First();
+            user.Phone = request.Phone;
+            user.Email = request.Email;
+            user.FIO = request.FIO;
+            user.Role = request.Role;
+            user.Department = request.Department;
+            user.StudentBranch = request.StudentBranch;
+            user.CourseNumber = request.CourseNumber;
+            user.Password = request.Password;
+            user.Photo = request.Photo;
             _applicationContext.Users.Update(user);
             _applicationContext.SaveChanges();
             return user;
