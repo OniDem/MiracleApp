@@ -9,20 +9,6 @@ using System.Globalization;
 
 namespace MiracleApp.Pages;
 
-class LessonShowProperties
-{
-    public string cource { get; set; }
-
-    public string department { get; set; }
-
-    public string branch { get; set; }
-}
-
-class DayOfWeekN
-{
-    public string Name { get; set; }
-}
-
 class LessonTime
 {
     public string Time { get; set; }
@@ -30,12 +16,11 @@ class LessonTime
 
 public partial class SchedulePage : ContentPage
 {
-    LessonShowProperties prop = new();
+    LessonShowPropertiesEntity lessonShowProperties = new();
     Calendar calendar = CultureInfo.CurrentCulture.Calendar;
     LessonEntity lesson = new();
-    UserEntity user = new();
     StatusBarBehavior statusBar = new();
-    List<DayOfWeekN> dow = new()
+    List<DayOfWeekShowEntity> dow = new()
     {
         new() { Name = "Понедельник" },
         new() { Name = "Вторник" },
@@ -337,53 +322,7 @@ public partial class SchedulePage : ContentPage
         new() {Time = "23:55"},
     };
 
-    List<LessonTime> lesson_hours = new()
-    {
-        new() {Time = "00" },
-        new() {Time = "01" },
-        new() {Time = "02" },
-        new() {Time = "03" },
-        new() {Time = "04" },
-        new() {Time = "05" },
-        new() {Time = "06" },
-        new() {Time = "06" },
-        new() {Time = "07" },
-        new() {Time = "08" },
-        new() {Time = "09" },
-        new() {Time = "10" },
-        new() {Time = "11" },
-        new() {Time = "12" },
-        new() {Time = "13" },
-        new() {Time = "14" },
-        new() {Time = "15" },
-        new() {Time = "16" },
-        new() {Time = "16" },
-        new() {Time = "17" },
-        new() {Time = "18" },
-        new() {Time = "19" },
-        new() {Time = "20" },
-        new() {Time = "21" },
-        new() {Time = "22" },
-        new() {Time = "23" }
-    };
-
-    List<LessonTime> lesson_minutes = new()
-    {
-        new() {Time = "00"},
-        new() {Time = "05"},
-        new() {Time = "10"},
-        new() {Time = "15"},
-        new() {Time = "20"},
-        new() {Time = "25"},
-        new() {Time = "30"},
-        new() {Time = "35"},
-        new() {Time = "40"},
-        new() {Time = "45"},
-        new() {Time = "50"},
-        new() {Time = "55"}
-    };
-
-    string cur_hour, cur_minute, cur_dow;
+    string  cur_dow;
     string add_lesson_cource;
 
     public SchedulePage()
@@ -398,26 +337,21 @@ public partial class SchedulePage : ContentPage
             if (await SecureStorage.GetAsync("role") == "3")
             {
                 DoWChoiceCV.ItemsSource = dow;
-                //StartHourChoiceCV.ItemsSource = lesson_hours;
-                //StartMinuteChoiceCV.ItemsSource = lesson_minutes;
                 StartChoiceCV.ItemsSource = lesson_times;
                 EndChoiceCV.ItemsSource = lesson_times;
-                cur_hour = lesson_hours.First().Time;
-                cur_minute = lesson_minutes.First().Time;
                 AdminSchuduleVL.IsVisible = true;
                 Dispatcher.Dispatch(async () =>
                 {
-                    List<List<ShowLessonEntity>> addShowLessons = await LessonService.ShowAllAddLesson(calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday));
-                    if (addShowLessons != null)
-                    {
-                        MondayLessonsAddShowLV.ItemsSource = addShowLessons[0];
-                        TuesdayLessonsAddShowLV.ItemsSource = addShowLessons[1];
-                        WednesdayLessonsAddShowLV.ItemsSource = addShowLessons[2];
-                        ThursdayLessonsAddShowLV.ItemsSource = addShowLessons[3];
-                        FridayLessonsAddShowLV.ItemsSource = addShowLessons[4];
-                        SaturdayLessonsAddShowLV.ItemsSource = addShowLessons[5];
-                        SundayLessonsAddShowLV.ItemsSource = addShowLessons[6];
-                    }
+                    List<List<ShowLessonEntity>> addShowLessons = await LessonService.ShowAllLessons(calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday));
+
+                    MondayLessonsAddShowLV.ItemsSource = addShowLessons[0];
+                    TuesdayLessonsAddShowLV.ItemsSource = addShowLessons[1];
+                    WednesdayLessonsAddShowLV.ItemsSource = addShowLessons[2];
+                    ThursdayLessonsAddShowLV.ItemsSource = addShowLessons[3];
+                    FridayLessonsAddShowLV.ItemsSource = addShowLessons[4];
+                    SaturdayLessonsAddShowLV.ItemsSource = addShowLessons[5];
+                    SundayLessonsAddShowLV.ItemsSource = addShowLessons[6];
+
                 });
             }
             else
@@ -450,9 +384,8 @@ public partial class SchedulePage : ContentPage
         СertificateButton.BackgroundColor = Colors.Transparent;
     }
 
-    private async void ScheduleButton_Clicked(object sender, EventArgs e)
+    private void ScheduleButton_Clicked(object sender, EventArgs e)
     {
-        //await Navigation.PushAsync(new SchedulePage());
         MainButton.BackgroundColor = Colors.Transparent;
         ScheduleButton.BackgroundColor = Color.FromArgb("#9F5CC0");
         PayButton.BackgroundColor = Colors.Transparent;
@@ -479,341 +412,176 @@ public partial class SchedulePage : ContentPage
 
     private void CourceOneButton_Clicked(object sender, EventArgs e)
     {
-        CourceOneButton.BackgroundColor = Color.FromArgb("#1E1E1E");
-        CourceTwoButton.BackgroundColor = Color.FromArgb("#9F5CC0");
-        CourceThreeButton.BackgroundColor = Color.FromArgb("#9F5CC0");
-        CourceFourButton.BackgroundColor = Color.FromArgb("#9F5CC0");
-
         Cource1Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
         Cource2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Cource3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Cource4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
-        prop.cource = "1";
+        lessonShowProperties.Cource = "1";
     }
 
     private void CourceTwoButton_Clicked(object sender, EventArgs e)
     {
-        CourceOneButton.BackgroundColor = Color.FromArgb("#9F5CC0");
-        CourceTwoButton.BackgroundColor = Color.FromArgb("#1E1E1E");
-        CourceThreeButton.BackgroundColor = Color.FromArgb("#9F5CC0");
-        CourceFourButton.BackgroundColor = Color.FromArgb("#9F5CC0");
-
         Cource1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Cource2Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
         Cource3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Cource4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
-        prop.cource = "2";
+        lessonShowProperties.Cource = "2";
     }
 
     private void CourceThreeButton_Clicked(object sender, EventArgs e)
     {
-        CourceOneButton.BackgroundColor = Color.FromArgb("#9F5CC0");
-        CourceTwoButton.BackgroundColor = Color.FromArgb("#9F5CC0");
-        CourceThreeButton.BackgroundColor = Color.FromArgb("#1E1E1E");
-        CourceFourButton.BackgroundColor = Color.FromArgb("#9F5CC0");
-
         Cource1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Cource2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Cource3Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
         Cource4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
-        prop.cource = "3";
+        lessonShowProperties.Cource = "3";
     }
 
     private void CourceFourButton_Clicked(object sender, EventArgs e)
     {
-        CourceOneButton.BackgroundColor = Color.FromArgb("#9F5CC0");
-        CourceTwoButton.BackgroundColor = Color.FromArgb("#9F5CC0");
-        CourceThreeButton.BackgroundColor = Color.FromArgb("#9F5CC0");
-        CourceFourButton.BackgroundColor = Color.FromArgb("#1E1E1E");
-
         Cource1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Cource2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Cource3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Cource4Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
-        prop.cource = "4";
+        lessonShowProperties.Cource = "4";
     }
 
     private void Department1_Clicked(object sender, EventArgs e)
     {
-        Department1.BackgroundColor = Color.FromArgb("#1E1E1E");
-        Department2.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Department3.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Department4.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Department5.BackgroundColor = Color.FromArgb("#9F5CC0");
-
         Department1Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
         Department2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
-        prop.department = "1";
+        lessonShowProperties.Department = "1";
     }
 
     private void Department2_Clicked(object sender, EventArgs e)
     {
-        Department1.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Department2.BackgroundColor = Color.FromArgb("#1E1E1E");
-        Department3.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Department4.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Department5.BackgroundColor = Color.FromArgb("#9F5CC0");
-
         Department1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department2Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
         Department3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
-        prop.department = "2";
+        lessonShowProperties.Department = "2";
     }
 
     private void Department3_Clicked(object sender, EventArgs e)
     {
-        Department1.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Department2.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Department3.BackgroundColor = Color.FromArgb("#1E1E1E");
-        Department4.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Department5.BackgroundColor = Color.FromArgb("#9F5CC0");
-
         Department1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department3Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
         Department4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
-        prop.department = "3";
+        lessonShowProperties.Department = "3";
     }
 
     private void Department4_Clicked(object sender, EventArgs e)
     {
-        Department1.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Department2.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Department3.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Department4.BackgroundColor = Color.FromArgb("#1E1E1E");
-        Department5.BackgroundColor = Color.FromArgb("#9F5CC0");
-
         Department1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department4Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
         Department5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
-        prop.department = "4";
+        lessonShowProperties.Department = "4";
     }
 
     private void Department5_Clicked(object sender, EventArgs e)
     {
-        Department1.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Department2.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Department3.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Department4.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Department5.BackgroundColor = Color.FromArgb("#1E1E1E");
-
         Department1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Department5Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
-        prop.department = "5";
+        lessonShowProperties.Department = "5";
     }
 
     private void Branch1_Clicked(object sender, EventArgs e)
     {
-        Branch1.BackgroundColor = Color.FromArgb("#1E1E1E");
-        Branch2.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch3.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch4.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch5.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch6.BackgroundColor = Color.FromArgb("#9F5CC0");
-
         Branch1Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
         Branch2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch6Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
-        prop.branch = "1";
+        lessonShowProperties.Branch = "1";
     }
 
     private void Branch2_Clicked(object sender, EventArgs e)
     {
-        Branch1.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch2.BackgroundColor = Color.FromArgb("#1E1E1E");
-        Branch3.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch4.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch5.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch6.BackgroundColor = Color.FromArgb("#9F5CC0");
-
         Branch1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch2Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
         Branch3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch6Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
-        prop.branch = "2";
+        lessonShowProperties.Branch = "2";
     }
 
     private void Branch3_Clicked(object sender, EventArgs e)
     {
-        Branch1.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch2.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch3.BackgroundColor = Color.FromArgb("#1E1E1E");
-        Branch4.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch5.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch6.BackgroundColor = Color.FromArgb("#9F5CC0");
-
         Branch1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch3Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
         Branch4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch6Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
-        prop.branch = "3";
+        lessonShowProperties.Branch = "3";
     }
 
     private void Branch4_Clicked(object sender, EventArgs e)
     {
-        Branch1.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch2.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch3.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch4.BackgroundColor = Color.FromArgb("#1E1E1E");
-        Branch5.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch6.BackgroundColor = Color.FromArgb("#9F5CC0");
-
         Branch1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch4Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
         Branch5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch6Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
-        prop.branch = "4";
+        lessonShowProperties.Branch = "4";
     }
 
     private void Branch5_Clicked(object sender, EventArgs e)
     {
-        Branch1.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch2.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch3.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch4.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch5.BackgroundColor = Color.FromArgb("#1E1E1E");
-        Branch6.BackgroundColor = Color.FromArgb("#9F5CC0");
-
         Branch1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch5Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
         Branch6Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
-        prop.branch = "5";
+        lessonShowProperties.Branch = "5";
     }
 
     private void Branch6_Clicked(object sender, EventArgs e)
     {
-        Branch1.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch2.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch3.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch4.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch5.BackgroundColor = Color.FromArgb("#9F5CC0");
-        Branch6.BackgroundColor = Color.FromArgb("#1E1E1E");
-
         Branch1Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch2Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch3Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch4Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch5Frame.BackgroundColor = Color.FromArgb("#9F5CC0");
         Branch6Frame.BackgroundColor = Color.FromArgb("#1E1E1E");
-        prop.branch = "6";
+        lessonShowProperties.Branch = "6";
     }
 
     private void ShowLessonsButton_Clicked(object sender, EventArgs e)
     {
-        if (!string.IsNullOrEmpty(prop.cource))
+        if (!string.IsNullOrEmpty(lessonShowProperties.Cource))
         {
-            if (!string.IsNullOrEmpty(prop.department))
+            if (!string.IsNullOrEmpty(lessonShowProperties.Department))
             {
-                if (!string.IsNullOrEmpty(prop.branch))
+                if (!string.IsNullOrEmpty(lessonShowProperties.Branch))
                 {
-                    List<ShowLessonEntity> showlistMo = new();
-                    List<ShowLessonEntity> showlistTu = new();
-                    List<ShowLessonEntity> showlistWe = new();
-                    List<ShowLessonEntity> showlistTh = new();
-                    List<ShowLessonEntity> showlistFr = new();
-                    List<ShowLessonEntity> showlistSa = new();
-                    List<ShowLessonEntity> showlistSu = new();
-                    List<LessonEntity> lessons = new();
+
                     Dispatcher.Dispatch(async () =>
                     {
-                        lessons = await LessonService.ShowByWeek(new() { Week = calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday) });
-                        foreach (var lesson in lessons)
-                        {
-                            if ((lesson.CourseNumber == prop.cource) && (lesson.Department == prop.department) && (lesson.Branch == prop.branch))
-                            {
-                                switch (lesson.DayOfWeek)
-                                {
-                                    case LessonDoWEnum.Mo:
-                                        showlistMo.Add(new()
-                                        {
-                                            Where = lesson.Where,
-                                            Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
-                                            TimeStart = lesson.TimeStart,
-                                            TimeEnd = lesson.TimeEnd,
-                                        });
-                                        break;
-                                    case LessonDoWEnum.Tu:
-                                        showlistTu.Add(new()
-                                        {
-                                            Where = lesson.Where,
-                                            Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
-                                            TimeStart = lesson.TimeStart,
-                                            TimeEnd = lesson.TimeEnd,
-                                        });
-                                        break;
-                                    case LessonDoWEnum.We:
-                                        showlistWe.Add(new()
-                                        {
-                                            Where = lesson.Where,
-                                            Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
-                                            TimeStart = lesson.TimeStart,
-                                            TimeEnd = lesson.TimeEnd,
-                                        });
-                                        break;
-                                    case LessonDoWEnum.Th:
-                                        showlistTh.Add(new()
-                                        {
-                                            Where = lesson.Where,
-                                            Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
-                                            TimeStart = lesson.TimeStart,
-                                            TimeEnd = lesson.TimeEnd,
-                                        });
-                                        break;
-                                    case LessonDoWEnum.Fr:
-                                        showlistFr.Add(new()
-                                        {
-                                            Where = lesson.Where,
-                                            Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
-                                            TimeStart = lesson.TimeStart,
-                                            TimeEnd = lesson.TimeEnd,
-                                        });
-                                        break;
-                                    case LessonDoWEnum.Sa:
-                                        showlistSa.Add(new()
-                                        {
-                                            Where = lesson.Where,
-                                            Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
-                                            TimeStart = lesson.TimeStart,
-                                            TimeEnd = lesson.TimeEnd,
-                                        });
-                                        break;
-                                    case LessonDoWEnum.Su:
-                                        showlistSu.Add(new()
-                                        {
-                                            Where = lesson.Where,
-                                            Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
-                                            TimeStart = lesson.TimeStart,
-                                            TimeEnd = lesson.TimeEnd,
-                                        });
-                                        break;
-                                    default:
-                                        break;
-                                }
-                            }
-                        }
+                        var showLessons = await LessonService.ShowAllLessons(calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday), lessonShowProperties);
+                        MondayLessonsShowLV.ItemsSource = showLessons[0];
+                        TuesdayLessonsShowLV.ItemsSource = showLessons[1];
+                        WednesdayLessonsShowLV.ItemsSource = showLessons[2];
+                        ThursdayLessonsShowLV.ItemsSource = showLessons[3];
+                        FridayLessonsShowLV.ItemsSource = showLessons[4];
+                        SaturdayLessonsShowLV.ItemsSource = showLessons[5];
+                        SundayLessonsShowLV.ItemsSource = showLessons[6];
+
                         CourseChoiceSL.IsVisible = false;
                         DepartmentChoiceSL.IsVisible = false;
                         BranchChoiceSL.IsVisible = false;
@@ -826,13 +594,6 @@ public partial class SchedulePage : ContentPage
                         FridaySL.IsVisible = true;
                         SaturdaySL.IsVisible = true;
                         SundaySL.IsVisible = true;
-                        MondayLessonsShowLV.ItemsSource = showlistMo;
-                        TuesdayLessonsShowLV.ItemsSource = showlistTu;
-                        WednesdayLessonsShowLV.ItemsSource = showlistWe;
-                        ThursdayLessonsShowLV.ItemsSource = showlistTh;
-                        FridayLessonsShowLV.ItemsSource = showlistFr;
-                        SaturdayLessonsShowLV.ItemsSource = showlistSa;
-                        SundayLessonsShowLV.ItemsSource = showlistSu;
                     });
                 }
                 else
@@ -989,7 +750,7 @@ public partial class SchedulePage : ContentPage
 
     private void DoWChoiceCV_CurrentItemChanged(object sender, CurrentItemChangedEventArgs e)
     {
-        DayOfWeekN cur = e.CurrentItem as DayOfWeekN;
+        DayOfWeekShowEntity cur = e.CurrentItem as DayOfWeekShowEntity;
         if (cur != null)
             DoWLabel.Text = cur.Name + ",";
         else
@@ -1063,7 +824,7 @@ public partial class SchedulePage : ContentPage
                                     {
                                         try
                                         {
-                                            DayOfWeekN dow_add = DoWChoiceCV.CurrentItem as DayOfWeekN;
+                                            DayOfWeekShowEntity dow_add = DoWChoiceCV.CurrentItem as DayOfWeekShowEntity;
                                             LessonDoWEnum DoW = new();
                                             switch (dow_add.Name)
                                             {
@@ -1104,10 +865,10 @@ public partial class SchedulePage : ContentPage
                                                 List<ShowLessonEntity> showlistSa = new();
                                                 List<ShowLessonEntity> showlistSu = new();
                                                 List<LessonEntity> lessons = new();
-                                                
+
                                                 Dispatcher.Dispatch(async () =>
                                                 {
-                                                    List<List<ShowLessonEntity>> addShowLessons = await LessonService.ShowAllAddLesson(calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday));
+                                                    List<List<ShowLessonEntity>> addShowLessons = await LessonService.ShowAllLessons(calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday));
                                                     MondayLessonsAddShowLV.ItemsSource = addShowLessons[0];
                                                     TuesdayLessonsAddShowLV.ItemsSource = addShowLessons[1];
                                                     WednesdayLessonsAddShowLV.ItemsSource = addShowLessons[2];
@@ -1158,20 +919,6 @@ public partial class SchedulePage : ContentPage
                                                 var toast = Toast.Make("При добавлении занятия произошла ошибка, попробуйте позже!", CommunityToolkit.Maui.Core.ToastDuration.Short);
                                                 await toast.Show();
                                             }
-                                            CreateLessonRequest request = new()
-                                            {
-                                                Name = LessonNameEntry.Text,
-                                                Where = LessonWhereEntry.Text,
-                                                TimeStart = start.Time,
-                                                TimeEnd = end.Time,
-                                                DayOfWeek = DoW,
-                                                CourseNumber = add_lesson_cource,
-                                                Teacher = LessonTeacherEntry.Text,
-                                                Department = LessonDepartmentEntry.Text,
-                                                Branch = LessonBranchEntry.Text,
-                                                Extra = LessonExtraEntry.Text,
-                                                Week = Convert.ToInt32(LessonWeekEntry.Text)
-                                            };
                                         }
                                         catch (Exception ex)
                                         {
