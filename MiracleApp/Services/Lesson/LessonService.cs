@@ -1,6 +1,8 @@
-﻿using Core.Entity;
+﻿using Core.Const;
+using Core.Entity;
 using DTO.Lesson;
 using Newtonsoft.Json;
+using System.Globalization;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
@@ -50,6 +52,94 @@ namespace MiracleApp.Services.Lesson
                 return JsonConvert.DeserializeObject<List<LessonEntity>>(result);
             }
             return null;
+        }
+
+        public static async Task<List<List<ShowLessonEntity>>> ShowAllAddLesson(int week)
+        {
+            List<List<ShowLessonEntity>> showLessons = new()
+            {
+                new() {},
+                new() {},
+                new() {},
+                new() {},
+                new() {},
+                new() {},
+                new() {},
+            };
+            var lessons = await ShowByWeek(new() { Week = week });
+            foreach (var lesson in lessons)
+            {
+                switch (lesson.DayOfWeek)
+                {
+                    case LessonDoWEnum.Mo:
+                        showLessons[0].Add(new()
+                        {
+                            Where = lesson.Where,
+                            Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
+                            TimeStart = lesson.TimeStart,
+                            TimeEnd = lesson.TimeEnd,
+                        });
+                        break;
+                    case LessonDoWEnum.Tu:
+                        showLessons[1].Add(new()
+                        {
+                            Where = lesson.Where,
+                            Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
+                            TimeStart = lesson.TimeStart,
+                            TimeEnd = lesson.TimeEnd,
+                        });
+                        break;
+                    case LessonDoWEnum.We:
+                        showLessons[2].Add(new()
+                        {
+                            Where = lesson.Where,
+                            Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
+                            TimeStart = lesson.TimeStart,
+                            TimeEnd = lesson.TimeEnd,
+                        });
+                        break;
+                    case LessonDoWEnum.Th:
+                        showLessons[3].Add(new()
+                        {
+                            Where = lesson.Where,
+                            Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
+                            TimeStart = lesson.TimeStart,
+                            TimeEnd = lesson.TimeEnd,
+                        });
+                        break;
+                    case LessonDoWEnum.Fr:
+                        showLessons[4].Add(new()
+                        {
+                            Where = lesson.Where,
+                            Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
+                            TimeStart = lesson.TimeStart,
+                            TimeEnd = lesson.TimeEnd,
+                        });
+                        break;
+                    case LessonDoWEnum.Sa:
+                        showLessons[5].Add(new()
+                        {
+                            Where = lesson.Where,
+                            Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
+                            TimeStart = lesson.TimeStart,
+                            TimeEnd = lesson.TimeEnd,
+                        });
+                        break;
+                    case LessonDoWEnum.Su:
+                        showLessons[6].Add(new()
+                        {
+                            Where = lesson.Where,
+                            Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
+                            TimeStart = lesson.TimeStart,
+                            TimeEnd = lesson.TimeEnd,
+                        });
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+            return showLessons;
         }
     }
 }
