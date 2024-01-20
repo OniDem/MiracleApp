@@ -18,18 +18,6 @@ class LessonShowProperties
     public string branch { get; set; }
 }
 
-class Lesson
-{
-    public string Description { get; set; }
-
-    public string TimeStart { get; set; }
-
-    public string TimeEnd { get; set; }
-
-    public string Where { get; set; }
-
-}
-
 class DayOfWeekN
 {
     public string Name { get; set; }
@@ -417,6 +405,20 @@ public partial class SchedulePage : ContentPage
                 cur_hour = lesson_hours.First().Time;
                 cur_minute = lesson_minutes.First().Time;
                 AdminSchuduleVL.IsVisible = true;
+                Dispatcher.Dispatch(async () =>
+                {
+                    List<List<ShowLessonEntity>> addShowLessons = await LessonService.ShowAllAddLesson(calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday));
+                    if (addShowLessons != null)
+                    {
+                        MondayLessonsAddShowLV.ItemsSource = addShowLessons[0];
+                        TuesdayLessonsAddShowLV.ItemsSource = addShowLessons[1];
+                        WednesdayLessonsAddShowLV.ItemsSource = addShowLessons[2];
+                        ThursdayLessonsAddShowLV.ItemsSource = addShowLessons[3];
+                        FridayLessonsAddShowLV.ItemsSource = addShowLessons[4];
+                        SaturdayLessonsAddShowLV.ItemsSource = addShowLessons[5];
+                        SundayLessonsAddShowLV.ItemsSource = addShowLessons[6];
+                    }
+                });
             }
             else
             {
@@ -727,13 +729,13 @@ public partial class SchedulePage : ContentPage
             {
                 if (!string.IsNullOrEmpty(prop.branch))
                 {
-                    List<Lesson> showlistMo = new();
-                    List<Lesson> showlistTu = new();
-                    List<Lesson> showlistWe = new();
-                    List<Lesson> showlistTh = new();
-                    List<Lesson> showlistFr = new();
-                    List<Lesson> showlistSa = new();
-                    List<Lesson> showlistSu = new();
+                    List<ShowLessonEntity> showlistMo = new();
+                    List<ShowLessonEntity> showlistTu = new();
+                    List<ShowLessonEntity> showlistWe = new();
+                    List<ShowLessonEntity> showlistTh = new();
+                    List<ShowLessonEntity> showlistFr = new();
+                    List<ShowLessonEntity> showlistSa = new();
+                    List<ShowLessonEntity> showlistSu = new();
                     List<LessonEntity> lessons = new();
                     Dispatcher.Dispatch(async () =>
                     {
@@ -1094,90 +1096,26 @@ public partial class SchedulePage : ContentPage
                                                 AddLessonVL.IsVisible = false;
                                                 ScheduleShowVL.IsVisible = true;
                                                 AdminSchuduleVL.IsVisible = true;
-                                                List<Lesson> showlistMo = new();
-                                                List<Lesson> showlistTu = new();
-                                                List<Lesson> showlistWe = new();
-                                                List<Lesson> showlistTh = new();
-                                                List<Lesson> showlistFr = new();
-                                                List<Lesson> showlistSa = new();
-                                                List<Lesson> showlistSu = new();
+                                                List<ShowLessonEntity> showlistMo = new();
+                                                List<ShowLessonEntity> showlistTu = new();
+                                                List<ShowLessonEntity> showlistWe = new();
+                                                List<ShowLessonEntity> showlistTh = new();
+                                                List<ShowLessonEntity> showlistFr = new();
+                                                List<ShowLessonEntity> showlistSa = new();
+                                                List<ShowLessonEntity> showlistSu = new();
                                                 List<LessonEntity> lessons = new();
+                                                
                                                 Dispatcher.Dispatch(async () =>
                                                 {
-                                                    lessons = await LessonService.ShowByWeek(new() { Week = calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday) });
-                                                    foreach (var lesson in lessons)
-                                                    {
+                                                    List<List<ShowLessonEntity>> addShowLessons = await LessonService.ShowAllAddLesson(calendar.GetWeekOfYear(DateTime.Now, CalendarWeekRule.FirstFullWeek, DayOfWeek.Monday));
+                                                    MondayLessonsAddShowLV.ItemsSource = addShowLessons[0];
+                                                    TuesdayLessonsAddShowLV.ItemsSource = addShowLessons[1];
+                                                    WednesdayLessonsAddShowLV.ItemsSource = addShowLessons[2];
+                                                    ThursdayLessonsAddShowLV.ItemsSource = addShowLessons[3];
+                                                    FridayLessonsAddShowLV.ItemsSource = addShowLessons[4];
+                                                    SaturdayLessonsAddShowLV.ItemsSource = addShowLessons[5];
+                                                    SundayLessonsAddShowLV.ItemsSource = addShowLessons[6];
 
-                                                        switch (lesson.DayOfWeek)
-                                                        {
-                                                            case LessonDoWEnum.Mo:
-                                                                showlistMo.Add(new()
-                                                                {
-                                                                    Where = lesson.Where,
-                                                                    Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
-                                                                    TimeStart = lesson.TimeStart,
-                                                                    TimeEnd = lesson.TimeEnd,
-                                                                });
-                                                                break;
-                                                            case LessonDoWEnum.Tu:
-                                                                showlistTu.Add(new()
-                                                                {
-                                                                    Where = lesson.Where,
-                                                                    Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
-                                                                    TimeStart = lesson.TimeStart,
-                                                                    TimeEnd = lesson.TimeEnd,
-                                                                });
-                                                                break;
-                                                            case LessonDoWEnum.We:
-                                                                showlistWe.Add(new()
-                                                                {
-                                                                    Where = lesson.Where,
-                                                                    Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
-                                                                    TimeStart = lesson.TimeStart,
-                                                                    TimeEnd = lesson.TimeEnd,
-                                                                });
-                                                                break;
-                                                            case LessonDoWEnum.Th:
-                                                                showlistTh.Add(new()
-                                                                {
-                                                                    Where = lesson.Where,
-                                                                    Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
-                                                                    TimeStart = lesson.TimeStart,
-                                                                    TimeEnd = lesson.TimeEnd,
-                                                                });
-                                                                break;
-                                                            case LessonDoWEnum.Fr:
-                                                                showlistFr.Add(new()
-                                                                {
-                                                                    Where = lesson.Where,
-                                                                    Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
-                                                                    TimeStart = lesson.TimeStart,
-                                                                    TimeEnd = lesson.TimeEnd,
-                                                                });
-                                                                break;
-                                                            case LessonDoWEnum.Sa:
-                                                                showlistSa.Add(new()
-                                                                {
-                                                                    Where = lesson.Where,
-                                                                    Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
-                                                                    TimeStart = lesson.TimeStart,
-                                                                    TimeEnd = lesson.TimeEnd,
-                                                                });
-                                                                break;
-                                                            case LessonDoWEnum.Su:
-                                                                showlistSu.Add(new()
-                                                                {
-                                                                    Where = lesson.Where,
-                                                                    Description = $"{lesson.Name}, {lesson.Teacher}, {lesson.Extra}",
-                                                                    TimeStart = lesson.TimeStart,
-                                                                    TimeEnd = lesson.TimeEnd,
-                                                                });
-                                                                break;
-                                                            default:
-                                                                break;
-                                                        }
-
-                                                    }
                                                     CourseChoiceSL.IsVisible = false;
                                                     DepartmentChoiceSL.IsVisible = false;
                                                     BranchChoiceSL.IsVisible = false;
@@ -1190,14 +1128,6 @@ public partial class SchedulePage : ContentPage
                                                     FridayAdminSL.IsVisible = true;
                                                     SaturdayAdminSL.IsVisible = true;
                                                     SundayAdminSL.IsVisible = true;
-
-                                                    MondayLessonsAddShowLV.ItemsSource = showlistMo;
-                                                    TuesdayLessonsAddShowLV.ItemsSource = showlistTu;
-                                                    WednesdayLessonsAddShowLV.ItemsSource = showlistWe;
-                                                    ThursdayLessonsAddShowLV.ItemsSource = showlistTh;
-                                                    FridayLessonsAddShowLV.ItemsSource = showlistFr;
-                                                    SaturdayLessonsAddShowLV.ItemsSource = showlistSa;
-                                                    SundayLessonsAddShowLV.ItemsSource = showlistSu;
 
                                                     MondayLessonsAddShowLV.IsVisible = true;
                                                     TuesdayLessonsAddShowLV.IsVisible = true;

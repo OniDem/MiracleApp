@@ -38,7 +38,7 @@
 
                 <ScrollView>
                     <!--во время работы с api и запуском не на android комментировать весь TabView-->
-                    <!--<material:TabView ZIndex="0" Margin="0, 24, 0, 0"  CachingStrategy="CacheOnLayout" HorizontalOptions="StartAndExpand">
+                    <material:TabView ZIndex="0" Margin="0, 24, 0, 0"  CachingStrategy="CacheOnLayout" HorizontalOptions="StartAndExpand">
 
                         <material:TabView.TabHeaderItemTemplate>
                             <DataTemplate>
@@ -92,7 +92,7 @@
                                 </ListView>
                             </StackLayout>
                         </material:TabItem>
-                    </material:TabView>-->
+                    </material:TabView>
                 </ScrollView>
             </VerticalStackLayout>
         </ScrollView>
