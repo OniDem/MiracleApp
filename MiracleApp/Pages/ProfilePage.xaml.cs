@@ -777,11 +777,19 @@ public partial class ProfilePage : ContentPage
         {
             Navigation.PushAsync(new HelloPage());
         }
+
+        async void createPathForAvatar()
+        {
+            var user = await UserService.GetUserById(new() { id = Convert.ToInt32(await SecureStorage.GetAsync("id")) });
+            String path = "avatar" + user.Photo + "num.jpg";
+            avatar.ImageSource = path;
+        }
         Dispatcher.Dispatch(async () =>
         {
             var user = await UserService.GetUserById(new() { id = Convert.ToInt32(await SecureStorage.GetAsync("id")) });
             UserInfoVL.BindingContext = user;
         });
+        createPathForAvatar();
         InitializeComponent();
         SettingsButton.Source = "settings.svg";
         HomeButton.Source = "home.svg";

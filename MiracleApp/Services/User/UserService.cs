@@ -17,6 +17,8 @@ namespace MiracleApp.Services.User
                 request.CourseNumber = "";
                 request.Department = "";
             }
+            Random rnd = new Random();
+            request.Photo = rnd.Next(1, 9).ToString();
             JsonContent content = JsonContent.Create(request);
             
             HttpClient httpClient = new HttpClient();
