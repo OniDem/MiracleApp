@@ -1,10 +1,6 @@
-﻿using Android.App;
-using Core.Const;
-using Core.Entity;
+﻿using Core.Entity;
 using DTO.Users;
 using Newtonsoft.Json;
-using System.Diagnostics;
-using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 

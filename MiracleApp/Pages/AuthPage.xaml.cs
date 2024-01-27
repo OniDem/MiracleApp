@@ -8,7 +8,6 @@ namespace MiracleApp.Pages;
 
 public partial class AuthPage : ContentPage
 {
-    string super_secret_code = "123456";
     public AuthPage()
     {
         if (UserValid.UserAuth())
@@ -100,7 +99,7 @@ public partial class AuthPage : ContentPage
             {
                 var toast = Toast.Make("При отправке кода произошла ошибка!", CommunityToolkit.Maui.Core.ToastDuration.Long);
                 toast.Show();
-            }  
+            }
         }
         else
         {

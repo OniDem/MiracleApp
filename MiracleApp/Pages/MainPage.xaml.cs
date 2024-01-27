@@ -1,4 +1,5 @@
-﻿using MiracleApp.Services.News;
+﻿using CommunityToolkit.Maui.Views;
+using MiracleApp.Services.News;
 using MiracleApp.Validation;
 
 namespace MiracleApp.Pages
@@ -41,10 +42,17 @@ namespace MiracleApp.Pages
         }
         private async void SettingsButton_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SettingsPage());
+            var popup = new LoadingPage();
+            this.ShowPopup(popup);
+            await Task.Delay(5000);
+            popup.Close();
+            //await Navigation.PushAsync(new SettingsPage());
         }
-        private async void HomeButton_Clicked(object sender, EventArgs e)
+
+
+        private void HomeButton_Clicked(object sender, EventArgs e)
         {
+
         }
         private async void ProfileButton_Clicked(object sender, EventArgs e)
         {

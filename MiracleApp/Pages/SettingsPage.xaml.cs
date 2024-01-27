@@ -19,6 +19,7 @@ public partial class SettingsPage : ContentPage
 
     private async void SettingsButton_Clicked(object sender, EventArgs e)
     {
+        
     }
 
     private async void HomeButton_Clicked(object sender, EventArgs e)
