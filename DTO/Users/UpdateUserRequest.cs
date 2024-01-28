@@ -1,6 +1,4 @@
-﻿using Core.Const;
-
-namespace DTO.Users
+﻿namespace DTO.Users
 {
     public class UpdateUserRequest
     {

@@ -2,7 +2,6 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Behaviors;
 using Core.Const;
 using Core.Entity;
-using DTO.Lesson;
 using MiracleApp.Services.Lesson;
 using MiracleApp.Validation;
 using System.Globalization;
@@ -322,7 +321,7 @@ public partial class SchedulePage : ContentPage
         new() {Time = "23:55"},
     };
 
-    string  cur_dow;
+    string cur_dow;
     string add_lesson_cource;
 
     public SchedulePage()

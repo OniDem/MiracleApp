@@ -1,6 +1,6 @@
 ﻿using Abstract.Services;
-using Microsoft.AspNetCore.Mvc;
 using DTO.Mail;
+using Microsoft.AspNetCore.Mvc;
 
 namespace MiracleApi.Controllers
 {

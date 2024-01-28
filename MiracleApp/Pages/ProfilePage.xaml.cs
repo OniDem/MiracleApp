@@ -885,7 +885,7 @@ public partial class ProfilePage : ContentPage
                 CourseNumber = CourceNumberEntry.Text,
                 Password = user.Password
             };
-            
+
             if (await UserService.UpdateUser(user.Id, entity))
             {
                 var toast = Toast.Make("Данные успешно изменены!", CommunityToolkit.Maui.Core.ToastDuration.Long);
@@ -898,7 +898,7 @@ public partial class ProfilePage : ContentPage
                 toast.Show();
             }
         });
-        
-         
+
+
     }
 }

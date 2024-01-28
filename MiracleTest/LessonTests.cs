@@ -13,11 +13,11 @@ namespace MiracleTest
         }
 
         [Test]
-        public void CreateLessonShortTest() 
+        public void CreateLessonShortTest()
         {
             Task.Run(async () =>
             {
-                var lesson = await controller.Create(new() { Name = "test", Week = 3, TimeStart = "test", TimeEnd = "test", DayOfWeek = Core.Const.LessonDoWEnum.Mo, TeacherId = 1, Teacher = "test", CourseNumber = "test", Department = "test", Where = "test", Branch = "test", StudentCount = 0, Online = false  });
+                var lesson = await controller.Create(new() { Name = "test", Week = 3, TimeStart = "test", TimeEnd = "test", DayOfWeek = Core.Const.LessonDoWEnum.Mo, TeacherId = 1, Teacher = "test", CourseNumber = "test", Department = "test", Where = "test", Branch = "test", StudentCount = 0, Online = false });
                 Assert.IsTrue(lesson.Id > 0);
             });
         }

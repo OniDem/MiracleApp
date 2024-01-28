@@ -87,7 +87,7 @@ public partial class AuthPage : ContentPage
     {
         if (RestorePhoneEntry.Text.Length == 18)
         {
-            if(await MailService.SendCode(RestorePhoneEntry.Text))
+            if (await MailService.SendCode(RestorePhoneEntry.Text))
             {
                 var toast = Toast.Make("Код отправлен!", CommunityToolkit.Maui.Core.ToastDuration.Long);
                 toast.Show();
@@ -113,7 +113,7 @@ public partial class AuthPage : ContentPage
         var code = Code1Entry.Text + Code2Entry.Text + Code3Entry.Text + Code4Entry.Text + Code5Entry.Text + Code6Entry.Text;
         if (code.Length == 6)
         {
-            if(await MailService.VerifiCode(RestorePhoneEntry.Text, code))
+            if (await MailService.VerifiCode(RestorePhoneEntry.Text, code))
             {
                 VerifySL.IsVisible = false;
                 NewPasswordSL.IsVisible = true;
@@ -138,7 +138,7 @@ public partial class AuthPage : ContentPage
         {
             Code2Entry.Focus();
         }
-        
+
     }
 
     private void Code2Entry_TextChanged(object sender, TextChangedEventArgs e)
@@ -199,12 +199,12 @@ public partial class AuthPage : ContentPage
 
     private async void NewPasswordButton_Clicked(object sender, EventArgs e)
     {
-        if(NewPassword.Text.Length > 0 && ConfirmNewPassword.Text.Length > 0)
+        if (NewPassword.Text.Length > 0 && ConfirmNewPassword.Text.Length > 0)
         {
-            if(NewPassword.Text == ConfirmNewPassword.Text)
+            if (NewPassword.Text == ConfirmNewPassword.Text)
             {
                 //Изменить методы на поиск по телефону(после изменений в получаемых данных!)
-                var user = await UserService.GetUserByPhone(new() { Phone = RestorePhoneEntry.Text});
+                var user = await UserService.GetUserByPhone(new() { Phone = RestorePhoneEntry.Text });
                 UpdateUserRequest entity = new()
                 {
                     Phone = user.Phone,

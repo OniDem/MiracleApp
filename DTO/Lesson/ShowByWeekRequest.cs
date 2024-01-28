@@ -2,6 +2,6 @@
 {
     public class ShowByWeekRequest
     {
-        public int Week {  get; set; }
+        public int Week { get; set; }
     }
 }

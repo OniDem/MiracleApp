@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Maui.Views;
-using MiracleApp.Services.News;
 using MiracleApp.Validation;
 
 namespace MiracleApp.Pages
@@ -20,7 +19,7 @@ namespace MiracleApp.Pages
             Dispatcher.Dispatch(async () =>
             {
                 //newsListView.BeginRefresh();
-               // newsListView.ItemsSource = await NewsServices.ShowAll();
+                // newsListView.ItemsSource = await NewsServices.ShowAll();
                 // newsListView.EndRefresh();
             });
         }

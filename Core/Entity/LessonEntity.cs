@@ -14,7 +14,7 @@ namespace Core.Entity
 
         public string? Date { get; set; }
 
-        public int Week {  get; set; }
+        public int Week { get; set; }
 
         public string TimeStart { get; set; }
 

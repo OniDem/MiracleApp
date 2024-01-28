@@ -17,7 +17,7 @@ namespace MiracleTest
         {
             Task.Run(async () =>
             {
-                var mail_id = await controller.SendCodeOnMail(new() { Email = "test"});
+                var mail_id = await controller.SendCodeOnMail(new() { Email = "test" });
                 Assert.IsTrue(mail_id != 0);
             });
         }

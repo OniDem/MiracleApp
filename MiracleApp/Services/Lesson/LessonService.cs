@@ -2,7 +2,6 @@
 using Core.Entity;
 using DTO.Lesson;
 using Newtonsoft.Json;
-using System.Globalization;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 

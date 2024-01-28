@@ -2,6 +2,6 @@
 {
     public class ShowByIdRequest
     {
-        public int id {  get; set; }
+        public int id { get; set; }
     }
 }

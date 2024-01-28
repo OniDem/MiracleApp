@@ -1,8 +1,8 @@
 ﻿using Core.Entity;
 using DTO.Mail;
 using Infrastructure.Repositories;
-using MimeKit;
 using MailKit.Net.Smtp;
+using MimeKit;
 
 
 namespace Services
@@ -52,14 +52,14 @@ namespace Services
                 client.Send(message);
                 client.Disconnect(true);
                 return mail.Id;
-            } 
-            catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 return 0;
             }
 
-                
+
         }
     }
 }

@@ -44,7 +44,7 @@ namespace Infrastructure.Repositories
 
         public UserEntity? ShowById(int id)
         {
-            return _applicationContext.Users.Where(p =>p.Id == id).First();
+            return _applicationContext.Users.Where(p => p.Id == id).First();
         }
     }
 }

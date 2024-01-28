@@ -8,9 +8,9 @@ public partial class LoadingPage : Popup
     private static System.Timers.Timer aTimer;
     int count;
     public LoadingPage()
-	{
-		InitializeComponent();
-	}
+    {
+        InitializeComponent();
+    }
 
     private void Popup_Opened(object sender, CommunityToolkit.Maui.Core.PopupOpenedEventArgs e)
     {

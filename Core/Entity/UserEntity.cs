@@ -25,7 +25,7 @@ namespace Core.Entity
 
         public string Password { get; set; }
 
-        public string Photo {  get; set; }
+        public string Photo { get; set; }
 
     }
 }
