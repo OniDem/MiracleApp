@@ -9,6 +9,10 @@ namespace Infrastructure
         public DbSet<LessonEntity> Lessons { get; set; }
         public DbSet<NewsEntity> News { get; set; }
         public DbSet<MailEntity> Mails { get; set; }
+        public DbSet<RibbonsEntity> Ribbons { get; set; }
+        public DbSet<PicturesEntity> Pictures { get; set; }
+        public DbSet<CommentsEntity> Comments { get; set; }
+
 
         public ApplicationContext(DbContextOptions<ApplicationContext> option) : base(option) { }
 
