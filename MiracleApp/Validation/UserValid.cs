@@ -4,15 +4,10 @@
     {
         static public bool UserAuth()
         {
-            var id = Task.Run(async () => await SecureStorage.Default.GetAsync("id")).Result;
-            if (!string.IsNullOrEmpty(id))
-            {
+            if (!string.IsNullOrEmpty(Task.Run(async () => await SecureStorage.Default.GetAsync("id")).Result))
                 return true;
-            }
-            else
-            {
-                return false;
-            }
+            return false;
+
         }
     }
 }
