@@ -17,7 +17,7 @@ namespace MiracleTest
         {
             Task.Run(async () =>
             {
-                var news = await controller.Create(new() { Name = "test", Content = "test", Image = "test" });
+                var news = await controller.Create(new() { Name = "test", Content = "test", Image = {  } });
                 Assert.IsTrue(news.Id > 0 && news != null);
             });
         }
@@ -38,7 +38,7 @@ namespace MiracleTest
             Task.Run(async () =>
             {
                 string updated_name = "tset";
-                var news = await controller.Update(1, new() { Name = updated_name, Content = "test", Image = "test" });
+                var news = await controller.Update(1, new() { Name = updated_name, Content = "test", Image = { } });
                 Assert.IsTrue(news.Id == 1 && news.Name == updated_name);
             });
         }

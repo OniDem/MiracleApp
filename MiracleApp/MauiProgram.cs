@@ -13,6 +13,13 @@ namespace MiracleApp
                 handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Argb(1, 250, 224, 115));
 #endif
             });
+
+            Microsoft.Maui.Handlers.EditorHandler.Mapper.AppendToMapping(nameof(Editor), (handler, view) =>
+            {
+#if ANDROID
+                handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Argb(1, 250, 224, 115));
+#endif
+            });
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>().UseMauiCommunityToolkit()
