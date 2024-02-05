@@ -8,7 +8,7 @@ namespace MiracleApp.Services.News
 {
     public static class NewsServices
     {
-        public static async Task<List<NewsEntity>> ShowAll()
+        private static async Task<List<NewsEntity>> GetAll()
         {
             string serverURI = "http://45.153.69.204:5000/News/ShowAll";
             HttpClient httpClient = new HttpClient();
@@ -42,9 +42,10 @@ namespace MiracleApp.Services.News
             return result.Id;
         }
 
-        public static async Task<List<NewsEntity>> NewsConvertForShow()
+        public static async Task<List<ShowNewsEntity>> ShowAll()
         {
-            var news = await ShowAll();
+            List<ShowNewsEntity> showList = new();
+            var news = await GetAll();
             ImageSourceConverter conv = new();
             foreach (var e in news)
             {
@@ -56,6 +57,7 @@ namespace MiracleApp.Services.News
                     Content = e.Content
                 });
             }
+            return showList;
         }
     }
 }

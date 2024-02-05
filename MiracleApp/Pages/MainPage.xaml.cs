@@ -3,6 +3,7 @@ using MiracleApp.Services.Converters;
 using MiracleApp.Services.News;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Converters;
+using Core.Entity;
 
 namespace MiracleApp.Pages
 {
@@ -11,7 +12,6 @@ namespace MiracleApp.Pages
         int count = 0;
         ByteArrayToImageSourceConverter converter = new();
         byte[] newsPhoto;
-        List<ShowNewsEntity> showList = new();
 
         public MainPage()
         {
@@ -41,8 +41,7 @@ namespace MiracleApp.Pages
 
             Dispatcher.Dispatch(async () =>
             {
-                
-                NewsList.ItemsSource = showList;
+                NewsList.ItemsSource = await NewsServices.ShowAll();
             });
         }
         private async void SheduleButton_Clicked(object sender, EventArgs e)
@@ -202,7 +201,11 @@ namespace MiracleApp.Pages
                 });
                 var toast = Toast.Make("", CommunityToolkit.Maui.Core.ToastDuration.Short);
                 if (newsId > 0)
+                {
+                    
                     toast = Toast.Make("Новость успешно добавлена!", CommunityToolkit.Maui.Core.ToastDuration.Short);
+                    NewsList.ItemsSource = await NewsServices.ShowAll();
+                }
                 else
                     toast = Toast.Make("При добавлении новости произошла ошибка, повторите позже!", CommunityToolkit.Maui.Core.ToastDuration.Short);
                 await toast.Show();
