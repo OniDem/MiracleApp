@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using MiracleApp.Platforms.Android;
 
 namespace MiracleApp
 {
@@ -20,9 +21,17 @@ namespace MiracleApp
                 handler.PlatformView.SetBackgroundColor(Android.Graphics.Color.Argb(1, 250, 224, 115));
 #endif
             });
+
             var builder = MauiApp.CreateBuilder();
             builder
-                .UseMauiApp<App>().UseMauiCommunityToolkit()
+                .UseMauiApp<App>().UseMauiCommunityToolkit().ConfigureMauiHandlers(handlers => {
+#if ANDROID
+                    handlers.AddHandler<CustomViewCell, CustomViewCellHandler>();
+#endif
+#if IOS
+				    handlers.AddHandler<CustomViewCell, CustomViewCellHandler>();
+#endif
+                })
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
