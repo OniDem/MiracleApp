@@ -1,6 +1,13 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
-using MiracleApp.Platforms.Android;
+using MiracleApp;
+#if ANDROID
+                using MiracleApp.Platforms.Android;
+#endif
+#if IOS
+                using MiracleApp.Platforms.iOS;
+#endif
+
 
 namespace MiracleApp
 {
@@ -29,7 +36,7 @@ namespace MiracleApp
                     handlers.AddHandler<CustomViewCell, CustomViewCellHandler>();
 #endif
 #if IOS
-				    handlers.AddHandler<CustomViewCell, CustomViewCellHandler>();
+				    handlers.AddHandler<CustomViewCell, CustomCellViewHandler>();
 #endif
                 })
                 .ConfigureFonts(fonts =>

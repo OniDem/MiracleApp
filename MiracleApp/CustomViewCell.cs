@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace MiracleApp
+﻿namespace MiracleApp
 {
-    public class CustomViewCell : Microsoft.Maui.Controls.ViewCell
+    public class CustomViewCell : ViewCell
     {
 
         public static readonly BindableProperty SelectedBackgroundColorProperty = BindableProperty.Create(
