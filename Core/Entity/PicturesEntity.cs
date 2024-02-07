@@ -7,8 +7,8 @@ namespace Core.Entity
     public class PicturesEntity
     {
         [Key]
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public RibbonsEntity Ribbons { get; set; }
-        public byte[] image { get; set; }
+        public string image { get; set; }
     }
 }

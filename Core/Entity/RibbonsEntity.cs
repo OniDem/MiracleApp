@@ -8,7 +8,7 @@ namespace Core.Entity
     public class RibbonsEntity
     {
         [Key]
-        public int Id { get; set; }
+        public int? Id { get; set; }
         public UserEntity User { get; set; }
         public DateTime Time { get; set; }
         public int CountLikes { get; set; }
