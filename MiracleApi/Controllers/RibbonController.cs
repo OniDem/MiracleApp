@@ -30,7 +30,24 @@ namespace MiracleApi.Controllers
             }
             return false;
         }
-
+        [HttpPost]
+        public async Task<int?> UpdateCounter( int postId, bool status, string parametr)
+        {
+            if (ModelState.IsValid)
+            {
+                return await _ribbonService.UpdateCounter(postId, status, parametr);
+            }
+            return null;
+        }
+        [HttpPost]
+        public async Task<bool> UpdatePost(UpdatePostRequest request)
+        {
+            if(ModelState.IsValid)
+            {
+                return await _ribbonService.UpdatePost(request);
+            }
+            return false;
+        }
         public class AuthOptions
         {
             public const string ISSUER = "MiracleApi"; // издатель токена

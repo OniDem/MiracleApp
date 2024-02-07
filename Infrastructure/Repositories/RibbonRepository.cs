@@ -1,4 +1,5 @@
 ﻿using Core.Entity;
+using System.Timers;
 
 namespace Infrastructure.Repositories
 {
@@ -31,6 +32,83 @@ namespace Infrastructure.Repositories
             var res = _applicationContext.Ribbons.Find(id);
             return res;
         }
-       
+        public int UpdateCounters(int postId, bool status, string parametr)
+        {
+            var post = _applicationContext.Ribbons.Find(postId);
+            int res = 0;
+            switch(parametr)
+            {
+                case "like":
+                    if (status)
+                        post.CountLikes = post.CountLikes + 1;
+                    else 
+                        post.CountLikes = post.CountLikes - 1;
+                    res = post.CountLikes;
+                break;
+                case "complaint":
+                    if (status)
+                        post.CountComplaint = post.CountComplaint + 1;
+                    else
+                        post.CountComplaint = post.CountComplaint - 1; 
+                    res = post.CountComplaint; 
+                break;
+                case "comments":
+                    if (status)
+                        post.CountComments = post.CountComments + 1;
+                    else
+                        post.CountComments = post.CountComments - 1;
+                    res = post.CountComments;
+                break;
+                case "download":
+                    if (status)
+                        post.CountDownload = post.CountDownload + 1;
+                    else
+                        post.CountDownload = post.CountDownload - 1;
+                    res = post.CountDownload;
+                break;
+            }
+            _applicationContext.Ribbons.Update(post);
+            _applicationContext.SaveChanges();
+            return res;
+        }
+        public bool UpdatePost(RibbonsEntity post)
+        {
+            var result = _applicationContext.Ribbons.Update(post);
+            _applicationContext.SaveChanges();
+            if (result != null)
+                return true;
+            return false;
+        }
+        public bool UpdatePictures(PicturesEntity picture)
+        {
+            var res = _applicationContext.Pictures.Update(picture);
+            _applicationContext.SaveChanges();
+            if (res != null)
+                return true;
+            return false;
+        }
+        public List<PicturesEntity> FindPictureByPostId(int postId)
+        {
+            return _applicationContext.Pictures.Where(p => p.Ribbons == ShowPostById(postId)).ToList();
+        }
+        public bool DelitePictureById(int postId)
+        {
+            List<bool> bools = new List<bool>();
+            foreach (PicturesEntity el in FindPictureByPostId(postId))
+            {
+                var res = _applicationContext.Pictures.Remove(el);
+                if (res != null)
+                {
+                    bools.Add(true);
+                    _applicationContext.SaveChanges();
+                }
+                else
+                    bools.Add(false);
+            }
+            foreach (bool el in bools)
+                if (!el)
+                    return false;
+            return true;
+        }
     }
 }
