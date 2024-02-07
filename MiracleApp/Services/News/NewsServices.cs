@@ -53,7 +53,7 @@ namespace MiracleApp.Services.News
                 {
                     Id = e.Id,
                     Name = e.Name,
-                    Image = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(e.Image))),
+                    //Image = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(e.Image))),
                     Content = e.Content
                 });
             }

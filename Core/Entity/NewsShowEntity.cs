@@ -1,5 +1,4 @@
-﻿using Xamarin.Forms;
-
+﻿
 namespace Core.Entity
 {
     class NewsShowEntity
@@ -8,7 +7,7 @@ namespace Core.Entity
 
         public string Name { get; set; }
 
-        public ImageSource Image { get; set; }
+        public string Image { get; set; }
 
         public string Content { get; set; }
 
