@@ -1,5 +1,4 @@
-﻿
-namespace Core.Entity
+﻿namespace MiracleApp.Entity
 {
     public class ShowNewsEntity
     {
@@ -7,7 +6,7 @@ namespace Core.Entity
 
         public string Name { get; set; }
 
-        public string Image { get; set; }
+        public ImageSource Image { get; set; }
 
         public string Content { get; set; }
     }

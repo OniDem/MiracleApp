@@ -1,5 +1,6 @@
 ﻿using Core.Entity;
 using DTO.News;
+using MiracleApp.Entity;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -53,7 +54,7 @@ namespace MiracleApp.Services.News
                 {
                     Id = e.Id,
                     Name = e.Name,
-                    //Image = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(e.Image))),
+                    Image = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(e.Image))),
                     Content = e.Content
                 });
             }

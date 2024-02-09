@@ -3,7 +3,7 @@ using MiracleApp.Services.Converters;
 using MiracleApp.Services.News;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Converters;
-using Core.Entity;
+using MiracleApp.Entity;
 
 namespace MiracleApp.Pages
 {
@@ -85,81 +85,29 @@ namespace MiracleApp.Pages
 
         private void addNewsButton_Clicked(object sender, EventArgs e)
         {
-            switch (count)
-            {
-                case 0:
-                    {
-                        frame4.IsVisible = true;
-                        count++;
-                    }
-                    break;
-                case 1:
-                    {
-                        frame3.IsVisible = true;
-                        count++;
-                    }
-                    break;
-                case 2:
-                    {
-                        frame1.IsVisible = true;
-                        frame2.IsVisible = true;
-                        frame3.IsVisible = false;
-                        count++;
-                    }
-                    break;
-                case 3:
-                    {
-                        frame1.IsVisible = false;
-                        frame2.IsVisible = false;
-                        frame3.IsVisible = false;
-                        frame4.IsVisible = false;
-                        count = 0;
-                    }
-                    break;
-            }
+            if(addNewsFrame.IsVisible)
+                addNewsFrame.IsVisible = false;
+            else
+                addNewsFrame.IsVisible = true;
         }
 
-        private void addPhotoSmallNewsButton_Clicked(object sender, EventArgs e)
+        private void addPhotoNewsButton_Clicked(object sender, EventArgs e)
         {
-            MainPageVS.IsVisible = false;
-            AddNewsWithPhotoFrame.IsVisible = true;
+            if (AddPhotoToNewsFrame.IsVisible)
+                AddPhotoToNewsFrame.IsVisible = false;
+            else
+                AddPhotoToNewsFrame.IsVisible = true;
         }
 
-        private void addTextSmallNewsButton_Clicked(object sender, EventArgs e)
+        private void addTextNewsButton_Clicked(object sender, EventArgs e)
         {
-
-        }
-
-        private void addPhotoBigNewsButton_Clicked(object sender, EventArgs e)
-        {
-            MainPageVS.IsVisible = false;
-            AddNewsWithPhotoFrame.IsVisible = true;
-        }
-
-        private void addTextBigNewsButton_Clicked(object sender, EventArgs e)
-        {
-
+            //In Work
         }
 
         private void CloseAddNewsButton_Clicked(object sender, EventArgs e)
         {
             MainPageVS.IsVisible = true;
             AddNewsWithPhotoFrame.IsVisible = false;
-        }
-
-        private async void AddNewsPhotoButton_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                newsPhoto = await ImageConverter.FileResultToByteArray(await MediaPicker.PickPhotoAsync());
-                NewsPhotoButton.Source = converter.ConvertFrom(newsPhoto, null);  
-                AddNewsPhotoButton.IsVisible = false;
-                NewsPhotoButton.IsVisible = true;
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Error", ex.Message, "OK");
-            }
         }
 
         private void NewsPhotoButton_Clicked(object sender, EventArgs e)
@@ -173,6 +121,7 @@ namespace MiracleApp.Pages
         private void ChoiceNewPhotoButton_Clicked(object sender, EventArgs e)
         {
             //In Work
+            AddedNewsPhotoButton
         }
 
         private async void ChoiceGalleryPhotoButton_Clicked(object sender, EventArgs e)
@@ -204,6 +153,8 @@ namespace MiracleApp.Pages
                 {
                     
                     toast = Toast.Make("Новость успешно добавлена!", CommunityToolkit.Maui.Core.ToastDuration.Short);
+                    MainPageVS.IsVisible = true;
+                    AddNewsWithPhotoFrame.IsVisible = false;
                     NewsList.ItemsSource = await NewsServices.ShowAll();
                 }
                 else
@@ -231,6 +182,29 @@ namespace MiracleApp.Pages
                 var toast = Toast.Make(selected_news.Id.ToString(), CommunityToolkit.Maui.Core.ToastDuration.Short);
                 toast.Show();
             }
+        }
+
+        private async void AddPhotoToNewsButton_Clicked(object sender, EventArgs e)
+        {
+            Dispatcher.Dispatch(async() =>
+            {
+                newsPhoto = await ImageConverter.FileResultToByteArray(await MediaPicker.PickPhotoAsync());
+                AddedNewsPhotoButton.Source = converter.ConvertFrom(newsPhoto, null);
+                NewsPhotoButton.Source = converter.ConvertFrom(newsPhoto, null);
+            });
+            AddedNewsPhotoButton.IsVisible = true;  
+            //NewsPhotoButton.IsVisible = true;
+            //MainPageVS.IsVisible = false;
+            //AddPhotoToNewsFrame.IsVisible = true;
+            //AddNewsWithPhotoFrame.IsVisible = true;
+        }
+
+        private void AddedNewsPhotoButton_Clicked(object sender, EventArgs e)
+        {
+            if (AddPhotoToNewsFrame.IsVisible)
+                AddPhotoToNewsFrame.IsVisible = false;
+            else
+                AddPhotoToNewsFrame.IsVisible = true;
         }
     }
 
