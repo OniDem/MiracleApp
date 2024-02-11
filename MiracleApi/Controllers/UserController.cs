@@ -39,7 +39,7 @@ namespace MiracleApi.Controllers
             if (ModelState.IsValid)
             {
                 var user = await _userService.Auth(userAuth);
-                var claims = new List<Claim> { new Claim(ClaimTypes.Name, user.Id.ToString()) };
+                var claims = new List<Claim> { new(ClaimTypes.Name, user.Id.ToString()) };
                 // создаем JWT-токен
                 var jwt = new JwtSecurityToken(
                          issuer: AuthOptions.ISSUER,

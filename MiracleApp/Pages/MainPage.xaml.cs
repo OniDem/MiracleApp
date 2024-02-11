@@ -4,6 +4,7 @@ using MiracleApp.Services.News;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Converters;
 using MiracleApp.Entity;
+using System.Windows.Input;
 
 namespace MiracleApp.Pages
 {
@@ -36,8 +37,6 @@ namespace MiracleApp.Pages
                     
                 }
             });
-            
-            
 
             Dispatcher.Dispatch(async () =>
             {
@@ -108,6 +107,8 @@ namespace MiracleApp.Pages
         {
             MainPageVS.IsVisible = true;
             AddNewsWithPhotoFrame.IsVisible = false;
+            NewsMainContextFrame.IsVisible = false;
+            AddedNewsPhotoButton.Source = converter.ConvertFrom(newsPhoto, null);
         }
 
         private void NewsPhotoButton_Clicked(object sender, EventArgs e)
@@ -121,7 +122,6 @@ namespace MiracleApp.Pages
         private void ChoiceNewPhotoButton_Clicked(object sender, EventArgs e)
         {
             //In Work
-            AddedNewsPhotoButton
         }
 
         private async void ChoiceGalleryPhotoButton_Clicked(object sender, EventArgs e)
@@ -142,24 +142,34 @@ namespace MiracleApp.Pages
         {
            if( newsPhoto.Length > 0 )
             {
-                int newsId = await NewsServices.CreateNews(new()
-                {
-                    Name = "",
-                    Content = NewsContentEntry.Text,
-                    Image = Convert.ToBase64String(newsPhoto)
-                });
-                var toast = Toast.Make("", CommunityToolkit.Maui.Core.ToastDuration.Short);
-                if (newsId > 0)
-                {
-                    
-                    toast = Toast.Make("Новость успешно добавлена!", CommunityToolkit.Maui.Core.ToastDuration.Short);
-                    MainPageVS.IsVisible = true;
-                    AddNewsWithPhotoFrame.IsVisible = false;
-                    NewsList.ItemsSource = await NewsServices.ShowAll();
-                }
-                else
-                    toast = Toast.Make("При добавлении новости произошла ошибка, повторите позже!", CommunityToolkit.Maui.Core.ToastDuration.Short);
+                var toast = Toast.Make("Новость добавляется...", CommunityToolkit.Maui.Core.ToastDuration.Long);
                 await toast.Show();
+                Dispatcher.Dispatch(async () =>
+                {
+                    int newsId = await NewsServices.CreateNews(new()
+                    {
+                        Name = "",
+                        Content = NewsContentEntry.Text,
+                        Image = Convert.ToBase64String(newsPhoto)
+                    });
+
+                    if (newsId > 0)
+                    {
+
+                        toast = Toast.Make("Новость успешно добавлена!", CommunityToolkit.Maui.Core.ToastDuration.Short);
+                        MainPageVS.IsVisible = true;
+                        AddNewsWithPhotoFrame.IsVisible = false;
+                        NewsMainContextFrame.IsVisible = false;
+                        newsPhoto = null;
+                        AddedNewsPhotoButton.IsVisible = false;
+                        AddedNewsPhotoButton.Source = null;
+                        AddPhotoToNewsFrame.IsVisible = false;
+                        NewsList.ItemsSource = await NewsServices.ShowAll();
+                    }
+                    else
+                        toast = Toast.Make("При добавлении новости произошла ошибка, повторите позже!", CommunityToolkit.Maui.Core.ToastDuration.Short);
+                    await toast.Show();
+                });
             }
            else
             {
@@ -168,11 +178,6 @@ namespace MiracleApp.Pages
             }
 
 
-        }
-
-        private void SelectNewsButton_Clicked(object sender, EventArgs e)
-        {
-            
         }
 
         private void NewsList_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -184,28 +189,42 @@ namespace MiracleApp.Pages
             }
         }
 
-        private async void AddPhotoToNewsButton_Clicked(object sender, EventArgs e)
+        private  void AddPhotoToNewsButton_Clicked(object sender, EventArgs e)
         {
             Dispatcher.Dispatch(async() =>
             {
-                newsPhoto = await ImageConverter.FileResultToByteArray(await MediaPicker.PickPhotoAsync());
-                AddedNewsPhotoButton.Source = converter.ConvertFrom(newsPhoto, null);
-                NewsPhotoButton.Source = converter.ConvertFrom(newsPhoto, null);
+                    newsPhoto ??= await ImageConverter.FileResultToByteArray(await MediaPicker.PickPhotoAsync());
+
+                AddedNewsPhotoButton.Source = converter.ConvertFrom(newsPhoto, null);                
             });
             AddedNewsPhotoButton.IsVisible = true;  
-            //NewsPhotoButton.IsVisible = true;
-            //MainPageVS.IsVisible = false;
-            //AddPhotoToNewsFrame.IsVisible = true;
-            //AddNewsWithPhotoFrame.IsVisible = true;
         }
 
         private void AddedNewsPhotoButton_Clicked(object sender, EventArgs e)
         {
-            if (AddPhotoToNewsFrame.IsVisible)
-                AddPhotoToNewsFrame.IsVisible = false;
+            if (NewsMainContextFrame.IsVisible)
+                NewsMainContextFrame.IsVisible = false;
             else
-                AddPhotoToNewsFrame.IsVisible = true;
+                NewsMainContextFrame.IsVisible = true;
         }
+
+        private void ChoiceNewPhotoToNewsButton_Clicked(object sender, EventArgs e)
+        {
+            Dispatcher.Dispatch(async () =>
+            {
+                newsPhoto = await ImageConverter.FileResultToByteArray(await MediaPicker.PickPhotoAsync());
+                AddedNewsPhotoButton.Source = converter.ConvertFrom(newsPhoto, null);
+            });
+        }
+
+        private void AddTextToNewsButton_Clicked(object sender, EventArgs e)
+        {
+            MainPageVS.IsVisible = false;
+            AddNewsWithPhotoFrame.IsVisible = true;
+            NewsPhotoButton.Source = converter.ConvertFrom(newsPhoto, null);
+        }
+
+        
     }
 
     

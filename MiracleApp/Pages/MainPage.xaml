@@ -50,16 +50,16 @@
                     <Grid BackgroundColor="Transparent" IsVisible="true">
                         <Frame x:Name="addNewsFrame" IsVisible="false" BackgroundColor="#FAE073" BorderColor="Transparent" CornerRadius="16" Margin="4" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                             <Grid>
-                                <ImageButton  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ZIndex="1" IsVisible="false" x:Name="AddedNewsPhotoButton"  Clicked="AddedNewsPhotoButton_Clicked"  />
+                                <ImageButton CornerRadius="16" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" ZIndex="1" IsVisible="false" x:Name="AddedNewsPhotoButton"  Clicked="AddedNewsPhotoButton_Clicked"  />
                                 <Grid ColumnDefinitions="*, *, *" RowDefinitions="*, *" Margin="100, 80" VerticalOptions="Center" HorizontalOptions="Center">
                                 
                                 <ImageButton Grid.Column="0" Grid.Row="0" Source="addphotonews_black.svg" Clicked="addPhotoNewsButton_Clicked" HeightRequest="60"/>
                                 <Label Grid.Column="1" Grid.Row="0" BackgroundColor="#242323"  Rotation="105"  HeightRequest="3" WidthRequest="40"/>
                                 <ImageButton Grid.Column="2" Grid.Row="0" Source="addtextnews_black.svg" Clicked="addTextNewsButton_Clicked"  HeightRequest="60"/>
 
-                                <Frame Grid.Row="1" Grid.Column="0" ZIndex="2" IsVisible="false" x:Name="AddPhotoToNewsFrame" Grid.ColumnSpan="3" Padding="0" VerticalOptions="End" CornerRadius="16" HorizontalOptions="FillAndExpand" BackgroundColor="#242323" BorderColor="#242323">
-                                    <Grid RowDefinitions="*, *, *">
-                                        <!--
+                                    <Frame Grid.Row="1" Grid.Column="0" ZIndex="2" IsVisible="false" x:Name="AddPhotoToNewsFrame" Grid.ColumnSpan="3" Padding="0" VerticalOptions="End" CornerRadius="16" HorizontalOptions="FillAndExpand" BackgroundColor="#242323" BorderColor="#242323">
+                                        <Grid RowDefinitions="*, *, *">
+                                            <!--
                                             <Button Grid.Row="0" Text="Загрузить другое фото" x:Name="ChoiceNewPhotoButton" Clicked="ChoiceNewPhotoButton_Clicked" BackgroundColor="Transparent" FontSize="20" FontFamily="QANELASREGULAR" TextColor="#FAE073"/>
                                             <Line Grid.Row="1" VerticalOptions="Center" HeightRequest="1" Margin="0, 10, 0, 22" >
                                                 <Line.Background>
@@ -72,11 +72,42 @@
                                                 </Line.Background>
                                             </Line> 
                                          -->
-                                        <Button Grid.Row="2" Text="Галерея" x:Name="AddPhotoToNewsButton" Clicked="AddPhotoToNewsButton_Clicked" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" FontSize="20" FontFamily="QANELASREGULAR" TextColor="#FAE073"/>
+                                            <Button Grid.Row="2" Text="Галерея" x:Name="AddPhotoToNewsButton" Clicked="AddPhotoToNewsButton_Clicked" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" FontSize="20" FontFamily="QANELASREGULAR" TextColor="#FAE073"/>
+                                        </Grid>
+                                    </Frame>
+                                </Grid>
+                                
+                                <Frame Grid.Row="1" Grid.Column="0" ZIndex="1" IsVisible="false" x:Name="NewsMainContextFrame" Padding="0" VerticalOptions="End" CornerRadius="16" HorizontalOptions="Center" BackgroundColor="#242323" BorderColor="#242323">
+                                    <Grid RowDefinitions="*, *, *, *, *">
+                                        
+                                            <Button Grid.Row="0" Text="Заменить фото" x:Name="ChoiceNewPhotoToNewsButton" Clicked="ChoiceNewPhotoToNewsButton_Clicked" BackgroundColor="Transparent" FontSize="20" FontFamily="QANELASREGULAR" TextColor="#FAE073"/>
+                                            <Line Grid.Row="1" VerticalOptions="Center" HeightRequest="1" Margin="0" >
+                                                <Line.Background>
+                                                    <LinearGradientBrush EndPoint="1,0">
+                                                        <GradientStop Color="Transparent" Offset="0" />
+                                                        <GradientStop Color="#FAE073" Offset="0.25" />
+                                                        <GradientStop Color="#FAE073" Offset="0.75" />
+                                                        <GradientStop Color="Transparent" Offset="1" />
+                                                    </LinearGradientBrush>
+                                                </Line.Background>
+                                            </Line> 
+                                        
+                                        <Button Grid.Row="2" Text="Добавить текст" x:Name="AddTextToNewsButton" Clicked="AddTextToNewsButton_Clicked" HorizontalOptions="Center" BackgroundColor="Transparent" FontSize="20" FontFamily="QANELASREGULAR" TextColor="#FAE073"/>
+
+                                        <Line Grid.Row="3" VerticalOptions="Center" HeightRequest="1" Margin="0" >
+                                            <Line.Background>
+                                                <LinearGradientBrush EndPoint="1,0">
+                                                    <GradientStop Color="Transparent" Offset="0" />
+                                                    <GradientStop Color="#FAE073" Offset="0.25" />
+                                                    <GradientStop Color="#FAE073" Offset="0.75" />
+                                                    <GradientStop Color="Transparent" Offset="1" />
+                                                </LinearGradientBrush>
+                                            </Line.Background>
+                                        </Line>
+
+                                        <Button Grid.Row="4" Text="Сохранить без текста" Clicked="SaveFullNewsButton_Clicked" HorizontalOptions="Center" BackgroundColor="Transparent" FontSize="20" FontFamily="QANELASREGULAR" TextColor="#FAE073"/>
                                     </Grid>
                                 </Frame>
-
-                            </Grid>
                             </Grid>
                         </Frame>
                     </Grid>
@@ -89,7 +120,7 @@
 
                                         <Frame Margin="5" CornerRadius="16" Padding="0" BackgroundColor="Transparent" BorderColor="Transparent">
                                             <Border StrokeShape="RoundRectangle 16" StrokeThickness="0" BackgroundColor="Transparent">
-                                                <Image Source="{Binding Image}"  x:Name="NewsImage" HeightRequest="{Binding Width, Source={x:Reference NewsImage}}"/>
+                                                <Image Source="{Binding Image}" HeightRequest="{Binding Width, Source={x:Reference NewsImage}}"/>
                                             </Border>
                                         </Frame>
                                     </Grid>
@@ -104,7 +135,7 @@
                     <Grid RowDefinitions="*, *, *, *">
                         <ImageButton Grid.Row="0" HorizontalOptions="End" Source="mini_cancel_black.svg" x:Name="CloseAddNewsButton" Clicked="CloseAddNewsButton_Clicked" HeightRequest="16"/>
                         
-                        <ImageButton CornerRadius="16" Grid.Row="1" IsVisible="false" Margin="22" x:Name="NewsPhotoButton" Clicked="NewsPhotoButton_Clicked"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                        <ImageButton CornerRadius="16" Grid.Row="1" Margin="22" x:Name="NewsPhotoButton" Clicked="NewsPhotoButton_Clicked"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
                         <Frame Grid.Row="1" ZIndex="1" x:Name="ChoiceNewsPhotoButton" IsVisible="false" Padding="0" VerticalOptions="End" CornerRadius="16" HorizontalOptions="Center" BackgroundColor="#242323" BorderColor="#242323">
                             <Grid RowDefinitions="*, *, *">
                                 <!--

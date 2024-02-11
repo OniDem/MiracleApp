@@ -58,6 +58,7 @@ namespace MiracleApp.Services.News
                     Content = e.Content
                 });
             }
+            showList.Reverse();
             return showList;
         }
     }
