@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1046635874528",
+    "project_id": "miracleapp-bfd97",
+    "storage_bucket": "miracleapp-bfd97.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1046635874528:android:7e66ec6f8ed3244aa26885",
+        "android_client_info": {
+          "package_name": "ru.Miracle.Miracle"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA313kDslnW8i-QSRWuNYUDDU7n007TgEk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
