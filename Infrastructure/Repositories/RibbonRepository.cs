@@ -1,4 +1,7 @@
 ﻿using Core.Entity;
+using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
+using System.Linq;
 using System.Timers;
 
 namespace Infrastructure.Repositories
@@ -87,7 +90,7 @@ namespace Infrastructure.Repositories
                 return true;
             return false;
         }
-        public List<PicturesEntity> FindPictureByPostId(int postId)
+        public List<PicturesEntity> FindPictureByPostId(int? postId)
         {
             return _applicationContext.Pictures.Where(p => p.Ribbons == ShowPostById(postId)).ToList();
         }
@@ -110,5 +113,19 @@ namespace Infrastructure.Repositories
                     return false;
             return true;
         }
+        public List<RibbonsEntity> ShowRibbon(int lastPostId)
+        {
+            var postList = _applicationContext.Ribbons.Include(p => p.User).OrderByDescending(p => p.Time).Where(p => p.Id < lastPostId && p.IsBlocked == false).Take(10).ToList();
+            return postList;
+        }
+        public bool BlockPost(int postId)
+        {
+            var post = ShowPostById(postId);
+            post.IsBlocked = true;
+            _applicationContext.Ribbons.Update(post);
+            _applicationContext.SaveChanges();
+            return true;
+        }
+        
     }
 }

@@ -48,6 +48,24 @@ namespace MiracleApi.Controllers
             }
             return false;
         }
+        [HttpPost]
+        public async Task<List<string>> ShowRibbon(int lastPostId)
+        {
+            if (ModelState.IsValid)
+            {
+                return await _ribbonService.ShowRibbon(lastPostId);
+            }
+            return null;
+        }
+        [HttpPost]
+        public async Task<bool> BlockPost(int postId)
+        {
+            if(ModelState.IsValid)
+            {
+                return await _ribbonService.BlockPost(postId);
+            }
+            return false;
+        }
         public class AuthOptions
         {
             public const string ISSUER = "MiracleApi"; // издатель токена

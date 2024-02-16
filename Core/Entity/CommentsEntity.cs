@@ -17,6 +17,8 @@ namespace Core.Entity
         public string Text { get; set; }
         public UserEntity User { get; set; }
         public DateTime Time { get; set; }
+        public bool IsDeleted { get; set; }
+        public bool IsBlocked { get; set; }
 
     }
 }
