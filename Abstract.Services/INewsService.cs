@@ -13,7 +13,7 @@ namespace Abstract.Services
 
         public Task<NewsEntity?> ShowById(int news_id);
 
-        public Task Delete(int news_id);
+        public Task Delete(int id);
 
     }
 }

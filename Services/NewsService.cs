@@ -45,9 +45,9 @@ namespace Services
             return _newsRepository.ShowById(news_id);
         }
 
-        public async Task Delete(int news_id)
+        public async Task Delete(int id)
         {
-            _newsRepository.Delete(news_id);
+            _newsRepository.Delete(id);
         }
     }
 }

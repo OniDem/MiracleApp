@@ -60,11 +60,11 @@ namespace MiracleApi.Controllers
         }
 
         [HttpDelete, Authorize]
-        public async Task Delete(int news_id)
+        public async Task Delete(int id)
         {
             if (ModelState.IsValid)
             {
-                await _newsService.Delete(news_id);
+                await _newsService.Delete(id);
             }
         }
     }
