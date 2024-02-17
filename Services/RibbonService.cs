@@ -5,6 +5,7 @@ using DTO.News;
 using DTO.Users;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System.Text.Json;
 using System.Threading.Tasks;
 using System.Timers;
 
@@ -40,9 +41,9 @@ namespace Services
             PicturesList.Add(request.imagesTwo);
             PicturesList.Add(request.imagesThree);
             List<bool> bools = new List<bool>();
-            foreach(string el in PicturesList)
+            foreach (string el in PicturesList)
             {
-                if(el != "none")
+                if (el != "none")
                 {
                     PicturesEntity picture = new PicturesEntity()
                     {
@@ -56,7 +57,7 @@ namespace Services
                         bools.Add(false);
                 }
             }
-            foreach(bool el in bools)
+            foreach (bool el in bools)
             {
                 if (el == false)
                     return Task.FromResult(false);
@@ -78,9 +79,9 @@ namespace Services
             PicturesList.Add(request.imagesOne);
             PicturesList.Add(request.imagesTwo);
             PicturesList.Add(request.imagesThree);
-            foreach(string el in PicturesList)
+            foreach (string el in PicturesList)
             {
-                if(el != "none")
+                if (el != "none")
                 {
                     PicturesEntity pictures = new PicturesEntity()
                     {
@@ -100,9 +101,52 @@ namespace Services
                     return Task.FromResult(false);
             }
             return Task.FromResult(true);
-
-
         }
+        public Task<List<string>> ShowRibbon(int lastPostId)
+        {
+            List<RibbonsEntity> postList = _ribbonRepository.ShowRibbon(lastPostId);
+            List<PostWithPictureEntity> readyPostList = new List<PostWithPictureEntity>();
+            List<string> JSON = new List<string>();
+            foreach(RibbonsEntity post in postList)
+            {
+                UserEntity user = new UserEntity();
+                user = post.User;
+                PostWithPictureEntity readyPost = new PostWithPictureEntity();
+                readyPost.Id = post.Id;
+                readyPost.UserId = user.Id;
+                readyPost.Time = post.Time.ToString();
+                readyPost.CountLikes = post.CountLikes;
+                readyPost.CountComplaint = post.CountComplaint;
+                readyPost.CountComments = post.CountComments;
+                readyPost.CountDownload = post.CountDownload;
+                readyPost.Text = post.Text;
+                readyPost.IsBlocked = post.IsBlocked;
+
+                List<PicturesEntity>? pictures = new List<PicturesEntity>();
+                pictures = _ribbonRepository.FindPictureByPostId(post.Id);
+                string[] stepArray = new string[3];
+                for (int i = 0; i < 3; i++)
+                    stepArray[i] = "none";
+                for (int i = 0; i < pictures.Count; i++)
+                    stepArray[i] = pictures[i].image;
+                readyPost.PictureOne = stepArray[0];
+                readyPost.PictureTwo = stepArray[1];
+                readyPost.PictureThree = stepArray[2];
+                readyPostList.Add(readyPost);
+            }
+            foreach (PostWithPictureEntity readyPost in readyPostList)
+            {
+                JSON.Add(JsonSerializer.Serialize(readyPost));
+            }
+            return Task.FromResult(JSON);
+        }
+        public Task<bool> BlockPost(int postId)
+        {
+            _ribbonRepository.BlockPost(postId);
+            return Task.FromResult(true);   
+        }
+        
+
         
     }
 }

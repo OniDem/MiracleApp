@@ -7,7 +7,9 @@ namespace Abstract.Services.Interfaces
     {
         public Task<bool> AddPost(AddPostRequest request);
         public Task<int> UpdateCounter(int postId, bool status, string parametr);
-        public Task<bool> UpdatePost(UpdatePostRequest request); 
+        public Task<bool> UpdatePost(UpdatePostRequest request);
+        Task<List<string>> ShowRibbon(int lastPostId);
+        public Task<bool> BlockPost(int postId);
         
     }
 }
