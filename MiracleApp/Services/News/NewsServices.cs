@@ -1,4 +1,5 @@
-﻿using Core.Entity;
+﻿using CommunityToolkit.Maui.Alerts;
+using Core.Entity;
 using DTO.News;
 using MiracleApp.Entity;
 using Newtonsoft.Json;
@@ -11,55 +12,90 @@ namespace MiracleApp.Services.News
     {
         private static async Task<List<NewsEntity>> GetAll()
         {
-            string serverURI = "http://45.153.69.204:5000/News/ShowAll";
-            HttpClient httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await SecureStorage.GetAsync("token"));
-            Dictionary<string, string> Params = new()
+            try
             {
+                string serverURI = "http://45.153.69.204:5000/News/ShowAll";
+                HttpClient httpClient = new HttpClient();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await SecureStorage.GetAsync("token"));
+                Dictionary<string, string> Params = new()
+                {
 
-            };
-            FormUrlEncodedContent content = new(Params);
-            HttpResponseMessage response = await httpClient.PostAsync(serverURI, content);
-            if (response.IsSuccessStatusCode)
+                };
+                FormUrlEncodedContent content = new(Params);
+                HttpResponseMessage response = await httpClient.PostAsync(serverURI, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    var result = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<List<NewsEntity>>(result);
+                }
+            }
+            catch (Exception ex)
             {
-                var result = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<List<NewsEntity>>(result);
+                var toast = Toast.Make(ex.Message, CommunityToolkit.Maui.Core.ToastDuration.Long);
+                await toast.Show();
             }
             return null;
         }
 
         public static async Task<int> CreateNews(CreateNewsRequest request)
         {
-            string serverURI = "http://45.153.69.204:5000/News/Create";
-            NewsEntity result = new();
-            HttpClient httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await SecureStorage.GetAsync("token"));
-            JsonContent content = JsonContent.Create(request);
-            HttpResponseMessage response = await httpClient.PostAsync(serverURI, content);
-            if (response.IsSuccessStatusCode)
+            try
             {
-                result = JsonConvert.DeserializeObject<NewsEntity>(await response.Content.ReadAsStringAsync());
+                string serverURI = "http://45.153.69.204:5000/News/Create";
+                NewsEntity result = new();
+                HttpClient httpClient = new HttpClient();
+                httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await SecureStorage.GetAsync("token"));
+                JsonContent content = JsonContent.Create(request);
+                HttpResponseMessage response = await httpClient.PostAsync(serverURI, content);
+                if (response.IsSuccessStatusCode)
+                {
+                    result = JsonConvert.DeserializeObject<NewsEntity>(await response.Content.ReadAsStringAsync());
+                }
+                return result.Id;
             }
-            return result.Id;
+            catch (Exception ex)
+            {
+                var toast = Toast.Make(ex.Message, CommunityToolkit.Maui.Core.ToastDuration.Long);
+                await toast.Show();
+            }
+            return -1;
         }
 
         public static async Task<List<ShowNewsEntity>> ShowAll()
         {
-            List<ShowNewsEntity> showList = new();
-            var news = await GetAll();
-            ImageSourceConverter conv = new();
-            foreach (var e in news)
+            try
             {
-                showList.Add(new()
+                List<ShowNewsEntity> showList = new();
+                var news = await GetAll();
+                ImageSourceConverter conv = new();
+                foreach (var e in news)
                 {
-                    Id = e.Id,
-                    Name = e.Name,
-                    Image = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(e.Image))),
-                    Content = e.Content
-                });
+                    showList.Add(new()
+                    {
+                        Id = e.Id,
+                        Name = e.Name,
+                        Image = ImageSource.FromStream(() => new MemoryStream(Convert.FromBase64String(e.Image))),
+                        Content = e.Content
+                    });
+                }
+                showList.Reverse();
+                return showList;
             }
-            showList.Reverse();
-            return showList;
+            catch (Exception ex)
+            {
+                var toast = Toast.Make(ex.Message, CommunityToolkit.Maui.Core.ToastDuration.Long);
+                await toast.Show();
+            }
+            return null;
+        }
+
+        public static async Task<bool> DeleteNews(DeleteNewsRequest request)
+        {
+            string serverURI = $"http://45.153.69.204:5000/News/Delete?id={request.Id}";
+            HttpClient httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", await SecureStorage.GetAsync("token"));
+            HttpResponseMessage response = await httpClient.DeleteAsync(serverURI);
+            return response.IsSuccessStatusCode;
         }
     }
 }

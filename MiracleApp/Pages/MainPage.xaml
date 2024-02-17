@@ -120,7 +120,7 @@
 
                                         <Frame Margin="5" CornerRadius="16" Padding="0" BackgroundColor="Transparent" BorderColor="Transparent">
                                             <Border StrokeShape="RoundRectangle 16" StrokeThickness="0" BackgroundColor="Transparent">
-                                                <Image Source="{Binding Image}" HeightRequest="{Binding Width, Source={x:Reference NewsImage}}"/>
+                                                <Image Source="{Binding Image}" x:Name="NewsImage" HeightRequest="{Binding Width, Source={x:Reference NewsImage}}"/>
                                             </Border>
                                         </Frame>
                                     </Grid>
@@ -134,7 +134,7 @@
                 <Frame CornerRadius="16" x:Name="AddNewsWithPhotoFrame" BackgroundColor="#FAE073" IsVisible="false" Margin="22, 36" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                     <Grid RowDefinitions="*, *, *, *">
                         <ImageButton Grid.Row="0" HorizontalOptions="End" Source="mini_cancel_black.svg" x:Name="CloseAddNewsButton" Clicked="CloseAddNewsButton_Clicked" HeightRequest="16"/>
-                        
+                       
                         <ImageButton CornerRadius="16" Grid.Row="1" Margin="22" x:Name="NewsPhotoButton" Clicked="NewsPhotoButton_Clicked"  VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
                         <Frame Grid.Row="1" ZIndex="1" x:Name="ChoiceNewsPhotoButton" IsVisible="false" Padding="0" VerticalOptions="End" CornerRadius="16" HorizontalOptions="Center" BackgroundColor="#242323" BorderColor="#242323">
                             <Grid RowDefinitions="*, *, *">
@@ -157,6 +157,15 @@
                         <Editor Placeholder="Введите текст новости" AutoSize="TextChanges"  x:Name="NewsContentEntry" FontSize="24" FontFamily="QANELASREGULAR" PlaceholderColor="#242323" TextColor="#242323" Grid.Row="2" Margin="22"/>
                         <Button Grid.Row="3" Text="Сохранить" x:Name="SaveFullNewsButton" Clicked="SaveFullNewsButton_Clicked" VerticalOptions="End" HorizontalOptions="Center" TextColor="#FAE073" CornerRadius="16" Margin="72, 22" BackgroundColor="#242323" FontSize="24" FontFamily="QANELASBLACK"/>
                     </Grid>
+                </Frame>
+
+                <Frame CornerRadius="16" x:Name="SelectedNewsFrame" BackgroundColor="#FAE073" IsVisible="false" Margin="22, 36" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <Grid RowDefinitions="*, *, *, *" ColumnDefinitions="*, *">
+                        <Button Grid.Row="0" HorizontalOptions="Start" Text="Удалить новость" x:Name="DeleteSelectedNewsButton" Clicked="DeleteSelectedNewsButton_Clicked" BackgroundColor="Transparent" FontSize="20" FontFamily="QANELASBOLD" TextColor="#242323"/>
+                        <ImageButton Grid.Row="0"  Grid.ColumnSpan="2" HorizontalOptions="End" Source="mini_cancel_black.svg" x:Name="CloseSelectedNewsButton" Clicked="CloseSelectedNewsButton_Clicked" HeightRequest="16"/>
+                        <ImageButton CornerRadius="16" Grid.ColumnSpan="2" Grid.Row="1" Margin="22" x:Name="SelectedNewsImage" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
+                        <Editor AutoSize="TextChanges" Grid.ColumnSpan="2" x:Name="SelectedNewsContent" IsReadOnly="True" FontSize="24" FontFamily="QANELASREGULAR" PlaceholderColor="#242323" TextColor="#242323" Grid.Row="2" Margin="22"/>
+                        </Grid>
                 </Frame>
             </VerticalStackLayout>
         </ScrollView>
