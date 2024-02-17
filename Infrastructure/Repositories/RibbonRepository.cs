@@ -35,45 +35,6 @@ namespace Infrastructure.Repositories
             var res = _applicationContext.Ribbons.Find(id);
             return res;
         }
-        public int UpdateCounters(int postId, bool status, string parametr)
-        {
-            var post = _applicationContext.Ribbons.Find(postId);
-            int res = 0;
-            switch(parametr)
-            {
-                case "like":
-                    if (status)
-                        post.CountLikes = post.CountLikes + 1;
-                    else 
-                        post.CountLikes = post.CountLikes - 1;
-                    res = post.CountLikes;
-                break;
-                case "complaint":
-                    if (status)
-                        post.CountComplaint = post.CountComplaint + 1;
-                    else
-                        post.CountComplaint = post.CountComplaint - 1; 
-                    res = post.CountComplaint; 
-                break;
-                case "comments":
-                    if (status)
-                        post.CountComments = post.CountComments + 1;
-                    else
-                        post.CountComments = post.CountComments - 1;
-                    res = post.CountComments;
-                break;
-                case "download":
-                    if (status)
-                        post.CountDownload = post.CountDownload + 1;
-                    else
-                        post.CountDownload = post.CountDownload - 1;
-                    res = post.CountDownload;
-                break;
-            }
-            _applicationContext.Ribbons.Update(post);
-            _applicationContext.SaveChanges();
-            return res;
-        }
         public bool UpdatePost(RibbonsEntity post)
         {
             var result = _applicationContext.Ribbons.Update(post);
@@ -115,7 +76,7 @@ namespace Infrastructure.Repositories
         }
         public List<RibbonsEntity> ShowRibbon(int lastPostId)
         {
-            var postList = _applicationContext.Ribbons.Include(p => p.User).OrderByDescending(p => p.Time).Where(p => p.Id < lastPostId && p.IsBlocked == false).Take(10).ToList();
+            var postList = _applicationContext.Ribbons.Include(p => p.User).OrderByDescending(p => p.Time).Where(p => p.Id < lastPostId && p.IsBlocked == false && p.IsDeleted == false).Take(10).ToList();
             return postList;
         }
         public bool BlockPost(int postId)
@@ -126,6 +87,80 @@ namespace Infrastructure.Repositories
             _applicationContext.SaveChanges();
             return true;
         }
-        
+        public bool DeletePost(int postId)
+        {
+            var post = ShowPostById(postId);
+            post.IsDeleted = true;
+            _applicationContext.Ribbons.Update(post);
+            _applicationContext.SaveChanges();
+            return true;
+        }
+        public bool Like(int postId, bool status)
+        {
+            var post = ShowPostById(postId);
+            if (status)
+                post.CountLikes++;
+            else
+                post.CountLikes--;
+            var res = _applicationContext.Ribbons.Update(post);
+            _applicationContext.SaveChanges();
+            if (res != null)
+                return true;
+            return false;
+        }
+        public bool DisLike(int postId, bool status)
+        {
+            var post = ShowPostById(postId);
+            if (status)
+                post.CountDisLikes++;
+            else
+                post.CountDisLikes--;
+            var res = _applicationContext.Ribbons.Update(post);
+            _applicationContext.SaveChanges();
+            if (res != null)
+                return true;
+            return false;
+        }
+        public bool Complaint(int postId, bool status)
+        {
+            var post = ShowPostById(postId);
+            if (status)
+                post.CountComplaint++;
+            else
+                post.CountComplaint--;
+            var res = _applicationContext.Ribbons.Update(post);
+            _applicationContext.SaveChanges();
+            if (res != null)
+                return true;
+            return false;
+        }
+        public bool Comment(int postId, bool status)
+        {
+            var post = ShowPostById(postId);
+            if (status)
+                post.CountComments++;
+            else
+                post.CountComments--;
+            var res = _applicationContext.Ribbons.Update(post);
+            _applicationContext.SaveChanges();
+            if (res != null)
+                return true;
+            return false;
+        }
+        public bool Download(int postId, bool status)
+        {
+            var post = ShowPostById(postId);
+            if (status)
+                post.CountDownload++;
+            else
+                post.CountDownload--;
+            var res = _applicationContext.Ribbons.Update(post);
+            _applicationContext.SaveChanges();
+            if (res != null)
+                return true;
+            return false;
+        }
+
+
     }
 }

@@ -8,7 +8,7 @@ namespace DTO.Comments
 {
     public class UpdateCommentRequest
     {
-        public int PostId { get; set; }
+        public int CommentId { get; set; }
         public string Text { get; set; }
     }
 }

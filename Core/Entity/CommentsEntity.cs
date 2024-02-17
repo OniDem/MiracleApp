@@ -19,6 +19,9 @@ namespace Core.Entity
         public DateTime Time { get; set; }
         public bool IsDeleted { get; set; }
         public bool IsBlocked { get; set; }
-
+        public int AnswerTo { get; set; }
+        public int CountLikes { get; set; }
+        public int CountDisLikes { get; set; }
+        public int CountComplaint { get; set; }
     }
 }

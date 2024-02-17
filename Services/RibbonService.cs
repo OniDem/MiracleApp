@@ -5,6 +5,7 @@ using DTO.News;
 using DTO.Users;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System.Net.NetworkInformation;
 using System.Text.Json;
 using System.Threading.Tasks;
 using System.Timers;
@@ -64,10 +65,6 @@ namespace Services
             }
             return Task.FromResult(true);
         }
-        public Task<int> UpdateCounter(int postId, bool status, string parametr)
-        {
-            return Task.FromResult(_ribbonRepository.UpdateCounters(postId, status, parametr));
-        }
         public Task<bool> UpdatePost(UpdatePostRequest request)
         {
             RibbonsEntity post = _ribbonRepository.ShowPostById(request.PostId);
@@ -120,8 +117,6 @@ namespace Services
                 readyPost.CountComments = post.CountComments;
                 readyPost.CountDownload = post.CountDownload;
                 readyPost.Text = post.Text;
-                readyPost.IsBlocked = post.IsBlocked;
-
                 List<PicturesEntity>? pictures = new List<PicturesEntity>();
                 pictures = _ribbonRepository.FindPictureByPostId(post.Id);
                 string[] stepArray = new string[3];
@@ -135,9 +130,7 @@ namespace Services
                 readyPostList.Add(readyPost);
             }
             foreach (PostWithPictureEntity readyPost in readyPostList)
-            {
                 JSON.Add(JsonSerializer.Serialize(readyPost));
-            }
             return Task.FromResult(JSON);
         }
         public Task<bool> BlockPost(int postId)
@@ -145,8 +138,22 @@ namespace Services
             _ribbonRepository.BlockPost(postId);
             return Task.FromResult(true);   
         }
-        
+        public Task<bool> DeletePost(int postId)
+        {
+            _ribbonRepository.BlockPost(postId);
+            return Task.FromResult(true);
+        }
+        public Task<bool> Like(int postId, bool status) =>
+            Task.FromResult(_ribbonRepository.Like(postId, status));
+        public Task<bool> DisLike(int postId, bool status) =>
+            Task.FromResult(_ribbonRepository.DisLike(postId, status));
+        public Task<bool> Complaint(int postId, bool status) =>
+            Task.FromResult(_ribbonRepository.Complaint(postId, status));
+        public Task<bool> Comment(int postId, bool status) =>
+            Task.FromResult(_ribbonRepository.Comment(postId, status));
+        public Task<bool> Download(int postId, bool status) =>
+            Task.FromResult(_ribbonRepository.Download(postId, status));
 
-        
+
     }
 }

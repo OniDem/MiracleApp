@@ -16,7 +16,6 @@ namespace Core.Entity
         public int CountComments { get; set; }
         public int CountDownload { get; set; }
         public string Text { get; set; }
-        public Boolean IsBlocked { get; set; }
         public string? PictureOne { get; set; } = "none";
         public string? PictureTwo { get; set; } = "none";
         public string? PictureThree { get; set; } = "none";

@@ -31,41 +31,62 @@ namespace MiracleApi.Controllers
             return false;
         }
         [HttpPost]
-        public async Task<int?> UpdateCounter( int postId, bool status, string parametr)
-        {
-            if (ModelState.IsValid)
-            {
-                return await _ribbonService.UpdateCounter(postId, status, parametr);
-            }
-            return null;
-        }
-        [HttpPost]
         public async Task<bool> UpdatePost(UpdatePostRequest request)
         {
             if(ModelState.IsValid)
-            {
                 return await _ribbonService.UpdatePost(request);
-            }
             return false;
         }
         [HttpPost]
         public async Task<List<string>> ShowRibbon(int lastPostId)
         {
             if (ModelState.IsValid)
-            {
                 return await _ribbonService.ShowRibbon(lastPostId);
-            }
             return null;
         }
         [HttpPost]
         public async Task<bool> BlockPost(int postId)
         {
             if(ModelState.IsValid)
-            {
                 return await _ribbonService.BlockPost(postId);
-            }
             return false;
         }
+        [HttpPost]
+        public async Task<bool> Like(int postId, bool status)
+        {
+            if (ModelState.IsValid)
+                return await _ribbonService.Like(postId, status);
+            return false;
+        }
+        [HttpPost]
+        public async Task<bool> DisLike(int postId, bool status)
+        {
+            if (ModelState.IsValid)
+                return await _ribbonService.DisLike(postId, status);
+            return false;
+        }
+        [HttpPost]
+        public async Task<bool> Complaint(int postId, bool status)
+        {
+            if (ModelState.IsValid)
+                return await _ribbonService.Complaint(postId, status);
+            return false;
+        }
+        [HttpPost]
+        public async Task<bool> Comment(int postId, bool status)
+        {
+            if (ModelState.IsValid)
+                return await _ribbonService.Comment(postId, status);
+            return false;
+        }
+        [HttpPost]
+        public async Task<bool> Download(int postId, bool status)
+        {
+            if (ModelState.IsValid)
+                return await _ribbonService.Download(postId, status);
+            return false;
+        }
+
         public class AuthOptions
         {
             public const string ISSUER = "MiracleApi"; // издатель токена
