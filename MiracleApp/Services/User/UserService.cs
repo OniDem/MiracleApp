@@ -1,5 +1,6 @@
 ﻿using Core.Entity;
 using DTO.Users;
+using MiracleApp.Services.Encrypt;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
@@ -40,10 +41,11 @@ namespace MiracleApp.Services.User
             {
                 request.CourseNumber = "";
                 request.Department = "";
+                request.Password = Convert.ToBase64String(await EncryptService.EncryptStringToByteArrayAsync(request.Password));
             }
             request.Photo = CreateRandomPhoto();
             JsonContent content = JsonContent.Create(request);
-            HttpClient httpClient = new HttpClient();
+            HttpClient httpClient = new();
             var response = await httpClient.PostAsync("http://45.153.69.204:5000/User/Create", content);
             var result = await response.Content.ReadFromJsonAsync<UserEntity>();
             return result.Id;

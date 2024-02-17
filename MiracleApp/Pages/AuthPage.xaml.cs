@@ -1,5 +1,6 @@
 using CommunityToolkit.Maui.Alerts;
 using DTO.Users;
+using MiracleApp.Services.Encrypt;
 using MiracleApp.Services.Mail;
 using MiracleApp.Services.User;
 using MiracleApp.Validation;
@@ -51,7 +52,7 @@ public partial class AuthPage : ContentPage
         {
             if (PasswordEntry.Text.Length > 0)
             {
-                if (await UserService.AuthUser(new() { Phone = PhoneEntry.Text, Password = PasswordEntry.Text }))
+                if (await UserService.AuthUser(new() { Phone = PhoneEntry.Text, Password = Convert.ToBase64String(await EncryptService.EncryptStringToByteArrayAsync(PasswordEntry.Text)) }))
                 {
                     var id = await SecureStorage.Default.GetAsync("id");
                     var token = await SecureStorage.Default.GetAsync("token");
