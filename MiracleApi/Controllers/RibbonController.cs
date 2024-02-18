@@ -44,6 +44,15 @@ namespace MiracleApi.Controllers
                 return await _ribbonService.ShowRibbon(lastPostId);
             return null;
         }
+
+        [HttpPost]
+        public async Task<List<string>> ShowUserPost(int UserPost, int lastPostId)
+        {
+            if (ModelState.IsValid)
+                return await _ribbonService.ShowUserPost(UserPost, lastPostId);
+            return null;
+        }
+
         [HttpPost]
         public async Task<bool> BlockPost(int postId)
         {

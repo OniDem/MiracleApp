@@ -15,6 +15,7 @@ namespace Abstract.Services.Interfaces
         public Task<bool> Complaint(int postId, bool status);
         public Task<bool> Comment(int postId, bool status);
         public Task<bool> Download(int postId, bool status);
+        public Task<List<string>> ShowUserPost(int userId, int lastPostId);
         
     }
 }

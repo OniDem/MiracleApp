@@ -79,6 +79,16 @@ namespace Infrastructure.Repositories
             var postList = _applicationContext.Ribbons.Include(p => p.User).OrderByDescending(p => p.Time).Where(p => p.Id < lastPostId && p.IsBlocked == false && p.IsDeleted == false).Take(10).ToList();
             return postList;
         }
+        public List<RibbonsEntity> ShowUserPost(int userId, int lastPostId)
+        {
+            var postList = _applicationContext.Ribbons.
+                Include(p => p.User).
+                OrderByDescending(p => p.Time).
+                Where(p => p.Id < lastPostId && p.IsBlocked == false && p.IsDeleted == false && p.User.Id == userId).
+                Take(10).
+                ToList();
+            return postList;
+        }
         public bool BlockPost(int postId)
         {
             var post = ShowPostById(postId);
