@@ -5,6 +5,7 @@ using DTO.News;
 using DTO.Users;
 using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using System.Diagnostics;
 using System.Net.NetworkInformation;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -119,14 +120,9 @@ namespace Services
                 readyPost.Text = post.Text;
                 List<PicturesEntity>? pictures = new List<PicturesEntity>();
                 pictures = _ribbonRepository.FindPictureByPostId(post.Id);
-                string[] stepArray = new string[3];
-                for (int i = 0; i < 3; i++)
-                    stepArray[i] = "none";
-                for (int i = 0; i < pictures.Count; i++)
-                    stepArray[i] = pictures[i].image;
-                readyPost.PictureOne = stepArray[0];
-                readyPost.PictureTwo = stepArray[1];
-                readyPost.PictureThree = stepArray[2];
+                readyPost.Pictures = new List<string>();
+                foreach (PicturesEntity picture in pictures)
+                     readyPost.Pictures.Add(picture.image);
                 readyPostList.Add(readyPost);
             }
             foreach (PostWithPictureEntity readyPost in readyPostList)
@@ -152,15 +148,10 @@ namespace Services
                 readyPost.CountDownload = post.CountDownload;
                 readyPost.Text = post.Text;
                 List<PicturesEntity>? pictures = new List<PicturesEntity>();
+                readyPost.Pictures = new List<string>();
                 pictures = _ribbonRepository.FindPictureByPostId(post.Id);
-                string[] stepArray = new string[3];
-                for (int i = 0; i < 3; i++)
-                    stepArray[i] = "none";
-                for (int i = 0; i < pictures.Count; i++)
-                    stepArray[i] = pictures[i].image;
-                readyPost.PictureOne = stepArray[0];
-                readyPost.PictureTwo = stepArray[1];
-                readyPost.PictureThree = stepArray[2];
+                foreach (PicturesEntity picture in pictures)
+                       readyPost.Pictures.Add(picture.image);
                 readyPostList.Add(readyPost);
             }
             foreach (PostWithPictureEntity readyPost in readyPostList)
