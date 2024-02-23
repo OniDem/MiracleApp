@@ -10,22 +10,206 @@
     <Grid BackgroundColor="#8031A7">
         <Image Aspect="Fill" Source="background.png"/>
 
-    <ScrollView >
-            <VerticalStackLayout  Margin="22,0" >
-                <Label WidthRequest="289" HeightRequest="79" HorizontalOptions="Start">
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <Span Text="Miracle" TextColor="#FAE073" FontSize="78" FontFamily="QANELASBLACK"/>
-                            <Span Text=":" TextColor="#FAE073" FontSize="74" FontFamily="NEUEMACHINA-BLACK" />
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
+    <Grid >
+            <ScrollView x:Name="SettingsSV">
+                <StackLayout>
+                    <Frame VerticalOptions="Start" CornerRadius="0" Padding="22, 21" BackgroundColor="#242323" BorderColor="#242323">
+                        <Grid ColumnDefinitions="46, *" HorizontalOptions="Fill">
+                            <ImageButton Grid.Column="0" x:Name="BackArrowButton" Clicked="BackArrowButton_Clicked" HorizontalOptions="Start" VerticalOptions="Center"/>
+                            <Label Grid.Column="1" Text="Настройки" HorizontalOptions="End" FontSize="20" FontFamily="QANELASREGULAR" TextColor="#FAE073" VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
 
-                <Frame BackgroundColor="#1E1E1E" BorderColor="#1E1E1E" CornerRadius="16" Padding="12,0" WidthRequest="293" HeightRequest="54" HorizontalOptions="Start" Margin="0,4">
-                    <Label Text="Новоколледж" TextColor="#FAE073" FontSize="42" FontFamily="QANELASBLACK"/>
-                </Frame>
-            </VerticalStackLayout>
-        </ScrollView>
+                    <VerticalStackLayout Margin="22, 46" VerticalOptions="FillAndExpand">
+                        <Grid ColumnDefinitions="*, *">
+                            <Label Text="Учётная запись" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center" ZIndex="0"/>
+
+                            <VerticalStackLayout  Grid.Column="1" HorizontalOptions="End">
+                                <Label Text="Редактировать" TextDecorations="Underline" FontSize="20" HorizontalTextAlignment="End" ZIndex="0" FontFamily="QANELASREGULAR" TextColor="#FAE073" VerticalOptions="Center">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="ProfileEditTap_Tapped"/>
+                                    </Label.GestureRecognizers>
+                                </Label>
+
+                            </VerticalStackLayout>
+                        </Grid>
+                        <Line HeightRequest="1" Margin="0, 10, 0, 22" >
+                            <Line.Background>
+                                <LinearGradientBrush EndPoint="1,0">
+                                    <GradientStop Color="Transparent" Offset="0" />
+                                    <GradientStop Color="#FAE073" Offset="0.25" />
+                                    <GradientStop Color="#FAE073" Offset="0.75" />
+                                    <GradientStop Color="Transparent" Offset="1" />
+                                </LinearGradientBrush>
+                            </Line.Background>
+                        </Line>
+                        <Grid ColumnDefinitions="*, *">
+                            <Label Text="Уведомления" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center"/>
+                            <Label Text="Вкл." x:Name="ToggleNotificationLabel" TextDecorations="Underline" HorizontalOptions="End" HorizontalTextAlignment="End" Grid.Column="1" FontSize="20" FontFamily="QANELASREGULAR" TextColor="#FAE073" VerticalOptions="End">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="ToggleNotificationTap" Tapped="ToggleNotificationTap_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+
+                        </Grid>
+                        <Line HeightRequest="1" Margin="0, 10, 0, 22" >
+                            <Line.Background>
+                                <LinearGradientBrush EndPoint="1,0">
+                                    <GradientStop Color="Transparent" Offset="0" />
+                                    <GradientStop Color="#FAE073" Offset="0.25" />
+                                    <GradientStop Color="#FAE073" Offset="0.75" />
+                                    <GradientStop Color="Transparent" Offset="1" />
+                                </LinearGradientBrush>
+                            </Line.Background>
+                        </Line>
+                        <Grid ColumnDefinitions="*, *">
+                            <Label Text="Правила" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center"/>
+                            <Label Text="Смотреть" TextDecorations="Underline" HorizontalOptions="End" HorizontalTextAlignment="End" Grid.Column="1" FontSize="20" FontFamily="QANELASREGULAR" TextColor="#FAE073" VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="OpenRulesTap" Tapped="OpenRulesTap_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                        <Line HeightRequest="1" Margin="0, 10, 0, 22" >
+                            <Line.Background>
+                                <LinearGradientBrush EndPoint="1,0">
+                                    <GradientStop Color="Transparent" Offset="0" />
+                                    <GradientStop Color="#FAE073" Offset="0.25" />
+                                    <GradientStop Color="#FAE073" Offset="0.75" />
+                                    <GradientStop Color="Transparent" Offset="1" />
+                                </LinearGradientBrush>
+                            </Line.Background>
+                        </Line>
+                        <Grid ColumnDefinitions="*, *">
+                            <Label Text="Моё расписание" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center"/>
+                            <Label Text="Редактировать" TextDecorations="Underline" HorizontalOptions="End" HorizontalTextAlignment="End" Grid.Column="1" FontSize="20" FontFamily="QANELASREGULAR" TextColor="#FAE073" VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="ScheduleEditTap" Tapped="ScheduleEditTap_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                        <Line HeightRequest="1" Margin="0, 10, 0, 22" >
+                            <Line.Background>
+                                <LinearGradientBrush EndPoint="1,0">
+                                    <GradientStop Color="Transparent" Offset="0" />
+                                    <GradientStop Color="#FAE073" Offset="0.25" />
+                                    <GradientStop Color="#FAE073" Offset="0.75" />
+                                    <GradientStop Color="Transparent" Offset="1" />
+                                </LinearGradientBrush>
+                            </Line.Background>
+                        </Line>
+                        <Grid ColumnDefinitions="*, *">
+                            <Label Text="Мои посты" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center"/>
+                            <Label Text="Смотреть" TextDecorations="Underline" HorizontalOptions="End" HorizontalTextAlignment="End" Grid.Column="1" FontSize="20" FontFamily="QANELASREGULAR" TextColor="#FAE073" VerticalOptions="Center">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer x:Name="ShowPostsTap" Tapped="ShowPostsTap_Tapped"/>
+                                </Label.GestureRecognizers>
+                            </Label>
+                        </Grid>
+                        <Line HeightRequest="1" Margin="0, 10, 0, 22" >
+                            <Line.Background>
+                                <LinearGradientBrush EndPoint="1,0">
+                                    <GradientStop Color="Transparent" Offset="0" />
+                                    <GradientStop Color="#FAE073" Offset="0.25" />
+                                    <GradientStop Color="#FAE073" Offset="0.75" />
+                                    <GradientStop Color="Transparent" Offset="1" />
+                                </LinearGradientBrush>
+                            </Line.Background>
+                        </Line>
+                        <Button Text="Сохранить изменения" x:Name="SaveButton" Clicked="SaveButton_Clicked" FontSize="24" Margin="0, 50, 0, 0" CornerRadius="16" BackgroundColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASBLACK" TextColor="#242323" />
+                    </VerticalStackLayout>
+                </StackLayout>
+            </ScrollView>
+
+        
+            <ScrollView x:Name="EditProfileSV" IsVisible="false">
+                <StackLayout>
+                    <Frame VerticalOptions="Start" CornerRadius="0" Padding="22, 21" BackgroundColor="#242323" BorderColor="#242323">
+                        <Grid ColumnDefinitions="46, *" HorizontalOptions="Fill">
+                            <ImageButton Grid.Column="0" x:Name="CloseProfileEditButton" HorizontalOptions="Start" Clicked="CloseProfileEditButton_Clicked" VerticalOptions="Center"/>
+                            <Label Grid.Column="1" Text="Редактировать профиль" HorizontalOptions="End" FontSize="20" FontFamily="QANELASBOLD" TextColor="#FAE073" VerticalOptions="Center"/>
+                        </Grid>
+                    </Frame>
+
+                    <VerticalStackLayout Margin="22, 46" VerticalOptions="FillAndExpand">
+                        <Grid ColumnDefinitions="*, *">
+                            <Label Text="ФИО" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center" ZIndex="0"/>
+
+                            <VerticalStackLayout  Grid.Column="1" HorizontalOptions="End">
+                                <Entry Placeholder="Ваше ФИО" x:Name="FIOEntry" FontSize="20" HorizontalTextAlignment="End" ZIndex="0" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073" VerticalOptions="Center"/>
+
+                            </VerticalStackLayout>
+                        </Grid>
+                        <Line HeightRequest="1" Margin="0, 10, 0, 22" >
+                            <Line.Background>
+                                <LinearGradientBrush EndPoint="1,0">
+                                    <GradientStop Color="Transparent" Offset="0" />
+                                    <GradientStop Color="#FAE073" Offset="0.25" />
+                                    <GradientStop Color="#FAE073" Offset="0.75" />
+                                    <GradientStop Color="Transparent" Offset="1" />
+                                </LinearGradientBrush>
+                            </Line.Background>
+                        </Line>
+                        <Grid ColumnDefinitions="*, *">
+                            <Label Text="Курс" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center"/>
+                            <Entry Placeholder="Ваш курс" HorizontalOptions="End" HorizontalTextAlignment="End" x:Name="CourceNumberEntry" Grid.Column="1" FontSize="20" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073" VerticalOptions="End"/>
+
+                        </Grid>
+                        <Line HeightRequest="1" Margin="0, 10, 0, 22" >
+                            <Line.Background>
+                                <LinearGradientBrush EndPoint="1,0">
+                                    <GradientStop Color="Transparent" Offset="0" />
+                                    <GradientStop Color="#FAE073" Offset="0.25" />
+                                    <GradientStop Color="#FAE073" Offset="0.75" />
+                                    <GradientStop Color="Transparent" Offset="1" />
+                                </LinearGradientBrush>
+                            </Line.Background>
+                        </Line>
+                        <Grid ColumnDefinitions="*, *">
+                            <Label Text="Специальность" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center"/>
+                            <Entry Placeholder="Ваша специальность" HorizontalOptions="End" HorizontalTextAlignment="End" x:Name="StudentBrachEntry" Grid.Column="1" FontSize="20" FontFamily="QANELASBOLD" TextColor="#FAE073" PlaceholderColor="#FAE073" VerticalOptions="Center"/>
+                        </Grid>
+                        <Line HeightRequest="1" Margin="0, 10, 0, 22" >
+                            <Line.Background>
+                                <LinearGradientBrush EndPoint="1,0">
+                                    <GradientStop Color="Transparent" Offset="0" />
+                                    <GradientStop Color="#FAE073" Offset="0.25" />
+                                    <GradientStop Color="#FAE073" Offset="0.75" />
+                                    <GradientStop Color="Transparent" Offset="1" />
+                                </LinearGradientBrush>
+                            </Line.Background>
+                        </Line>
+                        <Grid ColumnDefinitions="*, *">
+                            <Label Text="Фото" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center"/>
+                        </Grid>
+                        <Line HeightRequest="1" Margin="0, 10, 0, 22" >
+                            <Line.Background>
+                                <LinearGradientBrush EndPoint="1,0">
+                                    <GradientStop Color="Transparent" Offset="0" />
+                                    <GradientStop Color="#FAE073" Offset="0.25" />
+                                    <GradientStop Color="#FAE073" Offset="0.75" />
+                                    <GradientStop Color="Transparent" Offset="1" />
+                                </LinearGradientBrush>
+                            </Line.Background>
+                        </Line>
+                        <Grid ColumnDefinitions="*, *">
+                            <Label Text="Ваши курсы" Grid.Column="0" FontSize="24" FontFamily="QANELASBLACK" TextColor="#FAE073" VerticalOptions="Center"/>
+                        </Grid>
+                        <Line HeightRequest="1" Margin="0, 10, 0, 22" >
+                            <Line.Background>
+                                <LinearGradientBrush EndPoint="1,0">
+                                    <GradientStop Color="Transparent" Offset="0" />
+                                    <GradientStop Color="#FAE073" Offset="0.25" />
+                                    <GradientStop Color="#FAE073" Offset="0.75" />
+                                    <GradientStop Color="Transparent" Offset="1" />
+                                </LinearGradientBrush>
+                            </Line.Background>
+                        </Line>
+                        <Button Text="Сохранить изменения" x:Name="SaveProfileButton" Clicked="SaveProfileButton_Clicked" FontSize="24" Margin="0, 50, 0, 0" CornerRadius="16" BackgroundColor="#FAE073" BorderColor="#FAE073" FontFamily="QANELASBLACK" TextColor="#242323" />
+                    </VerticalStackLayout>
+                </StackLayout>
+            </ScrollView>
+        </Grid>
         <Grid ColumnDefinitions="*, *, *, *" ColumnSpacing="40" HorizontalOptions="Center" VerticalOptions="End" Margin="0, 14, 0, 12" ZIndex="1">
             <ImageButton Grid.Column="0" x:Name="SettingsButton" Clicked="SettingsButton_Clicked" HeightRequest="38" WidthRequest="38"/>
             <ImageButton Grid.Column="1" x:Name="HomeButton" Clicked="HomeButton_Clicked" HeightRequest="38" WidthRequest="38"/>

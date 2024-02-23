@@ -796,7 +796,7 @@ public partial class ProfilePage : ContentPage
         ProfileButton.Source = "profile_selected.svg";
         NotificationButton.Source = "notification.svg";
         LogOutSure.Source = "logout.svg";
-        ProfileEdit.Source = "prodile_edit.svg";
+        ProfileEdit.Source = "profile_edit.svg";
         MiniCancelButton.Source = "mini_cancel.svg";
         BackArrowButton.Source = "arrow.svg";
 
@@ -807,6 +807,7 @@ public partial class ProfilePage : ContentPage
     private async void SettingsButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new SettingsPage());
+        statusBar.StatusBarColor = Color.FromArgb("#242323");
     }
 
     private async void HomeButton_Clicked(object sender, EventArgs e)
@@ -898,7 +899,5 @@ public partial class ProfilePage : ContentPage
                 toast.Show();
             }
         });
-
-
     }
 }

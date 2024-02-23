@@ -1,9 +1,12 @@
+using CommunityToolkit.Maui.Behaviors;
 using MiracleApp.Validation;
 
 namespace MiracleApp.Pages;
 
 public partial class NotificationsPage : ContentPage
 {
+
+    StatusBarBehavior statusBar = new();
     public NotificationsPage()
     {
         if (!UserValid.UserAuth())
@@ -20,6 +23,7 @@ public partial class NotificationsPage : ContentPage
     private async void SettingsButton_Clicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new SettingsPage());
+        statusBar.StatusBarColor = Color.FromArgb("#242323");
     }
 
     private async void HomeButton_Clicked(object sender, EventArgs e)

@@ -11,8 +11,6 @@ namespace MiracleApp
         {
 
             base.OnCreate(bundle);
-
-            Window.SetStatusBarColor(Android.Graphics.Color.Rgb(128, 49, 167)); //here
         }
     }
 }

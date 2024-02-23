@@ -4,6 +4,7 @@ using MiracleApp.Services.News;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Converters;
 using MiracleApp.Entity;
+using CommunityToolkit.Maui.Behaviors;
 
 namespace MiracleApp.Pages
 {
@@ -13,6 +14,7 @@ namespace MiracleApp.Pages
         byte[] newsPhoto;
         string newsType;
         ShowNewsEntity CurrentNews = new();
+        StatusBarBehavior statusBar = new();
 
         public MainPage()
         {
@@ -65,7 +67,8 @@ namespace MiracleApp.Pages
             //this.ShowPopup(popup);
             //await Task.Delay(5000);
             //popup.Close();
-            //await Navigation.PushAsync(new SettingsPage());
+            await Navigation.PushAsync(new SettingsPage());
+            statusBar.StatusBarColor = Color.FromArgb("#242323");
         }
 
 
