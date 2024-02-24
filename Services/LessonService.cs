@@ -31,7 +31,8 @@ namespace Services
                 Branch = request.Branch,
                 StudentCount = request.StudentCount,
                 Online = request.Online,
-                Extra = request.Extra
+                Extra = request.Extra,
+                Week = request.Week
             });
         }
 

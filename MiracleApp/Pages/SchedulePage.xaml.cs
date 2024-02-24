@@ -823,7 +823,8 @@ public partial class SchedulePage : ContentPage
                                     {
                                         try
                                         {
-                                            DayOfWeekShowEntity dow_add = DoWChoiceCV.CurrentItem as DayOfWeekShowEntity;
+                                            DayOfWeekShowEntity dow_add = new();
+                                            dow_add.Name = DoWChoiceCV.CurrentItem.ToString();
                                             LessonDoWEnum DoW = new();
                                             switch (dow_add.Name)
                                             {
