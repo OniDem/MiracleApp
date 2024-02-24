@@ -33,7 +33,8 @@
                     <VerticalStackLayout Margin="1,18,0,0">
                         <HorizontalStackLayout>
                             <Button Text="Главная" Style="{StaticResource ThinButton}" Clicked="MainButton_Clicked" Margin="0,0,12,0"/>
-                            <Button Text="Оплата" Style="{StaticResource ThinButton}" Clicked="PayButton_Clicked"/>
+                            <Button Text="Оплата" Style="{StaticResource ThinButton}" Clicked="PayButton_Clicked" Margin="0,0,12,0"/>
+                            <Button Text="Стена" Style="{StaticResource ThinButton}" Clicked="RibbonButton_Clicked" Margin="0,0,12,0"/>
                         </HorizontalStackLayout>
                         <HorizontalStackLayout Margin="1,8,0,0">
                             <Button Text="Расписание" Style="{StaticResource ThinButton}" Clicked="SheduleButton_Clicked" Margin="0,0,12,0"/>

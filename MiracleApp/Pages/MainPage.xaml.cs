@@ -61,6 +61,10 @@ namespace MiracleApp.Pages
         {
             await Navigation.PushAsync(new MainPage());
         }
+        private async void RibbonButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new RibbonPage());
+        }
         private async void SettingsButton_Clicked(object sender, EventArgs e)
         {
             //var popup = new LoadingPage();
