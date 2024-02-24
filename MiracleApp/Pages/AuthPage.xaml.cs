@@ -215,7 +215,7 @@ public partial class AuthPage : ContentPage
                     Department = user.Department,
                     StudentBranch = user.StudentBranch,
                     CourseNumber = user.CourseNumber,
-                    Password = NewPassword.Text
+                    Password = Convert.ToBase64String(await EncryptService.EncryptStringToByteArrayAsync(NewPassword.Text))
                 };
                 if (await UserService.UpdateUser(user.Id, entity))
                 {
