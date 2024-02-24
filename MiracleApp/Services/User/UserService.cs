@@ -57,6 +57,10 @@ namespace MiracleApp.Services.User
             HttpClient httpClient = new HttpClient();
             var response = await httpClient.PostAsync("http://45.153.69.204:5000/User/Auth", content);
             var user = JsonConvert.DeserializeObject<AuthUserEntity>(await response.Content.ReadAsStringAsync());
+            string debugString =
+                "password send: " + request.Password + ";\n" +
+                "number send: " + request.Phone + ";\n" +
+                "number get: " + user.Phone + ";";
             if (user != null)
             {
                 await SecureStorage.SetAsync("id", user.Id.ToString());
