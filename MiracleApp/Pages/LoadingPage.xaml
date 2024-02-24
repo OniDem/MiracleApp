@@ -7,7 +7,7 @@
              CanBeDismissedByTappingOutsideOfPopup="False">
     
     <Grid BackgroundColor="#242323" Padding="25" Margin="0" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
-        <Image BackgroundColor="#242323" x:Name="image" HeightRequest="300" WidthRequest="300" HorizontalOptions="Center" VerticalOptions="Center" ZIndex="0"/>
+        <Image BackgroundColor="#242323" x:Name="image" HorizontalOptions="Center" VerticalOptions="Center" ZIndex="0"/>
         
     </Grid>
 </toolkit:Popup>

@@ -5,7 +5,6 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Converters;
 using MiracleApp.Entity;
 using CommunityToolkit.Maui.Behaviors;
-using CommunityToolkit.Maui.Views;
 
 namespace MiracleApp.Pages
 {
@@ -64,12 +63,12 @@ namespace MiracleApp.Pages
         }
         private async void SettingsButton_Clicked(object sender, EventArgs e)
         {
-            var popup = new LoadingPage();
-            this.ShowPopup(popup);
-            await Task.Delay(5000);
-            popup.Close();
-            //await Navigation.PushAsync(new SettingsPage());
-            //statusBar.StatusBarColor = Color.FromArgb("#242323");
+            //var popup = new LoadingPage();
+            //this.ShowPopup(popup);
+            //await Task.Delay(5000);
+            //popup.Close();
+            await Navigation.PushAsync(new SettingsPage());
+            statusBar.StatusBarColor = Color.FromArgb("#242323");
         }
 
 
