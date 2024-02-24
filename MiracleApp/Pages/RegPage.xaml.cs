@@ -1,6 +1,7 @@
 using CommunityToolkit.Maui.Alerts;
 using Core.Const;
 using DTO.Users;
+using MiracleApp.Services.Encrypt;
 using MiracleApp.Services.User;
 using MiracleApp.Validation;
 
@@ -208,7 +209,7 @@ public partial class RegPage : ContentPage
                 {
                     reg_user.Phone = PhoneEntry.Text;
                     reg_user.Email = MailEntry.Text;
-                    reg_user.Password = PasswordEntry.Text;
+                    reg_user.Password = Convert.ToBase64String(await EncryptService.EncryptStringToByteArrayAsync(PasswordEntry.Text));
                     reg_user.Photo = "";
 
                     if (await UserService.RegUser(reg_user) > 0)
