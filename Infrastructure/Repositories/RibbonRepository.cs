@@ -170,7 +170,9 @@ namespace Infrastructure.Repositories
                 return true;
             return false;
         }
-
-
+        public int ShowLastPostId()
+        {
+            return (int)_applicationContext.Ribbons.OrderByDescending(p => p.Time).FirstOrDefault().Id;
+        }
     }
 }

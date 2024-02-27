@@ -77,18 +77,11 @@ namespace MiracleApp.Pages
 
 
         private void HomeButton_Clicked(object sender, EventArgs e)
-        {
-
-        }
-        private async void ProfileButton_Clicked(object sender, EventArgs e)
-        {
+        { }
+        private async void ProfileButton_Clicked(object sender, EventArgs e) =>
             await Navigation.PushAsync(new ProfilePage());
-        }
-        private async void NotificationButton_Clicked(object sender, EventArgs e)
-        {
+        private async void NotificationButton_Clicked(object sender, EventArgs e) =>
             await Navigation.PushAsync(new NotificationsPage());
-        }
-
         private void addNewsButton_Clicked(object sender, EventArgs e)
         {
             if(addNewsFrame.IsVisible)
@@ -96,7 +89,6 @@ namespace MiracleApp.Pages
             else
                 addNewsFrame.IsVisible = true;
         }
-
         private void addPhotoNewsButton_Clicked(object sender, EventArgs e)
         {
             newsType = "media";

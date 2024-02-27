@@ -102,6 +102,8 @@ namespace Services
         }
         public Task<List<string>> ShowRibbon(int lastPostId)
         {
+            if (lastPostId == 0)
+                lastPostId = _ribbonRepository.ShowLastPostId();
             List<RibbonsEntity> postList = _ribbonRepository.ShowRibbon(lastPostId);
             List<PostWithPictureEntity> readyPostList = new List<PostWithPictureEntity>();
             List<string> JSON = new List<string>();

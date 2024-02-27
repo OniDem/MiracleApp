@@ -4,7 +4,6 @@
              x:Class="MiracleApp.Pages.RibbonPage"
              xmlns:local="clr-namespace:MiracleApp"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Behaviors;assembly=CommunityToolkit.Maui">
-    <ContentPage.Behaviors>
-        <mct:StatusBarBehavior  StatusBarColor="#8031A7" StatusBarStyle="LightContent"/>
-    </ContentPage.Behaviors>
+    <Image Source="background.png" Aspect="AspectFill" />
+
 </ContentPage>

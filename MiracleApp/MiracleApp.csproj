@@ -63,6 +63,13 @@
 
 	<ItemGroup>
 	  <None Remove="Pages\i2lkyrco.jqs~" />
+	  <None Remove="Resources\Images\addPostIco.png" />
+	  <None Remove="Resources\Images\basketico.png" />
+	  <None Remove="Resources\Images\bg.jpg" />
+	  <None Remove="Resources\Images\commentico.png" />
+	  <None Remove="Resources\Images\complaitico.png" />
+	  <None Remove="Resources\Images\dislikeico.png" />
+	  <None Remove="Resources\Images\likeico.png" />
 	</ItemGroup>
 
 	<ItemGroup>
