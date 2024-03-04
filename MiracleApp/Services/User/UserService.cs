@@ -35,7 +35,7 @@ namespace MiracleApp.Services.User
             }
             return result;
         }
-        public static async Task<int> RegUser(CreateUserRequest request)
+        public static async Task<int> RegUserWithoutToken(CreateUserRequest request)
         {
             if (request.Role == 1)
             {

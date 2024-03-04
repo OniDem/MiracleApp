@@ -32,6 +32,8 @@ namespace Infrastructure.Repositories
             user.CourseNumber = request.CourseNumber;
             user.Password = request.Password;
             user.Photo = request.Photo;
+            user.CreatedDate  = request.CreatedDate;
+            user.PasswordChangeDate = request.CreatedDate;
             _applicationContext.Users.Update(user);
             _applicationContext.SaveChanges();
             return user;
