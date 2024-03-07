@@ -23,12 +23,43 @@ namespace MiracleApi.Controllers
         }
 
         [HttpPost]
-        public async Task<UserEntity?> Create([FromBody] CreateUserRequest userCreate)
+        public async Task<UserEntity?> CreateWithoutToken([FromBody] CreateUserRequest userCreate)
         {
             if (ModelState.IsValid)
             {
                 var user = await _userService.Create(userCreate);
                 return user;
+            }
+            return null;
+        }
+
+        [HttpPost]
+        public async Task<AuthUserEntity?> CreateWithToken([FromBody] CreateUserRequest userCreate)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userService.Create(userCreate);
+                AuthUserEntity authUser = new()
+                {
+                    Id = user.Id,
+                    Phone = user.Phone,
+                    Email = user.Email,
+                    FIO = user.FIO,
+                    Role = user.Role,
+                    Department = user.Department,
+                    StudentBranch = user.StudentBranch,
+                    CourseNumber = user.CourseNumber
+                };
+                var claims = new List<Claim> { new(ClaimTypes.Name, user.Id.ToString()) };
+                // создаем JWT-токен
+                var jwt = new JwtSecurityToken(
+                         issuer: AuthOptions.ISSUER,
+                        audience: AuthOptions.AUDIENCE,
+                        claims: claims,
+                        signingCredentials: new SigningCredentials(AuthOptions.GetSymmetricSecurityKey(), SecurityAlgorithms.HmacSha256));
+                Response.Cookies.Append(user.Id.ToString(), new JwtSecurityTokenHandler().WriteToken(jwt));
+                authUser.Token = new JwtSecurityTokenHandler().WriteToken(jwt);
+                return authUser;
             }
             return null;
         }

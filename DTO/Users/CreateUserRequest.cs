@@ -21,5 +21,9 @@
         public string Password { get; set; }
 
         public string Photo { get; set; }
+
+        public DateTime CreatedDate { get; set; }
+
+        public DateTime PasswordChangeDate { get; set; }
     }
 }

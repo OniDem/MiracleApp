@@ -27,6 +27,14 @@ namespace Core.Entity
 
         public string Photo { get; set; }
 
+        public DateTime CreatedDate { get; set; }
+
+        public DateTime PasswordChangeDate { get; set; }
+
+        public static implicit operator UserEntity(global::DTO.Users.UpdateUserRequest v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
 
