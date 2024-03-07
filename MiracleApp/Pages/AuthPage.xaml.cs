@@ -123,13 +123,13 @@ public partial class AuthPage : ContentPage
             else
             {
                 var toast = Toast.Make("Код не верен! Он вам изменяет :)", CommunityToolkit.Maui.Core.ToastDuration.Long);
-                toast.Show();
+                await toast.Show();
             }
         }
         else
         {
             var toast = Toast.Make("Код введён не полность!", CommunityToolkit.Maui.Core.ToastDuration.Long);
-            toast.Show();
+            await toast.Show();
         }
     }
 
