@@ -17,7 +17,7 @@ namespace MiracleTest
         {
             Task.Run(async () =>
             {
-                var user = await userController.Create(new() { Phone = "+7 (111) 111-11-11", Email = "test@test", FIO = "test", Role = 0, Department = "test", StudentBranch = "test", CourseNumber = "1", Password = "test", Photo = "photo" });
+                var user = await userController.CreateWithoutToken(new() { Phone = "+7 (111) 111-11-11", Email = "test@test", FIO = "test", Role = 0, Department = "test", StudentBranch = "test", CourseNumber = "1", Password = "test", Photo = "photo" });
                 Assert.IsTrue(user.Id > 0);
             });
         }

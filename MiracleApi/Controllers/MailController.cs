@@ -36,14 +36,5 @@ namespace MiracleApi.Controllers
             }
             return 0;
         }
-
-        [HttpPost]
-        public async Task Delete(DeleteMailRequest request)
-        {
-            if (ModelState.IsValid)
-            {
-                await _mailService.Delete(request.Email);
-            }
-        }
     }
 }

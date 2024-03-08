@@ -15,11 +15,6 @@ namespace Services
             _mailRepository = mailRepository;
         }
 
-        public async Task Delete(string email)
-        {
-            _mailRepository.Delete(email);
-        }
-
         public async Task<bool> VerifyCode(VerifyCodeRequest request)
         {
             return _mailRepository.VerifyCode(new VerifyCodeEntity
@@ -35,7 +30,9 @@ namespace Services
             var mail = _mailRepository.SendCode(new MailEntity
             {
                 Email = request.Email,
-                Code = Code
+                Code = Code,
+                ExpireDate = DateTime.Now.AddMinutes(5)
+                
             });
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress("Ваш код для сброса пароля", "recovery.code.miracle@gmail.com"));

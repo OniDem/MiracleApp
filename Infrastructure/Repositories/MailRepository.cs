@@ -10,22 +10,23 @@ namespace Infrastructure.Repositories
         {
             _applicationContext = applicationContext;
         }
-        public MailEntity SendCode(MailEntity mailEntity)
+        public MailEntity? SendCode(MailEntity mailEntity)
         {
-            _applicationContext.Mails.Add(mailEntity);
-            _applicationContext.SaveChanges();
-            return mailEntity;
+            var sendedMail = _applicationContext.Mails.Where(p => p.Email == mailEntity.Email).Last();
+            if (sendedMail.ExpireDate > DateTime.Now)
+            {
+                _applicationContext.Mails.Add(mailEntity);
+                _applicationContext.SaveChanges();
+                return mailEntity;
+            }
+            else
+                return null;
         }
-        public void Delete(string email)
-        {
-            var mailEntity = _applicationContext.Mails.Where(p => p.Email == email).First();
-            _applicationContext.Mails.Remove(mailEntity);
-            _applicationContext.SaveChanges();
-        }
+
         public bool VerifyCode(VerifyCodeEntity VerifyCode)
         {
-            var mailEntity = _applicationContext.Mails.Where(p => p.Email == VerifyCode.Email).First();
-            if (mailEntity.Code == VerifyCode.Code)
+            var mailEntity = _applicationContext.Mails.Where(p => p.Email == VerifyCode.Email).Last();
+            if (mailEntity.Code == VerifyCode.Code && DateTime.Now < mailEntity.ExpireDate)
             {
                 return true;
             }
