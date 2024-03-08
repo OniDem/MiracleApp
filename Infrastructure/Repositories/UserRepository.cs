@@ -33,7 +33,7 @@ namespace Infrastructure.Repositories
             user.Password = request.Password;
             user.Photo = request.Photo;
             user.CreatedDate  = request.CreatedDate;
-            user.PasswordChangeDate = request.CreatedDate;
+            user.PasswordChangeDate = DateTime.Now;
             _applicationContext.Users.Update(user);
             _applicationContext.SaveChanges();
             return user;

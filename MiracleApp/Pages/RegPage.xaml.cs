@@ -212,7 +212,7 @@ public partial class RegPage : ContentPage
                     reg_user.Password = Convert.ToBase64String(await EncryptService.EncryptStringToByteArrayAsync(PasswordEntry.Text));
                     reg_user.Photo = "";
 
-                    if (await UserService.RegUser(reg_user) > 0)
+                    if (await UserService.RegUserWithToken(reg_user))
                     {
                         await Navigation.PushAsync(new MainPage());
                         await DisplayAlert("Def Info", "Номер:" + reg_user.Phone + ", " + "ФИО:" + reg_user.FIO + ", " + "Роль:" + reg_user.Role + ", " + "Отделение:" + reg_user.Department + ", " + "Направление/Специальность:" + reg_user.StudentBranch + ", " + "Курс:" + reg_user.CourseNumber + ", " + "Пароль:" + reg_user.Password + "; " + "Отправьте разработчику для отладки!", "OK");

@@ -9,7 +9,7 @@ namespace MiracleApp.Services.User
 {
     public class UserService
     {
-        public static String CreateRandomPhoto()
+        private static string CreateRandomPhoto()
         {
             Random rnd = new Random();
             int randomNum = rnd.Next(0, 100);
@@ -19,7 +19,7 @@ namespace MiracleApp.Services.User
             for (int i = 0; i < 10; i++)
                 for (int j = 0; j < arrayLiky[i]; j++)
                     array.Add(arrayLiky[i]);
-            String result = "";
+            string result = "";
             switch (array[randomNum])
             {
                 case 1: result = "10"; break;
@@ -46,15 +46,40 @@ namespace MiracleApp.Services.User
             request.Photo = CreateRandomPhoto();
             JsonContent content = JsonContent.Create(request);
             HttpClient httpClient = new();
-            var response = await httpClient.PostAsync("http://45.153.69.204:5000/User/Create", content);
+            var response = await httpClient.PostAsync("http://45.153.69.204:5000/User/CreateWithoutToken", content);
             var result = await response.Content.ReadFromJsonAsync<UserEntity>();
             return result.Id;
+        }
+
+        public static async Task<bool> RegUserWithToken(CreateUserRequest request)
+        {
+            if (request.Role == 1)
+            {
+                request.CourseNumber = "";
+                request.Department = "";
+                request.Password = Convert.ToBase64String(await EncryptService.EncryptStringToByteArrayAsync(request.Password));
+            }
+            request.Photo = CreateRandomPhoto();
+            JsonContent content = JsonContent.Create(request);
+            HttpClient httpClient = new();
+            var response = await httpClient.PostAsync("http://45.153.69.204:5000/User/CreateWithToken", content);
+            var result = await response.Content.ReadFromJsonAsync<AuthUserEntity>();
+            if (result != null)
+            {
+                await SecureStorage.SetAsync("id", result.Id.ToString());
+                await SecureStorage.SetAsync("phone", result.Phone);
+                await SecureStorage.SetAsync("role", result.Role.ToString());
+                await SecureStorage.SetAsync("token", result.Token);
+
+                return true;
+            }
+            return false;
         }
 
         public static async Task<bool> AuthUser(AuthUserRequest request)
         {
             JsonContent content = JsonContent.Create(request);
-            HttpClient httpClient = new HttpClient();
+            HttpClient httpClient = new();
             var response = await httpClient.PostAsync("http://45.153.69.204:5000/User/Auth", content);
             var user = JsonConvert.DeserializeObject<AuthUserEntity>(await response.Content.ReadAsStringAsync());
             string debugString =
