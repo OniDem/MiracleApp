@@ -12,25 +12,23 @@ namespace Infrastructure.Repositories
         }
         public MailEntity? SendCode(MailEntity mailEntity)
         {
-            var sendedMail = _applicationContext.Mails.Where(p => p.Email == mailEntity.Email).Last();
-            if (sendedMail.ExpireDate > DateTime.Now)
-            {
                 _applicationContext.Mails.Add(mailEntity);
                 _applicationContext.SaveChanges();
                 return mailEntity;
-            }
-            else
-                return null;
         }
 
         public bool VerifyCode(VerifyCodeEntity VerifyCode)
         {
-            var mailEntity = _applicationContext.Mails.Where(p => p.Email == VerifyCode.Email).Last();
-            if (mailEntity.Code == VerifyCode.Code && DateTime.Now < mailEntity.ExpireDate)
+            var mailEntity = _applicationContext.Mails.Where(p => p.Email == VerifyCode.Email).OrderByDescending(p => p.ExpireDate).First();
+            if (DateTime.Now.ToUniversalTime() < mailEntity.ExpireDate)
             {
-                return true;
+                if (mailEntity.Code == VerifyCode.Code)
+                    return true;
+                else
+                    return false;
             }
-            return false;
+            else
+                return false;
         }
     }
 }

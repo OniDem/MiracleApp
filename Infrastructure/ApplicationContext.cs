@@ -21,11 +21,6 @@ namespace Infrastructure
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<MailEntity>(entity =>
-            {
-                entity.HasIndex(e => e.Email).IsUnique();
-            });
-
             builder.Entity<UserEntity>(entity =>
             {
                 entity.HasIndex(e => e.Phone).IsUnique();
