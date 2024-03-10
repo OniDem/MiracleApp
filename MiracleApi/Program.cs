@@ -44,7 +44,8 @@ builder.Services.AddSwaggerGen(opt =>
     });
 });
 
-builder.Services.AddDbContext<ApplicationContext>(options => { options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")); });
+//builder.Services.AddDbContext<ApplicationContext>(options => { options.UseNpgsql(builder.Configuration["MiracleApi:NpgSqlString"]); });
+builder.Services.AddDbContext<ApplicationContext>(options => { options.UseNpgsql("Host=45.8.96.144;Database=MiracleAppDB;Username=mira31;Password=G0K/>/F~Kvg8#:"); });
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ILessonService, LessonService>();
 builder.Services.AddScoped<INewsService, NewsService>();
