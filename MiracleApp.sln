@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiracleTest", "MiracleTest\MiracleTest.csproj", "{7143388A-7AA4-4C50-96E4-83FFAB7E09D6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MiracleDesktopApp", "MiracleDesktopApp\MiracleDesktopApp.csproj", "{EAF059D7-DDB8-43BC-8634-5BF3E753C88A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{7143388A-7AA4-4C50-96E4-83FFAB7E09D6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7143388A-7AA4-4C50-96E4-83FFAB7E09D6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7143388A-7AA4-4C50-96E4-83FFAB7E09D6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EAF059D7-DDB8-43BC-8634-5BF3E753C88A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAF059D7-DDB8-43BC-8634-5BF3E753C88A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAF059D7-DDB8-43BC-8634-5BF3E753C88A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAF059D7-DDB8-43BC-8634-5BF3E753C88A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
