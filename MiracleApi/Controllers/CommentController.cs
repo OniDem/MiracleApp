@@ -17,6 +17,7 @@ namespace MiracleApi.Controllers
     [Route("[controller]/[action]")]
     public class CommentController : ControllerBase
     {
+        /*
         private ICommentsService _commentService;
         public CommentController(ICommentsService commentsService)
         {
@@ -111,5 +112,6 @@ namespace MiracleApi.Controllers
             public static SymmetricSecurityKey GetSymmetricSecurityKey() =>
                 new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
         }
+        */
     }
 }

@@ -14,6 +14,7 @@ namespace MiracleApi.Controllers
     [Route("[controller]/[action]")]
     public class RibbonController: ControllerBase
     {
+        /*
         private IRibbonService _ribbonService;
         public RibbonController(IRibbonService ribbonService)
         {
@@ -104,5 +105,7 @@ namespace MiracleApi.Controllers
             public static SymmetricSecurityKey GetSymmetricSecurityKey() =>
                 new SymmetricSecurityKey(Encoding.UTF8.GetBytes(KEY));
         }
+        */
+
     }
 }
